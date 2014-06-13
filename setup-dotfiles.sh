@@ -6,7 +6,8 @@
 
 ########## Variables
 
-DIR=`dirname $0` # dotfiles directory
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+DIR=$SCRIPTPATH
 TARGET_DIR=$HOME # destination directory
 OLD_DIR=$TARGET_DIR/dotfiles_old # old dotfiles backup directory
 FILES="bash_aliases bashrc inputrc liquidpromptrc lynxrc muttrc profile tmux.conf vimrc" # list of files/folders to symlink in homedir
