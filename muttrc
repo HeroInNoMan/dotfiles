@@ -2,13 +2,13 @@
 # Mutt config
 #======================================================#
 # Gmail
-set imap_user="arthur.leothaud@gmail.com"
-# set imap_pass="You nosy motherfucker"
+set imap_user="user.name@gmail.com"
+# set imap_pass="secret"
 
-set smtp_url="smtps://arthur.leothaud@smtp.gmail.com:465/"
-# set smtp_pass="You nosy motherfucker"
-set from="arthur@leothaud.eu"
-set realname="Arthur Léothaud"
+set smtp_url="smtps://user.name@smtp.gmail.com:465/"
+# set smtp_pass="secret"
+set from="user@username"
+set realname="User Name"
 
 set folder="imaps://imap.gmail.com:993"
 set spoolfile="+INBOX"
@@ -31,7 +31,6 @@ alternative_order text/enriched text/plain text/html
 bind index "µ" next-unread-mailbox
 # Pour mettre le cache sur la même partition que le home.
 set tmpdir="~/.tmp"
-
 
 # Watch these mailboxes for new mail, useful only if
 # Procmail or Maildrop is used to sort mail.
