@@ -25,6 +25,7 @@ alias tl='task long'
 #######################################################
 alias du='du -h'
 alias df='df -hT'
+alias e='emacsclient'
 alias emacs='emacs -nw'
 alias tremote='transmission-remote'
 alias sr='surfraw -browser=w3m'
