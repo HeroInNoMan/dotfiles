@@ -25,7 +25,10 @@ alias tl='task long'
 #######################################################
 alias du='du -h'
 alias df='df -hT'
-alias e='emacsclient'
+alias e='emacsclient -t'
+alias ec='emacsclient'
+alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
+alias E="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
 alias emacs='emacs -nw'
 alias tremote='transmission-remote'
 alias sr='surfraw -browser=w3m'
