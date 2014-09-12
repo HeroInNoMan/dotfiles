@@ -44,7 +44,11 @@ export PATH=$HOME/Terminalcity/scripts:$PATH
 export PATH=$HOME/usr/bin:$PATH
 
 # switch to 256 color term (especially for using emacs inside term)
-export TERM=xterm-256color
+export TERM=screen-256color
+
+# add ssh key to agent
+eval $(ssh-agent) > /dev/null
+eval $(ssh-add ~/.ssh/al_polo_rsa &> /dev/null)
 
 # Define a few Color's
 #######################################################
