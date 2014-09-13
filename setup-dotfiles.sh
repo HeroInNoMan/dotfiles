@@ -7,7 +7,6 @@
 
 TIME_STAMP=`date +%Y-%m-%d` # date in format YYYY-MM-DD
 DOT_FILES_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
-DOT_FILES="bash_aliases bashrc inputrc liquidpromptrc lynxrc muttrc profile tmux.conf vimrc"
 
 TARGET_DIR=$HOME # destination directory
 OLD_DIR=$TARGET_DIR/dotfiles_$TIME_STAMP # old dotfiles backup directory
@@ -16,8 +15,9 @@ echo "Creating backup directory: $OLD_DIR"
 mkdir -p $OLD_DIR
 
 # Backup existing dotfiles in TARGET_DIR to OLD_DIR
-for filename in $DOT_FILES; do
-	file=$TARGET_DIR/.$filename
+for filename in $( ls -1 dot_*); do
+	stripped_filename=`echo $filename | cut -d'_' -f 2-`
+	file=$TARGET_DIR/.$stripped_filename
 	if [ -e $file ]; then
 		echo "Moving $file to $OLD_DIR"
 		mv $file $OLD_DIR
@@ -29,3 +29,5 @@ for filename in $DOT_FILES; do
 done
 
 # EOF
+
+
