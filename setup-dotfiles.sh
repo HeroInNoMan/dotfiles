@@ -11,14 +11,18 @@ DOT_FILES_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 TARGET_DIR=$HOME # destination directory
 OLD_DIR=$TARGET_DIR/dotfiles_$TIME_STAMP # old dotfiles backup directory
 
-echo "Creating backup directory: $OLD_DIR"
 mkdir -p $OLD_DIR
 
 # Backup existing dotfiles in TARGET_DIR to OLD_DIR
 for filename in $( ls -1 $DOT_FILES_DIR/dot_*); do
 	stripped_filename=`echo basename $filename | cut -d'_' -f 2-`
 	file=$TARGET_DIR/.$stripped_filename
-	if [ -e $file ]; then
+
+	if [ -L $file ]; then
+		TARGET=`readlink $file`
+		echo "Deleting $file which is a link to $TARGET"
+		rm $file
+	elif [ -e $file ]; then
 		echo "Moving $file to $OLD_DIR"
 		mv $file $OLD_DIR
 	fi
@@ -27,5 +31,8 @@ for filename in $( ls -1 $DOT_FILES_DIR/dot_*); do
 	echo "Creating $file@"
     ln -s $filename $file
 done
+
+# if no backup was made, delete backup dir
+rmdir --ignore-fail-on-non-empty $OLD_DIR
 
 # EOF
