@@ -42,6 +42,7 @@ MAIL=/var/spool/mail/duncan && export MAIL
 # add home-made scripts to path
 export PATH=$HOME/Terminalcity/scripts:$PATH
 export PATH=$HOME/usr/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 # switch to 256 color term (especially for using emacs inside term)
 export TERM=screen-256color
