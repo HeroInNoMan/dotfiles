@@ -15,8 +15,8 @@ echo "Creating backup directory: $OLD_DIR"
 mkdir -p $OLD_DIR
 
 # Backup existing dotfiles in TARGET_DIR to OLD_DIR
-for filename in $( ls -1 dot_*); do
-	stripped_filename=`echo $filename | cut -d'_' -f 2-`
+for filename in $( ls -1 $DOT_FILES_DIR/dot_*); do
+	stripped_filename=`echo basename $filename | cut -d'_' -f 2-`
 	file=$TARGET_DIR/.$stripped_filename
 	if [ -e $file ]; then
 		echo "Moving $file to $OLD_DIR"
@@ -25,9 +25,7 @@ for filename in $( ls -1 dot_*); do
 
 	# then create symlinks
 	echo "Creating $file@"
-    ln -s $DOT_FILES_DIR/$filename $file
+    ln -s $filename $file
 done
 
 # EOF
-
-
