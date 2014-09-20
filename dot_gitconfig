@@ -1,4 +1,5 @@
 [core]
+  filemode = false
   editor = /usr/bin/emacsclient -nw -t
 [alias]
   co = checkout
