@@ -1,0 +1,319 @@
+servers = (
+  { address = "irc.stealth.net"; chatnet = "ircnet"; port = "6668"; },
+  { address = "irc.efnet.org"; chatnet = "efnet"; port = "6667"; },
+  { 
+    address = "irc.undernet.org";
+    chatnet = "undernet";
+    port = "6667";
+  },
+  { address = "irc.dal.net"; chatnet = "dalnet"; port = "6667"; },
+  { 
+    address = "irc.quakenet.org";
+    chatnet = "quakenet";
+    port = "6667";
+  },
+  { address = "silc.silcnet.org"; chatnet = "silc"; port = "706"; }
+);
+
+chatnets = {
+  ircnet = {
+    type = "irc";
+    max_kicks = "4";
+    max_msgs = "5";
+    max_whois = "4";
+    max_query_chans = "5";
+  };
+  efnet = { 
+    type = "irc";
+    max_kicks = "4";
+    max_msgs = "3";
+    max_whois = "1";
+  };
+  undernet = {
+    type = "irc";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  dalnet = {
+    type = "irc";
+    max_kicks = "4";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  quakenet = {
+    type = "irc";
+    max_kicks = "1";
+    max_msgs = "3";
+    max_whois = "30";
+  };
+  silc = { type = "silc"; };
+};
+
+channels = (
+  { name = "#irssi"; chatnet = "ircnet"; autojoin = "no"; },
+  { name = "silc"; chatnet = "silc"; autojoin = "no"; }
+);
+
+aliases = {
+  j = "join";
+  wjoin = "join -window";
+  wquery = "query -window";
+  leave = "part";
+  bye = "quit";
+  exit = "quit";
+  signoff = "quit";
+  describe = "action";
+  date = "time";
+  host = "userhost";
+  last = "lastlog";
+  wi = "whois";
+  wii = "whois $0 $0";
+  ww = "whowas";
+  w = "who";
+  n = "names";
+  m = "msg";
+  t = "topic";
+  c = "clear";
+  cl = "clear";
+  k = "kick";
+  kb = "kickban";
+  kn = "knockout";
+  bans = "ban";
+  b = "ban";
+  mub = "unban *";
+  ub = "unban";
+  ig = "ignore";
+  unig = "unignore";
+  sb = "scrollback";
+  umode = "mode $n";
+  wc = "window close";
+  wn = "window new hide";
+  sv = "say irssi $j ($v) - http://irssi.org/";
+  goto = "sb goto";
+  chat = "dcc chat";
+  run = "script load";
+  calc = "exec - if which bc &>/dev/null\\; then echo '$*' | bc | awk '{print \"$*=\"$$1}'\\; else echo bc was not found\\; fi";
+  sbar = "statusbar";
+  invitelist = "mode $c +i";
+  q = "query";
+  "manual-windows" = "set use_status_window off;set autocreate_windows off;set autocreate_query_level none;set autoclose_windows off;set reuse_unused_windows on;save";
+  exemptlist = "mode $c +e";
+  atag = "window server";
+  z = "quote z :$*";
+  paf = "say *paf* *paf* *paf* grllrglglglrrl";
+  dp = "say <double penetration>";
+  say = "msg *";
+  e = "say <ectoplasm>";
+  bite = "say biiiiiiiiiite !";
+  v = "say … vraiment…?";
+  itt = "say go itt, n00b !";
+  f = "say *floutch* *floutch*";
+  id = "msg nickserv identify";
+  lookup = "lastlog - -window 2 $0 1";
+  chut = "say chut, le voilà";
+  backdoor = "msg gros_singe !repeat #neuneu";
+  wm = "window move";
+  bb = "bringback";
+  bringback = "window move 5";
+  bs = "say c'est cheaté la bs";
+  irl = "say une seconde, interaction irl requise";
+  han = "say \002haaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaan\002";
+  lc = "lastlog -clear";
+  greek = "say αα ββ γγ δδ εε ζζ ηη θθ ιι κκ λλ μμ νν ξξ οο ππ ρρ σσ ττ υυ φφ χχ ψψ ωω";
+  meta = "say <niveau meta>";
+  backtroll = "msg gros_troll !repeat #mb3";
+  bt = "backtroll";
+  twss = "say that’s what she said";
+  oui = "say ahhhhhhhhhhwwwwwwiiii !";
+  finance = "say tu as beaucoup changé depuis que tu bosses dans la finance…";
+  "clear-and-wait" = "/window 1;/clear";
+  cb = "say c… c… c… combo-breaker!!!";
+};
+
+statusbar = {
+  # formats:
+  # when using {templates}, the template is shown only if it's argument isn't
+  # empty unless no argument is given. for example {sb} is printed always,
+  # but {sb $t} is printed only if $t isn't empty.
+
+  items = {
+    # start/end text in statusbars
+    barstart = "{sbstart}";
+    barend = "{sbend}";
+
+    topicbarstart = "{topicsbstart}";
+    topicbarend = "{topicsbend}";
+
+    # treated "normally", you could change the time/user name to whatever
+    time = "{sb $z}";
+    user = "{sb {sbnickmode $cumode}$n{sbmode $usermode}{sbaway $a}}";
+
+    # treated specially .. window is printed with non-empty windows,
+    # window_empty is printed with empty windows
+    window = "{sb $winref:$tag/$itemname{sbmode $m}}";
+    window_empty = "{sb $winref{sbservertag $tag}}";
+    prompt = "{prompt $[.15]itemname}";
+    prompt_empty = "{prompt $winname}";
+    topic = " $topic";
+    topic_empty = " irssi v$j - http://www.irssi.org";
+
+    # all of these treated specially, they're only displayed when needed
+    lag = "{sb lag: $0-}";
+    act = "{sb act: $0-}";
+    more = "-- more --";
+  };
+
+  # there's two type of statusbars. root statusbars are either at the top
+  # of the screen or at the bottom of the screen. window statusbars are at
+  # the top/bottom of each split window in screen.
+  default = {
+    # the "default statusbar" to be displayed at the bottom of the window.
+    # contains all the normal items.
+    window = {
+      disabled = "no";
+
+      # window, root
+      type = "window";
+      # top, bottom
+      placement = "bottom";
+      # number
+      position = "1";
+      # active, inactive, always
+      visible = "active";
+
+      # list of items in statusbar in the display order
+      items = {
+        barstart = { priority = "100"; };
+        time = { };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+        act = { };
+      };
+    };
+
+    # statusbar to use in inactive split windows
+    window_inact = {
+      type = "window";
+      placement = "bottom";
+      position = "1";
+      visible = "inactive";
+      items = {
+        barstart = { priority = "100"; };
+        window = { };
+        window_empty = { };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+
+    # we treat input line as yet another statusbar :) it's possible to
+    # add other items before or after the input line item.
+    prompt = {
+      type = "root";
+      placement = "bottom";
+      # we want to be at the bottom always
+      position = "100";
+      visible = "always";
+      items = {
+        prompt = { priority = "-1"; };
+        prompt_empty = { priority = "-1"; };
+        # treated specially, this is the real input line.
+        input = { priority = "10"; };
+      };
+    };
+
+    # topicbar
+    topic = {
+      type = "root";
+      placement = "top";
+      position = "1";
+      visible = "always";
+      items = {
+        topicbarstart = { priority = "100"; };
+        topic = { };
+        topic_empty = { };
+        topicbarend = { priority = "100"; alignment = "right"; };
+      };
+    };
+  };
+};
+settings = {
+  core = {
+    real_name = "duncan";
+    user_name = "duncan";
+    nick = "duncan";
+    recode_out_default_charset = "utf-8";
+    recode_fallback = "iso-8859-15";
+    recode_autodetect_utf8 = "yes";
+  };
+  "fe-text" = { actlist_sort = "refnum"; };
+  "perl/core/scripts" = {
+    autoaway = "600";
+    autounaway_level = "publics";
+    away_reason = "afk";
+    trackbar_string = "-";
+  };
+  "fe-common/core" = {
+    activity_hide_targets = "";
+    activity_hide_level = "joins parts nicks modes quits";
+    bell_beeps = "yes";
+    beep_msg_level = "msgs notices dcc dccmsgs hilight";
+  };
+};
+hilights = (
+  { text = "duncan"; nick = "yes"; word = "yes"; },
+  { text = "arthur"; nick = "yes"; word = "yes"; },
+  { text = "highlander"; nick = "yes"; word = "yes"; },
+  { text = "leothaud"; nick = "yes"; word = "yes"; },
+  { text = "$me"; nick = "yes"; word = "yes"; },
+  { text = "heroinnoman"; nick = "yes"; word = "yes"; },
+  { text = "kth"; nick = "yes"; word = "yes"; },
+  { text = "krooh_tong_halai "; nick = "yes"; word = "yes"; },
+  { text = "dalvini"; nick = "yes"; word = "yes"; }
+);
+logs = { };
+ignores = ( );
+conversions = { marmotte = "utf-8"; ircube = "iso-8859-15"; };
+keyboard = (
+  { key = "^b"; id = "backward_character"; data = ""; },
+  { key = "^f"; id = "forward_character"; data = ""; },
+  { key = "^g"; id = "insert_text"; data = "\\cb"; },
+  { key = "^r"; id = "command"; data = "history_search "; },
+  { key = "^s"; id = "command"; data = "history_search -forward"; },
+  { key = "meta-space"; id = "command"; data = "clear "; },
+  { key = "meta-("; id = "change_window"; data = "14"; },
+  { key = "meta-)"; id = "change_window"; data = "15"; },
+  { key = "meta-@"; id = "change_window"; data = "16"; },
+  { key = "meta-\""; id = "change_window"; data = "11"; },
+  { key = "meta-\\+"; id = "change_window"; data = "17"; },
+  { key = "meta-c"; id = "command"; data = "clear-and-wait "; },
+  { key = "meta-j"; id = "command"; data = "scrollback goto +1"; },
+  { key = "meta-k"; id = "command"; data = "scrollback goto -1"; },
+  { key = "meta-s"; id = "command"; data = "scrollback goto -1"; },
+  { key = "meta-t"; id = "command"; data = "scrollback goto +1"; },
+  { key = "meta-x"; id = "command"; data = "window last"; },
+  { key = "meta-«"; id = "change_window"; data = "12"; },
+  { key = "meta-»"; id = "change_window"; data = "13"; },
+  { key = "meta-g"; id = "insert_text"; data = "\\cb"; }
+);
+completions = {
+  "->" = { value = "→"; };
+  "<-" = { value = "←"; };
+  ":)" = { value = "☺"; };
+  "<3" = { value = "♥"; };
+  "c,est" = { value = "c’est"; auto = "yes"; };
+  "c’€st" = { value = "c’est"; auto = "yes"; };
+  dasn = { value = "dans"; auto = "yes"; };
+  dnas = { value = "dans"; auto = "yes"; };
+  mme = { value = "même"; auto = "yes"; };
+  oauis = { value = "ouais"; auto = "yes"; };
+  ouasi = { value = "ouais"; auto = "yes"; };
+  ouias = { value = "ouais"; auto = "yes"; };
+  psa = { value = "pas"; auto = "yes"; };
+  "pê" = { value = "peut-être"; auto = "yes"; };
+};
