@@ -43,7 +43,8 @@ set sort_browser=alpha    # Sort mailboxes by alpha(bet)
 unignore Date:		From: Cc: Reply-To: Subject: Mail-Followup-To:
 hdr_order Date:		From: To: Cc: Reply-To: Subject: Mail-Followup-To:
 
-set editor="emacs"
+set editor="emacsclient -nw -t"
+set pager="emacsclient -nw -t"
 set edit_headers=yes      # See the headers when editing
 set alias_file=~/.mutt/alias
 source ~/.mutt/alias

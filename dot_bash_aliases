@@ -11,27 +11,22 @@ fi
 
 # SOME MORE LS ALIASES
 #######################################################
-alias ls='ls -hF --color'
-alias ll='ls -l'
-alias la='ls -A'
 alias l='ls -CF'
-
-# ALIASES FOR TASKWARRIOR
-#######################################################
-alias cal='task cal'
-alias tl='task long'
+alias la='ls -A'
+alias ll='ls -l'
+alias ls='ls -hF --color'
 
 # CONVENIENCE ALIASES
 #######################################################
-alias du='du -h'
 alias df='df -hT'
+alias du='du -h'
 alias e='emacsclient -t'
 alias ec='emacsclient'
-alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
 alias E="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
+alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
 alias emacs='emacs -nw'
-alias tremote='transmission-remote'
 alias sr='surfraw -browser=w3m'
+alias tremote='transmission-remote'
 
 # GIT
 #######################################################
