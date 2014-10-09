@@ -4,9 +4,11 @@
 [alias]
   co = checkout
   ci = commit
-  st = status
+  st = status -sb
   br = branch
   hist = log --pretty=format:\"%h %ad | %s [%an]\" --graph --date=short
   type = cat-file -t
   dump = cat-file -p
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[color]
+	ui = true
