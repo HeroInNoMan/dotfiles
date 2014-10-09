@@ -280,11 +280,10 @@ logs = { };
 ignores = ( );
 conversions = { marmotte = "utf-8"; ircube = "iso-8859-15"; };
 keyboard = (
-  { key = "^b"; id = "backward_character"; data = ""; },
-  { key = "^f"; id = "forward_character"; data = ""; },
-  { key = "^g"; id = "insert_text"; data = "\\cb"; },
-  { key = "^r"; id = "command"; data = "history_search "; },
-  { key = "^s"; id = "command"; data = "history_search -forward"; },
+  { key = "^B"; id = "backward_character"; data = ""; },
+  { key = "^F"; id = "forward_character"; data = ""; },
+  { key = "^R"; id = "command"; data = "history_search "; },
+  { key = "^S"; id = "command"; data = "history_search -forward"; },
   { key = "meta-space"; id = "command"; data = "clear "; },
   { key = "meta-("; id = "change_window"; data = "14"; },
   { key = "meta-)"; id = "change_window"; data = "15"; },
@@ -306,14 +305,29 @@ completions = {
   "<-" = { value = "←"; };
   ":)" = { value = "☺"; };
   "<3" = { value = "♥"; };
+  sv = { value = "卍"; };
+  cccp = { value = "☭"; };
   "c,est" = { value = "c’est"; auto = "yes"; };
   "c’€st" = { value = "c’est"; auto = "yes"; };
+  cuop = { value = "coup"; auto = "yes"; };
+  adns = { value = "dans"; auto = "yes"; };
   dasn = { value = "dans"; auto = "yes"; };
   dnas = { value = "dans"; auto = "yes"; };
   mme = { value = "même"; auto = "yes"; };
+  uoi = { value = "oui"; auto = "yes"; };
   oauis = { value = "ouais"; auto = "yes"; };
+  oausi = { value = "ouais"; auto = "yes"; };
   ouasi = { value = "ouais"; auto = "yes"; };
   ouias = { value = "ouais"; auto = "yes"; };
+  aps = { value = "pas"; auto = "yes"; };
   psa = { value = "pas"; auto = "yes"; };
   "pê" = { value = "peut-être"; auto = "yes"; };
+  tlm = { value = "tout le monde"; auto = "yes"; };
+  dtf = { value = "de toute façon"; auto = "yes"; };
+  qd = { value = "quand"; auto = "yes"; };
+  qunad = { value = "quand"; auto = "yes"; };
+  qqun = { value = "quelqu’un"; auto = "yes"; };
+  qqch = { value = "quelque chose"; auto = "yes"; };
+  mainetnat = { value = "maintenant"; auto = "yes"; };
+  uqe = { value = "que"; auto = "yes"; };
 };
