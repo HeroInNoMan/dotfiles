@@ -331,4 +331,5 @@ completions = {
   qqch = { value = "quelque chose"; auto = "yes"; };
   mainetnat = { value = "maintenant"; auto = "yes"; };
   uqe = { value = "que"; auto = "yes"; };
+  vraiemnt = { value = "vraiment"; auto = "yes"; };
 };
