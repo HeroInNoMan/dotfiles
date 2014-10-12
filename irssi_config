@@ -307,6 +307,7 @@ completions = {
   "<3" = { value = "♥"; };
   sv = { value = "卍"; };
   cccp = { value = "☭"; };
+  twss = { value = "that’s what she said"; };
   "c,est" = { value = "c’est"; auto = "yes"; };
   "c’€st" = { value = "c’est"; auto = "yes"; };
   cuop = { value = "coup"; auto = "yes"; };
