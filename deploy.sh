@@ -64,6 +64,6 @@ deploy "$DOT_FILES_DIR/irssi_config" "$TARGET_DIR/.irssi/config" "${TARGET_DIR}/
 deploy "$DOT_FILES_DIR/lubuntu-rc.xml" "$TARGET_DIR/.config/openbox/lubuntu-rc.xml" ".config/openbox/lubuntu-rc.xml_$TIME_STAMP"
 
 # .localrc : copy if not present (no symlink)
-	cp -n $DOT_FILES_DIR/dot_localrc $TARGET_DIR/.localrc
+cp -n $DOT_FILES_DIR/dot_localrc $TARGET_DIR/.localrc
 
 # EOF
