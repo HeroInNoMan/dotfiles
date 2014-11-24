@@ -1,14 +1,52 @@
-[core]
-  filemode = false
-  editor = /usr/bin/emacsclient -nw -t
 [alias]
-  co = checkout
-  ci = commit
-  st = status -sb
-  br = branch
-  hist = log --pretty=format:\"%h %ad | %s [%an]\" --graph --date=short
-  type = cat-file -t
-  dump = cat-file -p
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	co = checkout
+	ci = commit
+	st = status -sb
+	br = branch
+	type = cat-file -t
+	dump = cat-file -p
+
+	#### LOGS ####
+	# current branch, complete subject
+	l = log --graph --abbrev-commit --date=relative --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+
+	# all branches, complete subject
+	la = log --graph --abbrev-commit --date=relative --all --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+
+	# current branch, truncated & justified subject
+	lg = log --graph --date-order --format='%C(yellow)%h%Creset %<(80,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+
+	# all branches, truncated & justified subject
+	lga = log --graph --date-order --all --format='%C(yellow)%h%Creset %<(80,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+
+	# current branch, file stats, truncated & justified subject
+	lf = log --graph --name-status --format='%C(yellow)%h%Creset %cr %<(80,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+
+	# all branches, file stats, truncated & justified subject
+	lfa = log --graph --name-status --all --format='%C(yellow)%h%Creset %cr %<(80,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+
+	# current branch, absolute date, truncated & justified subject
+	ld = log --graph --date=short --format='%C(yellow)%h%Creset %<(80,trunc)%s %Cgreen(%cd) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+
+	# current branch, absolute date, truncated & justified subject
+	lda = log --graph --date=short --all --format='%C(yellow)%h%Creset %<(80,trunc)%s %Cgreen(%cd) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+[branch]
+	autosetuprebase = always
 [color]
 	ui = true
+	# [difftool]
+	# 	prompt = false
+	# [merge]
+	# 	tool = meld
+	# [mergetool "meld"]
+	# 	path = /opt/local/bin/meld
+[core]
+	filemode = false
+	pager = less -r
+	editor = /usr/bin/emacsclient -nw -t
+[credential]
+	helper = store
+[gui]
+	editor = emacsclient -t
+[push]
+	default = matching
