@@ -147,11 +147,7 @@ and back in -->
 	<keybind key="W-i"><action name="ToggleShowDesktop"/></keybind>
     <!-- Keybindings for windows -->
     <keybind key="A-F4"><action name="Close"/></keybind>
-    <keybind key="A-Escape">
-      <action name="Lower"/>
-      <action name="FocusToBottom"/>
-      <action name="Unfocus"/>
-    </keybind>
+    <keybind key="A-Escape"><action name="Lower"/><action name="FocusToBottom"/><action name="Unfocus"/></keybind>
     <keybind key="A-space"><action name="ShowMenu"><menu>client-menu</menu></action></keybind>
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
     <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
@@ -194,14 +190,73 @@ and back in -->
     <keybind key="W-S-Down"><action name="DirectionalCycleWindows"><direction>down</direction></action></keybind>
 
     <!-- Keybindings for window tiling -->
-    <keybind key="W-Left">        # HalfLeftScreen
+    <keybind key="W-Left">        <!-- # HalfLeftScreen -->
     <action name="UnmaximizeFull"/>
     <action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action>
     </keybind>
-    <keybind key="W-Right">        # HalfRightScreen
+    <keybind key="W-Right">        <!-- # HalfRightScreen -->
     <action name="UnmaximizeFull"/>
     <action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action>
     </keybind>
+
+	<!-- More tiling -->
+	<keybind key="W-b">
+	  <keybind key="v"> <!-- upper left -->
+		<action name="UnmaximizeFull"/>
+		<action name="MoveResizeTo">
+		<x>0</x><y>0</y><height>50%</height><width>50%</width>
+		</action>
+	  </keybind> 
+      <keybind key="d"> <!-- half top -->
+		<action name="UnmaximizeFull"/>
+		<action name="MoveResizeTo">
+		<x>0</x><y>0</y><height>50%</height><width>100%</width>
+		</action>
+	  </keybind> 
+      <keybind key="l"> <!-- upper right -->
+		<action name="UnmaximizeFull"/>
+		<action name="MoveResizeTo">
+		<x>-0</x><y>0</y><height>50%</height><width>50%</width>
+		</action>
+	  </keybind> 
+      <keybind key="t"> <!-- half left -->
+		<action name="UnmaximizeFull"/>
+		<action name="MoveResizeTo">
+		<x>0</x>0<y></y><height>100%</height><width>50%</width>
+		</action>
+	  </keybind> 
+      <keybind key="s"> <!-- maximized-->
+		<action name="UnmaximizeFull"/>
+		<action name="MoveResizeTo">
+		<x>0</x>0<y></y><height>100%</height><width>100%</width>
+		</action>
+	  </keybind> 
+      <keybind key="r"> <!-- half right -->
+		<action name="UnmaximizeFull"/>
+		<action name="MoveResizeTo">
+		<x>-0</x>0<y></y><height>100%</height><width>50%</width>
+		</action>
+	  </keybind> 
+      <keybind key="q"> <!-- lower left -->
+		<action name="UnmaximizeFull"/>
+		<action name="MoveResizeTo">
+		<x>0</x><y>-0</y><height>50%</height><width>50%</width>
+		</action>
+	  </keybind> 
+      <keybind key="g"> <!-- half bottom -->
+		<action name="UnmaximizeFull"/>
+		<action name="MoveResizeTo">
+		<x>0</x><y>-0</y><height>50%</height><width>100%</width>
+		</action>
+	  </keybind> 
+      <keybind key="h"> <!-- lower right -->
+		<action name="UnmaximizeFull"/>
+		<action name="MoveResizeTo">
+		<x>-0</x><y>-0</y><height>50%</height><width>50%</width>
+		</action>
+	  </keybind>
+    </keybind>
+
     <!-- Keybindings to increase window size  -->
     <keybind key="W-Up">
       <action name="If">
