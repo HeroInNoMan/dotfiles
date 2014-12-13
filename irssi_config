@@ -151,7 +151,8 @@ statusbar = {
 
     # treated specially .. window is printed with non-empty windows,
     # window_empty is printed with empty windows
-    window = "{sb $winref:$tag/$itemname{sbmode $m}}";
+    window = "{sb $winref:$tag/$T{sbmode $M}}";
+    # window = "{sb $winref:$tag/$itemname{sbmode $m}}";
     window_empty = "{sb $winref{sbservertag $tag}}";
     prompt = "{prompt $[.15]itemname}";
     prompt_empty = "{prompt $winname}";
@@ -263,6 +264,7 @@ settings = {
     activity_hide_level = "joins parts nicks modes quits";
     bell_beeps = "yes";
     beep_msg_level = "msgs notices dcc dccmsgs hilight";
+    show_nickmode_empty = "no";
   };
 };
 hilights = (
@@ -333,3 +335,157 @@ completions = {
   uqe = { value = "que"; auto = "yes"; };
   vraiemnt = { value = "vraiment"; auto = "yes"; };
 };
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "&bitlbee";
+        tag = "localhost";
+      }
+    );
+  };
+  3 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#neuneu";
+        tag = "rezosup";
+      }
+    );
+  };
+  4 = {
+    items = (
+      { 
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#MB3";
+        tag = "ttpm";
+      }
+    );
+  };
+  5 = {
+    items = (
+      {
+        type = "QUERY";
+        chat_type = "IRC";
+        name = "Steph";
+        tag = "localhost";
+      }
+    );
+  };
+  6 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#EMN";
+        tag = "rezosup";
+      }
+    );
+  };
+  7 = {
+    items = (
+      {
+        type = "QUERY";
+        chat_type = "IRC";
+        name = "dibalo";
+        tag = "rezosup";
+      }
+    );
+  };
+  8 = {
+    items = (
+      {
+        type = "QUERY";
+        chat_type = "IRC";
+        name = "gubertran";
+        tag = "localhost";
+      }
+    );
+  };
+  9 = {
+    items = (
+      {
+        type = "QUERY";
+        chat_type = "IRC";
+        name = "ElHaine_S45";
+        tag = "freenode";
+      }
+    );
+  };
+  10 = {
+    items = (
+      {
+        type = "QUERY";
+        chat_type = "IRC";
+        name = "juliannaveira";
+        tag = "localhost";
+      }
+    );
+  };
+  11 = {
+    items = (
+      {
+        type = "QUERY";
+        chat_type = "IRC";
+        name = "antoine";
+        tag = "rezosup";
+      }
+    );
+  };
+  12 = {
+    items = (
+      { 
+        type = "QUERY";
+        chat_type = "IRC";
+        name = "Kiu";
+        tag = "rezosup";
+      }
+    );
+  };
+  13 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#complicated";
+        tag = "freenode2";
+      }
+    );
+  };
+  14 = {
+    items = (
+      {
+        type = "QUERY";
+        chat_type = "IRC";
+        name = "MacLord";
+        tag = "rezosup";
+      }
+    );
+  };
+  15 = {
+    items = (
+      {
+        type = "CHANNEL";
+        chat_type = "IRC";
+        name = "#bepo";
+        tag = "freenode";
+      }
+    );
+  };
+  16 = {
+    items = (
+      {
+        type = "QUERY";
+        chat_type = "IRC";
+        name = "MacLord_";
+        tag = "rezosup";
+      }
+    );
+  };
+};
+mainwindows = { 1 = { first_line = "1"; lines = "43"; }; };
