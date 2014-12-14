@@ -15,22 +15,22 @@
 	la = log --graph --abbrev-commit --date=relative --all --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 
 	# current branch, truncated & justified subject
-	lg = log --graph --date-order --format='%C(yellow)%h%Creset %<(80,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+	lg = log --graph --date-order --format='%C(yellow)%h%Creset %<(90,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
 
 	# all branches, truncated & justified subject
-	lga = log --graph --date-order --all --format='%C(yellow)%h%Creset %<(80,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+	lga = log --graph --date-order --all --format='%C(yellow)%h%Creset %<(90,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
 
 	# current branch, file stats, truncated & justified subject
-	lf = log --graph --name-status --format='%C(yellow)%h%C(bold white) %<(80,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+	lf = log --graph --name-status --format='%C(yellow)%h%C(bold white) %<(90,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
 
 	# all branches, file stats, truncated & justified subject
-	lfa = log --graph --name-status --all --format='%C(yellow)%h%C(bold white) %<(80,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+	lfa = log --graph --name-status --all --format='%C(yellow)%h%C(bold white) %<(90,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
 
 	# current branch, absolute date, truncated & justified subject
-	ld = log --graph --date=short --format='%C(yellow)%h%Creset %<(80,trunc)%s %Cgreen(%cd) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+	ld = log --graph --date=short --format='%C(yellow)%h%Creset %<(90,trunc)%s %Cgreen(%cd) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
 
 	# current branch, absolute date, truncated & justified subject
-	lda = log --graph --date=short --all --format='%C(yellow)%h%Creset %<(80,trunc)%s %Cgreen(%cd) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+	lda = log --graph --date=short --all --format='%C(yellow)%h%Creset %<(90,trunc)%s %Cgreen(%cd) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
 [branch]
 	autosetuprebase = always
 [color]
@@ -53,3 +53,6 @@
 	default = current
 [push]
 	default = current
+[user]
+	name = Arthur Léothaud
+	email = arthur@leothaud.eu
