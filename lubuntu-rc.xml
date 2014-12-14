@@ -191,12 +191,12 @@ and back in -->
 
     <!-- Keybindings for window tiling -->
     <keybind key="W-Left">        <!-- # HalfLeftScreen -->
-    <action name="UnmaximizeFull"/>
-    <action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action>
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action>
     </keybind>
     <keybind key="W-Right">        <!-- # HalfRightScreen -->
-    <action name="UnmaximizeFull"/>
-    <action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action>
+      <action name="UnmaximizeFull"/>
+      <action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action>
     </keybind>
 
 	<!-- More tiling -->
@@ -204,55 +204,55 @@ and back in -->
 	  <keybind key="v"> <!-- upper left -->
 		<action name="UnmaximizeFull"/>
 		<action name="MoveResizeTo">
-		<x>0</x><y>0</y><height>50%</height><width>50%</width>
+		  <x>0</x><y>0</y><height>50%</height><width>50%</width>
 		</action>
-	  </keybind> 
+	  </keybind>
       <keybind key="d"> <!-- half top -->
 		<action name="UnmaximizeFull"/>
 		<action name="MoveResizeTo">
-		<x>0</x><y>0</y><height>50%</height><width>100%</width>
+		  <x>0</x><y>0</y><height>50%</height><width>100%</width>
 		</action>
-	  </keybind> 
+	  </keybind>
       <keybind key="l"> <!-- upper right -->
 		<action name="UnmaximizeFull"/>
 		<action name="MoveResizeTo">
-		<x>-0</x><y>0</y><height>50%</height><width>50%</width>
+		  <x>-0</x><y>0</y><height>50%</height><width>50%</width>
 		</action>
-	  </keybind> 
+	  </keybind>
       <keybind key="t"> <!-- half left -->
 		<action name="UnmaximizeFull"/>
 		<action name="MoveResizeTo">
-		<x>0</x>0<y></y><height>100%</height><width>50%</width>
+		  <x>0</x>0<y></y><height>100%</height><width>50%</width>
 		</action>
-	  </keybind> 
+	  </keybind>
       <keybind key="s"> <!-- maximized-->
 		<action name="UnmaximizeFull"/>
 		<action name="MoveResizeTo">
-		<x>0</x>0<y></y><height>100%</height><width>100%</width>
+		  <x>0</x>0<y></y><height>100%</height><width>100%</width>
 		</action>
-	  </keybind> 
+	  </keybind>
       <keybind key="r"> <!-- half right -->
 		<action name="UnmaximizeFull"/>
 		<action name="MoveResizeTo">
-		<x>-0</x>0<y></y><height>100%</height><width>50%</width>
+		  <x>-0</x>0<y></y><height>100%</height><width>50%</width>
 		</action>
-	  </keybind> 
+	  </keybind>
       <keybind key="q"> <!-- lower left -->
 		<action name="UnmaximizeFull"/>
 		<action name="MoveResizeTo">
-		<x>0</x><y>-0</y><height>50%</height><width>50%</width>
+		  <x>0</x><y>-0</y><height>50%</height><width>50%</width>
 		</action>
-	  </keybind> 
+	  </keybind>
       <keybind key="g"> <!-- half bottom -->
 		<action name="UnmaximizeFull"/>
 		<action name="MoveResizeTo">
-		<x>0</x><y>-0</y><height>50%</height><width>100%</width>
+		  <x>0</x><y>-0</y><height>50%</height><width>100%</width>
 		</action>
-	  </keybind> 
+	  </keybind>
       <keybind key="h"> <!-- lower right -->
 		<action name="UnmaximizeFull"/>
 		<action name="MoveResizeTo">
-		<x>-0</x><y>-0</y><height>50%</height><width>50%</width>
+		  <x>-0</x><y>-0</y><height>50%</height><width>50%</width>
 		</action>
 	  </keybind>
     </keybind>
