@@ -201,6 +201,9 @@ and back in -->
 
 	<!-- More tiling -->
 	<keybind key="W-b">
+	  <keybind key="f"> <!-- full screen -->
+        <action name="ToggleFullscreen"/>
+	  </keybind>
 	  <keybind key="v"> <!-- upper left -->
 		<action name="UnmaximizeFull"/>
 		<action name="MoveResizeTo">
@@ -254,6 +257,9 @@ and back in -->
 		<action name="MoveResizeTo">
 		  <x>-0</x><y>-0</y><height>50%</height><width>50%</width>
 		</action>
+	  </keybind>
+      <keybind key="m"> <!-- circle through monitor configurations -->
+		<action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh</command></action>
 	  </keybind>
     </keybind>
 
