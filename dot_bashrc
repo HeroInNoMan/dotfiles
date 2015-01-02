@@ -88,5 +88,5 @@ PS1="${PS1}$L_RED$GIT_INFOS\n" # (master *+%) git infos
 PS1="${PS1}$WHITE→$NC " # '→' prompt character
 
 if [ -f ~/.localrc ]; then
-    source ~/.localrc # load specific config for current machine
+    source ~/.localrc
 fi
