@@ -1,0 +1,15 @@
+# machine-specific configuration, called by ~/.bashrc
+
+# variables
+#########################################################
+# export IMAGES_DIR="~/Images"
+
+# aliases
+########################################################
+# alias i="cd ~/Images"
+
+# station-specific keys
+########################################################
+# eval $(ssh-add ~/.ssh/id_rsa &> /dev/null)
+
+# EOF
