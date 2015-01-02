@@ -276,7 +276,8 @@ hilights = (
   { text = "heroinnoman"; nick = "yes"; word = "yes"; },
   { text = "kth"; nick = "yes"; word = "yes"; },
   { text = "krooh_tong_halai "; nick = "yes"; word = "yes"; },
-  { text = "dalvini"; nick = "yes"; word = "yes"; }
+  { text = "dalvini"; nick = "yes"; word = "yes"; },
+  { text = "Arthorius "; nick = "yes"; word = "yes"; }
 );
 logs = { };
 ignores = ( );
