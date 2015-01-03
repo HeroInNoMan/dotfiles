@@ -49,5 +49,7 @@
 	helper = store
 [gui]
 	editor = emacsclient -t
+[pull]
+	default = current
 [push]
-	default = matching
+	default = current

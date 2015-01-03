@@ -6,7 +6,6 @@ if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
     alias dir='ls --color=auto --format=vertical'
-    #alias vdir='ls --color=auto --format=long'
 fi
 
 # SOME MORE LS ALIASES
@@ -22,8 +21,10 @@ alias ls='ls -hF --color'
 alias df='df -hT'
 alias du='du -h'
 alias sr='surfraw -browser=w3m'
+alias agi='apt-get install'
 
 # EMACS
+#######################################################
 alias emacs='emacs -nw'
 alias e='emacsclient -t'
 alias ec='emacsclient'
@@ -35,21 +36,34 @@ alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
 alias co='git checkout'
 alias ga='git add'
 alias gb='git branch'
+alias gba='git branch --all'
 alias gc='git commit'
+alias gcn="git checkout next"
 alias gd='git diff'
 alias gf='git fetch'
 alias gi='git rebase --interactive'
 alias gk='gitk --all&'
 alias gl='git lg'
 alias gla='git lga'
-alias glf='git lgf'
+alias glf='git lf'
+alias glfa='git lfa'
 alias glm='git lg --max-count=10'
+alias glma='git lga --max-count=10'
 alias gm='git merge'
 alias go='git checkout'
 alias gp='git pull'
+alias gpp='git push'
 alias gr='git rebase'
 alias gs='git status -sb'
 alias gt='git stash'
 alias gu='git up'
 alias gx='gitx --all'
 alias gw='git diff --word-diff=color'
+
+# MAVEN
+#######################################################
+alias pull-all="update-all"
+alias mi="mvn clean install"
+alias me="maven-eclipse"
+alias mie="maven-install-eclipse"
+alias md="mvn clean deploy"
