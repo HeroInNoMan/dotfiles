@@ -147,7 +147,11 @@ and back in -->
 	<keybind key="W-i"><action name="ToggleShowDesktop"/></keybind>
     <!-- Keybindings for windows -->
     <keybind key="A-F4"><action name="Close"/></keybind>
-    <keybind key="A-Escape"><action name="Lower"/><action name="FocusToBottom"/><action name="Unfocus"/></keybind>
+    <keybind key="A-Escape">
+      <action name="Lower"/>
+      <action name="FocusToBottom"/>
+      <action name="Unfocus"/>
+    </keybind>
     <keybind key="A-space"><action name="ShowMenu"><menu>client-menu</menu></action></keybind>
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
     <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
@@ -182,87 +186,20 @@ and back in -->
         </finalactions>
       </action>
     </keybind>
-
     <!-- Keybindings for window switching with the arrow keys -->
     <keybind key="W-S-Right"><action name="DirectionalCycleWindows"><direction>right</direction></action></keybind>
     <keybind key="W-S-Left"><action name="DirectionalCycleWindows"><direction>left</direction></action></keybind>
     <keybind key="W-S-Up"><action name="DirectionalCycleWindows"><direction>up</direction></action></keybind>
     <keybind key="W-S-Down"><action name="DirectionalCycleWindows"><direction>down</direction></action></keybind>
-
     <!-- Keybindings for window tiling -->
-    <keybind key="W-Left">        <!-- # HalfLeftScreen -->
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action>
+    <keybind key="W-Left">        # HalfLeftScreen
+    <action name="UnmaximizeFull"/>
+    <action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action>
     </keybind>
-    <keybind key="W-Right">        <!-- # HalfRightScreen -->
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action>
+    <keybind key="W-Right">        # HalfRightScreen
+    <action name="UnmaximizeFull"/>
+    <action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action>
     </keybind>
-
-	<!-- More tiling -->
-	<keybind key="W-b">
-	  <keybind key="f"> <!-- full screen -->
-        <action name="ToggleFullscreen"/>
-	  </keybind>
-	  <keybind key="v"> <!-- upper left -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x><y>0</y><height>50%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="d"> <!-- half top -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x><y>0</y><height>50%</height><width>100%</width>
-		</action>
-	  </keybind>
-      <keybind key="l"> <!-- upper right -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>-0</x><y>0</y><height>50%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="t"> <!-- half left -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x>0<y></y><height>100%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="s"> <!-- maximized-->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x>0<y></y><height>100%</height><width>100%</width>
-		</action>
-	  </keybind>
-      <keybind key="r"> <!-- half right -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>-0</x>0<y></y><height>100%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="q"> <!-- lower left -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x><y>-0</y><height>50%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="g"> <!-- half bottom -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x><y>-0</y><height>50%</height><width>100%</width>
-		</action>
-	  </keybind>
-      <keybind key="h"> <!-- lower right -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>-0</x><y>-0</y><height>50%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="m"> <!-- circle through monitor configurations -->
-		<action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh</command></action>
-	  </keybind>
-    </keybind>
-
     <!-- Keybindings to increase window size  -->
     <keybind key="W-Up">
       <action name="If">
@@ -348,11 +285,11 @@ and back in -->
     <!-- Keybinding for computer button-->
     <keybind key="XF86MyComputer"><action name="Execute"><command>pcmanfm</command></action></keybind>
     <!-- Keybindings for Multimedia Keys and LCD Backlight (alternative when not using gnome-power-manager or xfce4-volumed) -->
-    <keybind key="C-F7"><action name="Execute"><command>sleep 2;xset dpms force off</command></action></keybind>
+    <!-- <keybind key="C-F7"><action name="Execute"><command>sleep 2;xset dpms force off</command></action></keybind> -->
     <keybind key="XF86MonBrightnessDown"><action name="Execute"><command>xbacklight -dec 20</command></action></keybind>
     <keybind key="XF86MonBrightnessUp"><action name="Execute"><command>xbacklight -inc 20</command></action></keybind>
     <!-- Launch scrot when Print is pressed -->
-    <keybind key="Print"><action name="Execute"><command>lxsession-default screenshot</command></action></keybind>
+    <keybind key="Print"><action name="Execute"><command>scrot</command></action></keybind>
     <!-- Launch logout when push on the shutdown button -->
     <keybind key="XF86PowerOff"><action name="Execute"><command>lxsession-default quit</command></action></keybind>
     <!-- Launch logout when push on Ctrl-Insert -->
@@ -445,13 +382,45 @@ and back in -->
       </mousebind>
     </context>
     <context name="Titlebar Top Right Bottom Left TLCorner TRCorner BRCorner BLCorner">
-      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
-      <mousebind button="Middle" action="Press"><action name="Lower"/><action name="FocusToBottom"/><action name="Unfocus"/></mousebind>
-      <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="ShowMenu"><menu>client-menu</menu></action></mousebind>
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+      </mousebind>
+      <mousebind button="Middle" action="Press">
+        <action name="Lower"/>
+        <action name="FocusToBottom"/>
+        <action name="Unfocus"/>
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="ShowMenu">
+          <menu>client-menu</menu>
+        </action>
+      </mousebind>
     </context>
-    <context name="Top"><mousebind button="Left" action="Drag"><action name="Resize"><edge>top</edge></action></mousebind></context>
-    <context name="Left"><mousebind button="Left" action="Drag"><action name="Resize"><edge>left</edge></action></mousebind></context>
-    <context name="Right"><mousebind button="Left" action="Drag"><action name="Resize"><edge>right</edge></action></mousebind></context>
+    <context name="Top">
+      <mousebind button="Left" action="Drag">
+        <action name="Resize">
+          <edge>top</edge>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Left">
+      <mousebind button="Left" action="Drag">
+        <action name="Resize">
+          <edge>left</edge>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Right">
+      <mousebind button="Left" action="Drag">
+        <action name="Resize">
+          <edge>right</edge>
+        </action>
+      </mousebind>
+    </context>
     <context name="Bottom">
       <mousebind button="Left" action="Drag"><action name="Resize"><edge>bottom</edge></action></mousebind>
       <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="ShowMenu"><menu>client-menu</menu></action></mousebind>
@@ -461,9 +430,18 @@ and back in -->
       <mousebind button="Left" action="Drag"><action name="Resize"/></mousebind>
     </context>
     <context name="Client">
-      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-      <mousebind button="Middle" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-      <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="Middle" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+      </mousebind>
     </context>
     <context name="Icon">
       <mousebind button="Left" action="Press">
@@ -518,17 +496,40 @@ and back in -->
     </context>
     <context name="Root">
       <!-- Menus -->
-      <mousebind button="Middle" action="Press"><action name="ShowMenu"><menu>client-list-combined-menu</menu></action></mousebind>
-      <mousebind button="Right" action="Press"><action name="ShowMenu"><menu>root-menu</menu></action></mousebind>
+      <mousebind button="Middle" action="Press">
+        <action name="ShowMenu">
+          <menu>client-list-combined-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="ShowMenu">
+          <menu>root-menu</menu>
+        </action>
+      </mousebind>
     </context>
     <context name="MoveResize">
-      <mousebind button="Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
-      <mousebind button="Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
-      <mousebind button="A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
-      <mousebind button="A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
+      <mousebind button="Up" action="Click">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind button="Down" action="Click">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
+      <mousebind button="A-Up" action="Click">
+        <action name="GoToDesktop">
+          <to>previous</to>
+        </action>
+      </mousebind>
+      <mousebind button="A-Down" action="Click">
+        <action name="GoToDesktop">
+          <to>next</to>
+        </action>
+      </mousebind>
     </context>
   </mouse>
-
   <menu>
     <!-- You can specify more than one menu file in here and they are all loaded,
          just don't make menu ids clash or, well, it'll be kind of pointless -->

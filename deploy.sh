@@ -8,7 +8,7 @@
 # Backups of existing files are stored as TARGET_DIR/file_YYYY-MM-DD
 #####################################################################
 
-TIME_STAMP=`date +%Y-%m-%d` # date in format YYYY-MM-DD
+TIME_STAMP=`date +%F-%T` # date in format YYYY-MM-DD-HH:MM:SS
 DOT_FILES_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 
 TARGET_DIR=$HOME # destination directory
@@ -64,6 +64,6 @@ deploy "$DOT_FILES_DIR/irssi_config" "$TARGET_DIR/.irssi/config" "${TARGET_DIR}/
 deploy "$DOT_FILES_DIR/lubuntu-rc.xml" "$TARGET_DIR/.config/openbox/lubuntu-rc.xml" ".config/openbox/lubuntu-rc.xml_$TIME_STAMP"
 
 # .localrc : copy if not present (no symlink)
-cp -n $DOT_FILES_DIR/dot_localrc $TARGET_DIR/.localrc
+cp -n $DOT_FILES_DIR/localrc $TARGET_DIR/.localrc
 
 # EOF

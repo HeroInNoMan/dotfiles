@@ -63,7 +63,10 @@ alias gw='git diff --word-diff=color'
 # MAVEN
 #######################################################
 alias pull-all="update-all"
-alias mi="mvn clean install"
-alias me="maven-eclipse"
-alias mie="maven-install-eclipse"
+alias mc="mvn clean compile"
 alias md="mvn clean deploy"
+alias me="maven-eclipse"
+alias mi="mvn clean install"
+alias mie="maven-install-eclipse"
+alias mp="mvn clean package"
+alias mt="mvn test"

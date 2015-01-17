@@ -36,7 +36,7 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 if [ -f ~/.localrc ]; then
-	source ~/.localrc
+	. ~/.localrc
 fi
 
 # ignore case on completion
@@ -93,28 +93,26 @@ maven-install-eclipse () {
 	mvn clean install eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5
 }
 
+update-etags () {
+	find . -name '*.java' -exec etags -a {} \;
+}
+
 update-project () {
-	PROJECT_NAME=$1
+	PROJECT_DIR=$1
 	FORMER_DIR=`pwd`
-	cd $PROJECTS_DIR/$PROJECT_NAME
+	cd $PROJECT_DIR
+	PROJECT_NAME=$(basename $PROJECT_DIR)
 	echo "* ${BOLD}$PROJECT_NAME${NORMAL}"
-	update-dir
+	[ -d ".git" ] && git-up
+	[ -d ".svn" ] && svn update
+	update-etags
 	echo ""
 	cd $FORMER_DIR
 }
 
-update-dir () {
-	if [[ -d ".git" ]]; then
-		git-up
-	fi
-	if [[ -d ".svn" ]]; then
-		svn update
-	fi
-}
-
 update-all () {
-	for f in $( \ls -1 $PROJECTS_DIR ); do
-		update-project $f
+	for dir in $( \ls -d $PROJECTS_DIR/*/ ); do
+		update-project $dir
 	done
 }
 
