@@ -45,7 +45,7 @@ if filewritable(expand("~/.vim/backup")) == 2
   set backupdir=$HOME/.vim/backup
 else
   if has("unix") || has("win32unix")
-    " C'est c'est un système compatible UNIX, on
+    " C'est un système compatible UNIX, on
   " va créer le répertoire et l'utiliser.
     call system("mkdir $HOME/.vim/backup -p")
     set backupdir=$HOME/.vim/backup
