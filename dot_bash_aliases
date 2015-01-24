@@ -36,7 +36,7 @@ alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
 alias co='git checkout'
 alias ga='git add'
 alias gb='git branch'
-alias gba='git branch --all'
+alias gba='git branch -avv'
 alias gc='git commit'
 alias gcn="git checkout next"
 alias gd='git diff'

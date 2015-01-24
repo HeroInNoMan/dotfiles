@@ -35,12 +35,8 @@
 	autosetuprebase = always
 [color]
 	ui = true
-	# [difftool]
-	# 	prompt = false
-	# [merge]
-	# 	tool = meld
-	# [mergetool "meld"]
-	# 	path = /opt/local/bin/meld
+[difftool]
+	prompt = false
 [core]
 	filemode = false
 	pager = less -r
@@ -49,6 +45,10 @@
 	helper = store
 [gui]
 	editor = emacsclient -t
+[merge]
+	tool = ediff
+[mergetool "ediff"]
+	path = /opt/local/bin/meld
 [pull]
 	default = current
 [push]
