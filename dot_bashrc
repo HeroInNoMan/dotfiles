@@ -111,7 +111,7 @@ update-project () {
 }
 
 update-all () {
-	for dir in $( \ls -d $PROJECTS_DIR/*/ ); do
+	for dir in $(find $HOME -type d -iname '.git' -o -maxdepth 3 -iname '.svn'  2> /dev/null | xargs dirname | sort); do
 		update-project $dir
 	done
 }
