@@ -23,8 +23,8 @@ shopt -s checkwinsize
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
-# add ssh key to agent
-eval $(ssh-agent) > /dev/null
+# start ssh-agent if needed
+[ -z "$SSH-AUTH-SOCK" ] && eval $(ssh-agent) > /dev/null
 
 # load additional files
 if [ -f ~/.bash_aliases ]; then
