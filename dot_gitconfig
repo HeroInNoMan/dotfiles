@@ -27,10 +27,10 @@
 	lfa = log --graph --name-status --all --format='%C(yellow)%h%C(bold white) %<(90,trunc)%s %Cgreen(%cr) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
 
 	# current branch, absolute date, truncated & justified subject
-	ld = log --graph --date=short --format='%C(yellow)%h%Creset %<(90,trunc)%s %Cgreen(%cd) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+	ld = log --graph --date=local --format='%C(yellow)%h%Creset %<(90,trunc)%s %Cgreen(%cd) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
 
 	# current branch, absolute date, truncated & justified subject
-	lda = log --graph --date=short --all --format='%C(yellow)%h%Creset %<(90,trunc)%s %Cgreen(%cd) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
+	lda = log --graph --date=local --all --format='%C(yellow)%h%Creset %<(90,trunc)%s %Cgreen(%cd) %C(bold blue)<%an>%Creset%C(auto)%d%Creset'
 [branch]
 	autosetuprebase = always
 [color]
