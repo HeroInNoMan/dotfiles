@@ -22,6 +22,7 @@ alias df='df -hT'
 alias du='du -h'
 alias sr='surfraw -browser=w3m'
 alias agi='apt-get install'
+alias fucking='sudo'
 
 # EMACS
 #######################################################

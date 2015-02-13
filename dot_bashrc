@@ -1,7 +1,5 @@
 #######################################################
 # .bashrc file
-# #
-# Running on Debian
 #######################################################
 
 # Misc config
@@ -71,6 +69,7 @@ export PATH=$HOME/bin:$PATH
 export TERM=screen-256color
 
 export GTK_IM_MODULE=xim
+export QT_IM_MODULE=xim
 
 export PATH=$MAVEN_HOME/bin:$PATH
 
@@ -94,6 +93,7 @@ maven-install-eclipse () {
 }
 
 update-etags () {
+	[ -f TAGS ] && rm TAGS
 	find . -name '*.java' -exec etags -a {} \;
 }
 
@@ -111,7 +111,7 @@ update-project () {
 }
 
 update-all () {
-	for dir in $(find $HOME -type d -iname '.git' -o -maxdepth 3 -iname '.svn'  2> /dev/null | xargs dirname | sort); do
+	for dir in $(find $HOME -type d -iname '.git' -o -maxdepth 3 -iname '.svn' 2> /dev/null | xargs dirname | sort); do
 		update-project $dir
 	done
 }

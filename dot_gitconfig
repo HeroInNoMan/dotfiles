@@ -43,16 +43,25 @@
 	editor = /usr/bin/emacsclient -nw -t
 [credential]
 	helper = store
+[diff]
+	tool = ediff
+	guitool = ediff
+[difftool "ediff"]
+	cmd = /home/arthur/Terminalcity/.emacs.d/misc/ediff.sh $LOCAL $REMOTE $MERGED
+	prompt = false
 [gui]
 	editor = emacsclient -t
 [merge]
 	tool = ediff
 [mergetool "ediff"]
-	path = /opt/local/bin/meld
+	cmd = /home/arthur/Terminalcity/.emacs.d/misc/ediff.sh $LOCAL $REMOTE $MERGED $BASE
+	trustExitCode = true
 [pull]
 	default = current
 [push]
 	default = current
+[rerere]
+	enabled = false
 [user]
 	name = Arthur Léothaud
 	email = arthur@leothaud.eu

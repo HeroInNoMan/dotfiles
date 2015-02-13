@@ -66,4 +66,13 @@ deploy "$DOT_FILES_DIR/lubuntu-rc.xml" "$TARGET_DIR/.config/openbox/lubuntu-rc.x
 # .localrc : copy if not present (no symlink)
 cp -n $DOT_FILES_DIR/localrc $TARGET_DIR/.localrc
 
+# .emacs.d :
+# if no .emacs.d present -> make symlink to $DOT_FILES_DIR/.emacs.d
+# if .emacs.d present and is already a symlink -> do nothing
+# if .emacs.d present and is a dir:
+# - backup original dir
+# - replace dir by symlink
+# - merge items in original .emacs.d with unversionned dirs in $DOT_FILES_DIR/.emacs.d
+# mergeable items are (auto-save-list/, backups/, elpa/, emacs.desktop, lock, places, .places)
+
 # EOF
