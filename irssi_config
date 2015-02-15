@@ -307,6 +307,7 @@ completions = {
   "->" = { value = "→"; };
   "<-" = { value = "←"; };
   ":)" = { value = "☺"; };
+  ":(" = { value = "☹"; };
   "<3" = { value = "♥"; };
   sv = { value = "卍"; };
   cccp = { value = "☭"; };
