@@ -66,7 +66,7 @@ export PATH=$HOME/usr/bin:$PATH
 export PATH=$HOME/bin:$PATH
 
 # switch to 256 color term (especially for using emacs inside term)
-export TERM=screen-256color
+# export TERM=screen-256color
 
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
@@ -85,11 +85,11 @@ use-java-8 () {
 }
 
 maven-eclipse () {
-	mvn eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5
+	mvn eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5 $@
 }
 
 maven-install-eclipse () {
-	mvn clean install eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5
+	mvn clean install $@ &&	mvn eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5
 }
 
 update-etags () {
