@@ -309,7 +309,8 @@ completions = {
   ":)" = { value = "☺"; };
   ":(" = { value = "☹"; };
   "<3" = { value = "♥"; };
-  sv = { value = "卍"; };
+
+  sv = { value = "卐"; };
   cccp = { value = "☭"; };
   twss = { value = "that’s what she said"; };
   "c,est" = { value = "c’est"; auto = "yes"; };
@@ -336,6 +337,7 @@ completions = {
   mainetnat = { value = "maintenant"; auto = "yes"; };
   uqe = { value = "que"; auto = "yes"; };
   vraiemnt = { value = "vraiment"; auto = "yes"; };
+  trcu = { value = "truc"; auto = "yes"; };
 };
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
