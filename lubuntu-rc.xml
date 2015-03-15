@@ -268,52 +268,53 @@ and back in -->
       </keybind>
     </keybind>
 
+
     <!-- Keybindings to increase window size  -->
     <keybind key="W-Up">
-      <action name="If">
+	  <action name="If">
         <maximized>yes</maximized>
         <then>
-          <action name="ToggleFullscreen"/>
+		  <action name="ToggleFullscreen"/>
         </then>
         <else>
-          <action name="ToggleMaximize"/>
+		  <action name="ToggleMaximize"/>
         </else>
-      </action>
+	  </action>
     </keybind>
     <!-- Keybindings to decrease window size -->
     <keybind key="W-Down">
-      <action name="If">
+	  <action name="If">
         <maximized>yes</maximized>
         <then>
-          <action name="ToggleMaximize"/>
+		  <action name="ToggleMaximize"/>
         </then>
         <else>
-          <action name="If">
+		  <action name="If">
             <undecorated>yes</undecorated>
             <then>
-              <action name="ToggleFullscreen"/>
+			  <action name="ToggleFullscreen"/>
             </then>
             <else>
-              <action name="UnmaximizeFull"/>
+			  <action name="UnmaximizeFull"/>
             </else>
-          </action>
+		  </action>
         </else>
-      </action>
+	  </action>
     </keybind>
     <!-- Launch a filemanager on Home + E -->
     <keybind key="W-e">
-      <action name="Execute">
+	  <action name="Execute">
         <startupnotify>
-          <enabled>true</enabled>
-          <name>PCManFM</name>
+		  <enabled>true</enabled>
+		  <name>PCManFM</name>
         </startupnotify>
         <command>pcmanfm</command>
-      </action>
+	  </action>
     </keybind>
     <keybind key="A-F2">
-      <action name="Execute">
+	  <action name="Execute">
         <command>lxpanelctl run</command>
-      </action>
+	  </action>
     </keybind>
     <!-- Keybindings for running Menu from Lxpanel -->
     <keybind key="A-F1"><action name="Execute"><command>lxpanelctl menu</command></action></keybind>
@@ -339,11 +340,11 @@ and back in -->
     <!-- Keybinding for Volume management (chrooted) -->
     <keybind key="W-u" chroot="true">
 	  <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
-      <keybind key="t"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
-      <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-      <keybind key="v"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-      <keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
-      <keybind key="Escape"><action name="BreakChroot"/></keybind>
+	  <keybind key="t"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
+	  <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+	  <keybind key="v"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+	  <keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+	  <keybind key="Escape"><action name="BreakChroot"/></keybind>
 	</keybind>
     <!-- Keybinding for terminal button-->
     <keybind key="XF86WWW"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
@@ -373,46 +374,46 @@ and back in -->
     <!-- key chain for audacious -->
     <keybind key="W-a">
 	  <keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
-      <keybind key="n"><action name="Execute"><command>audacious --fwd</command></action></keybind>
-      <keybind key="p"><action name="Execute"><command>audacious --rew</command></action></keybind>
-      <keybind key="u"><action name="Execute"><command>audacious --pause</command></action></keybind>
-      <keybind key="space"><action name="Execute"><command>audacious --play-pause</command></action></keybind>
-      <keybind key="m"><action name="Execute"><command>audacious --quit-after-play</command></action></keybind>
-      <keybind key="h"><action name="Execute"><command>audacious --headless</command></action></keybind>
-      <keybind key="e"><action name="Execute"><command>audacious --enqueue</command></action></keybind>
-      <keybind key="S-e"><action name="Execute"><command>audacious --enqueue-to-temp</command></action></keybind>
-      <keybind key="j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
+	  <keybind key="n"><action name="Execute"><command>audacious --fwd</command></action></keybind>
+	  <keybind key="p"><action name="Execute"><command>audacious --rew</command></action></keybind>
+	  <keybind key="u"><action name="Execute"><command>audacious --pause</command></action></keybind>
+	  <keybind key="space"><action name="Execute"><command>audacious --play-pause</command></action></keybind>
+	  <keybind key="m"><action name="Execute"><command>audacious --quit-after-play</command></action></keybind>
+	  <keybind key="h"><action name="Execute"><command>audacious --headless</command></action></keybind>
+	  <keybind key="e"><action name="Execute"><command>audacious --enqueue</command></action></keybind>
+	  <keybind key="S-e"><action name="Execute"><command>audacious --enqueue-to-temp</command></action></keybind>
+	  <keybind key="j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
     </keybind>
     <!-- key chain for audacious (chrooted) -->
     <keybind key="W-C-a" chroot="true">
 	  <keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
-      <keybind key="n"><action name="Execute"><command>audacious --fwd</command></action></keybind>
-      <keybind key="p"><action name="Execute"><command>audacious --rew</command></action></keybind>
-      <keybind key="u"><action name="Execute"><command>audacious --pause</command></action></keybind>
-      <keybind key="space"><action name="Execute"><command>audacious --play-pause</command></action></keybind>
-      <keybind key="m"><action name="Execute"><command>audacious --quit-after-play</command></action></keybind>
-      <keybind key="h"><action name="Execute"><command>audacious --headless</command></action></keybind>
-      <keybind key="e"><action name="Execute"><command>audacious --enqueue</command></action></keybind>
-      <keybind key="S-e"><action name="Execute"><command>audacious --enqueue-to-temp</command></action></keybind>
-      <keybind key="j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
-      <keybind key="Escape"><action name="BreakChroot"/></keybind>
+	  <keybind key="n"><action name="Execute"><command>audacious --fwd</command></action></keybind>
+	  <keybind key="p"><action name="Execute"><command>audacious --rew</command></action></keybind>
+	  <keybind key="u"><action name="Execute"><command>audacious --pause</command></action></keybind>
+	  <keybind key="space"><action name="Execute"><command>audacious --play-pause</command></action></keybind>
+	  <keybind key="m"><action name="Execute"><command>audacious --quit-after-play</command></action></keybind>
+	  <keybind key="h"><action name="Execute"><command>audacious --headless</command></action></keybind>
+	  <keybind key="e"><action name="Execute"><command>audacious --enqueue</command></action></keybind>
+	  <keybind key="S-e"><action name="Execute"><command>audacious --enqueue-to-temp</command></action></keybind>
+	  <keybind key="j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
+	  <keybind key="Escape"><action name="BreakChroot"/></keybind>
     </keybind>
     <!-- Keybindings for Managing display (Fn+F9) -->
     <keybind key="0xF8"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh</command></action></keybind>
   </keyboard>
   <mouse>
-    <dragThreshold>8</dragThreshold>
-    <!-- number of pixels the mouse must move before a drag begins -->
-    <doubleClickTime>200</doubleClickTime>
-    <!-- in milliseconds (1000 = 1 second) -->
-    <screenEdgeWarpTime>400</screenEdgeWarpTime>
-    <!-- Time before changing desktops when the pointer touches the edge of the
-         screen while moving a window, in milliseconds (1000 = 1 second).
-         Set this to 0 to disable warping -->
-    <screenEdgeWarpMouse>false</screenEdgeWarpMouse>
-    <!-- Set this to TRUE to move the mouse pointer across the desktop when
-         switching due to hitting the edge of the screen -->
-    <context name="Frame">
+	<dragThreshold>8</dragThreshold>
+	<!-- number of pixels the mouse must move before a drag begins -->
+	<doubleClickTime>200</doubleClickTime>
+	<!-- in milliseconds (1000 = 1 second) -->
+	<screenEdgeWarpTime>400</screenEdgeWarpTime>
+	<!-- Time before changing desktops when the pointer touches the edge of the
+		 screen while moving a window, in milliseconds (1000 = 1 second).
+		 Set this to 0 to disable warping -->
+	<screenEdgeWarpMouse>false</screenEdgeWarpMouse>
+	<!-- Set this to TRUE to move the mouse pointer across the desktop when
+		 switching due to hitting the edge of the screen -->
+	<context name="Frame">
       <mousebind button="A-Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
       <mousebind button="A-Left" action="Click"><action name="Unshade"/></mousebind><mousebind button="A-Left" action="Drag"><action name="Move"/></mousebind>
       <mousebind button="A-Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
@@ -424,94 +425,94 @@ and back in -->
       <mousebind button="C-A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
       <mousebind button="A-S-Up" action="Click"><action name="SendToDesktop"><to>previous</to></action></mousebind>
       <mousebind button="A-S-Down" action="Click"><action name="SendToDesktop"><to>next</to></action></mousebind>
-    </context>
-    <context name="Titlebar">
+	</context>
+	<context name="Titlebar">
       <mousebind button="Left" action="Drag"><action name="Move"/></mousebind>
 	  <mousebind button="Left" action="DoubleClick"><action name="ToggleMaximize"/></mousebind>
       <mousebind button="Up" action="Click">
-        <action name="if">
+		<action name="if">
           <shaded>no</shaded>
           <then>
-            <action name="Shade"/>
-            <action name="FocusToBottom"/>
-            <action name="Unfocus"/>
-            <action name="Lower"/>
+			<action name="Shade"/>
+			<action name="FocusToBottom"/>
+			<action name="Unfocus"/>
+			<action name="Lower"/>
           </then>
-        </action>
+		</action>
       </mousebind>
       <mousebind button="Down" action="Click">
-        <action name="if">
+		<action name="if">
           <shaded>yes</shaded>
           <then>
-            <action name="Unshade"/>
-            <action name="Raise"/>
+			<action name="Unshade"/>
+			<action name="Raise"/>
           </then>
-        </action>
+		</action>
       </mousebind>
-    </context>
-    <context name="Titlebar Top Right Bottom Left TLCorner TRCorner BRCorner BLCorner">
+	</context>
+	<context name="Titlebar Top Right Bottom Left TLCorner TRCorner BRCorner BLCorner">
       <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
       <mousebind button="Middle" action="Press"><action name="Lower"/><action name="FocusToBottom"/><action name="Unfocus"/></mousebind>
       <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="ShowMenu"><menu>client-menu</menu></action></mousebind>
-    </context>
-    <context name="Top"><mousebind button="Left" action="Drag"><action name="Resize"><edge>top</edge></action></mousebind></context>
-    <context name="Left"><mousebind button="Left" action="Drag"><action name="Resize"><edge>left</edge></action></mousebind></context>
-    <context name="Right"><mousebind button="Left" action="Drag"><action name="Resize"><edge>right</edge></action></mousebind></context>
-    <context name="Bottom">
+	</context>
+	<context name="Top"><mousebind button="Left" action="Drag"><action name="Resize"><edge>top</edge></action></mousebind></context>
+	<context name="Left"><mousebind button="Left" action="Drag"><action name="Resize"><edge>left</edge></action></mousebind></context>
+	<context name="Right"><mousebind button="Left" action="Drag"><action name="Resize"><edge>right</edge></action></mousebind></context>
+	<context name="Bottom">
       <mousebind button="Left" action="Drag"><action name="Resize"><edge>bottom</edge></action></mousebind>
       <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="ShowMenu"><menu>client-menu</menu></action></mousebind>
-    </context>
-    <context name="TRCorner BRCorner TLCorner BLCorner">
+	</context>
+	<context name="TRCorner BRCorner TLCorner BLCorner">
       <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
       <mousebind button="Left" action="Drag"><action name="Resize"/></mousebind>
-    </context>
-    <context name="Client">
+	</context>
+	<context name="Client">
       <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
       <mousebind button="Middle" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
       <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-    </context>
-    <context name="Icon">
+	</context>
+	<context name="Icon">
       <mousebind button="Left" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-        <action name="Unshade"/>
-        <action name="ShowMenu">
+		<action name="Focus"/>
+		<action name="Raise"/>
+		<action name="Unshade"/>
+		<action name="ShowMenu">
           <menu>client-menu</menu>
-        </action>
+		</action>
       </mousebind>
       <mousebind button="Right" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-        <action name="ShowMenu">
+		<action name="Focus"/>
+		<action name="Raise"/>
+		<action name="ShowMenu">
           <menu>client-menu</menu>
-        </action>
+		</action>
       </mousebind>
-    </context>
-    <context name="AllDesktops">
+	</context>
+	<context name="AllDesktops">
       <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
       <mousebind button="Left" action="Click"><action name="ToggleOmnipresent"/></mousebind>
-    </context>
-    <context name="Shade">
+	</context>
+	<context name="Shade">
       <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
       <mousebind button="Left" action="Click"><action name="ToggleShade"/></mousebind>
-    </context>
-    <context name="Iconify">
+	</context>
+	<context name="Iconify">
       <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
       <mousebind button="Left" action="Click"><action name="Iconify"/></mousebind>
-    </context>
-    <context name="Maximize">
+	</context>
+	<context name="Maximize">
       <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
       <mousebind button="Middle" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
       <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
       <mousebind button="Left" action="Click"><action name="ToggleMaximize"/></mousebind>
 	  <mousebind button="Middle" action="Click"><action name="ToggleMaximize"><direction>vertical</direction></action></mousebind>
       <mousebind button="Right" action="Click"><action name="ToggleMaximize"><direction>horizontal</direction></action></mousebind>
-    </context>
-    <context name="Close">
+	</context>
+	<context name="Close">
       <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
       <mousebind button="Left" action="Click"><action name="Close"/></mousebind>
-    </context>
-    <context name="Desktop">
+	</context>
+	<context name="Desktop">
       <mousebind button="Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
       <mousebind button="Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
       <mousebind button="A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
@@ -520,54 +521,54 @@ and back in -->
       <mousebind button="C-A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
       <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
       <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-    </context>
-    <context name="Root">
+	</context>
+	<context name="Root">
       <!-- Menus -->
       <mousebind button="Middle" action="Press"><action name="ShowMenu"><menu>client-list-combined-menu</menu></action></mousebind>
       <mousebind button="Right" action="Press"><action name="ShowMenu"><menu>root-menu</menu></action></mousebind>
-    </context>
-    <context name="MoveResize">
+	</context>
+	<context name="MoveResize">
       <mousebind button="Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
       <mousebind button="Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
       <mousebind button="A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
       <mousebind button="A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
-    </context>
+	</context>
   </mouse>
 
   <menu>
-    <!-- You can specify more than one menu file in here and they are all loaded,
-         just don't make menu ids clash or, well, it'll be kind of pointless -->
-    <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
-    <file>/usr/share/lubuntu/openbox/menu.xml</file>
-    <file>menu.xml</file>
-    <hideDelay>200</hideDelay>
-    <!-- if a press-release lasts longer than this setting (in milliseconds), the
-         menu is hidden again -->
-    <middle>no</middle>
-    <!-- center submenus vertically about the parent entry -->
-    <submenuShowDelay>100</submenuShowDelay>
-    <!-- time to delay before showing a submenu after hovering over the parent
-         entry.
-         if this is a negative value, then the delay is infinite and the
-         submenu will not be shown until it is clicked on -->
-    <submenuHideDelay>400</submenuHideDelay>
-    <!-- time to delay before hiding a submenu when selecting another
-         entry in parent menu
-         if this is a negative value, then the delay is infinite and the
-         submenu will not be hidden until a different submenu is opened -->
-    <applicationIcons>yes</applicationIcons>
-    <!-- controls if icons appear in the client-list-(combined-)menu -->
-    <manageDesktops>yes</manageDesktops>
-    <!-- show the manage desktops section in the client-list-(combined-)menu -->
-    <showIcons>yes</showIcons>
-    <!-- show icons on the menu -->
+	<!-- You can specify more than one menu file in here and they are all loaded,
+		 just don't make menu ids clash or, well, it'll be kind of pointless -->
+	<!-- default menu file (or custom one in $HOME/.config/openbox/) -->
+	<file>/usr/share/lubuntu/openbox/menu.xml</file>
+	<file>menu.xml</file>
+	<hideDelay>200</hideDelay>
+	<!-- if a press-release lasts longer than this setting (in milliseconds), the
+		 menu is hidden again -->
+	<middle>no</middle>
+	<!-- center submenus vertically about the parent entry -->
+	<submenuShowDelay>100</submenuShowDelay>
+	<!-- time to delay before showing a submenu after hovering over the parent
+		 entry.
+		 if this is a negative value, then the delay is infinite and the
+		 submenu will not be shown until it is clicked on -->
+	<submenuHideDelay>400</submenuHideDelay>
+	<!-- time to delay before hiding a submenu when selecting another
+		 entry in parent menu
+		 if this is a negative value, then the delay is infinite and the
+		 submenu will not be hidden until a different submenu is opened -->
+	<applicationIcons>yes</applicationIcons>
+	<!-- controls if icons appear in the client-list-(combined-)menu -->
+	<manageDesktops>yes</manageDesktops>
+	<!-- show the manage desktops section in the client-list-(combined-)menu -->
+	<showIcons>yes</showIcons>
+	<!-- show icons on the menu -->
   </menu>
   <applications>
-    <!--
-        # this is an example with comments through out. use these to make your
-        # own rules, but without the comments of course.
-        # you may use one or more of the name/class/role/title/type rules to specify
-        # windows to match
+	<!--
+		# this is an example with comments through out. use these to make your
+		# own rules, but without the comments of course.
+		# you may use one or more of the name/class/role/title/type rules to specify
+		# windows to match
 
 <application name="the window's _OB_APP_NAME property (see obxprop)"
 class="the window's _OB_APP_CLASS property (see obxprop)"
@@ -643,12 +644,12 @@ type="the window's _OB_APP_TYPE property (see obxprob)..
 </application>
 
 # end of the example
-    -->
-    <!-- Option to maximize all normal window when launched-->
-    <!--
-        <application type="normal">
-        <maximized>true</maximized>
-        </application>
-    -->
+	-->
+	<!-- Option to maximize all normal window when launched-->
+	<!--
+		<application type="normal">
+		<maximized>true</maximized>
+		</application>
+	-->
   </applications>
 </openbox_config>
