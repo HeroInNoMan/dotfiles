@@ -190,83 +190,36 @@ and back in -->
     <keybind key="W-S-Down"><action name="DirectionalCycleWindows"><direction>down</direction></action></keybind>
 
     <!-- Keybindings for window tiling -->
-    <keybind key="W-Left">        <!-- # HalfLeftScreen -->
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action>
-    </keybind>
-    <keybind key="W-Right">        <!-- # HalfRightScreen -->
-      <action name="UnmaximizeFull"/>
-      <action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action>
-    </keybind>
+	<!-- # HalfLeftScreen -->
+    <keybind key="W-Left"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action></keybind>
+	<!-- # HalfRightScreen -->
+    <keybind key="W-Right"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action></keybind>
 
-	<!-- More tiling -->
+	<!-- More tiling and window management, with prefix key -->
 	<keybind key="W-b">
-	  <keybind key="f"> <!-- full screen -->
-        <action name="ToggleFullscreen"/>
-	  </keybind>
-	  <keybind key="v"> <!-- upper left -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x><y>0</y><height>50%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="d"> <!-- half top -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x><y>0</y><height>50%</height><width>100%</width>
-		</action>
-	  </keybind>
-      <keybind key="l"> <!-- upper right -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>-0</x><y>0</y><height>50%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="t"> <!-- half left -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x>0<y></y><height>100%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="s"> <!-- maximized-->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x>0<y></y><height>100%</height><width>100%</width>
-		</action>
-	  </keybind>
-      <keybind key="r"> <!-- half right -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>-0</x>0<y></y><height>100%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="q"> <!-- lower left -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x><y>-0</y><height>50%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="g"> <!-- half bottom -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>0</x><y>-0</y><height>50%</height><width>100%</width>
-		</action>
-	  </keybind>
-      <keybind key="h"> <!-- lower right -->
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo">
-		  <x>-0</x><y>-0</y><height>50%</height><width>50%</width>
-		</action>
-	  </keybind>
-      <keybind key="m"> <!-- circle through monitor configurations -->
-		<action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh</command></action>
-	  </keybind>
-	  <keybind key="n"> <!-- Send window to next monitor -->
-		<action name="MoveResizeTo">
-		  <monitor>next</monitor>
-		</action>
-      </keybind>
-    </keybind>
+      <keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh</command></action></keybind> <!-- circle through monitor configurations -->
+	  <keybind key="f"><action name="ToggleFullscreen"/></keybind> <!-- full screen -->
+	  <keybind key="v"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height><width>50%</width></action></keybind> <!-- upper left -->
+      <keybind key="d"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height><width>100%</width></action></keybind> <!-- half top -->
+      <keybind key="l"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>50%</height><width>50%</width></action></keybind> <!-- upper right -->
+      <keybind key="t"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x>0<y></y><height>100%</height><width>50%</width></action></keybind> <!-- half left -->
+      <keybind key="s"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x>0<y></y><height>100%</height><width>100%</width></action></keybind> <!-- maximized-->
+      <keybind key="r"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x>0<y></y><height>100%</height><width>50%</width></action></keybind> <!-- half right -->
+      <keybind key="q"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height><width>50%</width></action></keybind> <!-- lower left -->
+      <keybind key="g"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height><width>100%</width></action></keybind> <!-- half bottom -->
+      <keybind key="h"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>-0</y><height>50%</height><width>50%</width></action></keybind> <!-- lower right -->
+	  <keybind key="n"><action name="MoveResizeTo"><monitor>next</monitor></action></keybind> <!-- Send window to next monitor -->
+	  <keybind key="1"><action name="SendToDesktop"><to>1</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 1 -->
+	  <keybind key="2"><action name="SendToDesktop"><to>2</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 2 -->
+	  <keybind key="3"><action name="SendToDesktop"><to>3</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 3 -->
+	  <keybind key="4"><action name="SendToDesktop"><to>4</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 4 -->
+	  <keybind key="5"><action name="SendToDesktop"><to>5</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 5 -->
+	  <keybind key="F1"><action name="SendToDesktop"><to>1</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 1 -->
+	  <keybind key="F2"><action name="SendToDesktop"><to>2</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 2 -->
+	  <keybind key="F3"><action name="SendToDesktop"><to>3</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 3 -->
+	  <keybind key="F4"><action name="SendToDesktop"><to>4</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 4 -->
+	  <keybind key="F5"><action name="SendToDesktop"><to>5</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 5 -->
+	</keybind>
 
 
     <!-- Keybindings to increase window size  -->
