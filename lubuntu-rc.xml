@@ -261,6 +261,11 @@ and back in -->
       <keybind key="m"> <!-- circle through monitor configurations -->
 		<action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh</command></action>
 	  </keybind>
+	  <keybind key="n"> <!-- Send window to next monitor -->
+		<action name="MoveResizeTo">
+		  <monitor>next</monitor>
+		</action>
+      </keybind>
     </keybind>
 
     <!-- Keybindings to increase window size  -->
