@@ -131,7 +131,7 @@ and back in -->
   </dock>
   <keyboard>
     <chainQuitKey>C-g</chainQuitKey>
-    <!-- Keybindings for desktop switching -->
+    <!-- Desktop switching -->
     <keybind key="C-A-Left"><action name="GoToDesktop"><to>left</to><wrap>no</wrap></action></keybind>
     <keybind key="W-p"><action name="GoToDesktop"><to>left</to><wrap>no</wrap></action></keybind>
     <keybind key="C-A-Right"><action name="GoToDesktop"><to>right</to><wrap>no</wrap></action></keybind>
@@ -145,13 +145,13 @@ and back in -->
 	<keybind key="W-F5"><action name="GoToDesktop"><to>5</to></action></keybind>
 	<keybind key="W-d"><action name="ToggleShowDesktop"/></keybind>
 	<keybind key="W-i"><action name="ToggleShowDesktop"/></keybind>
-    <!-- Keybindings for windows -->
+    <!-- Windows -->
     <keybind key="A-F4"><action name="Close"/></keybind>
     <keybind key="A-Escape"><action name="Lower"/><action name="FocusToBottom"/><action name="Unfocus"/></keybind>
     <keybind key="A-space"><action name="ShowMenu"><menu>client-menu</menu></action></keybind>
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
     <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
-    <!-- Keybindings for window switching -->
+    <!-- Window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
         <dialog>icons</dialog>
@@ -183,13 +183,13 @@ and back in -->
       </action>
     </keybind>
 
-    <!-- Keybindings for window switching with the arrow keys -->
+    <!-- Window switching with the arrow keys -->
     <keybind key="W-S-Right"><action name="DirectionalCycleWindows"><direction>right</direction></action></keybind>
     <keybind key="W-S-Left"><action name="DirectionalCycleWindows"><direction>left</direction></action></keybind>
     <keybind key="W-S-Up"><action name="DirectionalCycleWindows"><direction>up</direction></action></keybind>
     <keybind key="W-S-Down"><action name="DirectionalCycleWindows"><direction>down</direction></action></keybind>
 
-    <!-- Keybindings for window tiling -->
+    <!-- Window tiling -->
 	<!-- # HalfLeftScreen -->
     <keybind key="W-Left"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action></keybind>
 	<!-- # HalfRightScreen -->
@@ -221,8 +221,7 @@ and back in -->
 	  <keybind key="F5"><action name="SendToDesktop"><to>5</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 5 -->
 	</keybind>
 
-
-    <!-- Keybindings to increase window size  -->
+    <!-- Increase window size  -->
     <keybind key="W-Up">
 	  <action name="If">
         <maximized>yes</maximized>
@@ -234,7 +233,7 @@ and back in -->
         </else>
 	  </action>
     </keybind>
-    <!-- Keybindings to decrease window size -->
+    <!-- Decrease window size -->
     <keybind key="W-Down">
 	  <action name="If">
         <maximized>yes</maximized>
@@ -269,20 +268,23 @@ and back in -->
         <command>lxpanelctl run</command>
 	  </action>
     </keybind>
-    <!-- Keybindings for running Menu from Lxpanel -->
+    <!-- Run Menu from Lxpanel -->
     <keybind key="A-F1"><action name="Execute"><command>lxpanelctl menu</command></action></keybind>
     <keybind key="C-Escape"><action name="Execute"><command>lxpanelctl menu</command></action></keybind>
-    <!-- Keybindings to toggle fullscreen -->
+    <!-- Toggle fullscreen -->
     <keybind key="F11"><action name="ToggleFullscreen"/></keybind>
     <!-- Launch task manager on Ctrl + Alt + Del-->
     <keybind key="C-A-Delete"><action name="Execute"><command>lxtask</command></action></keybind>
-    <!-- Launch a terminal on Ctrl + Alt + T-->
+    <!-- Launch terminal -->
+    <keybind key="XF86WWW"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
+    <keybind key="XF86Terminal"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
     <keybind key="C-A-T"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
+    <keybind key="F1"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
     <!-- Lock the screen on Ctrl + Alt + l-->
     <keybind key="C-A-l"><action name="Execute"><command>xscreensaver-command -lock</command></action></keybind>
     <!-- Lock the screen on W + l-->
     <keybind key="W-l"><action name="Execute"><command>xscreensaver-command -lock</command></action></keybind>
-    <!-- Keybinding for Volume management -->
+    <!-- Volume management -->
     <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
     <keybind key="W-t"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
 	<keybind key="W-egrave"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
@@ -290,40 +292,76 @@ and back in -->
     <keybind key="W-v"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
     <keybind key="W-eacute"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
     <keybind key="W-m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
-    <!-- Keybinding for Volume management (chrooted) -->
+    <!-- Volume management (chrooted) -->
     <keybind key="W-u" chroot="true">
 	  <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
 	  <keybind key="t"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
 	  <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
 	  <keybind key="v"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
 	  <keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+	  <keybind key="p"><action name="Execute"><command>pavucontrol</command></action><action name="BreakChroot"/></keybind>
 	  <keybind key="Escape"><action name="BreakChroot"/></keybind>
 	</keybind>
-    <!-- Keybinding for terminal button-->
-    <keybind key="XF86WWW"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
-    <keybind key="XF86Terminal"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
-    <!-- Keybinding for calculator button-->
+
+	<!-- launch (Open) applications -->
+	<keybind key="W-o">
+	  <keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
+	  <keybind key="b"><action name="Execute"><command>baobab</command></action></keybind>
+	  <keybind key="c"><action name="Execute"><command>chromium-browser</command></action></keybind>
+	  <keybind key="d"><action name="Execute"><command>gnome-disks</command></action></keybind>
+	  <keybind key="e"><action name="Execute"><command>emacs</command></action></keybind>
+	  <keybind key="f"><action name="Execute"><command>firefox</command></action></keybind>
+	  <keybind key="g"><action name="Execute"><command>glipper</command></action></keybind>
+	  <keybind key="h"><action name="Execute"><command>lxtask</command></action></keybind>
+	  <keybind key="i"><action name="Execute"><command>gimp</command></action></keybind>
+	  <keybind key="j"> <!-- jeux -->
+		<keybind key="c"><action name="Execute"><command>gmchess</command></action></keybind>
+		<keybind key="d"><action name="Execute"><command>~/Terminalcity/scripts/diablo</command></action></keybind>
+		<keybind key="f"><action name="Execute"><command>/usr/games/ace-freecell</command></action></keybind>
+		<keybind key="h"><action name="Execute"><command>~/Terminalcity/scripts/hellfire</command></action></keybind>
+		<keybind key="m"><action name="Execute"><command>/usr/games/ace-minesweeper</command></action></keybind>
+		<keybind key="q"><action name="Execute"><command>/usr/games/quake3</command></action></keybind>
+		<keybind key="s"><action name="Execute"><command>~/Terminalcity/scripts/starcraft</command></action></keybind>
+		<keybind key="t"><action name="Execute"><command>~/Terminalcity/scripts/frozenThrone</command></action></keybind>
+		<keybind key="w"><action name="Execute"><command>~/Terminalcity/scripts/warcraft3</command></action></keybind>
+	  </keybind>
+	  <keybind key="k"><action name="Execute"><command>xkill</command></action></keybind>
+	  <keybind key="l"><action name="Execute"><command>/usr/bin/python /usr/bin/lubuntu-software-center</command></action></keybind>
+	  <keybind key="m"><action name="Execute"><command>gnome-system-monitor</command></action></keybind>
+	  <keybind key="n"><action name="Execute"><command>wicd-client</command></action></keybind>
+	  <keybind key="o"><action name="Execute"><command>libreoffice</command></action></keybind>
+	  <keybind key="p"><action name="Execute"><command>~/Vidéos/popcorn-time/Popcorn-Time</command></action></keybind>
+	  <keybind key="q"><action name="Execute"><command>compton -b</command></action></keybind>
+	  <keybind key="r"><action name="Execute"><command>rhythmbox</command></action></keybind>
+	  <keybind key="s"><action name="Execute"><command>smplayer</command></action></keybind>
+	  <keybind key="t"><action name="Execute"><command>transmission-gtk</command></action></keybind>
+	  <keybind key="u"><action name="Execute"><command>         </command></action></keybind>
+	  <keybind key="v"><action name="Execute"><command>pavucontrol</command></action></keybind>
+	  <keybind key="w"><action name="Execute"><command>guvcview</command></action></keybind>
+	  <keybind key="x"><action name="Execute"><command>exfalso</command></action></keybind>
+	  <keybind key="y"><action name="Execute"><command>minitube</command></action></keybind>
+	  <keybind key="z"><action name="Execute"><command>filezilla</command></action></keybind>
+	</keybind>
+
+    <!-- Calculator -->
     <keybind key="XF86Calculator"><action name="Execute"><command>galculator</command></action></keybind>
-    <!-- Keybinding for computer button-->
+    <!-- Computer button-->
     <keybind key="XF86MyComputer"><action name="Execute"><command>pcmanfm</command></action></keybind>
-    <!-- Keybindings for Multimedia Keys and LCD Backlight (alternative when not using gnome-power-manager or xfce4-volumed) -->
+    <!-- Multimedia Keys and LCD Backlight (alternative when not using gnome-power-manager or xfce4-volumed) -->
     <!-- <keybind key="C-F7"><action name="Execute"><command>sleep 2;xset dpms force off</command></action></keybind> -->
     <keybind key="XF86MonBrightnessDown"><action name="Execute"><command>xbacklight -dec 20</command></action></keybind>
     <keybind key="XF86MonBrightnessUp"><action name="Execute"><command>xbacklight -inc 20</command></action></keybind>
-    <!-- Launch scrot when Print is pressed -->
+    <!-- Launch scrot (print screen) -->
     <keybind key="Print"><action name="Execute"><command>scrot</command></action></keybind>
-    <!-- Launch logout when push on the shutdown button -->
+    <!-- Logout -->
     <keybind key="XF86PowerOff"><action name="Execute"><command>lxsession-default quit</command></action></keybind>
-    <!-- Launch logout when push on Ctrl-Insert -->
     <keybind key="W-Insert"><action name="Execute"><command>lxsession-default quit</command></action></keybind>
-    <!-- Keybinding for switching keyboard layout (azerty <-> bépo) -->
+    <!-- Switch keyboard layout (azerty <-> bépo) -->
     <keybind key="Insert"><action name="Execute"><command>~/Terminalcity/scripts/switch_kb.sh</command></action></keybind>
-    <!-- Keybinding for reloading openbox configuration -->
+    <!-- Reload openbox configuration -->
     <keybind key="W-r"><action name="Execute"><command>openbox --reconfigure</command></action></keybind>
     <!-- Launch cam -->
     <keybind key="W-w"><action name="Execute"><command>guvcview</command></action></keybind>
-    <!-- Launch a new gnome-terminal -->
-    <keybind key="F1"><action name="Execute"><command>gnome-terminal</command></action></keybind>
     <!-- key chain for audacious -->
     <keybind key="W-a">
 	  <keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
@@ -351,7 +389,7 @@ and back in -->
 	  <keybind key="j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
 	  <keybind key="Escape"><action name="BreakChroot"/></keybind>
     </keybind>
-    <!-- Keybindings for Managing display (Fn+F9) -->
+    <!-- Manage display (Fn+F9) -->
     <keybind key="0xF8"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh</command></action></keybind>
   </keyboard>
   <mouse>
