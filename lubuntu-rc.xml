@@ -151,6 +151,7 @@ and back in -->
     <keybind key="A-space"><action name="ShowMenu"><menu>client-menu</menu></action></keybind>
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
     <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
+    <keybind key="W-s"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
     <!-- Window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
@@ -197,8 +198,45 @@ and back in -->
 
 	<!-- More tiling and window management, with prefix key -->
 	<keybind key="W-b">
+	  <!-- Vertical tiling -->
+	  <keybind key="b">
+		<action name="UnmaximizeFull"/>
+		<action name="MoveResizeTo"><width>50%</width></action>
+		<action name="MaximizeVert"/>
+		<action name="MoveResizeTo"><x>0</x><y>0</y></action>
+		<action name="NextWindow"><interactive>no</interactive><dialog>none</dialog>
+		<finalactions>
+		  <action name="UnmaximizeFull"/>
+		  <action name="MoveResizeTo"><width>50%</width></action>
+		  <action name="MaximizeVert"/>
+		  <action name="MoveResizeTo"><x>-0</x><y>0</y></action>
+		</finalactions>
+		</action>
+	  </keybind>
+
+	  <!-- Horizontal tiling -->
+	  <keybind key="o">
+		<action name="UnmaximizeFull"/>
+		<action name="MoveResizeTo"><height>50%</height></action>
+		<action name="MaximizeHorz"/>
+		<action name="MoveResizeTo"><x>0</x><y>0</y></action>
+		<action name="NextWindow"><interactive>no</interactive><dialog>none</dialog>
+		<finalactions>
+		  <action name="UnmaximizeFull"/>
+		  <action name="MoveResizeTo"><height>50%</height></action>
+		  <action name="MaximizeHorz"/>
+		  <action name="MoveResizeTo"><x>0</x><y>-0</y></action>
+		</finalactions>
+		</action>
+	  </keybind>
+
       <keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh</command></action></keybind> <!-- circle through monitor configurations -->
+
 	  <keybind key="f"><action name="ToggleFullscreen"/></keybind> <!-- full screen -->
+	  <keybind key="i"><action name="Iconify"/></keybind> <!-- Iconify -->
+	  <keybind key="n"><action name="MoveResizeTo"><monitor>next</monitor></action></keybind> <!-- Send window to next monitor -->
+
+	  <!-- Move window to edge/corner and resize to a fraction of the screen display -->
 	  <keybind key="v"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height><width>50%</width></action></keybind> <!-- upper left -->
       <keybind key="d"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height><width>100%</width></action></keybind> <!-- half top -->
       <keybind key="l"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>50%</height><width>50%</width></action></keybind> <!-- upper right -->
@@ -208,7 +246,8 @@ and back in -->
       <keybind key="q"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height><width>50%</width></action></keybind> <!-- lower left -->
       <keybind key="g"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height><width>100%</width></action></keybind> <!-- half bottom -->
       <keybind key="h"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>-0</y><height>50%</height><width>50%</width></action></keybind> <!-- lower right -->
-	  <keybind key="n"><action name="MoveResizeTo"><monitor>next</monitor></action></keybind> <!-- Send window to next monitor -->
+
+	  <!-- Send window to another desktop -->
 	  <keybind key="1"><action name="SendToDesktop"><to>1</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 1 -->
 	  <keybind key="2"><action name="SendToDesktop"><to>2</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 2 -->
 	  <keybind key="3"><action name="SendToDesktop"><to>3</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 3 -->
@@ -219,6 +258,7 @@ and back in -->
 	  <keybind key="F3"><action name="SendToDesktop"><to>3</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 3 -->
 	  <keybind key="F4"><action name="SendToDesktop"><to>4</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 4 -->
 	  <keybind key="F5"><action name="SendToDesktop"><to>5</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 5 -->
+
 	</keybind>
 
     <!-- Increase window size  -->
@@ -284,27 +324,30 @@ and back in -->
     <keybind key="C-A-l"><action name="Execute"><command>xscreensaver-command -lock</command></action></keybind>
     <!-- Lock the screen on W + l-->
     <keybind key="W-l"><action name="Execute"><command>xscreensaver-command -lock</command></action></keybind>
-    <!-- Volume management -->
+    <!-- Volume / brightness management -->
     <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
-    <keybind key="W-t"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
 	<keybind key="W-egrave"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
     <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-    <keybind key="W-v"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
     <keybind key="W-eacute"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
     <keybind key="W-m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
-    <!-- Volume management (chrooted) -->
+	<keybind key="W-t"><action name="Execute"><command>xbacklight -dec 30</command></action></keybind>
+	<keybind key="W-v"><action name="Execute"><command>xbacklight -inc 30</command></action></keybind>
+    <!-- Volume / brightness management (chrooted) -->
     <keybind key="W-u" chroot="true">
-	  <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
-	  <keybind key="t"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
-	  <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-	  <keybind key="v"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-	  <keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
 	  <keybind key="p"><action name="Execute"><command>pavucontrol</command></action><action name="BreakChroot"/></keybind>
+	  <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
+	  <keybind key="egrave"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
+	  <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+      <keybind key="eacute"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+	  <keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+	  <keybind key="t"><action name="Execute"><command>xbacklight -dec 30</command></action></keybind>
+	  <keybind key="v"><action name="Execute"><command>xbacklight -inc 30</command></action></keybind>
 	  <keybind key="Escape"><action name="BreakChroot"/></keybind>
 	</keybind>
 
 	<!-- launch (Open) applications -->
 	<keybind key="W-o">
+	  <keybind key="W-o"><action name="Execute"><command>xfce4-appfinder</command></action></keybind>
 	  <keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
 	  <keybind key="b"><action name="Execute"><command>baobab</command></action></keybind>
 	  <keybind key="c"><action name="Execute"><command>chromium-browser</command></action></keybind>
@@ -360,8 +403,6 @@ and back in -->
     <keybind key="Insert"><action name="Execute"><command>~/Terminalcity/scripts/switch_kb.sh</command></action></keybind>
     <!-- Reload openbox configuration -->
     <keybind key="W-r"><action name="Execute"><command>openbox --reconfigure</command></action></keybind>
-    <!-- Launch cam -->
-    <keybind key="W-w"><action name="Execute"><command>guvcview</command></action></keybind>
     <!-- key chain for audacious -->
     <keybind key="W-a">
 	  <keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
