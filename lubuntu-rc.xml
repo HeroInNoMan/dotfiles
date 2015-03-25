@@ -143,7 +143,6 @@ and back in -->
 	<keybind key="W-F3"><action name="GoToDesktop"><to>3</to></action></keybind>
 	<keybind key="W-F4"><action name="GoToDesktop"><to>4</to></action></keybind>
 	<keybind key="W-F5"><action name="GoToDesktop"><to>5</to></action></keybind>
-	<keybind key="W-d"><action name="ToggleShowDesktop"/></keybind>
 	<keybind key="W-i"><action name="ToggleShowDesktop"/></keybind>
     <!-- Windows -->
     <keybind key="A-F4"><action name="Close"/></keybind>
@@ -198,6 +197,7 @@ and back in -->
 
 	<!-- More tiling and window management, with prefix key -->
 	<keybind key="W-b">
+
 	  <!-- Vertical tiling -->
 	  <keybind key="b">
 		<action name="UnmaximizeFull"/>
@@ -261,6 +261,28 @@ and back in -->
 
 	</keybind>
 
+	<!-- tiling with x-tile -->
+	<keybind key="W-x">
+	  <keybind key="W-x"><action name="Execute"><command>x-tile</command></action></keybind>
+	  <keybind key="w"><action name="Execute"><command>x-tile w</command></action></keybind> <!-- w open the x-tile main window without using the panel -->
+	  <keybind key="z"><action name="Execute"><command>x-tile z</command></action></keybind> <!-- z undo the latest tiling operation -->
+	  <keybind key="v"><action name="Execute"><command>x-tile v</command></action></keybind> <!-- v tile all opened windows vertically -->
+	  <keybind key="h"><action name="Execute"><command>x-tile h</command></action></keybind> <!-- h tile all opened windows horizontally -->
+	  <keybind key="u"><action name="Execute"><command>x-tile u</command></action></keybind> <!-- u tile all opened windows triangle-up -->
+	  <keybind key="d"><action name="Execute"><command>x-tile d</command></action></keybind> <!-- d tile all opened windows triangle-down -->
+	  <keybind key="l"><action name="Execute"><command>x-tile l</command></action></keybind> <!-- l tile all opened windows triangle-left -->
+	  <keybind key="r"><action name="Execute"><command>x-tile r</command></action></keybind> <!-- r tile all opened windows triangle-right -->
+	  <keybind key="q"><action name="Execute"><command>x-tile q</command></action></keybind> <!-- q quad tile all opened windows -->
+	  <keybind key="1"><action name="Execute"><command>x-tile 1</command></action></keybind> <!-- 1 custom tile 1 all opened windows -->
+	  <keybind key="2"><action name="Execute"><command>x-tile 2</command></action></keybind> <!-- 2 custom tile 2 all opened windows -->
+	  <keybind key="i"><action name="Execute"><command>x-tile i</command></action></keybind> <!-- i invert the order of the latest tiling operation -->
+	  <keybind key="y"><action name="Execute"><command>x-tile y</command></action></keybind> <!-- y cycle the order of the latest tiling operation -->
+	  <keybind key="m"><action name="Execute"><command>x-tile m</command></action></keybind> <!-- m maximize all opened windows -->
+	  <keybind key="M"><action name="Execute"><command>x-tile M</command></action></keybind> <!-- M unmaximize all opened windows -->
+	  <keybind key="c"><action name="Execute"><command>x-tile c</command></action></keybind> <!-- c close all opened windows -->
+	  <keybind key="g"><action name="Execute"><command>x-tile g</command></action></keybind> <!-- g = g 0 = g 0 0 tile all opened windows in a grid with automatic rows  and  columns -->
+	</keybind>
+
     <!-- Increase window size  -->
     <keybind key="W-Up">
 	  <action name="If">
@@ -315,6 +337,8 @@ and back in -->
     <keybind key="F11"><action name="ToggleFullscreen"/></keybind>
     <!-- Launch task manager on Ctrl + Alt + Del-->
     <keybind key="C-A-Delete"><action name="Execute"><command>lxtask</command></action></keybind>
+	<!-- App launcher -->
+	<keybind key="W-d"><action name="Execute"><command>~/Terminalcity/scripts/dmenu-run.sh</command></action></keybind>
     <!-- Launch terminal -->
     <keybind key="XF86WWW"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
     <keybind key="XF86Terminal"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
