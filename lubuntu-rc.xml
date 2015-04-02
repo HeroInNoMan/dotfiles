@@ -304,36 +304,22 @@ and back in -->
     <keybind key="W-Down">
 	  <action name="If">
         <maximized>yes</maximized>
-        <then>
-		  <action name="ToggleMaximize"/>
-        </then>
+        <then><action name="ToggleMaximize"/></then>
         <else>
 		  <action name="If">
             <undecorated>yes</undecorated>
-            <then>
-			  <action name="ToggleFullscreen"/>
-            </then>
-            <else>
-			  <action name="UnmaximizeFull"/>
-            </else>
+            <then><action name="ToggleFullscreen"/></then>
+            <else><action name="UnmaximizeFull"/></else>
 		  </action>
         </else>
 	  </action>
     </keybind>
     <!-- Launch a filemanager on Home + E -->
     <keybind key="W-e">
-	  <action name="Execute">
-        <startupnotify>
-		  <enabled>true</enabled>
-		  <name>PCManFM</name>
-        </startupnotify>
-        <command>pcmanfm</command>
-	  </action>
+	  <action name="Execute"><startupnotify><enabled>true</enabled><name>PCManFM</name></startupnotify><command>pcmanfm</command></action>
     </keybind>
     <keybind key="A-F2">
-	  <action name="Execute">
-        <command>lxpanelctl run</command>
-	  </action>
+	  <action name="Execute"><command>lxpanelctl run</command></action>
     </keybind>
     <!-- Run Menu from Lxpanel -->
     <keybind key="A-F1"><action name="Execute"><command>lxpanelctl menu</command></action></keybind>
