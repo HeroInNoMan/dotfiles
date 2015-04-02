@@ -143,6 +143,11 @@ and back in -->
 	<keybind key="W-F3"><action name="GoToDesktop"><to>3</to></action></keybind>
 	<keybind key="W-F4"><action name="GoToDesktop"><to>4</to></action></keybind>
 	<keybind key="W-F5"><action name="GoToDesktop"><to>5</to></action></keybind>
+	<keybind key="W-1"><action name="GoToDesktop"><to>1</to></action></keybind>
+	<keybind key="W-2"><action name="GoToDesktop"><to>2</to></action></keybind>
+	<keybind key="W-3"><action name="GoToDesktop"><to>3</to></action></keybind>
+	<keybind key="W-4"><action name="GoToDesktop"><to>4</to></action></keybind>
+	<keybind key="W-5"><action name="GoToDesktop"><to>5</to></action></keybind>
 	<keybind key="W-i"><action name="ToggleShowDesktop"/></keybind>
     <!-- Windows -->
     <keybind key="A-F4"><action name="Close"/></keybind>
@@ -262,8 +267,8 @@ and back in -->
 	</keybind>
 
 	<!-- tiling with x-tile -->
-	<keybind key="W-x">
-	  <keybind key="W-x"><action name="Execute"><command>x-tile</command></action></keybind>
+	<keybind key="W-y">
+	  <keybind key="W-y"><action name="Execute"><command>x-tile</command></action></keybind>
 	  <keybind key="w"><action name="Execute"><command>x-tile w</command></action></keybind> <!-- w open the x-tile main window without using the panel -->
 	  <keybind key="z"><action name="Execute"><command>x-tile z</command></action></keybind> <!-- z undo the latest tiling operation -->
 	  <keybind key="v"><action name="Execute"><command>x-tile v</command></action></keybind> <!-- v tile all opened windows vertically -->
@@ -344,6 +349,11 @@ and back in -->
     <keybind key="XF86Terminal"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
     <keybind key="C-A-T"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
     <keybind key="F1"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
+
+	<!-- Launch emacs client in new frame -->
+	<keybind key="W-q"><action name="Execute"><command>emacsclient -c</command></action></keybind>
+	<!-- Application launcher -->
+	<keybind key="W-d"><action name="Execute"><command>~/Terminalcity/scripts/dmenu-run.sh</command></action></keybind>
     <!-- Lock the screen on Ctrl + Alt + l-->
     <keybind key="C-A-l"><action name="Execute"><command>xscreensaver-command -lock</command></action></keybind>
     <!-- Lock the screen on W + l-->
@@ -376,7 +386,7 @@ and back in -->
 	  <keybind key="b"><action name="Execute"><command>baobab</command></action></keybind>
 	  <keybind key="c"><action name="Execute"><command>chromium-browser</command></action></keybind>
 	  <keybind key="d"><action name="Execute"><command>gnome-disks</command></action></keybind>
-	  <keybind key="e"><action name="Execute"><command>emacs</command></action></keybind>
+	  <keybind key="e"><action name="Execute"><command>emacsclient -c</command></action></keybind>
 	  <keybind key="f"><action name="Execute"><command>firefox</command></action></keybind>
 	  <keybind key="g"><action name="Execute"><command>glipper</command></action></keybind>
 	  <keybind key="h"><action name="Execute"><command>lxtask</command></action></keybind>
