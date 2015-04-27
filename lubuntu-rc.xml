@@ -419,18 +419,27 @@ and back in -->
     <keybind key="W-m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
 	<keybind key="W-t"><action name="Execute"><command>xbacklight -dec 30</command></action></keybind>
 	<keybind key="W-v"><action name="Execute"><command>xbacklight -inc 30</command></action></keybind>
-    <!-- Volume / brightness management (chrooted) -->
-    <keybind key="W-u" chroot="true">
-	  <keybind key="p"><action name="Execute"><command>pavucontrol</command></action><action name="BreakChroot"/></keybind>
+    <!-- Volume / brightness management (W-u, chrooted on W-u W-u) -->
+    <keybind key="W-u">
+	  <keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
 	  <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
 	  <keybind key="egrave"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
 	  <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
 	  <keybind key="eacute"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-	  <keybind key="agrave"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
 	  <keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
 	  <keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
 	  <keybind key="v"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
-	  <keybind key="Escape"><action name="BreakChroot"/></keybind>
+      <keybind key="W-u" chroot="true">
+		<keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
+		<keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
+		<keybind key="egrave"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
+		<keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+		<keybind key="eacute"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+		<keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+		<keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
+		<keybind key="v"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
+		<keybind key="Escape"><action name="BreakChroot"/></keybind>
+	  </keybind>
 	</keybind>
 
 	<!-- launch (Open) applications -->
