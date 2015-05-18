@@ -8,8 +8,7 @@ Copy the file to $HOME/.config/openbox/ instead. -->
   </resistance>
   <focus>
     <focusNew>yes</focusNew>
-    <!-- always try to focus new windows when they appear. other rules do
-         apply -->
+    <!-- always try to focus new windows when they appear. other rules do apply -->
     <followMouse>no</followMouse>
     <!-- move focus to a window when you move the mouse into it -->
     <focusLast>yes</focusLast>
@@ -28,8 +27,8 @@ Copy the file to $HOME/.config/openbox/ instead. -->
     <policy>Smart</policy>
     <!-- 'Smart' or 'UnderMouse' -->
     <center>yes</center>
-    <!-- whether to place windows in the center of the free area found or
-         the top left corner -->
+    <!-- whether to place windows in the center of the free area found or the
+         top left corner -->
     <monitor>Mouse</monitor>
     <!-- with Smart placement on a multi-monitor system, try to place new windows
          on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where
@@ -43,7 +42,7 @@ Copy the file to $HOME/.config/openbox/ instead. -->
   </placement>
   <theme>
     <name>Lubuntu-default</name>
-    <titleLayout>NLIMC</titleLayout>
+    <titleLayout>NLSIMC</titleLayout>
     <!--
         available characters are NDSLIMC, each can occur at most once.
         N: window icon
@@ -153,9 +152,6 @@ and back in -->
     <keybind key="A-F4"><action name="Close"/></keybind>
     <keybind key="A-Escape"><action name="Lower"/><action name="FocusToBottom"/><action name="Unfocus"/></keybind>
     <keybind key="A-space"><action name="ShowMenu"><menu>client-menu</menu></action></keybind>
-    <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
-    <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
-    <keybind key="W-s"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
     <!-- Window switching -->
     <keybind key="A-Tab">
       <action name="NextWindow">
@@ -198,12 +194,32 @@ and back in -->
     <!-- ################ WINDOW TILING & MOVING MANAGEMENT ################ -->
 	<!-- ################################################################### -->
 
-	<!-- # HalfLeftScreen -->
+	<!-- WINDOW MANAGEMENT WITH ARROW KEYS -->
+	<!-- HalfLeftScreen -->
     <keybind key="W-Left"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action></keybind>
-	<!-- # HalfRightScreen -->
+	<!-- HalfRightScreen -->
     <keybind key="W-Right"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action></keybind>
+    <!-- Increase window size  -->
+    <keybind key="W-Up">
+	  <action name="If"><maximized>yes</maximized>
+	  <then><action name="ToggleFullscreen"/></then>
+	  <else><action name="ToggleMaximize"/></else>
+	  </action>
+    </keybind>
+    <!-- Decrease window size -->
+    <keybind key="W-Down">
+	  <action name="If"><maximized>yes</maximized>
+	  <then><action name="ToggleMaximize"/></then>
+	  <else>
+		<action name="If"><undecorated>yes</undecorated>
+		<then><action name="ToggleFullscreen"/></then>
+		<else><action name="UnmaximizeFull"/></else>
+		</action>
+	  </else>
+	  </action>
+    </keybind>
 
-	<!-- More tiling and window management, with prefix key -->
+	<!-- MORE TILING AND WINDOW MANAGEMENT, WITH PREFIX KEY -->
 	<keybind key="W-b">
 
 	  <!-- Vertical tiling -->
@@ -261,7 +277,7 @@ and back in -->
 	  <keybind key="4"><action name="SendToDesktop"><to>4</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 4 -->
 	  <keybind key="5"><action name="SendToDesktop"><to>5</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 5 -->
 
-
+	  <!-- ALL SAME BINDINGS IN CHROOT MODE WITH W-b W-b -->
 	  <keybind key="W-b" chroot="true">
 		<keybind key="A-Tab"><action name="NextWindow"><dialog>icons</dialog><finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions></action></keybind>
 		<!-- Vertical tiling -->
@@ -323,8 +339,26 @@ and back in -->
 	  </keybind>
 	</keybind>
 
-	<!-- tiling with x-tile -->
+	<!-- TILING WITH X-TILE -->
 	<keybind key="W-y">
+	  <keybind key="w"><action name="Execute"><command>x-tile w</command></action></keybind> <!-- w open the x-tile main window without using the panel -->
+	  <keybind key="z"><action name="Execute"><command>x-tile z</command></action></keybind> <!-- z undo the latest tiling operation -->
+	  <keybind key="v"><action name="Execute"><command>x-tile v</command></action></keybind> <!-- v tile all opened windows vertically -->
+	  <keybind key="h"><action name="Execute"><command>x-tile h</command></action></keybind> <!-- h tile all opened windows horizontally -->
+	  <keybind key="u"><action name="Execute"><command>x-tile u</command></action></keybind> <!-- u tile all opened windows triangle-up -->
+	  <keybind key="d"><action name="Execute"><command>x-tile d</command></action></keybind> <!-- d tile all opened windows triangle-down -->
+	  <keybind key="l"><action name="Execute"><command>x-tile l</command></action></keybind> <!-- l tile all opened windows triangle-left -->
+	  <keybind key="r"><action name="Execute"><command>x-tile r</command></action></keybind> <!-- r tile all opened windows triangle-right -->
+	  <keybind key="q"><action name="Execute"><command>x-tile q</command></action></keybind> <!-- q quad tile all opened windows -->
+	  <keybind key="1"><action name="Execute"><command>x-tile 1</command></action></keybind> <!-- 1 custom tile 1 all opened windows -->
+	  <keybind key="2"><action name="Execute"><command>x-tile 2</command></action></keybind> <!-- 2 custom tile 2 all opened windows -->
+	  <keybind key="i"><action name="Execute"><command>x-tile i</command></action></keybind> <!-- i invert the order of the latest tiling operation -->
+	  <keybind key="y"><action name="Execute"><command>x-tile y</command></action></keybind> <!-- y cycle the order of the latest tiling operation -->
+	  <keybind key="m"><action name="Execute"><command>x-tile m</command></action></keybind> <!-- m maximize all opened windows -->
+	  <keybind key="M"><action name="Execute"><command>x-tile M</command></action></keybind> <!-- M unmaximize all opened windows -->
+	  <keybind key="c"><action name="Execute"><command>x-tile c</command></action></keybind> <!-- c close all opened windows -->
+	  <keybind key="g"><action name="Execute"><command>x-tile g</command></action></keybind> <!-- g = g 0 = g 0 0 tile all opened windows in a grid with automatic rows  and  columns -->
+	  <!-- ALL SAME BINDINGS IN CHROOT MODE WITH W-y W-y -->
 	  <keybind key="W-y" chroot="true">
 		<keybind key="A-Tab"><action name="NextWindow"><dialog>icons</dialog><finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions></action></keybind>
 		<keybind key="w"><action name="Execute"><command>x-tile w</command></action></keybind> <!-- w open the x-tile main window without using the panel -->
@@ -346,44 +380,11 @@ and back in -->
 		<keybind key="g"><action name="Execute"><command>x-tile g</command></action></keybind> <!-- g = g 0 = g 0 0 tile all opened windows in a grid with automatic rows  and  columns -->
 		<keybind key="Escape"><action name="BreakChroot"/></keybind>
 	  </keybind>
-	  <keybind key="w"><action name="Execute"><command>x-tile w</command></action></keybind> <!-- w open the x-tile main window without using the panel -->
-	  <keybind key="z"><action name="Execute"><command>x-tile z</command></action></keybind> <!-- z undo the latest tiling operation -->
-	  <keybind key="v"><action name="Execute"><command>x-tile v</command></action></keybind> <!-- v tile all opened windows vertically -->
-	  <keybind key="h"><action name="Execute"><command>x-tile h</command></action></keybind> <!-- h tile all opened windows horizontally -->
-	  <keybind key="u"><action name="Execute"><command>x-tile u</command></action></keybind> <!-- u tile all opened windows triangle-up -->
-	  <keybind key="d"><action name="Execute"><command>x-tile d</command></action></keybind> <!-- d tile all opened windows triangle-down -->
-	  <keybind key="l"><action name="Execute"><command>x-tile l</command></action></keybind> <!-- l tile all opened windows triangle-left -->
-	  <keybind key="r"><action name="Execute"><command>x-tile r</command></action></keybind> <!-- r tile all opened windows triangle-right -->
-	  <keybind key="q"><action name="Execute"><command>x-tile q</command></action></keybind> <!-- q quad tile all opened windows -->
-	  <keybind key="1"><action name="Execute"><command>x-tile 1</command></action></keybind> <!-- 1 custom tile 1 all opened windows -->
-	  <keybind key="2"><action name="Execute"><command>x-tile 2</command></action></keybind> <!-- 2 custom tile 2 all opened windows -->
-	  <keybind key="i"><action name="Execute"><command>x-tile i</command></action></keybind> <!-- i invert the order of the latest tiling operation -->
-	  <keybind key="y"><action name="Execute"><command>x-tile y</command></action></keybind> <!-- y cycle the order of the latest tiling operation -->
-	  <keybind key="m"><action name="Execute"><command>x-tile m</command></action></keybind> <!-- m maximize all opened windows -->
-	  <keybind key="M"><action name="Execute"><command>x-tile M</command></action></keybind> <!-- M unmaximize all opened windows -->
-	  <keybind key="c"><action name="Execute"><command>x-tile c</command></action></keybind> <!-- c close all opened windows -->
-	  <keybind key="g"><action name="Execute"><command>x-tile g</command></action></keybind> <!-- g = g 0 = g 0 0 tile all opened windows in a grid with automatic rows  and  columns -->
 	</keybind>
 
-    <!-- Increase window size  -->
-    <keybind key="W-Up">
-	  <action name="If"><maximized>yes</maximized>
-	  <then><action name="ToggleFullscreen"/></then>
-	  <else><action name="ToggleMaximize"/></else>
-	  </action>
-    </keybind>
-    <!-- Decrease window size -->
-    <keybind key="W-Down">
-	  <action name="If"><maximized>yes</maximized>
-	  <then><action name="ToggleMaximize"/></then>
-	  <else>
-		<action name="If"><undecorated>yes</undecorated>
-		<then><action name="ToggleFullscreen"/></then>
-		<else><action name="UnmaximizeFull"/></else>
-		</action>
-	  </else>
-	  </action>
-    </keybind>
+    <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
+    <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
+    <keybind key="W-s"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
     <!-- Launch a filemanager on Home + E -->
     <keybind key="W-e"><action name="Execute"><startupnotify><enabled>true</enabled><name>PCManFM</name></startupnotify><command>pcmanfm</command></action></keybind>
     <keybind key="A-F2"><action name="Execute"><command>lxpanelctl run</command></action></keybind>
@@ -422,22 +423,46 @@ and back in -->
     <!-- Volume / brightness management (W-u, chrooted on W-u W-u) -->
     <keybind key="W-u">
 	  <keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
+	  <!-- raise volume -->
 	  <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
+	  <keybind key="F3"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
 	  <keybind key="egrave"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
+	  <!-- lower volume -->
 	  <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+	  <keybind key="F2"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
 	  <keybind key="eacute"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+	  <!-- mute -->
+	  <keybind key="XF86AudioMute"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+	  <keybind key="F1"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
 	  <keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+	  <keybind key="agrave"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+	  <!-- decrease light -->
 	  <keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
+	  <keybind key="F5"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
+	  <!-- increase light -->
 	  <keybind key="v"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
+	  <keybind key="F6"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
       <keybind key="W-u" chroot="true">
 		<keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
+		<!-- raise volume -->
 		<keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
+		<keybind key="F3"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
 		<keybind key="egrave"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
+		<!-- lower volume -->
 		<keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+		<keybind key="F2"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
 		<keybind key="eacute"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+		<!-- mute -->
+		<keybind key="XF86AudioMute"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+		<keybind key="F1"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
 		<keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+		<keybind key="agrave"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+		<!-- decrease light -->
 		<keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
+		<keybind key="F5"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
+		<!-- increase light -->
 		<keybind key="v"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
+		<keybind key="F6"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
 		<keybind key="Escape"><action name="BreakChroot"/></keybind>
 	  </keybind>
 	</keybind>
