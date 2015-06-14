@@ -254,6 +254,16 @@ and back in -->
 		</action>
 	  </keybind>
 
+      <keybind key="m">
+		<keybind key="c"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh dual-screen-copy</command></action></keybind>
+		<keybind key="b"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh built-in-only</command></action></keybind>
+		<keybind key="l"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh extend-left</command></action></keybind>
+		<keybind key="r"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh extend-right</command></action></keybind>
+		<keybind key="e"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh external-only</command></action></keybind>
+		<keybind key="p"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh previous</command></action></keybind>
+		<keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh</command></action></keybind>
+	  </keybind>
+
       <keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/manage-displays.sh</command></action></keybind>
 	  <keybind key="f"><action name="ToggleFullscreen"/></keybind> <!-- full screen -->
 	  <keybind key="i"><action name="Iconify"/></keybind> <!-- Iconify -->
