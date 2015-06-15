@@ -116,6 +116,21 @@ update-all () {
 	done
 }
 
+build-all () {
+	FORMER_DIR=`pwd`
+	for dir in $(find $HOME/projets/ -type f -maxdepth 2 -name 'pom.xml' 2> /dev/null | xargs dirname | sort); do
+		cd $dir
+		echo "building $dir..."
+		mvn clean install -U &> $HOME/projets/mvn-output.log
+		if [ $? != 0 ]; then
+
+			echo "build failed!" ; cp $HOME/projets/mvn-output.log $HOME/projets/mvn-output-$(basename $dir).log
+		fi
+	done
+	rm $HOME/projets/mvn-output.log
+	cd $FORMER_DIR
+}
+
 # define a few colours
 #######################################################
 
