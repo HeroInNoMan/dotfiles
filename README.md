@@ -1,11 +1,11 @@
 dotfiles
 ========
 
-This project keeps dotfiles (.bashrc, .gitconfig, .vimrc, .tmux.conf…) organized
+This project keeps dotfiles (.bashrc, .gitconfig, .vimrc, .tmux.conf…) organised
 in one directory under version control.
 
 A install script creates symlinks of the dotfiles in the home directory. This
-allows to restore a complete environnement quickly by cloning the project on a
+allows to restore a complete environment quickly by cloning the project on a
 new machine and launching “./deploy.sh”.
 
 Dotfiles already present in the home directory are moved to a backup directory
