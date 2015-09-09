@@ -306,6 +306,7 @@ keyboard = (
 completions = {
   "->" = { value = "→"; };
   "<-" = { value = "←"; };
+  "<->" = { value = "↔"; };
   ":)" = { value = "☺"; };
   ":(" = { value = "☹"; };
   "<3" = { value = "♥"; };
