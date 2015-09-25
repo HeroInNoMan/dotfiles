@@ -370,6 +370,9 @@ and back in -->
     <keybind key="C-A-Delete"><action name="Execute"><command>lxtask</command></action></keybind>
 	<!-- App launcher -->
 	<keybind key="W-d"><action name="Execute"><command>~/Terminalcity/scripts/dmenu-run.sh</command></action></keybind>
+	<!-- Music launcher -->
+	<!-- <keybind key="W-z"><action name="Execute"><command>~/Terminalcity/scripts/audacious-dmenu.rb</command></action></keybind> -->
+	<keybind key="W-z"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
     <!-- Launch terminal -->
     <keybind key="XF86WWW"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
     <keybind key="XF86Terminal"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
