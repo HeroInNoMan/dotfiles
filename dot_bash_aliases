@@ -24,13 +24,14 @@ alias sr='surfraw -browser=w3m'
 alias agi='apt-get install'
 alias fucking='sudo'
 alias grep='grep --color'
+alias maj='sudo apt update; sudo apt -y upgrade; sudo apt -y dist-upgrade; sudo apt-get -y autoremove'
 
 # EMACS
 #######################################################
 alias emacs='emacs -nw'
-alias e='emacsclient -t'
+alias e='emacsclient -nw'
 alias ec='emacsclient'
-alias E="SUDO_EDITOR=\"emacsclient -t -a emacs\" sudoedit"
+alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit"
 alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
 
 # GIT
