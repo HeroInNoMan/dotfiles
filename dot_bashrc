@@ -171,3 +171,6 @@ PS1="${PS1}($CYAN\w$GREY)" # (~/current/directory)
 PS1="${PS1}$L_RED$GIT_INFOS\n" # (master *+%) git infos
 PS1="${PS1}$WHITE→$NC " # '→' prompt character
 
+# THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# $SDKMAN_DIR must be defined in .localrc file
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
