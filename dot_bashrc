@@ -72,8 +72,6 @@ export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
 
 export PATH=$MAVEN_HOME/bin:$PATH
-
-export JAVA_HOME=$JAVA_8
 export PATH=$JAVA_HOME/bin:$PATH
 
 use-java-7 () {
