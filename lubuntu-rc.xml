@@ -155,7 +155,16 @@ and back in -->
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
     <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
     <keybind key="W-s"><action name="Execute"><command>scrot</command></action></keybind>
-    <!-- Window switching -->
+
+    <!-- WINDOW SWITCHING -->
+
+    <!-- Exposé -->
+    <keybind key="W-w">
+        <action name="Execute">
+            <command>skippy-xd</command>
+        </action>
+    </keybind>
+
     <keybind key="A-Tab">
       <action name="NextWindow">
         <dialog>icons</dialog>
@@ -372,7 +381,7 @@ and back in -->
 	<keybind key="W-d"><action name="Execute"><command>~/Terminalcity/scripts/dmenu-run.sh</command></action></keybind>
 	<!-- Music launcher -->
 	<!-- <keybind key="W-z"><action name="Execute"><command>~/Terminalcity/scripts/audacious-dmenu.rb</command></action></keybind> -->
-	<keybind key="W-z"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
+	<keybind key="W-j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
     <!-- Launch terminal -->
     <keybind key="XF86WWW"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
     <keybind key="XF86Terminal"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
