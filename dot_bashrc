@@ -22,7 +22,7 @@ shopt -s checkwinsize
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
 # start ssh-agent if needed
-[ -z "$SSH-AUTH-SOCK" ] && eval $(ssh-agent) > /dev/null
+[ -z "$SSH-AUTH-SOCK" ] && eval "$(ssh-agent)" > /dev/null
 
 # load additional files
 if [ -f ~/.bash_aliases ]; then
@@ -97,43 +97,43 @@ update-etags () {
 
 update-project () {
 	PROJECT_DIR=$1
-	FORMER_DIR=`pwd`
-	cd $PROJECT_DIR
-	PROJECT_NAME=$(basename $PROJECT_DIR)
+	FORMER_DIR=$(pwd)
+	cd "$PROJECT_DIR"
+	PROJECT_NAME=$(basename "$PROJECT_DIR")
 	echo "* ${BOLD}$PROJECT_NAME${NORMAL}"
 	[ -d ".git" ] && git-up
 	[ -d ".svn" ] && svn update
 	#	update-etags
 	echo ""
-	cd $FORMER_DIR
+	cd "$FORMER_DIR"
 }
 
 update-all () {
 	for dir in $(find $HOME -type d -iname '.git' -o -maxdepth 3 -iname '.svn' 2> /dev/null | xargs dirname | sort); do
-		update-project $dir
+		update-project "$dir"
 	done
 }
 
 build-all () {
-	FORMER_DIR=`pwd`
-	for dir in $(find $HOME/projets/ -type f -maxdepth 2 -name 'pom.xml' 2> /dev/null | xargs dirname | sort); do
-		cd $dir
+	FORMER_DIR=$(pwd)
+	for dir in $(find "$HOME/projets/" -type f -maxdepth 2 -name 'pom.xml' 2> /dev/null | xargs dirname | sort); do
+		cd "$dir"
 		echo "building $dir..."
-		mvn clean install -U &> $HOME/projets/mvn-output.log
+		mvn clean install -U &> "$HOME/projets/mvn-output.log"
 		if [ $? != 0 ]; then
 
-			echo "build failed!" ; cp $HOME/projets/mvn-output.log $HOME/projets/mvn-output-$(basename $dir).log
+			echo "build failed!" ; cp "$HOME/projets/mvn-output.log" $HOME/projets/mvn-output-$(basename $dir).log
 		fi
 	done
-	rm $HOME/projets/mvn-output.log
-	cd $FORMER_DIR
+	rm "$HOME/projets/mvn-output.log"
+	cd "$FORMER_DIR"
 }
 
 # define a few colours
 #######################################################
 
-BOLD=`tput bold`
-NORMAL=`tput sgr0`
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
 
 BLACK='\[\e[0;30m\]'
 BLUE='\[\e[0;34m\]'
