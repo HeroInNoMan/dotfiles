@@ -158,12 +158,11 @@ and back in -->
 
     <!-- WINDOW SWITCHING -->
 
+    <!-- rofi for windows -->
+    <keybind key="W-z"><action name="Execute"><command>~/bin/rofi-run.sh window</command></action></keybind>
+
     <!-- Exposé -->
-    <keybind key="W-w">
-        <action name="Execute">
-            <command>skippy-xd</command>
-        </action>
-    </keybind>
+    <keybind key="W-w"><action name="Execute"><command>skippy-xd</command></action></keybind>
 
     <keybind key="A-Tab">
       <action name="NextWindow">
@@ -378,9 +377,8 @@ and back in -->
     <!-- Launch task manager on Ctrl + Alt + Del-->
     <keybind key="C-A-Delete"><action name="Execute"><command>lxtask</command></action></keybind>
 	<!-- App launcher -->
-	<keybind key="W-d"><action name="Execute"><command>~/Terminalcity/scripts/dmenu-run.sh</command></action></keybind>
+	<keybind key="W-d"><action name="Execute"><command>~/bin/rofi-run.sh</command></action></keybind>
 	<!-- Music launcher -->
-	<!-- <keybind key="W-z"><action name="Execute"><command>~/Terminalcity/scripts/audacious-dmenu.rb</command></action></keybind> -->
 	<keybind key="W-j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
     <!-- Launch terminal -->
     <keybind key="XF86WWW"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
@@ -390,8 +388,6 @@ and back in -->
 
 	<!-- Launch emacs client in new frame -->
 	<keybind key="W-q"><action name="Execute"><command>emacsclient -c</command></action></keybind>
-	<!-- Application launcher -->
-	<keybind key="W-d"><action name="Execute"><command>~/Terminalcity/scripts/dmenu-run.sh</command></action></keybind>
     <!-- Lock the screen on Ctrl + Alt + l-->
     <keybind key="C-A-l"><action name="Execute"><command>xscreensaver-command -lock</command></action></keybind>
     <!-- Lock the screen on W + l-->
