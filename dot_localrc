@@ -1,0 +1,14 @@
+# SFR-specific configuration, called by ~/.bashrc
+
+# variables
+#########################################################
+export PATH=$HOME/Terminalcity/scripts:$PATH
+
+# aliases
+########################################################
+
+
+# station-specific keys
+########################################################
+
+# EOF
