@@ -367,7 +367,8 @@ and back in -->
     <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
     <keybind key="W-s"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
     <!-- Launch a filemanager on Home + E -->
-    <keybind key="W-e"><action name="Execute"><startupnotify><enabled>true</enabled><name>PCManFM</name></startupnotify><command>pcmanfm</command></action></keybind>
+    <!-- <keybind key="W-e"><action name="Execute"><startupnotify><enabled>true</enabled><name>PCManFM</name></startupnotify><command>pcmanfm</command></action></keybind> -->
+    <keybind key="W-e"><action name="Execute"><command>nautilus</command></action></keybind>
     <keybind key="A-F2"><action name="Execute"><command>lxpanelctl run</command></action></keybind>
     <!-- Run Menu from Lxpanel -->
     <keybind key="A-F1"><action name="Execute"><command>lxpanelctl menu</command></action></keybind>
@@ -381,10 +382,10 @@ and back in -->
 	<!-- Music launcher -->
 	<keybind key="W-j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
     <!-- Launch terminal -->
-    <keybind key="XF86WWW"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
-    <keybind key="XF86Terminal"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
-    <keybind key="C-A-T"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
-    <keybind key="F1"><action name="Execute"><command>lxsession-default terminal</command></action></keybind>
+    <keybind key="XF86WWW"><action name="Execute"><command>lxterminal</command></action></keybind>
+    <keybind key="XF86Terminal"><action name="Execute"><command>lxterminal</command></action></keybind>
+    <keybind key="C-A-T"><action name="Execute"><command>lxterminal</command></action></keybind>
+    <keybind key="F1"><action name="Execute"><command>lxterminal</command></action></keybind>
 
 	<!-- Launch emacs client in new frame -->
 	<keybind key="W-q"><action name="Execute"><command>emacsclient -c</command></action></keybind>
