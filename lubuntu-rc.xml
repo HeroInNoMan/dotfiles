@@ -393,30 +393,30 @@ and back in -->
     <!-- Lock the screen on W + l-->
     <keybind key="W-l"><action name="Execute"><command>xscreensaver-command -lock</command></action></keybind>
     <!-- Volume / brightness management -->
-    <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
-	<keybind key="W-egrave"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
-    <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-    <keybind key="W-eacute"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-    <keybind key="W-agrave"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
-    <keybind key="W-m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+    <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>~/bin/sound-control.sh up</command></action></keybind>
+	<keybind key="W-egrave"><action name="Execute"><command>~/bin/sound-control.sh up</command></action></keybind>
+    <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>~/bin/sound-control.sh down</command></action></keybind>
+    <keybind key="W-eacute"><action name="Execute"><command>~/bin/sound-control.sh down</command></action></keybind>
+    <keybind key="W-agrave"><action name="Execute"><command>~/bin/sound-control.sh toggle</command></action></keybind>
+    <keybind key="W-m"><action name="Execute"><command>~/bin/sound-control.sh toggle</command></action></keybind>
 	<keybind key="W-t"><action name="Execute"><command>xbacklight -dec 30</command></action></keybind>
 	<keybind key="W-v"><action name="Execute"><command>xbacklight -inc 30</command></action></keybind>
     <!-- Volume / brightness management (W-u, chrooted on W-u W-u) -->
     <keybind key="W-u">
 	  <keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
 	  <!-- raise volume -->
-	  <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
-	  <keybind key="F3"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
-	  <keybind key="egrave"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
+	  <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>~/bin/sound-control.sh up</command></action></keybind>
+	  <keybind key="F3"><action name="Execute"><command>~/bin/sound-control.sh up</command></action></keybind>
+	  <keybind key="egrave"><action name="Execute"><command>~/bin/sound-control.sh up</command></action></keybind>
 	  <!-- lower volume -->
-	  <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-	  <keybind key="F2"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-	  <keybind key="eacute"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+	  <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>~/bin/sound-control.sh down</command></action></keybind>
+	  <keybind key="F2"><action name="Execute"><command>~/bin/sound-control.sh down</command></action></keybind>
+	  <keybind key="eacute"><action name="Execute"><command>~/bin/sound-control.sh down</command></action></keybind>
 	  <!-- mute -->
-	  <keybind key="XF86AudioMute"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
-	  <keybind key="F1"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
-	  <keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
-	  <keybind key="agrave"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+	  <keybind key="XF86AudioMute"><action name="Execute"><command>~/bin/sound-control.sh toggle</command></action></keybind>
+	  <keybind key="F1"><action name="Execute"><command>~/bin/sound-control.sh toggle</command></action></keybind>
+	  <keybind key="m"><action name="Execute"><command>~/bin/sound-control.sh toggle</command></action></keybind>
+	  <keybind key="agrave"><action name="Execute"><command>~/bin/sound-control.sh toggle</command></action></keybind>
 	  <!-- decrease light -->
 	  <keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
 	  <keybind key="F5"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
@@ -426,18 +426,18 @@ and back in -->
       <keybind key="W-u" chroot="true">
 		<keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
 		<!-- raise volume -->
-		<keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
-		<keybind key="F3"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
-		<keybind key="egrave"><action name="Execute"><command>amixer -q sset Master 3%+ unmute</command></action></keybind>
+		<keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>~/bin/sound-control.sh up</command></action></keybind>
+		<keybind key="F3"><action name="Execute"><command>~/bin/sound-control.sh up</command></action></keybind>
+		<keybind key="egrave"><action name="Execute"><command>~/bin/sound-control.sh up</command></action></keybind>
 		<!-- lower volume -->
-		<keybind key="XF86AudioLowerVolume"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-		<keybind key="F2"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
-		<keybind key="eacute"><action name="Execute"><command>amixer -q sset Master 3%- unmute</command></action></keybind>
+		<keybind key="XF86AudioLowerVolume"><action name="Execute"><command>~/bin/sound-control.sh down</command></action></keybind>
+		<keybind key="F2"><action name="Execute"><command>~/bin/sound-control.sh down</command></action></keybind>
+		<keybind key="eacute"><action name="Execute"><command>~/bin/sound-control.sh down</command></action></keybind>
 		<!-- mute -->
-		<keybind key="XF86AudioMute"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
-		<keybind key="F1"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
-		<keybind key="m"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
-		<keybind key="agrave"><action name="Execute"><command>~/Terminalcity/scripts/mute-toggle.sh</command></action></keybind>
+		<keybind key="XF86AudioMute"><action name="Execute"><command>~/bin/sound-control.sh toggle</command></action></keybind>
+		<keybind key="F1"><action name="Execute"><command>~/bin/sound-control.sh toggle</command></action></keybind>
+		<keybind key="m"><action name="Execute"><command>~/bin/sound-control.sh toggle</command></action></keybind>
+		<keybind key="agrave"><action name="Execute"><command>~/bin/sound-control.sh toggle</command></action></keybind>
 		<!-- decrease light -->
 		<keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
 		<keybind key="F5"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
