@@ -8,7 +8,7 @@
 # Backups of existing files are stored as TARGET_DIR/file_YYYY-MM-DD
 #####################################################################
 
-TIME_STAMP=`date +%F-%T` # date in format YYYY-MM-DD-HH:MM:SS
+TIME_STAMP=$(date +%F-%T) # date in format YYYY-MM-DD-HH:MM:SS
 DOT_FILES_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 
 TARGET_DIR=$HOME # destination directory
@@ -25,7 +25,7 @@ deploy () {
 	fi
 
 	if [ -L $link ]; then
-		target=`readlink $link`
+		target=$(readlink $link)
 		if [ $target == $source ]; then
 			echo "$link is already a link to $target"
 			return
@@ -45,34 +45,36 @@ deploy () {
 
 mkdir -p $BACKUP_DIR
 
-# DOTFILES
+############
+# DOTFILES #
+############
+
 for file in $(ls -1 $DOT_FILES_DIR/dot_*); do
-	root_name=`echo basename $file | cut -d'_' -f 2-`
+	root_name=$(echo basename $file | cut -d'_' -f 2-)
 	target=$TARGET_DIR/.$root_name
-	deploy $file $target $BACKUP_DIR
+	deploy "$file" "$target" "$BACKUP_DIR"
 done
 
 # if no backup was made, delete backup dir
-rmdir --ignore-fail-on-non-empty $BACKUP_DIR
+rmdir --ignore-fail-on-non-empty "$BACKUP_DIR"
 
-# CONF FILES
+##############
+# CONF FILES #
+##############
 
-# irssi
-deploy "$DOT_FILES_DIR/irssi_config" "$TARGET_DIR/.irssi/config" "${TARGET_DIR}/.irssi/config_$TIME_STAMP"
-
-# lubuntu-rc.xml
+deploy "$DOT_FILES_DIR/irssi_config" "$TARGET_DIR/.irssi/config" "$TARGET_DIR/.irssi/config_$TIME_STAMP"
 deploy "$DOT_FILES_DIR/lubuntu-rc.xml" "$TARGET_DIR/.config/openbox/lubuntu-rc.xml" ".config/openbox/lubuntu-rc.xml_$TIME_STAMP"
 
 # .localrc : copy if not present (no symlink)
-cp -n $DOT_FILES_DIR/localrc $TARGET_DIR/.localrc
+cp -n "$DOT_FILES_DIR/localrc" "$TARGET_DIR/.localrc"
 
-# .emacs.d :
-# if no .emacs.d present -> make symlink to $DOT_FILES_DIR/.emacs.d
-# if .emacs.d present and is already a symlink -> do nothing
-# if .emacs.d present and is a dir:
-# - backup original dir
-# - replace dir by symlink
-# - merge items in original .emacs.d with unversionned dirs in $DOT_FILES_DIR/.emacs.d
-# mergeable items are (auto-save-list/, backups/, elpa/, emacs.desktop, lock, places, .places)
+###########
+# SCRIPTS #
+###########
+deploy "$DOT_FILES_DIR/scripts/manage-displays.sh" "$TARGET_DIR/bin/manage-displays.sh" "$TARGET_DIR/bin/manage-displays.sh_$TIME_STAMP"
+deploy "$DOT_FILES_DIR/scripts/rofi-run.sh" "$TARGET_DIR/bin/rofi-run.sh" "$TARGET_DIR/bin/rofi-run.sh_$TIME_STAMP"
+deploy "$DOT_FILES_DIR/scripts/sound-control.sh" "$TARGET_DIR/bin/sound-control.sh" "$TARGET_DIR/bin/sound-control.sh_$TIME_STAMP"
+deploy "$DOT_FILES_DIR/scripts/switch_kb.sh" "$TARGET_DIR/bin/switch_kb.sh" "$TARGET_DIR/bin/switch_kb.sh_$TIME_STAMP"
+deploy "$DOT_FILES_DIR/scripts/img" "$TARGET_DIR/.config/img" "$TARGET_DIR/.config/img_$TIME_STAMP"
 
 # EOF
