@@ -71,6 +71,7 @@ cp -n "$DOT_FILES_DIR/localrc" "$TARGET_DIR/.localrc"
 
 deploy "$DOT_FILES_DIR/irssi_config" "$TARGET_DIR/.irssi/config" "$TARGET_DIR/.irssi/config_$TIME_STAMP"
 deploy "$DOT_FILES_DIR/lubuntu-rc.xml" "$TARGET_DIR/.config/openbox/lubuntu-rc.xml" "$TARGET_DIR.config/openbox/lubuntu-rc.xml_$TIME_STAMP"
+deploy "$DOT_FILES_DIR/lubuntu-rc.xml" "$TARGET_DIR/.config/openbox/lxde-rc.xml" "$TARGET_DIR.config/openbox/lxde-rc.xml_$TIME_STAMP"
 
 ###########
 # SCRIPTS #
