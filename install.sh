@@ -71,6 +71,8 @@ cp -n "$DOT_FILES_DIR/localrc" "$TARGET_DIR/.localrc"
 ###########
 # SCRIPTS #
 ###########
+mkdir -p $TARGET_DIR/bin
+
 deploy "$DOT_FILES_DIR/scripts/manage-displays.sh" "$TARGET_DIR/bin/manage-displays.sh" "$TARGET_DIR/bin/manage-displays.sh_$TIME_STAMP"
 deploy "$DOT_FILES_DIR/scripts/rofi-run.sh" "$TARGET_DIR/bin/rofi-run.sh" "$TARGET_DIR/bin/rofi-run.sh_$TIME_STAMP"
 deploy "$DOT_FILES_DIR/scripts/sound-control.sh" "$TARGET_DIR/bin/sound-control.sh" "$TARGET_DIR/bin/sound-control.sh_$TIME_STAMP"
