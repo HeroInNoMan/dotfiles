@@ -164,6 +164,9 @@ and back in -->
     <!-- Exposé -->
     <keybind key="W-w"><action name="Execute"><command>skippy-xd</command></action></keybind>
 
+    <!-- Angry Search -->
+    <keybind key="W-f"><action name="Execute"><command>angrysearch</command></action></keybind>
+
     <keybind key="A-Tab">
       <action name="NextWindow">
         <dialog>icons</dialog>
