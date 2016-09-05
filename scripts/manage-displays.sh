@@ -4,15 +4,15 @@ MONITOR_IMG="$HOME/.config/img/monitor.png"
 MONITOR_FILE="./.monitor-state"
 CURRENT_MODE=$(head -1 $MONITOR_FILE)
 PREVIOUS_MODE=$(head -2 $MONITOR_FILE | tail -1)
-M1=$(xrandr -q | grep ' connected' | cut -d' ' -f1 | sed -n 1p)
+M1=$(xrandr --query | grep ' connected' | cut --delimiter=' ' --fields=1 | sed --quiet 1p)
 if [ -z "$M1" ]; then
     M1='eDP1'
 fi
-M2=$(xrandr -q | grep ' connected' | cut -d' ' -f1 | sed -n 2p)
+M2=$(xrandr --query | grep ' connected' | cut --delimiter=' ' --fields=1 | sed --quiet 2p)
 if [ -z "$M2" ]; then
     M2='DP2'
 fi
-NB_M=$(xrandr -q | grep -c ' connected')
+NB_M=$(xrandr --quiet | grep --count ' connected')
 
 append-documentation() {
     { echo "# possible values:"
@@ -86,7 +86,7 @@ case $NEXT_MODE in
         ;;
     "extend-right")
         update-monitor-state "extend-right"
-        xrandr  --output $M1 --auto --rotate normal --output $M2 --auto --rotate normal --right-of $M1
+        xrandr --output $M1 --auto --rotate normal --output $M2 --auto --rotate normal --right-of $M1
         ;;
     "external-only")
         update-monitor-state "external-only"

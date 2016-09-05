@@ -33,7 +33,7 @@ else
             ;;
         *)
             # mode pairing si plus d’un clavier
-            NB_KBD=$(xinput list --name-only | grep -i "keyboard" | grep -iv "virtual" | sort | uniq | wc -l)
+            NB_KBD=$(xinput list --name-only | grep --ignore-case "keyboard" | grep --ignore-case --invert-match "virtual" | sort | uniq | wc --lines)
             TM_ID=$(xinput list --id-only keyboard:"$TM_LABEL")
             if [[ $NB_KBD -gt 1 ]]; then
                 # tous les claviers → azerty
@@ -44,7 +44,7 @@ else
                     setxkbmap fr bepo -option -device "$TM_ID"
                 else
                     # pas de TM™ : premier clavier trouvé → bépo
-                    FIRST_KBD_LABEL=$(xinput list --name-only | grep -i "keyboard" | grep -iv "virtual" -m 1)
+                    FIRST_KBD_LABEL=$(xinput list --name-only | grep --ignore-case "keyboard" | grep --ignore-case --invert-match "virtual" --max-count=1)
                     FIRST_KBD_ID=$(xinput list --id-only keyboard:"$FIRST_KBD_LABEL")
                     setxkbmap fr bepo -option -device "$FIRST_KBD_ID"
                 fi

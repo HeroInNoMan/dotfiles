@@ -26,7 +26,7 @@ deploy () {
     link=$2
     backup_place=$3
 
-    mkdir -p "$(dirname "$link")"
+    mkdir --parents "$(dirname "$link")"
 
     if [ -L "$link" ]; then
         target=$(readlink "$link")
@@ -42,7 +42,7 @@ deploy () {
     fi
 
     print_line "Creating $link@"
-    ln -s "$source" "$link"
+    ln --symbolic "$source" "$link"
 }
 
 print_line () {
@@ -53,7 +53,7 @@ print_line () {
 # DOTFILES #
 ############
 
-mkdir -p "$BACKUP_DIR"
+mkdir --parents "$BACKUP_DIR"
 
 for file in $DOT_FILES_DIR/dot_*; do
     deploy "$file" "$TARGET_DIR/.$(echo basename "$file" | cut -d'_' -f 2-)" "$BACKUP_DIR"
@@ -63,7 +63,7 @@ done
 rmdir --ignore-fail-on-non-empty "$BACKUP_DIR"
 
 # .localrc : copy if not present (no symlink)
-cp -n "$DOT_FILES_DIR/localrc" "$TARGET_DIR/.localrc"
+cp --no-clobber "$DOT_FILES_DIR/localrc" "$TARGET_DIR/.localrc"
 
 ##############
 # CONF FILES #

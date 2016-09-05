@@ -7,9 +7,9 @@ SOUND_DOWN_IMG="$HOME/.config/img/sound_down.png"
 MUTE_IMG="$HOME/.config/img/mute.png"
 UNMUTE_IMG="$HOME/.config/img/unmute.png"
 
-SINK_NAME=$(pacmd dump | grep -m 1 -o "alsa.*stereo")
-SINKS=$(pacmd dump | grep -o "alsa_output.*stereo" | sort | uniq)
-MUTE_STATE=$(pacmd dump | grep -P "^set-sink-mute $SINK_NAME\s+" | perl -p -e 's/.+\s(yes|no)$/$1/')
+SINK_NAME=$(pacmd dump | grep --max-count=1 --only-matching "alsa.*stereo")
+SINKS=$(pacmd dump | grep --only-matching "alsa_output.*stereo" | sort | uniq)
+MUTE_STATE=$(pacmd dump | grep --perl-regexp "^set-sink-mute $SINK_NAME\s+" | perl -p -e 's/.+\s(yes|no)$/$1/')
 
 toggle_mute () {
     case $MUTE_STATE in
