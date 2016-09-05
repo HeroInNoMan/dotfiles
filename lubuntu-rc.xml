@@ -471,6 +471,8 @@ and back in -->
     <keybind key="W-Insert"><action name="Execute"><command>lxsession-default quit</command></action></keybind>
     <!-- Switch keyboard layout (azerty <-> bépo) -->
     <keybind key="Insert"><action name="Execute"><command>~/bin/switch_kb.sh</command></action></keybind>
+    <!-- Enable/disable touchpad -->
+    <keybind key="W-k"><action name="Execute"><command>~/bin/trackpad.sh</command></action></keybind>
     <!-- Reload openbox configuration -->
     <keybind key="W-r"><action name="Execute"><command>openbox --reconfigure</command></action></keybind>
     <!-- key chain for audacious -->
