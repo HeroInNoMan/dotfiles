@@ -47,14 +47,14 @@
 	tool = ediff
 	guitool = ediff
 [difftool "ediff"]
-	cmd = /home/arthur/Terminalcity/.emacs.d/misc/ediff.sh $LOCAL $REMOTE $MERGED
+	cmd = ediff.sh $LOCAL $REMOTE $MERGED
 	prompt = false
 [gui]
 	editor = emacsclient -t
 [merge]
 	tool = ediff
 [mergetool "ediff"]
-	cmd = /home/arthur/Terminalcity/.emacs.d/misc/ediff.sh $LOCAL $REMOTE $MERGED $BASE
+	cmd = ediff.sh $LOCAL $REMOTE $MERGED $BASE
 	trustExitCode = true
 [pull]
 	default = current
