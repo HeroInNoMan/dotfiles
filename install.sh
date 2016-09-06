@@ -21,6 +21,13 @@ DOT_FILES_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 TARGET_DIR=$HOME # destination directory
 BACKUP_DIR=$TARGET_DIR/dotfiles_$TIME_STAMP # old dotfiles backup directory
 
+REQUIRED_PROGRAMS=(amixer angrysearch audacious compton galculator glipper nautilus notify-send pacmd pactl pavucontrol rofi scrot skippy-xd synclient x-tile xbacklight xrandr xscreensaver)
+MISSING_PROGRAMS=() # TODO prompt for automatic install
+
+check_command () {
+    hash "$1" 2>/dev/null || { print_line >&2 "WARNING! $1 is not installed."; MISSING_PROGRAMS+=("$1"); }
+}
+
 deploy () {
     source=$1
     link=$2
@@ -46,7 +53,7 @@ deploy () {
 }
 
 print_line () {
-    echo "[DOT FILES] $1"
+    echo "[DOT FILES] $*"
 }
 
 ############
@@ -83,4 +90,17 @@ done
 
 deploy "$DOT_FILES_DIR/img" "$TARGET_DIR/.config/img" "$TARGET_DIR/.config/img_$TIME_STAMP"
 
+###############
+# CHECK TOOLS #
+###############
+
+for cmd in "${REQUIRED_PROGRAMS[@]}"; do
+    check_command "$cmd"
+done
+
+if [ ${#MISSING_PROGRAMS[@]} -gt 0 ]; then
+    print_line "try running"
+    print_line "sudo apt install" "${MISSING_PROGRAMS[@]}"
+    print_line "to install missing programs."
+fi
 # EOF
