@@ -38,17 +38,17 @@ deploy () {
     if [ -L "$link" ]; then
         target=$(readlink "$link")
         if [ "$target" == "$source" ]; then
-            print_line "$link is already a link to $target"
+            # print_line "$link is already a link to $target"
             return
         fi
-        print_line "Deleting $link which is a link to $target"
+        print_line "Deleting $link which is a link to $target ..."
         rm "$link"
     elif [ -e "$link" ]; then
-        print_line "Moving $link to $backup_place"
+        print_line "Moving $link to $backup_place ..."
         mv "$link" "$backup_place"
     fi
 
-    print_line "Creating $link@"
+    print_line "Creating $link@ ..."
     ln --symbolic "$source" "$link"
 }
 
