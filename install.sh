@@ -21,7 +21,7 @@ DOT_FILES_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 TARGET_DIR=$HOME # destination directory
 BACKUP_DIR=$TARGET_DIR/dotfiles_$TIME_STAMP # old dotfiles backup directory
 
-REQUIRED_PROGRAMS=(amixer angrysearch audacious compton galculator glipper nautilus notify-send pacmd pactl pavucontrol rofi scrot skippy-xd synclient x-tile xbacklight xrandr xscreensaver)
+REQUIRED_PROGRAMS=(amixer angrysearch audacious compton emacs galculator glipper nautilus notify-send pacmd pactl pavucontrol rofi scrot skippy-xd synclient x-tile xbacklight xrandr xscreensaver)
 MISSING_PROGRAMS=() # TODO prompt for automatic install
 
 check_command () {
