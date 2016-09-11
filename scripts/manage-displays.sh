@@ -12,7 +12,7 @@ M2=$(xrandr --query | grep ' connected' | cut --delimiter=' ' --fields=1 | sed -
 if [ -z "$M2" ]; then
     M2='DP2'
 fi
-NB_M=$(xrandr --quiet | grep --count ' connected')
+NB_M=$(xrandr --query | grep --count ' connected')
 
 append-documentation() {
     { echo "# possible values:"
@@ -58,7 +58,7 @@ usage() {
 if [ "$NB_M" -lt 2 ]; then
     NEXT_MODE=built-in-only
 elif [ $# == 0 ]; then
-    NEXT_MODE=$(next-state $(head -1 $MONITOR_FILE))
+    NEXT_MODE=$(next-state "$(head -1 $MONITOR_FILE)")
 elif [ $# == 1 ]; then
     if [ "$1" == "previous" ]; then
         NEXT_MODE=$PREVIOUS_MODE
