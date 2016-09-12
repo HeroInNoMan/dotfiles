@@ -21,8 +21,11 @@ DOT_FILES_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 TARGET_DIR=$HOME # destination directory
 BACKUP_DIR=$TARGET_DIR/dotfiles_$TIME_STAMP # old dotfiles backup directory
 
-REQUIRED_PROGRAMS=(amixer angrysearch audacious compton emacs galculator glipper nautilus notify-send pacmd pactl pavucontrol rofi scrot skippy-xd synclient x-tile xbacklight xrandr xscreensaver)
-MISSING_PROGRAMS=() # TODO prompt for automatic install
+REQUIRED_PROGRAMS=(amixer angrysearch audacious compton galculator glipper
+                   nautilus notify-send pacmd pactl pavucontrol rofi scrot skippy-xd synclient
+                   x-tile xbacklight xrandr xscreensaver xscreensaver-command)
+
+MISSING_PROGRAMS=()
 
 check_command () {
     hash "$1" 2>/dev/null || { print_line >&2 "WARNING! $1 is not installed."; MISSING_PROGRAMS+=("$1"); }
@@ -38,7 +41,6 @@ deploy () {
     if [ -L "$link" ]; then
         target=$(readlink "$link")
         if [ "$target" == "$source" ]; then
-            # print_line "$link is already a link to $target"
             return
         fi
         print_line "Deleting $link which is a link to $target ..."
