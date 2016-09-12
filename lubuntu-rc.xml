@@ -387,7 +387,7 @@ and back in -->
     <keybind key="XF86WWW"><action name="Execute"><command>lxterminal</command></action></keybind>
     <keybind key="XF86Terminal"><action name="Execute"><command>lxterminal</command></action></keybind>
     <keybind key="C-A-T"><action name="Execute"><command>lxterminal</command></action></keybind>
-    <keybind key="F1"><action name="Execute"><command>lxterminal</command></action></keybind>
+    <!-- <keybind key="F1"><action name="Execute"><command>lxterminal</command></action></keybind> -->
 
 	<!-- Launch emacs client in new frame -->
 	<keybind key="W-q"><action name="Execute"><command>emacsclient -c</command></action></keybind>
