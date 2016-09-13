@@ -48,6 +48,8 @@ fi
 # ignore case on completion (except if shell is called from inside emacs)
 [ -z "$INSIDE_EMACS" ] && bind 'set completion-ignore-case on'
 
+export EDITOR="emacsclient --alternate-editor= -nw"
+
 # if [ -f ~/Terminalcity/dotfiles/make-completion-wrapper ]; then
 #     . ~/Terminalcity/dotfiles/make-completion-wrapper
 #
