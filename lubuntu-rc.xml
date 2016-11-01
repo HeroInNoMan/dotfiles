@@ -78,7 +78,7 @@ and back in -->
     <firstdesk>1</firstdesk>
     <names>
       <!-- set names up here if you want to, like this:
-	  -->
+      -->
       <name>D1</name>
       <name>D2</name>
       <name>D3</name>
@@ -135,19 +135,19 @@ and back in -->
     <keybind key="W-p"><action name="GoToDesktop"><to>left</to><wrap>no</wrap></action></keybind>
     <!-- <keybind key="C-A-Right"><action name="GoToDesktop"><to>right</to><wrap>no</wrap></action></keybind> -->
     <keybind key="W-n"><action name="GoToDesktop"><to>right</to><wrap>no</wrap></action></keybind>
-	<!-- <keybind key="S-A-Left"><action name="SendToDesktop"><to>left</to><wrap>no</wrap></action></keybind> -->
-	<!-- <keybind key="S-A-Right"><action name="SendToDesktop"><to>right</to><wrap>no</wrap></action></keybind> -->
-	<keybind key="W-F1"><action name="GoToDesktop"><to>1</to></action></keybind>
-	<keybind key="W-F2"><action name="GoToDesktop"><to>2</to></action></keybind>
-	<keybind key="W-F3"><action name="GoToDesktop"><to>3</to></action></keybind>
-	<keybind key="W-F4"><action name="GoToDesktop"><to>4</to></action></keybind>
-	<keybind key="W-F5"><action name="GoToDesktop"><to>5</to></action></keybind>
-	<keybind key="W-1"><action name="GoToDesktop"><to>1</to></action></keybind>
-	<keybind key="W-2"><action name="GoToDesktop"><to>2</to></action></keybind>
-	<keybind key="W-3"><action name="GoToDesktop"><to>3</to></action></keybind>
-	<keybind key="W-4"><action name="GoToDesktop"><to>4</to></action></keybind>
-	<keybind key="W-5"><action name="GoToDesktop"><to>5</to></action></keybind>
-	<keybind key="W-i"><action name="ToggleShowDesktop"/></keybind>
+    <!-- <keybind key="S-A-Left"><action name="SendToDesktop"><to>left</to><wrap>no</wrap></action></keybind> -->
+    <!-- <keybind key="S-A-Right"><action name="SendToDesktop"><to>right</to><wrap>no</wrap></action></keybind> -->
+    <keybind key="W-F1"><action name="GoToDesktop"><to>1</to></action></keybind>
+    <keybind key="W-F2"><action name="GoToDesktop"><to>2</to></action></keybind>
+    <keybind key="W-F3"><action name="GoToDesktop"><to>3</to></action></keybind>
+    <keybind key="W-F4"><action name="GoToDesktop"><to>4</to></action></keybind>
+    <keybind key="W-F5"><action name="GoToDesktop"><to>5</to></action></keybind>
+    <keybind key="W-1"><action name="GoToDesktop"><to>1</to></action></keybind>
+    <keybind key="W-2"><action name="GoToDesktop"><to>2</to></action></keybind>
+    <keybind key="W-3"><action name="GoToDesktop"><to>3</to></action></keybind>
+    <keybind key="W-4"><action name="GoToDesktop"><to>4</to></action></keybind>
+    <keybind key="W-5"><action name="GoToDesktop"><to>5</to></action></keybind>
+    <keybind key="W-i"><action name="ToggleShowDesktop"/></keybind>
     <!-- Windows -->
     <keybind key="A-F4"><action name="Close"/></keybind>
     <keybind key="A-Escape"><action name="Lower"/><action name="FocusToBottom"/><action name="Unfocus"/></keybind>
@@ -192,119 +192,119 @@ and back in -->
     <keybind key="W-S-Up"><action name="DirectionalCycleWindows"><direction>up</direction></action></keybind>
     <keybind key="W-S-Down"><action name="DirectionalCycleWindows"><direction>down</direction></action></keybind>
 
-	<!-- ################################################################### -->
+    <!-- ################################################################### -->
     <!-- ################ WINDOW TILING & MOVING MANAGEMENT ################ -->
-	<!-- ################################################################### -->
+    <!-- ################################################################### -->
 
-	<!-- WINDOW MANAGEMENT WITH ARROW KEYS -->
-	<!-- HalfLeftScreen -->
+    <!-- WINDOW MANAGEMENT WITH ARROW KEYS -->
+    <!-- HalfLeftScreen -->
     <keybind key="W-Left"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action></keybind>
-	<!-- HalfRightScreen -->
+    <!-- HalfRightScreen -->
     <keybind key="W-Right"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action></keybind>
     <!-- Increase window size  -->
     <keybind key="W-Up">
-	  <action name="If"><maximized>yes</maximized>
-	  <then><action name="ToggleFullscreen"/></then>
-	  <else><action name="ToggleMaximize"/></else>
-	  </action>
+      <action name="If"><maximized>yes</maximized>
+      <then><action name="ToggleFullscreen"/></then>
+      <else><action name="ToggleMaximize"/></else>
+      </action>
     </keybind>
     <!-- Decrease window size -->
     <keybind key="W-Down">
-	  <action name="If"><maximized>yes</maximized>
-	  <then><action name="ToggleMaximize"/></then>
-	  <else>
-		<action name="If"><undecorated>yes</undecorated>
-		<then><action name="ToggleFullscreen"/></then>
-		<else><action name="UnmaximizeFull"/></else>
-		</action>
-	  </else>
-	  </action>
+      <action name="If"><maximized>yes</maximized>
+      <then><action name="ToggleMaximize"/></then>
+      <else>
+        <action name="If"><undecorated>yes</undecorated>
+        <then><action name="ToggleFullscreen"/></then>
+        <else><action name="UnmaximizeFull"/></else>
+        </action>
+      </else>
+      </action>
     </keybind>
 
-	<!-- MORE TILING AND WINDOW MANAGEMENT, WITH PREFIX KEY -->
-	<keybind key="W-b">
+    <!-- MORE TILING AND WINDOW MANAGEMENT, WITH PREFIX KEY -->
+    <keybind key="W-b">
 
-	  <!-- Vertical tiling -->
-	  <keybind key="b">
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo"><width>50%</width></action>
-		<action name="MaximizeVert"/>
-		<action name="MoveResizeTo"><x>0</x><y>0</y></action>
-		<action name="NextWindow"><interactive>no</interactive><dialog>none</dialog>
-		<finalactions>
-		  <action name="UnmaximizeFull"/>
-		  <action name="MoveResizeTo"><width>50%</width></action>
-		  <action name="MaximizeVert"/>
-		  <action name="MoveResizeTo"><x>-0</x><y>0</y></action>
-		</finalactions>
-		</action>
-	  </keybind>
+      <!-- Vertical tiling -->
+      <keybind key="b">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo"><width>50%</width></action>
+        <action name="MaximizeVert"/>
+        <action name="MoveResizeTo"><x>0</x><y>0</y></action>
+        <action name="NextWindow"><interactive>no</interactive><dialog>none</dialog>
+        <finalactions>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><width>50%</width></action>
+          <action name="MaximizeVert"/>
+          <action name="MoveResizeTo"><x>-0</x><y>0</y></action>
+        </finalactions>
+        </action>
+      </keybind>
 
-	  <!-- Vertical tiling, ¼ / ¾ -->
-	  <keybind key="eacute">
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo"><width>25%</width></action>
-		<action name="MaximizeVert"/>
-		<action name="MoveResizeTo"><x>0</x><y>0</y></action>
-		<action name="NextWindow"><interactive>no</interactive><dialog>none</dialog>
-		<finalactions>
-		  <action name="UnmaximizeFull"/>
-		  <action name="MoveResizeTo"><width>75%</width></action>
-		  <action name="MaximizeVert"/>
-		  <action name="MoveResizeTo"><x>-0</x><y>0</y></action>
-		</finalactions>
-		</action>
-	  </keybind>
+      <!-- Vertical tiling, ¼ / ¾ -->
+      <keybind key="eacute">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo"><width>25%</width></action>
+        <action name="MaximizeVert"/>
+        <action name="MoveResizeTo"><x>0</x><y>0</y></action>
+        <action name="NextWindow"><interactive>no</interactive><dialog>none</dialog>
+        <finalactions>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><width>75%</width></action>
+          <action name="MaximizeVert"/>
+          <action name="MoveResizeTo"><x>-0</x><y>0</y></action>
+        </finalactions>
+        </action>
+      </keybind>
 
-	  <!-- Vertical tiling, ¾ / ¼ -->
-	  <keybind key="egrave">
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo"><width>75%</width></action>
-		<action name="MaximizeVert"/>
-		<action name="MoveResizeTo"><x>0</x><y>0</y></action>
-		<action name="NextWindow"><interactive>no</interactive><dialog>none</dialog>
-		<finalactions>
-		  <action name="UnmaximizeFull"/>
-		  <action name="MoveResizeTo"><width>25%</width></action>
-		  <action name="MaximizeVert"/>
-		  <action name="MoveResizeTo"><x>-0</x><y>0</y></action>
-		</finalactions>
-		</action>
-	  </keybind>
+      <!-- Vertical tiling, ¾ / ¼ -->
+      <keybind key="egrave">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo"><width>75%</width></action>
+        <action name="MaximizeVert"/>
+        <action name="MoveResizeTo"><x>0</x><y>0</y></action>
+        <action name="NextWindow"><interactive>no</interactive><dialog>none</dialog>
+        <finalactions>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><width>25%</width></action>
+          <action name="MaximizeVert"/>
+          <action name="MoveResizeTo"><x>-0</x><y>0</y></action>
+        </finalactions>
+        </action>
+      </keybind>
 
-	  <!-- Horizontal tiling -->
-	  <keybind key="o">
-		<action name="UnmaximizeFull"/>
-		<action name="MoveResizeTo"><height>50%</height></action>
-		<action name="MaximizeHorz"/>
-		<action name="MoveResizeTo"><x>0</x><y>0</y></action>
-		<action name="NextWindow"><interactive>no</interactive><dialog>none</dialog>
-		<finalactions>
-		  <action name="UnmaximizeFull"/>
-		  <action name="MoveResizeTo"><height>50%</height></action>
-		  <action name="MaximizeHorz"/>
-		  <action name="MoveResizeTo"><x>0</x><y>-0</y></action>
-		</finalactions>
-		</action>
-	  </keybind>
+      <!-- Horizontal tiling -->
+      <keybind key="o">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo"><height>50%</height></action>
+        <action name="MaximizeHorz"/>
+        <action name="MoveResizeTo"><x>0</x><y>0</y></action>
+        <action name="NextWindow"><interactive>no</interactive><dialog>none</dialog>
+        <finalactions>
+          <action name="UnmaximizeFull"/>
+          <action name="MoveResizeTo"><height>50%</height></action>
+          <action name="MaximizeHorz"/>
+          <action name="MoveResizeTo"><x>0</x><y>-0</y></action>
+        </finalactions>
+        </action>
+      </keybind>
 
       <keybind key="m">
-		<keybind key="c"><action name="Execute"><command>manage-displays.sh dual-screen-copy</command></action></keybind>
-		<keybind key="b"><action name="Execute"><command>manage-displays.sh built-in-only</command></action></keybind>
-		<keybind key="l"><action name="Execute"><command>manage-displays.sh extend-left</command></action></keybind>
-		<keybind key="r"><action name="Execute"><command>manage-displays.sh extend-right</command></action></keybind>
-		<keybind key="e"><action name="Execute"><command>manage-displays.sh external-only</command></action></keybind>
-		<keybind key="p"><action name="Execute"><command>manage-displays.sh previous</command></action></keybind>
-		<keybind key="m"><action name="Execute"><command>manage-displays.sh</command></action></keybind>
-	  </keybind>
+        <keybind key="c"><action name="Execute"><command>manage-displays.sh dual-screen-copy</command></action></keybind>
+        <keybind key="b"><action name="Execute"><command>manage-displays.sh built-in-only</command></action></keybind>
+        <keybind key="l"><action name="Execute"><command>manage-displays.sh extend-left</command></action></keybind>
+        <keybind key="r"><action name="Execute"><command>manage-displays.sh extend-right</command></action></keybind>
+        <keybind key="e"><action name="Execute"><command>manage-displays.sh external-only</command></action></keybind>
+        <keybind key="p"><action name="Execute"><command>manage-displays.sh previous</command></action></keybind>
+        <keybind key="m"><action name="Execute"><command>manage-displays.sh</command></action></keybind>
+      </keybind>
 
       <keybind key="m"><action name="Execute"><command>manage-displays.sh</command></action></keybind>
-	  <keybind key="f"><action name="ToggleFullscreen"/></keybind> <!-- full screen -->
-	  <keybind key="i"><action name="Iconify"/></keybind> <!-- Iconify -->
-	  <keybind key="n"><action name="MoveResizeTo"><monitor>next</monitor></action></keybind> <!-- Send window to next monitor -->
+      <keybind key="f"><action name="ToggleFullscreen"/></keybind> <!-- full screen -->
+      <keybind key="i"><action name="Iconify"/></keybind> <!-- Iconify -->
+      <keybind key="n"><action name="MoveResizeTo"><monitor>next</monitor></action></keybind> <!-- Send window to next monitor -->
 
-	  <!-- Move window to edge/corner and resize to a fraction of the screen display -->
-	  <keybind key="v"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height><width>50%</width></action></keybind> <!-- ⌜ -->
+      <!-- Move window to edge/corner and resize to a fraction of the screen display -->
+      <keybind key="v"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height><width>50%</width></action></keybind> <!-- ⌜ -->
       <keybind key="l"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>50%</height><width>50%</width></action></keybind> <!-- ⌝ -->
       <keybind key="q"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height><width>50%</width></action></keybind> <!-- ⌞ -->
       <keybind key="h"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>-0</y><height>50%</height><width>50%</width></action></keybind> <!-- ⌟ -->
@@ -314,57 +314,57 @@ and back in -->
       <keybind key="g"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>-0</y><height>50%</height><width>100%</width></action></keybind> <!-- ⎵  -->
       <keybind key="s"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x>0<y></y><height>100%</height><width>100%</width></action></keybind> <!-- □ -->
 
-	  <!-- Send window to another desktop -->
-	  <keybind key="1"><action name="SendToDesktop"><to>1</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 1 -->
-	  <keybind key="2"><action name="SendToDesktop"><to>2</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 2 -->
-	  <keybind key="3"><action name="SendToDesktop"><to>3</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 3 -->
-	  <keybind key="4"><action name="SendToDesktop"><to>4</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 4 -->
-	  <keybind key="5"><action name="SendToDesktop"><to>5</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 5 -->
+      <!-- Send window to another desktop -->
+      <keybind key="1"><action name="SendToDesktop"><to>1</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 1 -->
+      <keybind key="2"><action name="SendToDesktop"><to>2</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 2 -->
+      <keybind key="3"><action name="SendToDesktop"><to>3</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 3 -->
+      <keybind key="4"><action name="SendToDesktop"><to>4</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 4 -->
+      <keybind key="5"><action name="SendToDesktop"><to>5</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 5 -->
 
-	</keybind>
+    </keybind>
 
-	<!-- TILING WITH X-TILE -->
-	<keybind key="W-y">
-	  <keybind key="w"><action name="Execute"><command>x-tile w</command></action></keybind> <!-- w open the x-tile main window without using the panel -->
-	  <keybind key="z"><action name="Execute"><command>x-tile z</command></action></keybind> <!-- z undo the latest tiling operation -->
-	  <keybind key="v"><action name="Execute"><command>x-tile v</command></action></keybind> <!-- v tile all opened windows vertically -->
-	  <keybind key="h"><action name="Execute"><command>x-tile h</command></action></keybind> <!-- h tile all opened windows horizontally -->
-	  <keybind key="u"><action name="Execute"><command>x-tile u</command></action></keybind> <!-- u tile all opened windows triangle-up -->
-	  <keybind key="d"><action name="Execute"><command>x-tile d</command></action></keybind> <!-- d tile all opened windows triangle-down -->
-	  <keybind key="l"><action name="Execute"><command>x-tile l</command></action></keybind> <!-- l tile all opened windows triangle-left -->
-	  <keybind key="r"><action name="Execute"><command>x-tile r</command></action></keybind> <!-- r tile all opened windows triangle-right -->
-	  <keybind key="q"><action name="Execute"><command>x-tile q</command></action></keybind> <!-- q quad tile all opened windows -->
-	  <keybind key="1"><action name="Execute"><command>x-tile 1</command></action></keybind> <!-- 1 custom tile 1 all opened windows -->
-	  <keybind key="2"><action name="Execute"><command>x-tile 2</command></action></keybind> <!-- 2 custom tile 2 all opened windows -->
-	  <keybind key="i"><action name="Execute"><command>x-tile i</command></action></keybind> <!-- i invert the order of the latest tiling operation -->
-	  <keybind key="y"><action name="Execute"><command>x-tile y</command></action></keybind> <!-- y cycle the order of the latest tiling operation -->
-	  <keybind key="m"><action name="Execute"><command>x-tile m</command></action></keybind> <!-- m maximize all opened windows -->
-	  <keybind key="M"><action name="Execute"><command>x-tile M</command></action></keybind> <!-- M unmaximize all opened windows -->
-	  <keybind key="c"><action name="Execute"><command>x-tile c</command></action></keybind> <!-- c close all opened windows -->
-	  <keybind key="g"><action name="Execute"><command>x-tile g</command></action></keybind> <!-- g = g 0 = g 0 0 tile all opened windows in a grid with automatic rows  and  columns -->
-	  <!-- ALL SAME BINDINGS IN CHROOT MODE WITH W-y W-y -->
-	  <keybind key="W-y" chroot="true">
-		<keybind key="A-Tab"><action name="NextWindow"><dialog>icons</dialog><finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions></action></keybind>
-		<keybind key="w"><action name="Execute"><command>x-tile w</command></action></keybind> <!-- w open the x-tile main window without using the panel -->
-		<keybind key="z"><action name="Execute"><command>x-tile z</command></action></keybind> <!-- z undo the latest tiling operation -->
-		<keybind key="v"><action name="Execute"><command>x-tile v</command></action></keybind> <!-- v tile all opened windows vertically -->
-		<keybind key="h"><action name="Execute"><command>x-tile h</command></action></keybind> <!-- h tile all opened windows horizontally -->
-		<keybind key="u"><action name="Execute"><command>x-tile u</command></action></keybind> <!-- u tile all opened windows triangle-up -->
-		<keybind key="d"><action name="Execute"><command>x-tile d</command></action></keybind> <!-- d tile all opened windows triangle-down -->
-		<keybind key="l"><action name="Execute"><command>x-tile l</command></action></keybind> <!-- l tile all opened windows triangle-left -->
-		<keybind key="r"><action name="Execute"><command>x-tile r</command></action></keybind> <!-- r tile all opened windows triangle-right -->
-		<keybind key="q"><action name="Execute"><command>x-tile q</command></action></keybind> <!-- q quad tile all opened windows -->
-		<keybind key="1"><action name="Execute"><command>x-tile 1</command></action></keybind> <!-- 1 custom tile 1 all opened windows -->
-		<keybind key="2"><action name="Execute"><command>x-tile 2</command></action></keybind> <!-- 2 custom tile 2 all opened windows -->
-		<keybind key="i"><action name="Execute"><command>x-tile i</command></action></keybind> <!-- i invert the order of the latest tiling operation -->
-		<keybind key="y"><action name="Execute"><command>x-tile y</command></action></keybind> <!-- y cycle the order of the latest tiling operation -->
-		<keybind key="m"><action name="Execute"><command>x-tile m</command></action></keybind> <!-- m maximize all opened windows -->
-		<keybind key="M"><action name="Execute"><command>x-tile M</command></action></keybind> <!-- M unmaximize all opened windows -->
-		<keybind key="c"><action name="Execute"><command>x-tile c</command></action></keybind> <!-- c close all opened windows -->
-		<keybind key="g"><action name="Execute"><command>x-tile g</command></action></keybind> <!-- g = g 0 = g 0 0 tile all opened windows in a grid with automatic rows  and  columns -->
-		<keybind key="Escape"><action name="BreakChroot"/></keybind>
-	  </keybind>
-	</keybind>
+    <!-- TILING WITH X-TILE -->
+    <keybind key="W-y">
+      <keybind key="w"><action name="Execute"><command>x-tile w</command></action></keybind> <!-- w open the x-tile main window without using the panel -->
+      <keybind key="z"><action name="Execute"><command>x-tile z</command></action></keybind> <!-- z undo the latest tiling operation -->
+      <keybind key="v"><action name="Execute"><command>x-tile v</command></action></keybind> <!-- v tile all opened windows vertically -->
+      <keybind key="h"><action name="Execute"><command>x-tile h</command></action></keybind> <!-- h tile all opened windows horizontally -->
+      <keybind key="u"><action name="Execute"><command>x-tile u</command></action></keybind> <!-- u tile all opened windows triangle-up -->
+      <keybind key="d"><action name="Execute"><command>x-tile d</command></action></keybind> <!-- d tile all opened windows triangle-down -->
+      <keybind key="l"><action name="Execute"><command>x-tile l</command></action></keybind> <!-- l tile all opened windows triangle-left -->
+      <keybind key="r"><action name="Execute"><command>x-tile r</command></action></keybind> <!-- r tile all opened windows triangle-right -->
+      <keybind key="q"><action name="Execute"><command>x-tile q</command></action></keybind> <!-- q quad tile all opened windows -->
+      <keybind key="1"><action name="Execute"><command>x-tile 1</command></action></keybind> <!-- 1 custom tile 1 all opened windows -->
+      <keybind key="2"><action name="Execute"><command>x-tile 2</command></action></keybind> <!-- 2 custom tile 2 all opened windows -->
+      <keybind key="i"><action name="Execute"><command>x-tile i</command></action></keybind> <!-- i invert the order of the latest tiling operation -->
+      <keybind key="y"><action name="Execute"><command>x-tile y</command></action></keybind> <!-- y cycle the order of the latest tiling operation -->
+      <keybind key="m"><action name="Execute"><command>x-tile m</command></action></keybind> <!-- m maximize all opened windows -->
+      <keybind key="M"><action name="Execute"><command>x-tile M</command></action></keybind> <!-- M unmaximize all opened windows -->
+      <keybind key="c"><action name="Execute"><command>x-tile c</command></action></keybind> <!-- c close all opened windows -->
+      <keybind key="g"><action name="Execute"><command>x-tile g</command></action></keybind> <!-- g = g 0 = g 0 0 tile all opened windows in a grid with automatic rows  and  columns -->
+      <!-- ALL SAME BINDINGS IN CHROOT MODE WITH W-y W-y -->
+      <keybind key="W-y" chroot="true">
+        <keybind key="A-Tab"><action name="NextWindow"><dialog>icons</dialog><finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions></action></keybind>
+        <keybind key="w"><action name="Execute"><command>x-tile w</command></action></keybind> <!-- w open the x-tile main window without using the panel -->
+        <keybind key="z"><action name="Execute"><command>x-tile z</command></action></keybind> <!-- z undo the latest tiling operation -->
+        <keybind key="v"><action name="Execute"><command>x-tile v</command></action></keybind> <!-- v tile all opened windows vertically -->
+        <keybind key="h"><action name="Execute"><command>x-tile h</command></action></keybind> <!-- h tile all opened windows horizontally -->
+        <keybind key="u"><action name="Execute"><command>x-tile u</command></action></keybind> <!-- u tile all opened windows triangle-up -->
+        <keybind key="d"><action name="Execute"><command>x-tile d</command></action></keybind> <!-- d tile all opened windows triangle-down -->
+        <keybind key="l"><action name="Execute"><command>x-tile l</command></action></keybind> <!-- l tile all opened windows triangle-left -->
+        <keybind key="r"><action name="Execute"><command>x-tile r</command></action></keybind> <!-- r tile all opened windows triangle-right -->
+        <keybind key="q"><action name="Execute"><command>x-tile q</command></action></keybind> <!-- q quad tile all opened windows -->
+        <keybind key="1"><action name="Execute"><command>x-tile 1</command></action></keybind> <!-- 1 custom tile 1 all opened windows -->
+        <keybind key="2"><action name="Execute"><command>x-tile 2</command></action></keybind> <!-- 2 custom tile 2 all opened windows -->
+        <keybind key="i"><action name="Execute"><command>x-tile i</command></action></keybind> <!-- i invert the order of the latest tiling operation -->
+        <keybind key="y"><action name="Execute"><command>x-tile y</command></action></keybind> <!-- y cycle the order of the latest tiling operation -->
+        <keybind key="m"><action name="Execute"><command>x-tile m</command></action></keybind> <!-- m maximize all opened windows -->
+        <keybind key="M"><action name="Execute"><command>x-tile M</command></action></keybind> <!-- M unmaximize all opened windows -->
+        <keybind key="c"><action name="Execute"><command>x-tile c</command></action></keybind> <!-- c close all opened windows -->
+        <keybind key="g"><action name="Execute"><command>x-tile g</command></action></keybind> <!-- g = g 0 = g 0 0 tile all opened windows in a grid with automatic rows  and  columns -->
+        <keybind key="Escape"><action name="BreakChroot"/></keybind>
+      </keybind>
+    </keybind>
 
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
     <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
@@ -379,85 +379,85 @@ and back in -->
     <keybind key="F11"><action name="ToggleFullscreen"/></keybind>
     <!-- Launch task manager on Ctrl + Alt + Del-->
     <keybind key="C-A-Delete"><action name="Execute"><command>lxtask</command></action></keybind>
-	<!-- App launcher -->
-	<keybind key="W-d"><action name="Execute"><command>rofi-run.sh</command></action></keybind>
-	<!-- Music launcher -->
-	<keybind key="W-j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
+    <!-- App launcher -->
+    <keybind key="W-d"><action name="Execute"><command>rofi-run.sh</command></action></keybind>
+    <!-- Music launcher -->
+    <keybind key="W-j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
     <!-- Launch terminal -->
     <keybind key="XF86WWW"><action name="Execute"><command>lxterminal</command></action></keybind>
     <keybind key="XF86Terminal"><action name="Execute"><command>lxterminal</command></action></keybind>
     <keybind key="C-A-T"><action name="Execute"><command>lxterminal</command></action></keybind>
     <!-- <keybind key="F1"><action name="Execute"><command>lxterminal</command></action></keybind> -->
 
-	<!-- Launch emacs client in new frame -->
-	<keybind key="W-q"><action name="Execute"><command>emacsclient -c</command></action></keybind>
-    <!-- Lock the screen on Ctrl + Alt + l-->
+    <!-- Launch emacs client in new frame -->
+    <keybind key="W-q"><action name="Execute"><command>emacsclient -c</command></action></keybind>
+    <!-- Lock the screen on Ctrl + Alt + l -->
     <keybind key="C-A-l"><action name="Execute"><command>xscreensaver-command -lock</command></action></keybind>
     <!-- Lock the screen on W + l-->
     <keybind key="W-l"><action name="Execute"><command>xscreensaver-command -lock</command></action></keybind>
     <!-- Volume / brightness management -->
     <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-	<keybind key="W-egrave"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
+    <keybind key="W-egrave"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
     <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
     <keybind key="W-eacute"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
     <keybind key="W-agrave"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
     <keybind key="W-m"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-	<keybind key="W-t"><action name="Execute"><command>xbacklight -dec 30</command></action></keybind>
-	<keybind key="W-v"><action name="Execute"><command>xbacklight -inc 30</command></action></keybind>
+    <keybind key="W-t"><action name="Execute"><command>xbacklight -dec 30</command></action></keybind>
+    <keybind key="W-v"><action name="Execute"><command>xbacklight -inc 30</command></action></keybind>
     <!-- Volume / brightness management (W-u, chrooted on W-u W-u) -->
     <keybind key="W-u">
-	  <keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
-	  <!-- raise volume -->
-	  <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-	  <keybind key="F3"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-	  <keybind key="egrave"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-	  <!-- lower volume -->
-	  <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-	  <keybind key="F2"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-	  <keybind key="eacute"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-	  <!-- mute -->
-	  <keybind key="XF86AudioMute"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-	  <keybind key="F1"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-	  <keybind key="m"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-	  <keybind key="agrave"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-	  <!-- decrease light -->
-	  <keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
-	  <keybind key="F5"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
-	  <!-- increase light -->
-	  <keybind key="v"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
-	  <keybind key="F6"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
+      <keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
+      <!-- raise volume -->
+      <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
+      <keybind key="F3"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
+      <keybind key="egrave"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
+      <!-- lower volume -->
+      <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
+      <keybind key="F2"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
+      <keybind key="eacute"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
+      <!-- mute -->
+      <keybind key="XF86AudioMute"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
+      <keybind key="F1"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
+      <keybind key="m"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
+      <keybind key="agrave"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
+      <!-- decrease light -->
+      <keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
+      <keybind key="F5"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
+      <!-- increase light -->
+      <keybind key="v"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
+      <keybind key="F6"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
       <keybind key="W-u" chroot="true">
-		<keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
-		<!-- raise volume -->
-		<keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-		<keybind key="F3"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-		<keybind key="egrave"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-		<!-- lower volume -->
-		<keybind key="XF86AudioLowerVolume"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-		<keybind key="F2"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-		<keybind key="eacute"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-		<!-- mute -->
-		<keybind key="XF86AudioMute"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-		<keybind key="F1"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-		<keybind key="m"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-		<keybind key="agrave"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-		<!-- decrease light -->
-		<keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
-		<keybind key="F5"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
-		<!-- increase light -->
-		<keybind key="v"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
-		<keybind key="F6"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
-		<keybind key="Escape"><action name="BreakChroot"/></keybind>
-	  </keybind>
-	</keybind>
+        <keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
+        <!-- raise volume -->
+        <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
+        <keybind key="F3"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
+        <keybind key="egrave"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
+        <!-- lower volume -->
+        <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
+        <keybind key="F2"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
+        <keybind key="eacute"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
+        <!-- mute -->
+        <keybind key="XF86AudioMute"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
+        <keybind key="F1"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
+        <keybind key="m"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
+        <keybind key="agrave"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
+        <!-- decrease light -->
+        <keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
+        <keybind key="F5"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
+        <!-- increase light -->
+        <keybind key="v"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
+        <keybind key="F6"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
+        <keybind key="Escape"><action name="BreakChroot"/></keybind>
+      </keybind>
+    </keybind>
 
-	<!-- launch (Open) applications -->
-	<keybind key="W-o">
-	  <keybind key="e"><action name="Execute"><command>emacsclient -c</command></action></keybind>
-	  <keybind key="k"><action name="Execute"><command>xkill</command></action></keybind>
-	  <keybind key="p"><action name="Execute"><command>~/Vidéos/popcorn-time/Popcorn-Time</command></action></keybind>
-	  <keybind key="q"><action name="Execute"><command>compton -b</command></action></keybind>
-	</keybind>
+    <!-- launch (Open) applications -->
+    <keybind key="W-o">
+      <keybind key="e"><action name="Execute"><command>emacsclient -c</command></action></keybind>
+      <keybind key="k"><action name="Execute"><command>xkill</command></action></keybind>
+      <keybind key="p"><action name="Execute"><command>~/Vidéos/popcorn-time/Popcorn-Time</command></action></keybind>
+      <keybind key="q"><action name="Execute"><command>compton -b</command></action></keybind>
+    </keybind>
 
     <!-- Calculator -->
     <keybind key="XF86Calculator"><action name="Execute"><command>galculator</command></action></keybind>
@@ -480,202 +480,202 @@ and back in -->
     <keybind key="W-r"><action name="Execute"><command>openbox --reconfigure</command></action></keybind>
     <!-- key chain for audacious -->
     <keybind key="W-a">
-	  <keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
-	  <keybind key="n"><action name="Execute"><command>audacious --fwd</command></action></keybind>
-	  <keybind key="p"><action name="Execute"><command>audacious --rew</command></action></keybind>
-	  <keybind key="u"><action name="Execute"><command>audacious --pause</command></action></keybind>
-	  <keybind key="space"><action name="Execute"><command>audacious --play-pause</command></action></keybind>
-	  <keybind key="m"><action name="Execute"><command>audacious --quit-after-play</command></action></keybind>
-	  <keybind key="h"><action name="Execute"><command>audacious --headless</command></action></keybind>
-	  <keybind key="e"><action name="Execute"><command>audacious --enqueue</command></action></keybind>
-	  <keybind key="S-e"><action name="Execute"><command>audacious --enqueue-to-temp</command></action></keybind>
-	  <keybind key="j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
+      <keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
+      <keybind key="n"><action name="Execute"><command>audacious --fwd</command></action></keybind>
+      <keybind key="p"><action name="Execute"><command>audacious --rew</command></action></keybind>
+      <keybind key="u"><action name="Execute"><command>audacious --pause</command></action></keybind>
+      <keybind key="space"><action name="Execute"><command>audacious --play-pause</command></action></keybind>
+      <keybind key="m"><action name="Execute"><command>audacious --quit-after-play</command></action></keybind>
+      <keybind key="h"><action name="Execute"><command>audacious --headless</command></action></keybind>
+      <keybind key="e"><action name="Execute"><command>audacious --enqueue</command></action></keybind>
+      <keybind key="S-e"><action name="Execute"><command>audacious --enqueue-to-temp</command></action></keybind>
+      <keybind key="j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
       <!-- key chain for audacious (chrooted) -->
       <keybind key="W-a" chroot="true">
-		<keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
-		<keybind key="n"><action name="Execute"><command>audacious --fwd</command></action></keybind>
-		<keybind key="p"><action name="Execute"><command>audacious --rew</command></action></keybind>
-		<keybind key="u"><action name="Execute"><command>audacious --pause</command></action></keybind>
-		<keybind key="space"><action name="Execute"><command>audacious --play-pause</command></action></keybind>
-		<keybind key="m"><action name="Execute"><command>audacious --quit-after-play</command></action></keybind>
-		<keybind key="h"><action name="Execute"><command>audacious --headless</command></action></keybind>
-		<keybind key="e"><action name="Execute"><command>audacious --enqueue</command></action></keybind>
-		<keybind key="S-e"><action name="Execute"><command>audacious --enqueue-to-temp</command></action></keybind>
-		<keybind key="j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
-		<keybind key="Escape"><action name="BreakChroot"/></keybind>
+        <keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
+        <keybind key="n"><action name="Execute"><command>audacious --fwd</command></action></keybind>
+        <keybind key="p"><action name="Execute"><command>audacious --rew</command></action></keybind>
+        <keybind key="u"><action name="Execute"><command>audacious --pause</command></action></keybind>
+        <keybind key="space"><action name="Execute"><command>audacious --play-pause</command></action></keybind>
+        <keybind key="m"><action name="Execute"><command>audacious --quit-after-play</command></action></keybind>
+        <keybind key="h"><action name="Execute"><command>audacious --headless</command></action></keybind>
+        <keybind key="e"><action name="Execute"><command>audacious --enqueue</command></action></keybind>
+        <keybind key="S-e"><action name="Execute"><command>audacious --enqueue-to-temp</command></action></keybind>
+        <keybind key="j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
+        <keybind key="Escape"><action name="BreakChroot"/></keybind>
       </keybind>
     </keybind>
     <!-- Manage display (Fn+F9) -->
     <keybind key="0xF8"><action name="Execute"><command>manage-displays.sh</command></action></keybind>
   </keyboard>
   <mouse>
-	<dragThreshold>8</dragThreshold>
-	<!-- number of pixels the mouse must move before a drag begins -->
-	<doubleClickTime>200</doubleClickTime>
-	<!-- in milliseconds (1000 = 1 second) -->
-	<screenEdgeWarpTime>400</screenEdgeWarpTime>
-	<!-- Time before changing desktops when the pointer touches the edge of the
-		 screen while moving a window, in milliseconds (1000 = 1 second).
-		 Set this to 0 to disable warping -->
-	<screenEdgeWarpMouse>false</screenEdgeWarpMouse>
-	<!-- Set this to TRUE to move the mouse pointer across the desktop when
-		 switching due to hitting the edge of the screen -->
-	<context name="Frame">
-	  <mousebind button="A-Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-	  <mousebind button="A-Left" action="Click"><action name="Unshade"/></mousebind><mousebind button="A-Left" action="Drag"><action name="Move"/></mousebind>
-	  <mousebind button="A-Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
-	  <mousebind button="A-Right" action="Drag"><action name="Resize"/></mousebind>
-	  <mousebind button="A-Middle" action="Press"><action name="Lower"/><action name="FocusToBottom"/><action name="Unfocus"/></mousebind>
-	  <mousebind button="A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
-	  <mousebind button="A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
-	  <mousebind button="C-A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
-	  <mousebind button="C-A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
-	  <mousebind button="A-S-Up" action="Click"><action name="SendToDesktop"><to>previous</to></action></mousebind>
-	  <mousebind button="A-S-Down" action="Click"><action name="SendToDesktop"><to>next</to></action></mousebind>
-	</context>
-	<context name="Titlebar">
-	  <mousebind button="Left" action="Drag"><action name="Move"/></mousebind>
-	  <mousebind button="Left" action="DoubleClick"><action name="ToggleMaximize"/></mousebind>
-	  <mousebind button="Up" action="Click">
-		<action name="if">
-		  <shaded>no</shaded>
-		  <then>
-			<action name="Shade"/>
-			<action name="FocusToBottom"/>
-			<action name="Unfocus"/>
-			<action name="Lower"/>
-		  </then>
-		</action>
-	  </mousebind>
-	  <mousebind button="Down" action="Click">
-		<action name="if">
-		  <shaded>yes</shaded>
-		  <then>
-			<action name="Unshade"/>
-			<action name="Raise"/>
-		  </then>
-		</action>
-	  </mousebind>
-	</context>
-	<context name="Titlebar Top Right Bottom Left TLCorner TRCorner BRCorner BLCorner">
-	  <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
-	  <mousebind button="Middle" action="Press"><action name="Lower"/><action name="FocusToBottom"/><action name="Unfocus"/></mousebind>
-	  <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="ShowMenu"><menu>client-menu</menu></action></mousebind>
-	</context>
-	<context name="Top"><mousebind button="Left" action="Drag"><action name="Resize"><edge>top</edge></action></mousebind></context>
-	<context name="Left"><mousebind button="Left" action="Drag"><action name="Resize"><edge>left</edge></action></mousebind></context>
-	<context name="Right"><mousebind button="Left" action="Drag"><action name="Resize"><edge>right</edge></action></mousebind></context>
-	<context name="Bottom">
-	  <mousebind button="Left" action="Drag"><action name="Resize"><edge>bottom</edge></action></mousebind>
-	  <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="ShowMenu"><menu>client-menu</menu></action></mousebind>
-	</context>
-	<context name="TRCorner BRCorner TLCorner BLCorner">
-	  <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
-	  <mousebind button="Left" action="Drag"><action name="Resize"/></mousebind>
-	</context>
-	<context name="Client">
-	  <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-	  <mousebind button="Middle" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-	  <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-	</context>
-	<context name="Icon">
-	  <mousebind button="Left" action="Press">
-		<action name="Focus"/>
-		<action name="Raise"/>
-		<action name="Unshade"/>
-		<action name="ShowMenu">
-		  <menu>client-menu</menu>
-		</action>
-	  </mousebind>
-	  <mousebind button="Right" action="Press">
-		<action name="Focus"/>
-		<action name="Raise"/>
-		<action name="ShowMenu">
-		  <menu>client-menu</menu>
-		</action>
-	  </mousebind>
-	</context>
-	<context name="AllDesktops">
-	  <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
-	  <mousebind button="Left" action="Click"><action name="ToggleOmnipresent"/></mousebind>
-	</context>
-	<context name="Shade">
-	  <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-	  <mousebind button="Left" action="Click"><action name="ToggleShade"/></mousebind>
-	</context>
-	<context name="Iconify">
-	  <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-	  <mousebind button="Left" action="Click"><action name="Iconify"/></mousebind>
-	</context>
-	<context name="Maximize">
-	  <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
-	  <mousebind button="Middle" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
-	  <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
-	  <mousebind button="Left" action="Click"><action name="ToggleMaximize"/></mousebind>
-	  <mousebind button="Middle" action="Click"><action name="ToggleMaximize"><direction>vertical</direction></action></mousebind>
-	  <mousebind button="Right" action="Click"><action name="ToggleMaximize"><direction>horizontal</direction></action></mousebind>
-	</context>
-	<context name="Close">
-	  <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
-	  <mousebind button="Left" action="Click"><action name="Close"/></mousebind>
-	</context>
-	<context name="Desktop">
-	  <mousebind button="Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
-	  <mousebind button="Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
-	  <mousebind button="A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
-	  <mousebind button="A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
-	  <mousebind button="C-A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
-	  <mousebind button="C-A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
-	  <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-	  <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
-	</context>
-	<context name="Root">
-	  <!-- Menus -->
-	  <mousebind button="Middle" action="Press"><action name="ShowMenu"><menu>client-list-combined-menu</menu></action></mousebind>
-	  <mousebind button="Right" action="Press"><action name="ShowMenu"><menu>root-menu</menu></action></mousebind>
-	</context>
-	<context name="MoveResize">
-	  <mousebind button="Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
-	  <mousebind button="Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
-	  <mousebind button="A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
-	  <mousebind button="A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
-	</context>
+    <dragThreshold>8</dragThreshold>
+    <!-- number of pixels the mouse must move before a drag begins -->
+    <doubleClickTime>200</doubleClickTime>
+    <!-- in milliseconds (1000 = 1 second) -->
+    <screenEdgeWarpTime>400</screenEdgeWarpTime>
+    <!-- Time before changing desktops when the pointer touches the edge of the
+         screen while moving a window, in milliseconds (1000 = 1 second).
+         Set this to 0 to disable warping -->
+    <screenEdgeWarpMouse>false</screenEdgeWarpMouse>
+    <!-- Set this to TRUE to move the mouse pointer across the desktop when
+         switching due to hitting the edge of the screen -->
+    <context name="Frame">
+      <mousebind button="A-Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="A-Left" action="Click"><action name="Unshade"/></mousebind><mousebind button="A-Left" action="Drag"><action name="Move"/></mousebind>
+      <mousebind button="A-Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
+      <mousebind button="A-Right" action="Drag"><action name="Resize"/></mousebind>
+      <mousebind button="A-Middle" action="Press"><action name="Lower"/><action name="FocusToBottom"/><action name="Unfocus"/></mousebind>
+      <mousebind button="A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
+      <mousebind button="A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
+      <mousebind button="C-A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
+      <mousebind button="C-A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
+      <mousebind button="A-S-Up" action="Click"><action name="SendToDesktop"><to>previous</to></action></mousebind>
+      <mousebind button="A-S-Down" action="Click"><action name="SendToDesktop"><to>next</to></action></mousebind>
+    </context>
+    <context name="Titlebar">
+      <mousebind button="Left" action="Drag"><action name="Move"/></mousebind>
+      <mousebind button="Left" action="DoubleClick"><action name="ToggleMaximize"/></mousebind>
+      <mousebind button="Up" action="Click">
+        <action name="if">
+          <shaded>no</shaded>
+          <then>
+            <action name="Shade"/>
+            <action name="FocusToBottom"/>
+            <action name="Unfocus"/>
+            <action name="Lower"/>
+          </then>
+        </action>
+      </mousebind>
+      <mousebind button="Down" action="Click">
+        <action name="if">
+          <shaded>yes</shaded>
+          <then>
+            <action name="Unshade"/>
+            <action name="Raise"/>
+          </then>
+        </action>
+      </mousebind>
+    </context>
+    <context name="Titlebar Top Right Bottom Left TLCorner TRCorner BRCorner BLCorner">
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
+      <mousebind button="Middle" action="Press"><action name="Lower"/><action name="FocusToBottom"/><action name="Unfocus"/></mousebind>
+      <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="ShowMenu"><menu>client-menu</menu></action></mousebind>
+    </context>
+    <context name="Top"><mousebind button="Left" action="Drag"><action name="Resize"><edge>top</edge></action></mousebind></context>
+    <context name="Left"><mousebind button="Left" action="Drag"><action name="Resize"><edge>left</edge></action></mousebind></context>
+    <context name="Right"><mousebind button="Left" action="Drag"><action name="Resize"><edge>right</edge></action></mousebind></context>
+    <context name="Bottom">
+      <mousebind button="Left" action="Drag"><action name="Resize"><edge>bottom</edge></action></mousebind>
+      <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="ShowMenu"><menu>client-menu</menu></action></mousebind>
+    </context>
+    <context name="TRCorner BRCorner TLCorner BLCorner">
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
+      <mousebind button="Left" action="Drag"><action name="Resize"/></mousebind>
+    </context>
+    <context name="Client">
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="Middle" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+    </context>
+    <context name="Icon">
+      <mousebind button="Left" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="Unshade"/>
+        <action name="ShowMenu">
+          <menu>client-menu</menu>
+        </action>
+      </mousebind>
+      <mousebind button="Right" action="Press">
+        <action name="Focus"/>
+        <action name="Raise"/>
+        <action name="ShowMenu">
+          <menu>client-menu</menu>
+        </action>
+      </mousebind>
+    </context>
+    <context name="AllDesktops">
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
+      <mousebind button="Left" action="Click"><action name="ToggleOmnipresent"/></mousebind>
+    </context>
+    <context name="Shade">
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="Left" action="Click"><action name="ToggleShade"/></mousebind>
+    </context>
+    <context name="Iconify">
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="Left" action="Click"><action name="Iconify"/></mousebind>
+    </context>
+    <context name="Maximize">
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
+      <mousebind button="Middle" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
+      <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
+      <mousebind button="Left" action="Click"><action name="ToggleMaximize"/></mousebind>
+      <mousebind button="Middle" action="Click"><action name="ToggleMaximize"><direction>vertical</direction></action></mousebind>
+      <mousebind button="Right" action="Click"><action name="ToggleMaximize"><direction>horizontal</direction></action></mousebind>
+    </context>
+    <context name="Close">
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/><action name="Unshade"/></mousebind>
+      <mousebind button="Left" action="Click"><action name="Close"/></mousebind>
+    </context>
+    <context name="Desktop">
+      <mousebind button="Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
+      <mousebind button="Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
+      <mousebind button="A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
+      <mousebind button="A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
+      <mousebind button="C-A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
+      <mousebind button="C-A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
+      <mousebind button="Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+      <mousebind button="Right" action="Press"><action name="Focus"/><action name="Raise"/></mousebind>
+    </context>
+    <context name="Root">
+      <!-- Menus -->
+      <mousebind button="Middle" action="Press"><action name="ShowMenu"><menu>client-list-combined-menu</menu></action></mousebind>
+      <mousebind button="Right" action="Press"><action name="ShowMenu"><menu>root-menu</menu></action></mousebind>
+    </context>
+    <context name="MoveResize">
+      <mousebind button="Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
+      <mousebind button="Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
+      <mousebind button="A-Up" action="Click"><action name="GoToDesktop"><to>previous</to></action></mousebind>
+      <mousebind button="A-Down" action="Click"><action name="GoToDesktop"><to>next</to></action></mousebind>
+    </context>
   </mouse>
 
   <menu>
-	<!-- You can specify more than one menu file in here and they are all loaded,
-		 just don't make menu ids clash or, well, it'll be kind of pointless -->
-	<!-- default menu file (or custom one in $HOME/.config/openbox/) -->
-	<file>/usr/share/lubuntu/openbox/menu.xml</file>
-	<file>menu.xml</file>
-	<hideDelay>200</hideDelay>
-	<!-- if a press-release lasts longer than this setting (in milliseconds), the
-		 menu is hidden again -->
-	<middle>no</middle>
-	<!-- center submenus vertically about the parent entry -->
-	<submenuShowDelay>100</submenuShowDelay>
-	<!-- time to delay before showing a submenu after hovering over the parent
-		 entry.
-		 if this is a negative value, then the delay is infinite and the
-		 submenu will not be shown until it is clicked on -->
-	<submenuHideDelay>400</submenuHideDelay>
-	<!-- time to delay before hiding a submenu when selecting another
-		 entry in parent menu
-		 if this is a negative value, then the delay is infinite and the
-		 submenu will not be hidden until a different submenu is opened -->
-	<applicationIcons>yes</applicationIcons>
-	<!-- controls if icons appear in the client-list-(combined-)menu -->
-	<manageDesktops>yes</manageDesktops>
-	<!-- show the manage desktops section in the client-list-(combined-)menu -->
-	<showIcons>yes</showIcons>
-	<!-- show icons on the menu -->
+    <!-- You can specify more than one menu file in here and they are all loaded,
+         just don't make menu ids clash or, well, it'll be kind of pointless -->
+    <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
+    <file>/usr/share/lubuntu/openbox/menu.xml</file>
+    <file>menu.xml</file>
+    <hideDelay>200</hideDelay>
+    <!-- if a press-release lasts longer than this setting (in milliseconds), the
+         menu is hidden again -->
+    <middle>no</middle>
+    <!-- center submenus vertically about the parent entry -->
+    <submenuShowDelay>100</submenuShowDelay>
+    <!-- time to delay before showing a submenu after hovering over the parent
+         entry.
+         if this is a negative value, then the delay is infinite and the
+         submenu will not be shown until it is clicked on -->
+    <submenuHideDelay>400</submenuHideDelay>
+    <!-- time to delay before hiding a submenu when selecting another
+         entry in parent menu
+         if this is a negative value, then the delay is infinite and the
+         submenu will not be hidden until a different submenu is opened -->
+    <applicationIcons>yes</applicationIcons>
+    <!-- controls if icons appear in the client-list-(combined-)menu -->
+    <manageDesktops>yes</manageDesktops>
+    <!-- show the manage desktops section in the client-list-(combined-)menu -->
+    <showIcons>yes</showIcons>
+    <!-- show icons on the menu -->
   </menu>
   <applications>
-	<!--
-		# this is an example with comments through out. use these to make your
-		# own rules, but without the comments of course.
-		# you may use one or more of the name/class/role/title/type rules to specify
-		# windows to match
+    <!--
+        # this is an example with comments through out. use these to make your
+        # own rules, but without the comments of course.
+        # you may use one or more of the name/class/role/title/type rules to specify
+        # windows to match
 
 <application name="the window's _OB_APP_NAME property (see obxprop)"
 class="the window's _OB_APP_CLASS property (see obxprop)"
@@ -751,12 +751,12 @@ type="the window's _OB_APP_TYPE property (see obxprob)..
 </application>
 
 # end of the example
-	-->
-	<!-- Option to maximize all normal window when launched-->
-	<!--
-		<application type="normal">
-		<maximized>true</maximized>
-		</application>
-	-->
+    -->
+    <!-- Option to maximize all normal window when launched-->
+    <!--
+        <application type="normal">
+        <maximized>true</maximized>
+        </application>
+    -->
   </applications>
 </openbox_config>
