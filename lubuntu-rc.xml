@@ -392,9 +392,9 @@ and back in -->
     <!-- Launch emacs client in new frame -->
     <keybind key="W-q"><action name="Execute"><command>emacsclient -c</command></action></keybind>
     <!-- Lock the screen on Ctrl + Alt + l -->
-    <keybind key="C-A-l"><action name="Execute"><command>xscreensaver-command -lock</command></action></keybind>
+    <keybind key="C-A-l"><action name="Execute"><command>lxlock</command></action></keybind>
     <!-- Lock the screen on W + l-->
-    <keybind key="W-l"><action name="Execute"><command>xscreensaver-command -lock</command></action></keybind>
+    <keybind key="W-l"><action name="Execute"><command>lxlock</command></action></keybind>
     <!-- Volume / brightness management -->
     <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
     <keybind key="W-egrave"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
