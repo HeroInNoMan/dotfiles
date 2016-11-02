@@ -110,7 +110,7 @@ update-project () {
 	cd "$PROJECT_DIR"
 	PROJECT_NAME=$(basename "$PROJECT_DIR")
 	echo "* ${BOLD}$PROJECT_NAME${NORMAL}"
-	[ -d ".git" ] && git-up
+	[ -d ".git" ] && git up
 	[ -d ".svn" ] && svn update
 	#	update-etags
 	echo ""

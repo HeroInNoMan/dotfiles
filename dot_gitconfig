@@ -1,4 +1,5 @@
 [alias]
+	up = pull --rebase --autostash
 	co = checkout
 	ci = commit
 	cm = commit
