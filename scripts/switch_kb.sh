@@ -12,8 +12,7 @@ notif-change-layout () {
     notify-send "→ $LAYOUT_NAME" --expire-time=500 --icon=$KBD_IMG --urgency=NORMAL
 }
 
-if [ $# -ne 0 ]
-then
+if [ $# -ne 0 ]; then
     setxkbmap "$@"
     LAYOUT=$(setxkbmap -print | awk -F"(" '/xkb_keycodes/ {print $2}' | awk -F")" '{print toupper($1)}')
     notif-change-layout "$LAYOUT"

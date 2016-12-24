@@ -1,8 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 
 TRACKPAD_IMG="$HOME/.config/img/trackpad.png"
 
 MAX_TAP_TIME=$(synclient -l | grep --regexp='MaxTapTime' | cut --delimiter='=' --fields=2 | tr --delete '[:blank:]')
+
+[ -z "$MAX_TAP_TIME" ] && exit 1
 
 if [ "$MAX_TAP_TIME" -gt 0 ]; then
     synclient MaxTapTime=0
