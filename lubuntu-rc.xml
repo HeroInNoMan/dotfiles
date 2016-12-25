@@ -289,16 +289,16 @@ and back in -->
       </keybind>
 
       <keybind key="m">
-        <keybind key="c"><action name="Execute"><command>manage-displays.sh dual-screen-copy</command></action></keybind>
-        <keybind key="b"><action name="Execute"><command>manage-displays.sh built-in-only</command></action></keybind>
-        <keybind key="l"><action name="Execute"><command>manage-displays.sh extend-left</command></action></keybind>
-        <keybind key="r"><action name="Execute"><command>manage-displays.sh extend-right</command></action></keybind>
-        <keybind key="e"><action name="Execute"><command>manage-displays.sh external-only</command></action></keybind>
-        <keybind key="p"><action name="Execute"><command>manage-displays.sh previous</command></action></keybind>
-        <keybind key="m"><action name="Execute"><command>manage-displays.sh</command></action></keybind>
+        <keybind key="c"><action name="Execute"><command>hw.sh display-dual-screen-copy</command></action></keybind>
+        <keybind key="b"><action name="Execute"><command>hw.sh display-built-in-only</command></action></keybind>
+        <keybind key="l"><action name="Execute"><command>hw.sh display-extend-left</command></action></keybind>
+        <keybind key="r"><action name="Execute"><command>hw.sh display-extend-right</command></action></keybind>
+        <keybind key="e"><action name="Execute"><command>hw.sh display-external-only</command></action></keybind>
+        <keybind key="p"><action name="Execute"><command>hw.sh display-previous</command></action></keybind>
+        <keybind key="m"><action name="Execute"><command>hw.sh display</command></action></keybind>
       </keybind>
 
-      <keybind key="m"><action name="Execute"><command>manage-displays.sh</command></action></keybind>
+      <keybind key="m"><action name="Execute"><command>hw.sh display</command></action></keybind>
       <keybind key="f"><action name="ToggleFullscreen"/></keybind> <!-- full screen -->
       <keybind key="i"><action name="Iconify"/></keybind> <!-- Iconify -->
       <keybind key="n"><action name="MoveResizeTo"><monitor>next</monitor></action></keybind> <!-- Send window to next monitor -->
@@ -396,57 +396,57 @@ and back in -->
     <!-- Lock the screen on W + l-->
     <keybind key="W-l"><action name="Execute"><command>lxlock</command></action></keybind>
     <!-- Volume / brightness management -->
-    <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-    <keybind key="W-egrave"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-    <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-    <keybind key="W-eacute"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-    <keybind key="W-agrave"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-    <keybind key="W-m"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-    <keybind key="W-t"><action name="Execute"><command>xbacklight -dec 30</command></action></keybind>
-    <keybind key="W-v"><action name="Execute"><command>xbacklight -inc 30</command></action></keybind>
+    <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
+    <keybind key="W-egrave"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
+    <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
+    <keybind key="W-eacute"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
+    <keybind key="W-agrave"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
+    <keybind key="W-m"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
+    <keybind key="W-t"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
+    <keybind key="W-v"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
     <!-- Volume / brightness management (W-u, chrooted on W-u W-u) -->
     <keybind key="W-u">
       <keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
       <!-- raise volume -->
-      <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-      <keybind key="F3"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-      <keybind key="egrave"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
+      <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
+      <keybind key="F3"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
+      <keybind key="egrave"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
       <!-- lower volume -->
-      <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-      <keybind key="F2"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-      <keybind key="eacute"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
+      <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
+      <keybind key="F2"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
+      <keybind key="eacute"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
       <!-- mute -->
-      <keybind key="XF86AudioMute"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-      <keybind key="F1"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-      <keybind key="m"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-      <keybind key="agrave"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
+      <keybind key="XF86AudioMute"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
+      <keybind key="F1"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
+      <keybind key="m"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
+      <keybind key="agrave"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
       <!-- decrease light -->
-      <keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
-      <keybind key="F5"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
+      <keybind key="t"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
+      <keybind key="F5"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
       <!-- increase light -->
-      <keybind key="v"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
-      <keybind key="F6"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
+      <keybind key="v"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
+      <keybind key="F6"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
       <keybind key="W-u" chroot="true">
         <keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
         <!-- raise volume -->
-        <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-        <keybind key="F3"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
-        <keybind key="egrave"><action name="Execute"><command>sound-control.sh up</command></action></keybind>
+        <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
+        <keybind key="F3"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
+        <keybind key="egrave"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
         <!-- lower volume -->
-        <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-        <keybind key="F2"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
-        <keybind key="eacute"><action name="Execute"><command>sound-control.sh down</command></action></keybind>
+        <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
+        <keybind key="F2"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
+        <keybind key="eacute"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
         <!-- mute -->
-        <keybind key="XF86AudioMute"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-        <keybind key="F1"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-        <keybind key="m"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
-        <keybind key="agrave"><action name="Execute"><command>sound-control.sh toggle</command></action></keybind>
+        <keybind key="XF86AudioMute"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
+        <keybind key="F1"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
+        <keybind key="m"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
+        <keybind key="agrave"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
         <!-- decrease light -->
-        <keybind key="t"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
-        <keybind key="F5"><action name="Execute"><command>xbacklight -dec 10</command></action></keybind>
+        <keybind key="t"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
+        <keybind key="F5"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
         <!-- increase light -->
-        <keybind key="v"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
-        <keybind key="F6"><action name="Execute"><command>xbacklight -inc 10</command></action></keybind>
+        <keybind key="v"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
+        <keybind key="F6"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
         <keybind key="Escape"><action name="BreakChroot"/></keybind>
       </keybind>
     </keybind>
@@ -465,8 +465,8 @@ and back in -->
     <keybind key="XF86MyComputer"><action name="Execute"><command>pcmanfm</command></action></keybind>
     <!-- Multimedia Keys and LCD Backlight (alternative when not using gnome-power-manager or xfce4-volumed) -->
     <!-- <keybind key="C-F7"><action name="Execute"><command>sleep 2;xset dpms force off</command></action></keybind> -->
-    <keybind key="XF86MonBrightnessDown"><action name="Execute"><command>xbacklight -dec 20</command></action></keybind>
-    <keybind key="XF86MonBrightnessUp"><action name="Execute"><command>xbacklight -inc 20</command></action></keybind>
+    <keybind key="XF86MonBrightnessDown"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
+    <keybind key="XF86MonBrightnessUp"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
     <!-- Launch scrot (print screen) -->
     <keybind key="Print"><action name="Execute"><command>scrot</command></action></keybind>
     <!-- Logout -->
@@ -506,7 +506,7 @@ and back in -->
       </keybind>
     </keybind>
     <!-- Manage display (Fn+F9) -->
-    <keybind key="0xF8"><action name="Execute"><command>manage-displays.sh</command></action></keybind>
+    <keybind key="0xF8"><action name="Execute"><command>hw.sh display</command></action></keybind>
   </keyboard>
   <mouse>
     <dragThreshold>8</dragThreshold>
