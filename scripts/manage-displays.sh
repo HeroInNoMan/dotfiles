@@ -46,7 +46,7 @@ update-monitor-state() {
     echo "$1" > $MONITOR_FILE
     echo "$CURRENT_MODE" >> $MONITOR_FILE
     append-documentation
-    notify-send "→ $1" --expire-time=4000 --icon="$MONITOR_IMG" --urgency=NORMAL
+    notify-send "→ $1" --expire-time=1000 --icon="$MONITOR_IMG" --urgency=CRITICAL
 }
 
 usage() {

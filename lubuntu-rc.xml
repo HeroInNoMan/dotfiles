@@ -382,7 +382,7 @@ and back in -->
     <!-- App launcher -->
     <keybind key="W-d"><action name="Execute"><command>rofi-run.sh</command></action></keybind>
     <!-- Music launcher -->
-    <keybind key="W-j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
+    <keybind key="W-j"><action name="Execute"><command>music-player.sh show-jump-box</command></action></keybind>
     <!-- Launch terminal -->
     <keybind key="XF86WWW"><action name="Execute"><command>lxterminal</command></action></keybind>
     <keybind key="XF86Terminal"><action name="Execute"><command>lxterminal</command></action></keybind>
@@ -480,28 +480,28 @@ and back in -->
     <keybind key="W-r"><action name="Execute"><command>openbox --reconfigure</command></action></keybind>
     <!-- key chain for audacious -->
     <keybind key="W-a">
-      <keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
-      <keybind key="n"><action name="Execute"><command>audacious --fwd</command></action></keybind>
-      <keybind key="p"><action name="Execute"><command>audacious --rew</command></action></keybind>
-      <keybind key="u"><action name="Execute"><command>audacious --pause</command></action></keybind>
-      <keybind key="space"><action name="Execute"><command>audacious --play-pause</command></action></keybind>
-      <keybind key="m"><action name="Execute"><command>audacious --quit-after-play</command></action></keybind>
-      <keybind key="h"><action name="Execute"><command>audacious --headless</command></action></keybind>
-      <keybind key="e"><action name="Execute"><command>audacious --enqueue</command></action></keybind>
-      <keybind key="S-e"><action name="Execute"><command>audacious --enqueue-to-temp</command></action></keybind>
-      <keybind key="j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
+      <keybind key="a"><action name="Execute"><command>music-player.sh show-main-window</command></action></keybind>
+      <keybind key="n"><action name="Execute"><command>music-player.sh fwd</command></action></keybind>
+      <keybind key="p"><action name="Execute"><command>music-player.sh rew</command></action></keybind>
+      <keybind key="u"><action name="Execute"><command>music-player.sh pause</command></action></keybind>
+      <keybind key="space"><action name="Execute"><command>music-player.sh play-pause</command></action></keybind>
+      <keybind key="m"><action name="Execute"><command>music-player.sh quit-after-play</command></action></keybind>
+      <keybind key="h"><action name="Execute"><command>music-player.sh headless</command></action></keybind>
+      <keybind key="e"><action name="Execute"><command>music-player.sh enqueue</command></action></keybind>
+      <keybind key="S-e"><action name="Execute"><command>music-player.sh enqueue-to-temp</command></action></keybind>
+      <keybind key="j"><action name="Execute"><command>music-player.sh show-jump-box</command></action></keybind>
       <!-- key chain for audacious (chrooted) -->
       <keybind key="W-a" chroot="true">
-        <keybind key="a"><action name="Execute"><command>audacious --show-main-window</command></action></keybind>
-        <keybind key="n"><action name="Execute"><command>audacious --fwd</command></action></keybind>
-        <keybind key="p"><action name="Execute"><command>audacious --rew</command></action></keybind>
-        <keybind key="u"><action name="Execute"><command>audacious --pause</command></action></keybind>
-        <keybind key="space"><action name="Execute"><command>audacious --play-pause</command></action></keybind>
-        <keybind key="m"><action name="Execute"><command>audacious --quit-after-play</command></action></keybind>
-        <keybind key="h"><action name="Execute"><command>audacious --headless</command></action></keybind>
-        <keybind key="e"><action name="Execute"><command>audacious --enqueue</command></action></keybind>
-        <keybind key="S-e"><action name="Execute"><command>audacious --enqueue-to-temp</command></action></keybind>
-        <keybind key="j"><action name="Execute"><command>audacious --show-jump-box</command></action></keybind>
+        <keybind key="a"><action name="Execute"><command>music-player.sh show-main-window</command></action></keybind>
+        <keybind key="n"><action name="Execute"><command>music-player.sh fwd</command></action></keybind>
+        <keybind key="p"><action name="Execute"><command>music-player.sh rew</command></action></keybind>
+        <keybind key="u"><action name="Execute"><command>music-player.sh pause</command></action></keybind>
+        <keybind key="space"><action name="Execute"><command>music-player.sh play-pause</command></action></keybind>
+        <keybind key="m"><action name="Execute"><command>music-player.sh quit-after-play</command></action></keybind>
+        <keybind key="h"><action name="Execute"><command>music-player.sh headless</command></action></keybind>
+        <keybind key="e"><action name="Execute"><command>music-player.sh enqueue</command></action></keybind>
+        <keybind key="S-e"><action name="Execute"><command>music-player.sh enqueue-to-temp</command></action></keybind>
+        <keybind key="j"><action name="Execute"><command>music-player.sh show-jump-box</command></action></keybind>
         <keybind key="Escape"><action name="BreakChroot"/></keybind>
       </keybind>
     </keybind>
