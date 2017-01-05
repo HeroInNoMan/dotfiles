@@ -91,6 +91,10 @@ use-java-8 () {
     export JAVA_HOME=$JAVA_8
 }
 
+maven-debug () {
+    mvn $@ -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
+}
+
 maven-eclipse () {
     mvn eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5 $@
 }
