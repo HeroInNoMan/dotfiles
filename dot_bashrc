@@ -42,7 +42,7 @@ if [ -f /etc/bash_completion.d/git-prompt ]; then
 fi
 
 if [ -f ~/.localrc ]; then
-	. ~/.localrc
+    . ~/.localrc
 fi
 
 # ignore case on completion (except if shell is called from inside emacs)
@@ -84,58 +84,58 @@ export PATH=$MAVEN_HOME/bin:$PATH
 export PATH=$JAVA_HOME/bin:$PATH
 
 use-java-7 () {
-	export JAVA_HOME=$JAVA_7
+    export JAVA_HOME=$JAVA_7
 }
 
 use-java-8 () {
-	export JAVA_HOME=$JAVA_8
+    export JAVA_HOME=$JAVA_8
 }
 
 maven-eclipse () {
-	mvn eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5 $@
+    mvn eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5 $@
 }
 
 maven-install-eclipse () {
-	mvn clean install $@ &&	mvn eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5
+    mvn clean install $@ && mvn eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5
 }
 
 update-etags () {
-	[ -f TAGS ] && rm TAGS
-	find . -name '*.java' -exec etags -a {} \;
+    [ -f TAGS ] && rm TAGS
+    find . -name '*.java' -exec etags -a {} \;
 }
 
 update-project () {
-	PROJECT_DIR=$1
-	FORMER_DIR=$(pwd)
-	cd "$PROJECT_DIR"
-	PROJECT_NAME=$(basename "$PROJECT_DIR")
-	echo "* ${BOLD}$PROJECT_NAME${NORMAL}"
-	[ -d ".git" ] && git up
-	[ -d ".svn" ] && svn update
-	#	update-etags
-	echo ""
-	cd "$FORMER_DIR"
+    PROJECT_DIR=$1
+    FORMER_DIR=$(pwd)
+    cd "$PROJECT_DIR"
+    PROJECT_NAME=$(basename "$PROJECT_DIR")
+    echo "* ${BOLD}$PROJECT_NAME${NORMAL}"
+    [ -d ".git" ] && git up
+    [ -d ".svn" ] && svn update
+    #   update-etags
+    echo ""
+    cd "$FORMER_DIR"
 }
 
 update-all () {
-	for dir in $(find $HOME -type d -iname '.git' -o -maxdepth 3 -iname '.svn' 2> /dev/null | xargs dirname | sort); do
-		update-project "$dir"
-	done
+    for dir in $(find $HOME -type d -iname '.git' -o -maxdepth 3 -iname '.svn' 2> /dev/null | xargs dirname | sort); do
+        update-project "$dir"
+    done
 }
 
 build-all () {
-	FORMER_DIR=$(pwd)
-	for dir in $(find "$HOME/projets/" -type f -maxdepth 2 -name 'pom.xml' 2> /dev/null | xargs dirname | sort); do
-		cd "$dir"
-		echo "building $dir..."
-		mvn clean install -U &> "$HOME/projets/mvn-output.log"
-		if [ $? != 0 ]; then
+    FORMER_DIR=$(pwd)
+    for dir in $(find "$HOME/projets/" -type f -maxdepth 2 -name 'pom.xml' 2> /dev/null | xargs dirname | sort); do
+        cd "$dir"
+        echo "building $dir..."
+        mvn clean install -U &> "$HOME/projets/mvn-output.log"
+        if [ $? != 0 ]; then
 
-			echo "build failed!" ; cp "$HOME/projets/mvn-output.log" $HOME/projets/mvn-output-$(basename $dir).log
-		fi
-	done
-	rm "$HOME/projets/mvn-output.log"
-	cd "$FORMER_DIR"
+            echo "build failed!" ; cp "$HOME/projets/mvn-output.log" $HOME/projets/mvn-output-$(basename $dir).log
+        fi
+    done
+    rm "$HOME/projets/mvn-output.log"
+    cd "$FORMER_DIR"
 }
 
 # define a few colours
