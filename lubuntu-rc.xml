@@ -392,7 +392,7 @@ and back in -->
     <!-- Launch emacs client in new frame -->
     <keybind key="W-q"><action name="Execute"><command>emacsclient -c</command></action></keybind>
     <!-- Lock the screen on Ctrl + Alt + l -->
-    <keybind key="C-A-l"><action name="Execute"><command>lxlock</command></action></keybind>
+    <!-- <keybind key="C-A-l"><action name="Execute"><command>lxlock</command></action></keybind> -->
     <!-- Lock the screen on W + l-->
     <keybind key="W-l"><action name="Execute"><command>lxlock</command></action></keybind>
     <!-- Volume / brightness management -->
