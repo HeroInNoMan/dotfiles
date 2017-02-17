@@ -175,16 +175,13 @@ GIT_PS1_DESCRIBE_STYLE=branch
 GIT_PS1_SHOWCOLORHINTS=1
 GIT_INFOS='$(__git_ps1)'
 
-RET_SMILEY='$(if [ $? -eq 0 ]; then echo -n "\e[0;32m✔"; else echo -ne "\e[0;31m✘"; fi;)'
-
 # prompt
 #######################################################
 PS1="$GREY($L_GREEN\u$GREY@$L_BLUE\h$GREY)" # (user@host)
 PS1="${PS1}($RED\A$GREY)" # (23:59) date HH:MM
 PS1="${PS1}($PURPLE\j$GREY)" # (0) jobs
 PS1="${PS1}($CYAN\w$GREY)" # (~/current/directory)
-PS1="${PS1}$L_RED$GIT_INFOS$NC\n" # (master *+%) git infos
-PS1="${PS1}$RET_SMILEY$NC " # return value (✔ or ✘)
+PS1="${PS1}$L_RED$GIT_INFOS\n" # (master *+%) git infos
 PS1="${PS1}$WHITE→$NC " # '→' prompt character
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
