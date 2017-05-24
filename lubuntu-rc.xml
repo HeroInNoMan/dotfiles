@@ -370,7 +370,7 @@ and back in -->
     <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
     <keybind key="W-s"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
     <!-- Launch a filemanager on Home + E -->
-    <keybind key="W-e"><action name="Execute"><command>nautilus</command></action></keybind>
+    <keybind key="W-e"><action name="Execute"><command>nautilus --new-window</command></action></keybind>
     <keybind key="A-F2"><action name="Execute"><command>lxpanelctl run</command></action></keybind>
     <!-- Run Menu from Lxpanel -->
     <keybind key="A-F1"><action name="Execute"><command>lxpanelctl menu</command></action></keybind>
