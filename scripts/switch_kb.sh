@@ -1,7 +1,9 @@
 #!/bin/bash
 
 KBD_IMG="$HOME/.config/img/keyboard.png"
+
 TM_LABEL="TypeMatrix.com USB Keyboard"
+DEVICE_LABEL=$(xinput list --name-only | grep --ignore-case "keyboard" | grep --ignore-case --invert-match "virtual" --max-count=1)
 
 CURRENT_LAYOUT=$(setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}')
 
@@ -14,51 +16,50 @@ notif-change-layout () {
 
 change-layout() {
     if [ $# -ne 0 ]; then
-        setxkbmap "$@"
+        $(setxkbmap "$@")
         LAYOUT=$(setxkbmap -print | awk -F"(" '/xkb_keycodes/ {print $2}' | awk -F")" '{print toupper($1)}')
-        notif-change-layout "$LAYOUT"
+        notif-change-layout $LAYOUT
         return
     fi
     case $CURRENT_LAYOUT in
         "fr(bepo)"|"fr bepo")
-            setxkbmap fr -option
+            $(setxkbmap fr -option)
             notif-change-layout "AZERTY" ;;
-        "fr")
-            setxkbmap us -option
-            notif-change-layout "QWERTY" ;;
-        "us")
-            setxkbmap de -option
-            notif-change-layout "QWERTZ" ;;
-        *)
-            # switch vers bépo
+        *)  # switch vers bépo
             NB_KBD=$(xinput list --name-only | grep --ignore-case "keyboard" | grep --ignore-case --invert-match "virtual" | sort | uniq | wc --lines)
-            TM_ID=$(xinput list --id-only keyboard:"$TM_LABEL" 2> /dev/null)
 
-            OPTION=$([[ -z $TM_ID ]] && echo 'ctrl:nocaps')
+            ID_LIST=$(xinput list | grep "${DEVICE_LABEL}.*keyboard" | cut --delimiter== --fields=2 | cut --fields=1)
 
-            # un seul clavier
-            if [[ $NB_KBD == 1 ]]; then
-                setxkbmap fr bepo -option $OPTION
+            OPTION=$([[ $TM_LABEL != $DEVICE_LABEL ]] && echo 'ctrl:nocaps')
+
+            if [[ $NB_KBD == 1 ]]; then # only one keyboard
+                $(setxkbmap -layout 'fr(bepo)' -option $OPTION)
                 notif-change-layout "BÉPO"
                 return
+            else # more than one keyboard
+                $(setxkbmap -layout 'fr' -option) # all keyboards in azerty
+                for id in $ID_LIST; do # selected keyboards in bépo
+                    $(setxkbmap -layout 'fr(bepo)' -device $id -option $OPTION)
+                done
+                notif-change-layout "BÉPO / AZERTY"
             fi
-            # plusieurs claviers
-            # tous → azerty
-            setxkbmap fr -option
-            # le premier → bépo
-            if [[ $TM_ID ]]; then
-                setxkbmap fr bepo -option $OPTION -device $TM_ID
-            else
-                DEVICE_LABEL=$(xinput list --name-only | grep --ignore-case "keyboard" | grep --ignore-case --invert-match "virtual" --max-count=1)
-                DEVICE_ID=$(xinput list --id-only keyboard:"$DEVICE_LABEL")
-                setxkbmap fr bepo -option $OPTION -device $DEVICE_ID
-            fi
-            notif-change-layout "BÉPO / AZERTY"
             ;;
     esac
 }
 
-change-layout
+if [ -z $@ ]; then
+    change-layout
+else
+    case $1 in
+        "bepo")
+            setxkbmap fr bepo -option ctrl:nocaps
+            notif-change-layout "BÉPO" ;;
+        *)
+            setxkbmap $@
+            notif-change-layout "$1" ;;
+    esac
+fi
+
 [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 
 # llkk
