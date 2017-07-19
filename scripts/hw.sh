@@ -23,7 +23,7 @@ display-current-state () {
 }
 
 notif () {
-    notify-send "$1" --expire-time=500 --icon="$2" --urgency=CRITICAL
+    notify-send "$1" --expire-time=500 --icon="$2" --urgency=NORMAL
 }
 
 light_down () {
@@ -61,8 +61,8 @@ toggle_mute () {
     NOTIF_IMG=$([[ $MUTE_STATE == 'yes' ]] && echo "$UNMUTE_IMG" || echo "$MUTE_IMG")
     SINK_STATE=$([[ $MUTE_STATE == 'yes' ]] && echo '0' || echo '1')
     for sink in $SINKS; do
-        pactl set-sink-mute "$sink" $SINK_STATE
-        [ $? -eq 0 ] && notif $NOTIF_TEXT $NOTIF_IMG
+        pactl set-sink-mute "$sink" "$SINK_STATE"
+        [ $? -eq 0 ] && notif "$NOTIF_TEXT" "$NOTIF_IMG"
     done
 }
 

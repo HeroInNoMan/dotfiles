@@ -8,10 +8,10 @@ MAX_TAP_TIME=$(synclient -l | grep --regexp='MaxTapTime' | cut --delimiter='=' -
 
 if [ "$MAX_TAP_TIME" -gt 0 ]; then
     synclient MaxTapTime=0
-    notify-send "OFF" --expire-time=500 --icon="$TRACKPAD_IMG" --urgency=CRITICAL
+    notify-send "OFF" --expire-time=500 --icon="$TRACKPAD_IMG" --urgency=NORMAL
 else
     synclient MaxTapTime=100
-    notify-send "ON" --expire-time=500 --icon="$TRACKPAD_IMG" --urgency=CRITICAL
+    notify-send "ON" --expire-time=500 --icon="$TRACKPAD_IMG" --urgency=NORMAL
 fi
 
 # enable vertical & horizontal scrolling on edge or with two fingers
