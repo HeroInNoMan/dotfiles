@@ -75,3 +75,7 @@ alias mic="mvn clean install cf:push"
 alias mie="maven-install-eclipse"
 alias mp="mvn clean package"
 alias mt="mvn test"
+
+# PYTHON
+#######################################################
+alias python="python3"
