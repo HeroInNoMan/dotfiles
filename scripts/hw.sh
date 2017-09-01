@@ -40,7 +40,7 @@ light_up () {
 
 sound_down () {
 	for ctrl in $(amixer scontrols | grep 'Simple mixer control' | cut -d\' -f 2 | sort | uniq); do
-		amixer -q sset ctrl 3%- unmute
+		amixer -q sset "$ctrl" 3%- unmute
 	done
     for sink in $SINKS; do
         pactl set-sink-volume "$sink" -5%
@@ -50,7 +50,7 @@ sound_down () {
 
 sound_up () {
 	for ctrl in $(amixer scontrols | grep 'Simple mixer control' | cut -d\' -f 2 | sort | uniq); do
-		amixer -q sset ctrl 3%+ unmute
+		amixer -q sset "$ctrl" 3%+ unmute
 	done
     for sink in $SINKS; do
         pactl set-sink-volume "$sink" +5%
