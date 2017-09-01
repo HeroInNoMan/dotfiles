@@ -13,7 +13,7 @@ SOUND_DOWN_IMG="$HW_IMG_DIR/sound_down.png"
 UNMUTE_IMG="$HW_IMG_DIR/sound.png"
 
 SINK_NAME=$(pacmd dump | grep --max-count=1 --only-matching "alsa.*stereo")
-SINKS=$(pacmd dump | grep --only-matching "alsa_output.*stereo" | sort | uniq)
+SINKS=$(pacmd dump | grep 'sink' | cut -d ' ' -f 2 | sort | uniq)
 MUTE_STATE=$(pacmd dump | grep --perl-regexp "^set-sink-mute $SINK_NAME\s+" | perl -p -e 's/.+\s(yes|no)$/$1/')
 
 BRIGHTNESS_FILE="/sys/class/backlight/intel_backlight/brightness"
@@ -39,20 +39,22 @@ light_up () {
 }
 
 sound_down () {
-    amixer -q sset Master 3%- unmute
-    [ $? != 0 ] &&
-        for sink in $SINKS; do
-            pactl set-sink-volume "$sink" -5%
-        done
+	for ctrl in $(amixer scontrols | grep 'Simple mixer control' | cut -d\' -f 2 | sort | uniq); do
+		amixer -q sset ctrl 3%- unmute
+	done
+    for sink in $SINKS; do
+        pactl set-sink-volume "$sink" -5%
+    done
     notif "Volume down" "$SOUND_DOWN_IMG"
 }
 
 sound_up () {
-    amixer -q sset Master 3%+ unmute
-    [ $? != 0 ] &&
-        for sink in $SINKS; do
-            pactl set-sink-volume "$sink" +5%
-        done
+	for ctrl in $(amixer scontrols | grep 'Simple mixer control' | cut -d\' -f 2 | sort | uniq); do
+		amixer -q sset ctrl 3%+ unmute
+	done
+    for sink in $SINKS; do
+        pactl set-sink-volume "$sink" +5%
+    done
     notif "Volume up" "$SOUND_UP_IMG"
 }
 
