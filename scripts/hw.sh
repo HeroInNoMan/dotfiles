@@ -6,7 +6,7 @@
 # script utilisé dans ~/.config/openbox/lubuntu-rc.xml pour gérer le rétro-éclairage.
 
 HW_IMG_DIR="$HOME/.config/img"
-BRIGHTNESS_IMG="$HW_IMG_DIR/brightness.png"
+# BRIGHTNESS_IMG="$HW_IMG_DIR/brightness.png"
 MUTE_IMG="$HW_IMG_DIR/sound_remove.png"
 SOUND_UP_IMG="$HW_IMG_DIR/sound_up.png"
 SOUND_DOWN_IMG="$HW_IMG_DIR/sound_down.png"
@@ -29,13 +29,13 @@ notif () {
 light_down () {
     xbacklight -dec 30
     [ $? != 0 ] && echo $(($(cat $BRIGHTNESS_FILE) - 100)) > $BRIGHTNESS_FILE
-    notif "↓" "$BRIGHTNESS_IMG"
+    # notif "↓" "$BRIGHTNESS_IMG"
 }
 
 light_up () {
     xbacklight -inc 30
     [ $? != 0 ] && echo $(($(cat $BRIGHTNESS_FILE) + 100)) > $BRIGHTNESS_FILE
-    notif "↑" "$BRIGHTNESS_IMG"
+    # notif "↑" "$BRIGHTNESS_IMG"
 }
 
 sound_down () {
