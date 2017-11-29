@@ -1,58 +1,24 @@
 servers = (
-  { address = "irc.stealth.net"; chatnet = "ircnet"; port = "6668"; },
-  { address = "irc.efnet.org"; chatnet = "efnet"; port = "6667"; },
-  { 
-    address = "irc.undernet.org";
-    chatnet = "undernet";
-    port = "6667";
-  },
-  { address = "irc.dal.net"; chatnet = "dalnet"; port = "6667"; },
-  { 
-    address = "irc.quakenet.org";
-    chatnet = "quakenet";
-    port = "6667";
-  },
-  { address = "silc.silcnet.org"; chatnet = "silc"; port = "706"; }
+  { address = "irc.rezosup.org"; chatnet = "rezosup"; port = "6667"; autoconnect = "yes";},
+  { address = "irc.ttpm.eu"; chatnet = "ttpm"; port = "6667"; autoconnect = "yes";},
+  { address = "irc.freenode.net"; chatnet = "freenode"; port = "6667"; autoconnect = "yes";}
 );
 
 chatnets = {
-  ircnet = {
-    type = "irc";
-    max_kicks = "4";
-    max_msgs = "5";
-    max_whois = "4";
-    max_query_chans = "5";
+  rezosup = { type = "IRC"; nick = "Duncan"; };
+  ttpm = { type = "IRC"; nick = "KTH"; };
+  freenode = {
+    type = "IRC";
+    nick = "Dalvini";
   };
-  efnet = { 
-    type = "irc";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "1";
-  };
-  undernet = {
-    type = "irc";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  dalnet = {
-    type = "irc";
-    max_kicks = "4";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  quakenet = {
-    type = "irc";
-    max_kicks = "1";
-    max_msgs = "3";
-    max_whois = "30";
-  };
-  silc = { type = "silc"; };
 };
 
 channels = (
-  { name = "#irssi"; chatnet = "ircnet"; autojoin = "no"; },
-  { name = "silc"; chatnet = "silc"; autojoin = "no"; }
+  { name = "#neuneu"; chatnet = "rezosup"; autojoin = "yes"; },
+  { name = "#emn"; chatnet = "rezosup"; autojoin = "yes"; },
+  { name = "#MB3"; chatnet = "ttpm"; autojoin = "yes"; },
+  { name = "#bepo"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#emacsfr"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
 aliases = {
@@ -129,13 +95,15 @@ aliases = {
   finance = "say tu as beaucoup changé depuis que tu bosses dans la finance…";
   "clear-and-wait" = "/window 1;/clear";
   cb = "say c… c… c… combo-breaker!!!";
+  sud = "c’est bien une réponse de mec du sud, ça.";
+  ADDALLCHAN = "script exec foreach my \\$channel (Irssi::channels()) { Irssi::command(\"channel add -auto \\$channel->{name} \\$channel->{server}->{tag} \\$channel->{key}\")\\;}";
 };
 
 statusbar = {
-  # formats:
-  # when using {templates}, the template is shown only if it's argument isn't
-  # empty unless no argument is given. for example {sb} is printed always,
-  # but {sb $t} is printed only if $t isn't empty.
+# formats:
+# when using {templates}, the template is shown only if it's argument isn't
+# empty unless no argument is given. for example {sb} is printed always,
+# but {sb $t} is printed only if $t isn't empty.
 
   items = {
     # start/end text in statusbars
@@ -160,12 +128,12 @@ statusbar = {
     topic_empty = " irssi v$j - http://www.irssi.org";
 
     # all of these treated specially, they're only displayed when needed
-    lag = "{sb lag: $0-}";
-    act = "{sb act: $0-}";
-    more = "-- more --";
-  };
+  lag = "{sb lag: $0-}";
+  act = "{sb act: $0-}";
+  more = "-- more --";
+};
 
-  # there's two type of statusbars. root statusbars are either at the top
+# there's two type of statusbars. root statusbars are either at the top
   # of the screen or at the bottom of the screen. window statusbars are at
   # the top/bottom of each split window in screen.
   default = {
@@ -213,35 +181,35 @@ statusbar = {
     };
 
     # we treat input line as yet another statusbar :) it's possible to
-    # add other items before or after the input line item.
-    prompt = {
-      type = "root";
-      placement = "bottom";
-      # we want to be at the bottom always
-      position = "100";
-      visible = "always";
-      items = {
-        prompt = { priority = "-1"; };
-        prompt_empty = { priority = "-1"; };
-        # treated specially, this is the real input line.
+# add other items before or after the input line item.
+  prompt = {
+    type = "root";
+    placement = "bottom";
+# we want to be at the bottom always
+    position = "100";
+    visible = "always";
+    items = {
+      prompt = { priority = "-1"; };
+      prompt_empty = { priority = "-1"; };
+# treated specially, this is the real input line.
         input = { priority = "10"; };
-      };
-    };
-
-    # topicbar
-    topic = {
-      type = "root";
-      placement = "top";
-      position = "1";
-      visible = "always";
-      items = {
-        topicbarstart = { priority = "100"; };
-        topic = { };
-        topic_empty = { };
-        topicbarend = { priority = "100"; alignment = "right"; };
-      };
     };
   };
+
+# topicbar
+topic = {
+  type = "root";
+  placement = "top";
+  position = "1";
+  visible = "always";
+  items = {
+    topicbarstart = { priority = "100"; };
+    topic = { };
+    topic_empty = { };
+    topicbarend = { priority = "100"; alignment = "right"; };
+  };
+};
+};
 };
 settings = {
   core = {
@@ -265,6 +233,7 @@ settings = {
     bell_beeps = "yes";
     beep_msg_level = "msgs notices dcc dccmsgs hilight";
     show_nickmode_empty = "no";
+    beep_when_window_active = "yes";
   };
 };
 hilights = (
@@ -274,7 +243,6 @@ hilights = (
   { text = "leothaud"; nick = "yes"; word = "yes"; },
   { text = "$me"; nick = "yes"; word = "yes"; },
   { text = "heroinnoman"; nick = "yes"; word = "yes"; },
-  { text = "kth"; nick = "yes"; word = "yes"; },
   { text = "krooh_tong_halai "; nick = "yes"; word = "yes"; },
   { text = "dalvini"; nick = "yes"; word = "yes"; },
   { text = "Arthorius "; nick = "yes"; word = "yes"; }
@@ -306,11 +274,9 @@ keyboard = (
 completions = {
   "->" = { value = "→"; };
   "<-" = { value = "←"; };
-  "<->" = { value = "↔"; };
   ":)" = { value = "☺"; };
   ":(" = { value = "☹"; };
   "<3" = { value = "♥"; };
-
   sv = { value = "卐"; };
   cccp = { value = "☭"; };
   twss = { value = "that’s what she said"; };
@@ -339,158 +305,17 @@ completions = {
   uqe = { value = "que"; auto = "yes"; };
   vraiemnt = { value = "vraiment"; auto = "yes"; };
   trcu = { value = "truc"; auto = "yes"; };
+  "(:" = { value = "( ͡° ͜ʖ ͡°)"; };
+  "%age" = { value = "pourcentage"; auto = "yes"; };
+  up = { value = "↑"; };
+  down = { value = "↓"; };
 };
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-  2 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "&bitlbee";
-        tag = "localhost";
-      }
-    );
-  };
-  3 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#neuneu";
-        tag = "rezosup";
-      }
-    );
-  };
-  4 = {
-    items = (
-      { 
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#MB3";
-        tag = "ttpm";
-      }
-    );
-  };
-  5 = {
-    items = (
-      {
-        type = "QUERY";
-        chat_type = "IRC";
-        name = "Steph";
-        tag = "localhost";
-      }
-    );
-  };
-  6 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#EMN";
-        tag = "rezosup";
-      }
-    );
-  };
-  7 = {
-    items = (
-      {
-        type = "QUERY";
-        chat_type = "IRC";
-        name = "dibalo";
-        tag = "rezosup";
-      }
-    );
-  };
-  8 = {
-    items = (
-      {
-        type = "QUERY";
-        chat_type = "IRC";
-        name = "gubertran";
-        tag = "localhost";
-      }
-    );
-  };
-  9 = {
-    items = (
-      {
-        type = "QUERY";
-        chat_type = "IRC";
-        name = "ElHaine_S45";
-        tag = "freenode";
-      }
-    );
-  };
-  10 = {
-    items = (
-      {
-        type = "QUERY";
-        chat_type = "IRC";
-        name = "juliannaveira";
-        tag = "localhost";
-      }
-    );
-  };
-  11 = {
-    items = (
-      {
-        type = "QUERY";
-        chat_type = "IRC";
-        name = "antoine";
-        tag = "rezosup";
-      }
-    );
-  };
-  12 = {
-    items = (
-      { 
-        type = "QUERY";
-        chat_type = "IRC";
-        name = "Kiu";
-        tag = "rezosup";
-      }
-    );
-  };
-  13 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#complicated";
-        tag = "freenode2";
-      }
-    );
-  };
-  14 = {
-    items = (
-      {
-        type = "QUERY";
-        chat_type = "IRC";
-        name = "MacLord";
-        tag = "rezosup";
-      }
-    );
-  };
-  15 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#bepo";
-        tag = "freenode";
-      }
-    );
-  };
-  16 = {
-    items = (
-      {
-        type = "QUERY";
-        chat_type = "IRC";
-        name = "MacLord_";
-        tag = "rezosup";
-      }
-    );
-  };
+  2 = { items = ({type = "CHANNEL"; chat_type = "IRC"; name = "#neuneu"; tag = "rezosup";});};
+  3 = { items = ({type = "CHANNEL"; chat_type = "IRC"; name = "#MB3"; tag = "ttpm";});};
+  4 = { items = ({type = "CHANNEL"; chat_type = "IRC"; name = "#emn"; tag = "rezosup";});};
+  5 = { items = ({type = "CHANNEL"; chat_type = "IRC"; name = "#bepo"; tag = "freenode";});};
+  6 = { items = ({type = "CHANNEL"; chat_type = "IRC"; name = "#emacsfr"; tag = "freenode";});};
 };
-mainwindows = { 1 = { first_line = "1"; lines = "43"; }; };
+mainwindows = { 2 = { first_line = "1"; lines = "52"; }; };
