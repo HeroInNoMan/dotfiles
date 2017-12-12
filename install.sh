@@ -84,6 +84,11 @@ deploy "$DOT_FILES_DIR/lubuntu-rc.xml" "$TARGET_DIR/.config/openbox/lxde-rc.xml"
 deploy "$DOT_FILES_DIR/flake8" "$TARGET_DIR/.config/flake8" "$TARGET_DIR/.config/flake8_$TIME_STAMP"
 deploy "$DOT_FILES_DIR/rofi_config" "$TARGET_DIR/.config/rofi/config" "$TARGET_DIR/.config/rofi/config_$TIME_STAMP"
 
+# fish
+deploy "$DOT_FILES_DIR/fish/config.fish" "$TARGET_DIR/.config/fish/config.fish" "$TARGET_DIR/.config/fish/config_$TIME_STAMP"
+deploy "$DOT_FILES_DIR/fish/functions" "$TARGET_DIR/.config/fish/functions" "$TARGET_DIR/.config/fish/functions_$TIME_STAMP"
+deploy "$DOT_FILES_DIR/fish/conf.d" "$TARGET_DIR/.config/fish/conf.d" "$TARGET_DIR/.config/fish/conf_$TIME_STAMP"
+
 ###########
 # SCRIPTS #
 ###########
