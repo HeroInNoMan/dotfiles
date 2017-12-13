@@ -150,6 +150,15 @@ function fish_command_timer_postexec -e fish_postexec
   if not fish_command_timer_compute
     return
   end
+
+  # stop if duration is lower than fish_command_timer_threshold value
+  if begin
+       set -q fish_command_timer_threshold; and \
+       [ $CMD_DURATION -le $fish_command_timer_threshold ]
+     end
+    return
+  end
+
   set -l command_end_time (date '+%s')
 
   set -l SEC 1000
