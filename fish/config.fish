@@ -1,6 +1,13 @@
 # no greeting message
 set fish_greeting
 
+# configure timer
+set -g fish_command_timer_export_cmd_duration_str 1
+set -g fish_command_timer_color grey
+set -g fish_command_timer_time_format ''
+set -g fish_command_timer_millis 0
+set -g fish_command_timer_threshold 1000
+
 # load additional files
 if test -f ~/.config/fish/functions/aliases.fish
   . ~/.config/fish/functions/aliases.fish
