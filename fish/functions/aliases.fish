@@ -20,8 +20,8 @@ alias agi 'apt install'
 alias fucking 'sudo'
 alias grep 'grep --color'
 alias maj 'sudo apt update; sudo apt -y upgrade; sudo apt -y dist-upgrade; sudo apt-get -y autoremove'
-alias bepo 'setxkbmap fr bepo -option'
-alias beponocaps 'setxkbmap fr bepo -option ctrl:nocaps'
+alias bepo 'setxkbmap fr bepo -option; xmodmap ~/.Xmodmap'
+alias beponocaps 'setxkbmap fr bepo -option ctrl:nocaps; xmodmap ~/.Xmodmap'
 
 # EMACS
 #######################################################

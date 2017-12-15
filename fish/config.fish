@@ -17,12 +17,16 @@ if test -f ~/.local.fish
   . ~/.local.fish
 end
 
+if test -f ~/.Xmodmap
+  xmodmap ~/.Xmodmap
+end
+
 # set env variables
 set -gx GTK_IM_MODULE xim
 set -gx QT_IM_MODULE xim
 
 set -gx EDITOR "emacsclient --alternate-editor= -nw"
-set -gx PATH $HOME/bin $HOME/.local/bin/ $HOME/.screenlayout $PATH
+set -gx PATH /usr/local/bin/ $HOME/bin $HOME/.local/bin/ $HOME/.screenlayout $PATH
 
 # java stuff
 set -gx PATH $JAVA_HOME/bin $PATH
