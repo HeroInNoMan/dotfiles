@@ -144,6 +144,10 @@ build-all () {
     cd "$FORMER_DIR" || exit
 }
 
+
+# icons in terminal
+[[ -f ~/.local/share/icons-in-terminal/icons_bash.sh ]] && source ~/.local/share/icons-in-terminal/icons_bash.sh
+
 # define a few colours
 #######################################################
 
