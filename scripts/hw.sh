@@ -68,26 +68,26 @@ toggle_mute () {
     done
 }
 
-toggle-trackpad () {
-    TRACKPAD_IMG="$HOME/.config/img/mouse_warning.png"
+toggle_trackpad () {
+  TRACKPAD_IMG="$HOME/.config/img/mouse_warning.png"
 
-    MAX_TAP_TIME=$(synclient -l | grep --regexp='MaxTapTime' | cut --delimiter='=' --fields=2 | tr --delete '[:blank:]')
+  MAX_TAP_TIME=$(synclient -l | grep --regexp='MaxTapTime' | cut --delimiter='=' --fields=2 | tr --delete '[:blank:]')
 
-    [ -z "$MAX_TAP_TIME" ] && exit 1
+  [ -z "$MAX_TAP_TIME" ] && exit 1
 
-    if [ "$MAX_TAP_TIME" -gt 0 ]; then
-        synclient MaxTapTime=0
-        notif "OFF" "$TRACKPAD_IMG"
-    else
-        synclient MaxTapTime=100
-        notif "ON" "$TRACKPAD_IMG"
-    fi
+  if [ "$MAX_TAP_TIME" -gt 0 ]; then
+    synclient MaxTapTime=0
+    notif "OFF" "$TRACKPAD_IMG"
+  else
+    synclient MaxTapTime=100
+    notif "ON" "$TRACKPAD_IMG"
+  fi
 
-    # enable vertical & horizontal scrolling on edge or with two fingers
-    synclient VertEdgeScroll=1
-    synclient VertTwoFingerScroll=1
-    synclient HorizEdgeScroll=1
-    synclient HorizTwoFingerScroll=1
+  # enable vertical & horizontal scrolling on edge or with two fingers
+  synclient VertEdgeScroll=1
+  synclient VertTwoFingerScroll=1
+  synclient HorizEdgeScroll=1
+  synclient HorizTwoFingerScroll=1
 }
 
 usage () {
@@ -112,7 +112,7 @@ if [ $# == 1 ]; then
         "sound-down") sound_down ;;
         "sound-up") sound_up ;;
         "sound-toggle") toggle_mute ;;
-        "trackpad") toggle-trackpad ;;
+        "trackpad") toggle_trackpad ;;
         *) usage ;;
     esac
 else
