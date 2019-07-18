@@ -3,6 +3,7 @@
 KBD_IMG="$HOME/.config/img/keyboard.png"
 
 TM_LABEL="TypeMatrix.com USB Keyboard"
+EZ_LABEL="TypeMatrix.com USB Keyboard"
 DEVICE_LABEL=$(xinput list --name-only | grep --ignore-case "keyboard" | grep --ignore-case --invert-match "virtual" --max-count=1)
 
 CURRENT_LAYOUT=$(setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}')
