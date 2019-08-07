@@ -74,7 +74,7 @@ by other applications, or saved in your session
 
 use obconf if you want to change these without having to log out
 and back in -->
-    <number>5</number>
+    <number>6</number>
     <firstdesk>1</firstdesk>
     <names>
       <!-- set names up here if you want to, like this:
@@ -84,6 +84,7 @@ and back in -->
       <name>D3</name>
       <name>D4</name>
       <name>D5</name>
+      <name>D6</name>
     </names>
     <popupTime>300</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -142,11 +143,13 @@ and back in -->
     <keybind key="W-F3"><action name="GoToDesktop"><to>3</to></action></keybind>
     <keybind key="W-F4"><action name="GoToDesktop"><to>4</to></action></keybind>
     <keybind key="W-F5"><action name="GoToDesktop"><to>5</to></action></keybind>
+    <keybind key="W-F6"><action name="GoToDesktop"><to>6</to></action></keybind>
     <keybind key="W-1"><action name="GoToDesktop"><to>1</to></action></keybind>
     <keybind key="W-2"><action name="GoToDesktop"><to>2</to></action></keybind>
     <keybind key="W-3"><action name="GoToDesktop"><to>3</to></action></keybind>
     <keybind key="W-4"><action name="GoToDesktop"><to>4</to></action></keybind>
     <keybind key="W-5"><action name="GoToDesktop"><to>5</to></action></keybind>
+    <keybind key="W-6"><action name="GoToDesktop"><to>6</to></action></keybind>
     <keybind key="W-i"><action name="ToggleShowDesktop"/></keybind>
     <!-- Windows -->
     <keybind key="A-F4"><action name="Close"/></keybind>
@@ -320,6 +323,7 @@ and back in -->
       <keybind key="3"><action name="SendToDesktop"><to>3</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 3 -->
       <keybind key="4"><action name="SendToDesktop"><to>4</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 4 -->
       <keybind key="5"><action name="SendToDesktop"><to>5</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 5 -->
+      <keybind key="6"><action name="SendToDesktop"><to>6</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 6 -->
 
     </keybind>
 
