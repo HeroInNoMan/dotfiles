@@ -475,7 +475,7 @@ and back in -->
     <!-- Logout -->
     <keybind key="XF86PowerOff"><action name="Execute"><command>lxsession-default quit</command></action></keybind>
     <keybind key="W-Insert"><action name="Execute"><command>lxsession-default quit</command></action></keybind>
-    <!-- Switch keyboard layout (azerty <-> bépo) -->
+    <!-- Switch keyboard layout (azerty ↔ bépo) -->
     <keybind key="Insert"><action name="Execute"><command>switch_kb.sh</command></action></keybind>
     <!-- Enable/disable touchpad -->
     <keybind key="W-k"><action name="Execute"><command>trackpad.sh</command></action></keybind>
