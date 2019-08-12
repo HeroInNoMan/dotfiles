@@ -68,3 +68,6 @@
 [user]
 	name = Arthur Léothaud
 	email = arthur@leothaud.eu
+	username = arthurleothaud
+[github]
+	user = arthur.leothaud@enercoop.org
