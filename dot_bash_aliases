@@ -64,6 +64,11 @@ alias gu='git up'
 alias gx='gitx --all'
 alias gw='git diff --word-diff=color'
 
+# GRADLE
+#######################################################
+alias gec="./gradlew cleanEclipse eclipse"
+alias gb="./gradlew -x test clean build"
+
 # MAVEN
 #######################################################
 alias pull-all="update-all"
@@ -79,3 +84,4 @@ alias mt="mvn test"
 # PYTHON
 #######################################################
 alias python="python3"
+alias pip="pip3.7"
