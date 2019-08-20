@@ -9,7 +9,7 @@ case $LAYOUT in
     echo "fr" > $KBD_FILE
 		;;
 	*)
-		$(setxkbmap fr bepo -option ctrl:nocaps)
+		$(setxkbmap fr bepo -option ctrl:nocaps compose:paus)
 		echo "fr(bepo)" > $KBD_FILE
 		;;
 esac
