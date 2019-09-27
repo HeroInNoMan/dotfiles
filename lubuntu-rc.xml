@@ -297,6 +297,8 @@ and back in -->
         <keybind key="b"><action name="Execute"><command>hw.sh display-built-in-only</command></action></keybind>
         <keybind key="l"><action name="Execute"><command>hw.sh display-extend-left</command></action></keybind>
         <keybind key="r"><action name="Execute"><command>hw.sh display-extend-right</command></action></keybind>
+        <keybind key="u"><action name="Execute"><command>hw.sh display-extend-up</command></action></keybind>
+        <keybind key="d"><action name="Execute"><command>hw.sh display-extend-down</command></action></keybind>
         <keybind key="e"><action name="Execute"><command>hw.sh display-external-only</command></action></keybind>
         <keybind key="p"><action name="Execute"><command>hw.sh display-previous</command></action></keybind>
         <keybind key="m"><action name="Execute"><command>hw.sh display</command></action></keybind>

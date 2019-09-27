@@ -20,6 +20,8 @@ append_documentation() {
     echo "# built-in-only"
     echo "# extend-left"
     echo "# extend-right"
+    echo "# extend-up"
+    echo "# extend-down"
     echo "# external-only"
   } >> $MONITOR_FILE
 }
@@ -35,6 +37,10 @@ next_state() {
     "extend-left")
       echo "extend-right";;
     "extend-right")
+      echo "extend-up";;
+    "extend-up")
+      echo "extend-down";;
+    "extend-down")
       echo "external-only";;
     *)
       echo "dual-screen-copy";;
@@ -50,7 +56,7 @@ update_monitor_state() {
 }
 
 usage() {
-  echo "usage: $0 [ previous | dual-screen-copy | built-in-only | extend-left | extend-right | external-only ]"
+  echo "usage: $0 [ previous | dual-screen-copy | built-in-only | extend-left | extend-right | extend-up | extend-down | external-only ]"
 }
 
 
@@ -87,6 +93,14 @@ case $NEXT_MODE in
     "extend-right")
       update_monitor_state "extend-right"
       xrandr --output $M1 --auto --rotate normal --output $M2 --auto --rotate normal --right-of $M1
+      ;;
+    "extend-up")
+      update_monitor_state "extend-up"
+      xrandr --output $M1 --auto --rotate normal --output $M2 --auto --rotate normal --above $M1
+      ;;
+    "extend-down")
+      update_monitor_state "extend-down"
+      xrandr --output $M1 --auto --rotate normal --output $M2 --auto --rotate normal --below $M1
       ;;
     "external-only")
       update_monitor_state "external-only"

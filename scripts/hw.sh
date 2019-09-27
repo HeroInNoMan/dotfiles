@@ -94,7 +94,7 @@ usage () {
     echo "Usage:"
     echo "$0 light-up | light-down"
     echo "$0 sound-toggle | sound-up | sound-down"
-    echo "$0 display | display-previous | display-dual-screen-copy | display-built-in-only | display-extend-left | display-extend-right | display-external-only"
+    echo "$0 display | display-previous | display-dual-screen-copy | display-built-in-only | display-extend-left | display-extend-right | display-extend-up | display-extend-down | display-external-only"
     echo "$0 trackpad"
 }
 
@@ -106,6 +106,8 @@ if [ $# == 1 ]; then
         "display-built-in-only") manage-displays.sh built-in-only ;;
         "display-extend-left") manage-displays.sh extend-left ;;
         "display-extend-right") manage-displays.sh extend-right ;;
+        "display-extend-up") manage-displays.sh extend-up ;;
+        "display-extend-down") manage-displays.sh extend-down ;;
         "display-external-only") manage-displays.sh external-only ;;
         "light-down") light_down ;;
         "light-up") light_up ;;
