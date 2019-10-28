@@ -150,6 +150,7 @@ and back in -->
     <keybind key="W-4"><action name="GoToDesktop"><to>4</to></action></keybind>
     <keybind key="W-5"><action name="GoToDesktop"><to>5</to></action></keybind>
     <keybind key="W-6"><action name="GoToDesktop"><to>6</to></action></keybind>
+    <keybind key="W-Delete"><action name="GoToDesktop"><to>6</to></action></keybind>
     <keybind key="W-i"><action name="ToggleShowDesktop"/></keybind>
     <!-- Windows -->
     <keybind key="A-F4"><action name="Close"/></keybind>
