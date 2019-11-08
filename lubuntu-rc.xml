@@ -477,8 +477,8 @@
     <!-- Launch scrot (print screen) -->
     <keybind key="Print"><action name="Execute"><command>scrot</command></action></keybind>
     <!-- Logout -->
-    <keybind key="XF86PowerOff"><action name="Execute"><command>lxsession-default quit</command></action></keybind>
-    <keybind key="W-Insert"><action name="Execute"><command>lxsession-default quit</command></action></keybind>
+    <keybind key="XF86PowerOff"><action name="Execute"><command>lxsession-logout</command></action></keybind>
+    <keybind key="W-Insert"><action name="Execute"><command>lxsession-logout</command></action></keybind>
     <!-- Switch keyboard layout (azerty ↔ bépo) -->
     <keybind key="Insert"><action name="Execute"><command>switch_kb.sh</command></action></keybind>
     <!-- Enable/disable touchpad -->
