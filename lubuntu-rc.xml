@@ -303,9 +303,9 @@
         <keybind key="e"><action name="Execute"><command>hw.sh display-external-only</command></action></keybind>
         <keybind key="p"><action name="Execute"><command>hw.sh display-previous</command></action></keybind>
         <keybind key="m"><action name="Execute"><command>hw.sh display</command></action></keybind>
+        <keybind key="x"><action name="Execute"><command>move-lxpanel.sh</command></action></keybind>
       </keybind>
 
-      <keybind key="m"><action name="Execute"><command>hw.sh display</command></action></keybind>
       <keybind key="f"><action name="ToggleFullscreen"/></keybind> <!-- full screen -->
       <keybind key="i"><action name="Iconify"/></keybind> <!-- Iconify -->
       <keybind key="n"><action name="MoveResizeTo"><monitor>next</monitor></action></keybind> <!-- Send window to next monitor -->
