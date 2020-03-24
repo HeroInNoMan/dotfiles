@@ -389,6 +389,8 @@
     <keybind key="C-A-Delete"><action name="Execute"><command>lxtask</command></action></keybind>
     <!-- App launcher -->
     <keybind key="W-d"><action name="Execute"><command>rofi-run.sh</command></action></keybind>
+    <!-- ssh connection launcher -->
+    <keybind key="W-h"><action name="Execute"><command>rofi-run.sh ssh</command></action></keybind>
     <!-- Music launcher -->
     <keybind key="W-j"><action name="Execute"><command>music-player.sh show-jump-box</command></action></keybind>
     <!-- Launch terminal -->
