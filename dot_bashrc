@@ -153,6 +153,9 @@ build-all () {
 }
 
 
+# added by travis gem
+[ -f /home/arthur.leothaud/.travis/travis.sh ] && source /home/arthur.leothaud/.travis/travis.sh
+
 # icons in terminal
 [[ -f ~/.local/share/icons-in-terminal/icons_bash.sh ]] && source ~/.local/share/icons-in-terminal/icons_bash.sh
 
