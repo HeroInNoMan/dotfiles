@@ -1,5 +1,7 @@
 #!/bin/bash
 
+synclient TapButton1=1 TapButton2=2 TapButton3=3
+
 TRACKPAD_IMG="$HOME/.config/img/mouse_warning.png"
 
 MAX_TAP_TIME=$(synclient -l | grep --regexp='MaxTapTime' | cut --delimiter='=' --fields=2 | tr --delete '[:blank:]')
