@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Hardware control
 # manages brightness, monitors, sound, keyboard layout
