@@ -84,6 +84,9 @@ export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.local/bin/:$PATH
 export PATH=$HOME/.screenlayout:$PATH
 
+# Rust & Cargo support
+# export PATH=$HOME/.cargo/bin/
+
 # switch to 256 color term (especially for using emacs inside term)
 # export TERM=screen-256color
 
