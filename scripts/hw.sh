@@ -15,6 +15,7 @@ UNMUTE_IMG="$HW_IMG_DIR/sound.png"
 SINK_NAME=$(pacmd dump | grep --max-count=1 --only-matching "alsa.*stereo")
 SINKS=$(pacmd dump | grep 'sink' | cut -d ' ' -f 2 | sort | uniq)
 MUTE_STATE=$(pacmd dump | grep --perl-regexp "^set-sink-mute $SINK_NAME\s+" | perl -p -e 's/.+\s(yes|no)$/$1/')
+SOUND_CHANGE_STEP=4
 
 BRIGHTNESS_FILE="/sys/class/backlight/intel_backlight/brightness"
 
@@ -50,12 +51,12 @@ sound_down () {
 
 sound_up () {
 	for ctrl in $(amixer scontrols | grep 'Simple mixer control' | cut -d\' -f 2 | sort | uniq); do
-		amixer -q sset "$ctrl" 3%+ unmute
+		amixer -q sset $ctrl ${SOUND_CHANGE_STEP}%+ unmute
 	done
-    for sink in $SINKS; do
-        pactl set-sink-volume "$sink" +5%
-    done
-    notif "Volume up" "$SOUND_UP_IMG"
+	for sink in $SINKS; do
+		pactl set-sink-volume $sink +${SOUND_CHANGE_STEP}%
+	done
+	notif "Volume up" "$SOUND_UP_IMG"
 }
 
 toggle_mute () {
