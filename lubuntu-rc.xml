@@ -463,6 +463,7 @@
     <keybind key="W-o">
       <keybind key="e"><action name="Execute"><command>emacsclient -c</command></action></keybind>
       <keybind key="v"><action name="Execute"><command>smplayer</command></action></keybind>
+      <keybind key="y"><action name="Execute"><command>youtube</command></action></keybind>
       <keybind key="k"><action name="Execute"><command>xkill</command></action></keybind>
       <keybind key="p"><action name="Execute"><command>~/Vidéos/popcorn-time/Popcorn-Time</command></action></keybind>
       <keybind key="q"><action name="Execute"><command>compton -b</command></action></keybind>

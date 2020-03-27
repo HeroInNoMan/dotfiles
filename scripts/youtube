@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+URL=$(parcellite -c)
+
+
+
+smplayer $URL
