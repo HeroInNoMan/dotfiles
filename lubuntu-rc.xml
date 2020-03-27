@@ -192,10 +192,10 @@
     </keybind>
 
     <!-- Window switching with the arrow keys -->
-    <keybind key="W-S-Right"><action name="DirectionalCycleWindows"><direction>right</direction></action></keybind>
-    <keybind key="W-S-Left"><action name="DirectionalCycleWindows"><direction>left</direction></action></keybind>
-    <keybind key="W-S-Up"><action name="DirectionalCycleWindows"><direction>up</direction></action></keybind>
-    <keybind key="W-S-Down"><action name="DirectionalCycleWindows"><direction>down</direction></action></keybind>
+    <!-- <keybind key="W-S-Right"><action name="DirectionalCycleWindows"><direction>right</direction></action></keybind>
+         <keybind key="W-S-Left"><action name="DirectionalCycleWindows"><direction>left</direction></action></keybind>
+         <keybind key="W-S-Up"><action name="DirectionalCycleWindows"><direction>up</direction></action></keybind>
+         <keybind key="W-S-Down"><action name="DirectionalCycleWindows"><direction>down</direction></action></keybind> -->
 
     <!-- ################################################################### -->
     <!-- ################ WINDOW TILING & MOVING MANAGEMENT ################ -->
@@ -203,9 +203,9 @@
 
     <!-- WINDOW MANAGEMENT WITH ARROW KEYS -->
     <!-- HalfLeftScreen -->
-    <keybind key="W-Left"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action></keybind>
+    <!-- <keybind key="W-Left"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action></keybind> -->
     <!-- HalfRightScreen -->
-    <keybind key="W-Right"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action></keybind>
+    <!-- <keybind key="W-Right"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action></keybind> -->
     <!-- Increase window size  -->
     <keybind key="W-Up">
       <action name="If"><maximized>yes</maximized>
