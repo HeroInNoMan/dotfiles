@@ -1,7 +1,2 @@
 #!/usr/bin/env bash
-
-URL=$(parcellite -c)
-
-
-
-smplayer $URL
+smplayer $(parcellite -c 2> /dev/null)
