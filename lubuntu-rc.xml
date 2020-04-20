@@ -309,6 +309,7 @@
       <keybind key="f"><action name="ToggleFullscreen"/></keybind> <!-- full screen -->
       <keybind key="i"><action name="Iconify"/></keybind> <!-- Iconify -->
       <keybind key="n"><action name="MoveResizeTo"><monitor>next</monitor></action></keybind> <!-- Send window to next monitor -->
+      <keybind key="p"><action name="MoveResizeTo"><monitor>prev</monitor></action></keybind> <!-- Send window to previous monitor -->
 
       <!-- Move window to edge/corner and resize to a fraction of the screen display -->
       <keybind key="v"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>50%</height><width>50%</width></action></keybind> <!-- ⌜ -->
