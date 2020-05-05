@@ -162,52 +162,54 @@ build-all () {
 # icons in terminal
 [[ -f ~/.local/share/icons-in-terminal/icons_bash.sh ]] && source ~/.local/share/icons-in-terminal/icons_bash.sh
 
-# define a few colours
-#######################################################
+if hash starship 2>/dev/null; then
 
-BOLD=$(tput bold)
-NORMAL=$(tput sgr0)
+	# trying out starship
+	eval "$(starship init bash)"
+	export STARSHIP_CONFIG=~/.starship.toml
 
-BLACK='\[\e[0;30m\]'
-BLUE='\[\e[0;34m\]'
-GREEN='\[\e[0;32m\]'
-CYAN='\[\e[0;36m\]'
-RED='\[\e[0;31m\]'
-PURPLE='\[\e[0;35m\]'
-BROWN='\[\e[0;33m\]'
-L_GREY='\[\e[0;37m\]'
-GREY='\[\e[1;30m\]'
-L_BLUE='\[\e[1;34m\]'
-L_GREEN='\[\e[1;32m\]'
-L_CYAN='\[\e[1;36m\]'
-L_RED='\[\e[1;31m\]'
-L_PURPLE='\[\e[1;35m\]'
-YELLOW='\[\e[1;33m\]'
-WHITE='\[\e[1;37m\]'
-NC='\[\e[0m\]' # No Colour
+else
+	# define a few colours
 
-# infos git dans le prompt
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
-GIT_PS1_SHOWSTASHSTATE=1
-GIT_PS1_SHOWUPSTREAM=verbose
-GIT_PS1_DESCRIBE_STYLE=branch
-GIT_PS1_SHOWCOLORHINTS=1
-GIT_INFOS='$(__git_ps1)'
+	BOLD=$(tput bold)
+	NORMAL=$(tput sgr0)
 
-# prompt
-#######################################################
-PS1="$GREY($L_GREEN\u$GREY@$L_BLUE\h$GREY)" # (user@host)
-PS1="${PS1}($RED\A$GREY)" # (23:59) date HH:MM
-PS1="${PS1}($PURPLE\j$GREY)" # (0) jobs
-PS1="${PS1}($CYAN\w$GREY)" # (~/current/directory)
-PS1="${PS1}$L_RED$GIT_INFOS\n" # (master *+%) git infos
-PS1="${PS1}$WHITE→$NC " # '→' prompt character
+	BLACK='\[\e[0;30m\]'
+	BLUE='\[\e[0;34m\]'
+	GREEN='\[\e[0;32m\]'
+	CYAN='\[\e[0;36m\]'
+	RED='\[\e[0;31m\]'
+	PURPLE='\[\e[0;35m\]'
+	BROWN='\[\e[0;33m\]'
+	L_GREY='\[\e[0;37m\]'
+	GREY='\[\e[1;30m\]'
+	L_BLUE='\[\e[1;34m\]'
+	L_GREEN='\[\e[1;32m\]'
+	L_CYAN='\[\e[1;36m\]'
+	L_RED='\[\e[1;31m\]'
+	L_PURPLE='\[\e[1;35m\]'
+	YELLOW='\[\e[1;33m\]'
+	WHITE='\[\e[1;37m\]'
+	NC='\[\e[0m\]' # No Colour
 
+	# infos git dans le prompt
+	GIT_PS1_SHOWDIRTYSTATE=1
+	GIT_PS1_SHOWUNTRACKEDFILES=1
+	GIT_PS1_SHOWSTASHSTATE=1
+	GIT_PS1_SHOWUPSTREAM=verbose
+	GIT_PS1_DESCRIBE_STYLE=branch
+	GIT_PS1_SHOWCOLORHINTS=1
+	GIT_INFOS='$(__git_ps1)'
 
-# trying out starship
-# eval "$(starship init bash)"
-
+	# prompt
+	#######################################################
+	PS1="$GREY($L_GREEN\u$GREY@$L_BLUE\h$GREY)" # (user@host)
+	PS1="${PS1}($RED\A$GREY)" # (23:59) date HH:MM
+	PS1="${PS1}($PURPLE\j$GREY)" # (0) jobs
+	PS1="${PS1}($CYAN\w$GREY)" # (~/current/directory)
+	PS1="${PS1}$L_RED$GIT_INFOS\n" # (master *+%) git infos
+	PS1="${PS1}$WHITE→$NC " # '→' prompt character
+fi
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # $SDKMAN_DIR must be defined in .localrc file

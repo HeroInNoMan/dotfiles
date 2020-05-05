@@ -1,0 +1,78 @@
+
+prefix = ""
+suffix = ""
+
+prompt_order = [
+    "memory_usage",
+    "username",
+    "hostname",
+    "kubernetes",
+    "directory",
+    "git_branch",
+    "git_commit",
+    "git_state",
+    "git_status",
+    "hg_branch",
+    "docker_context",
+    "package",
+    "dotnet",
+    "elixir",
+    "elm",
+    "erlang",
+    "golang",
+    "haskell",
+    "java",
+    "julia",
+    "nodejs",
+    "php",
+    "python",
+    "ruby",
+    "rust",
+    "terraform",
+    "nix_shell",
+    "conda",
+    "aws",
+    "env_var",
+    "crystal",
+    "time",
+    "custom",
+    "battery",
+    "cmd_duration",
+    "line_break",
+    "jobs",
+    "character",
+]
+
+[memory_usage]
+disabled = false # Disables the memory_usage module.
+show_percentage = true # Display memory usage as a percentage of the available memory.
+threshold = 80 # Hide the memory usage unless it exceeds this percentage.
+symbol = "" # The symbol used before displaying the memory usage.
+separator = "|" # The symbol or text that will seperate the ram and swap usage.
+style = "bold dimmed blue" # The style for the module.
+
+[directory]
+truncation_length = 10
+prefix = ""
+suffix = ""
+
+[package]
+prefix = ""
+suffix = ""
+
+[java]
+style = "dimmed green"
+symbol = "☕"
+suffix = ""
+
+[time]
+disabled = false
+format = "%R"
+style = "red"
+
+[cmd_duration]
+prefix = ":"
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]      # The name of the module we are configuring is "character"
+symbol = "➜"     # The "symbol" segment is being set to "➜"
