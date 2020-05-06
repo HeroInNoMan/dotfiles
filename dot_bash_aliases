@@ -10,11 +10,21 @@ fi
 
 # SOME MORE LS ALIASES
 #######################################################
-alias l='ls -CF'
+alias ls='\ls -hF --color'
+alias l='ls'
 alias la='ls -A'
 alias ll='ls -l'
 alias lla='ls -lA'
-alias ls='ls -hF --color'
+
+# use exa if available
+if hash exa 2>/dev/null;then
+	alias la='exa -a'
+	alias ls='exa'
+	alias ll='exa -l --git'
+	alias lla='exa -al --git'
+	alias lt='exa -lTL3 --git'
+	alias lta='exa -alTL3 --git'
+fi
 
 # CONVENIENCE ALIASES
 #######################################################
