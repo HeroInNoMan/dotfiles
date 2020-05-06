@@ -1,22 +1,20 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
-# ENABLE COLOR SUPPORT OF LS AND ALSO ADD HANDY ALIASES
-#######################################################
+# ENABLE COLOR SUPPORT OF LS AND ALSO ADD HANDY ALIASES #######################
 if [ "$TERM" != "dumb" ]; then
     eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias dir='ls --color=auto --format=vertical'
 fi
 
-# SOME MORE LS ALIASES
-#######################################################
+# SOME MORE LS ALIASES ########################################################
 alias ls='\ls -hF --color'
 alias l='ls'
 alias la='ls -A'
 alias ll='ls -l'
 alias lla='ls -lA'
 
-# use exa if available
+# USE EXA IF AVAILABLE ########################################################
 if hash exa 2>/dev/null;then
 	alias la='exa -a'
 	alias ls='exa'
@@ -26,8 +24,7 @@ if hash exa 2>/dev/null;then
 	alias lta='exa -alTL3 --git'
 fi
 
-# CONVENIENCE ALIASES
-#######################################################
+# CONVENIENCE ALIASES #########################################################
 alias df='df -hT'
 alias du='du -h'
 alias sr='surfraw -browser=w3m'
@@ -38,8 +35,7 @@ alias maj='sudo apt update; sudo apt -y upgrade; sudo apt -y dist-upgrade; sudo 
 alias bepo='setxkbmap fr bepo -option'
 alias beponocaps='setxkbmap fr bepo -option ctrl:nocaps'
 
-# EMACS
-#######################################################
+# EMACS #######################################################################
 alias emacs='emacs -nw'
 alias e='emacsclient -nw'
 alias ec='emacsclient -c'
@@ -47,8 +43,7 @@ alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit"
 alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
 alias ue="cd ~/outils/emacs; git checkout master; git pull; ./autogen.sh; ./configure; make; sudo make install; cd -"
 
-# GIT
-#######################################################
+# GIT #########################################################################
 alias co='git checkout'
 alias ga='git add'
 alias gb='git branch'
@@ -75,13 +70,11 @@ alias gu='git up'
 alias gx='gitx --all'
 alias gw='git diff --word-diff=color'
 
-# GRADLE
-#######################################################
+# GRADLE ######################################################################
 alias gec="./gradlew cleanEclipse eclipse"
 alias gb="./gradlew -x test clean build"
 
-# MAVEN
-#######################################################
+# MAVEN #######################################################################
 alias pull-all="update-all"
 alias mc="mvn clean compile"
 alias md="maven-debug"
@@ -92,7 +85,6 @@ alias mie="maven-install-eclipse"
 alias mp="mvn clean package"
 alias mt="mvn test"
 
-# PYTHON
-#######################################################
+# PYTHON ######################################################################
 alias python="python3"
 alias pip="pip3.7"
