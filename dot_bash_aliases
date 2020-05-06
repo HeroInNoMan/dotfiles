@@ -24,6 +24,11 @@ if hash exa 2>/dev/null;then
 	alias lta='exa -alTL3 --git'
 fi
 
+# USE BAT INSTEAD OF CAT IF AVAILABLE #########################################
+if hash bat 2>/dev/null;then
+	alias cat='bat'
+fi
+
 # CONVENIENCE ALIASES #########################################################
 alias df='df -hT'
 alias du='du -h'
