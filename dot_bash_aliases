@@ -28,7 +28,7 @@ fi
 alias df='df -hT'
 alias du='du -h'
 alias sr='surfraw -browser=w3m'
-alias agi='apt-get install'
+alias install='sudo apt install'
 alias fucking='sudo'
 alias grep='grep --color'
 alias maj='sudo apt update; sudo apt -y upgrade; sudo apt -y dist-upgrade; sudo apt-get -y autoremove'
