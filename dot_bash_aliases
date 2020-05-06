@@ -2,9 +2,9 @@
 
 # ENABLE COLOR SUPPORT OF LS AND ALSO ADD HANDY ALIASES #######################
 if [ "$TERM" != "dumb" ]; then
-    eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='ls --color=auto --format=vertical'
+  eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  alias dir='ls --color=auto --format=vertical'
 fi
 
 # SOME MORE LS ALIASES ########################################################
