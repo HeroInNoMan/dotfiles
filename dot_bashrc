@@ -87,6 +87,14 @@ export PATH=$HOME/.screenlayout:$PATH
 # Rust & Cargo support
 # export PATH=$HOME/.cargo/bin/
 
+# ruby setup ##################################################################
+if hash rbenv 2>/dev/null; then
+	export PATH="$HOME/.rbenv/bin:$PATH"
+	eval "$(rbenv init -)"
+	export PATH="$HOME/.rbenv/shims:$PATH"
+	source "/home/duncan/.rbenv/completions/rbenv.bash"
+fi
+
 # switch to 256 color term (especially for using emacs inside term)
 # export TERM=screen-256color
 
