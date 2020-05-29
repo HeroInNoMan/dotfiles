@@ -1,0 +1,36 @@
+###############################################################################
+#                     mbsync configuration for proton mail                    #
+###############################################################################
+IMAPAccount protonmail
+Host 127.0.0.1
+Port 1143
+User arthur.leothaud@protonmail.com
+PassCmd "gpg2 -q -d ~/.authinfo.gpg | awk 'FNR == 1 {print $8}'"
+SSLType NONE
+# CertificateFile /etc/ssl/certs/ca-bundle.crt
+
+# global settings #############################################################
+BufferLimit 50M
+SyncState *
+Create Both
+Expunge Both
+
+# Local storage ###############################################################
+MaildirStore local-proton
+Path  ~/Maildir/ProtonMail/
+Inbox ~/Maildir/ProtonMail/INBOX
+Subfolders Verbatim
+
+# Remote storage ##############################################################
+IMAPStore remote-proton
+Account protonmail
+
+# Channels ####################################################################
+Channel inbox
+Master :remote-proton:
+Slave :local-proton:
+Patterns * !"All Mail" !"Gmail"
+
+# Groups ######################################################################
+Group protonmail
+Channel inbox
