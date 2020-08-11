@@ -25,6 +25,8 @@ display-current-state () {
 }
 
 notif () {
+	killall notification-daemon
+	/usr/lib/notification-daemon/notification-daemon &
 	notify-send "$1" --expire-time=500 --icon="$2" --urgency=NORMAL
 }
 
