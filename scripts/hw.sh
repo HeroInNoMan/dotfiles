@@ -43,22 +43,32 @@ light_up () {
 }
 
 sound_down () {
-	for ctrl in $(amixer scontrols | grep 'Simple mixer control' | cut -d\' -f 2 | sort | uniq); do
-		amixer -q sset $ctrl ${SOUND_CHANGE_STEP}%- unmute
-	done
-	for sink in $SINKS; do
-		pactl set-sink-volume $sink -${SOUND_CHANGE_STEP}%
-	done
+	if command -v amixer &> /dev/null; then
+		for ctrl in $(amixer scontrols | grep 'Simple mixer control' | cut -d\' -f 2 | sort | uniq); do
+			amixer -q sset $ctrl ${SOUND_CHANGE_STEP}%- unmute
+		done
+	fi
+
+	if command -v pactl &> /dev/null; then
+		for sink in $SINKS; do
+			pactl set-sink-volume $sink -${SOUND_CHANGE_STEP}%
+		done
+	fi
 	notif "Volume down" "$SOUND_DOWN_IMG"
 }
 
 sound_up () {
-	for ctrl in $(amixer scontrols | grep 'Simple mixer control' | cut -d\' -f 2 | sort | uniq); do
-		amixer -q sset $ctrl ${SOUND_CHANGE_STEP}%+ unmute
-	done
-	for sink in $SINKS; do
-		pactl set-sink-volume $sink +${SOUND_CHANGE_STEP}%
-	done
+	if command -v amixer &> /dev/null; then
+		for ctrl in $(amixer scontrols | grep 'Simple mixer control' | cut -d\' -f 2 | sort | uniq); do
+			amixer -q sset $ctrl ${SOUND_CHANGE_STEP}%+ unmute
+		done
+	fi
+
+	if command -v pactl &> /dev/null; then
+		for sink in $SINKS; do
+			pactl set-sink-volume $sink +${SOUND_CHANGE_STEP}%
+		done
+	fi
 	notif "Volume up" "$SOUND_UP_IMG"
 }
 
@@ -66,10 +76,12 @@ toggle_mute () {
 	NOTIF_TEXT=$([[ $MUTE_STATE == 'yes' ]] && echo 'ON' || echo 'OFF')
 	NOTIF_IMG=$([[ $MUTE_STATE == 'yes' ]] && echo "$UNMUTE_IMG" || echo "$MUTE_IMG")
 	SINK_STATE=$([[ $MUTE_STATE == 'yes' ]] && echo '0' || echo '1')
-	for sink in $SINKS; do
-		pactl set-sink-mute "$sink" "$SINK_STATE"
-		[ $? -eq 0 ] && notif "$NOTIF_TEXT" "$NOTIF_IMG"
-	done
+	if command -v pactl &> /dev/null; then
+		for sink in $SINKS; do
+			pactl set-sink-mute "$sink" "$SINK_STATE"
+			[ $? -eq 0 ] && notif "$NOTIF_TEXT" "$NOTIF_IMG"
+		done
+	fi
 }
 
 toggle_trackpad () {
