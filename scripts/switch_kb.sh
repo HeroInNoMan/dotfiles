@@ -8,7 +8,7 @@ notif-change-layout () {
   LAYOUT_NAME=$1
   NEW_LAYOUT=$(setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}')
   echo "$CURRENT_LAYOUT -> $NEW_LAYOUT ($LAYOUT_NAME)"
-  notify-send "$LAYOUT_NAME" --expire-time=1000 --icon=$KBD_IMG --urgency=CRITICAL --category="Layout"
+  notify-send "$LAYOUT_NAME" --expire-time=1000 --icon=$KBD_IMG --category="Layout"
 }
 
 case $LAYOUT in
@@ -31,7 +31,7 @@ for id in $(xinput list | grep -i "typematrix" | cut -d= -f2 | cut -f1); do
 done
 if [ -n "$TYPEMATRIX" ] && [ ! "BÉPO" == "$NOTIF" ];
 then
-  NOTIF="TM → BÉPO $NOTIF"
+  NOTIF="TM:BÉPO, $NOTIF"
 fi
 
 
@@ -43,7 +43,7 @@ fi
      done
 if [ -n "$ERGODOX" ] && [ ! "BÉPO" == "$NOTIF" ];
 then
-  NOTIF="EZ → BÉPO $NOTIF"
+  NOTIF="EZ:BÉPO, $NOTIF"
 fi
 
 notif-change-layout "$NOTIF"

@@ -52,7 +52,7 @@ update_monitor_state() {
   echo "$1" > $MONITOR_FILE
   echo "$CURRENT_MODE" >> $MONITOR_FILE
   append_documentation
-  notify-send "→ $1" --expire-time=1000 --icon="$MONITOR_IMG" --urgency=CRITICAL
+  notify-send "→ $1" --expire-time=1000 --icon="$MONITOR_IMG"
 }
 
 usage() {
