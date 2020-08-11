@@ -408,6 +408,7 @@
     <keybind key="W-egrave"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
     <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
     <keybind key="W-eacute"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
+    <keybind key="XF86AudioMute"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
     <keybind key="W-agrave"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
     <keybind key="W-m"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
     <keybind key="W-t"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
