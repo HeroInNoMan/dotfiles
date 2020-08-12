@@ -15,8 +15,8 @@ UNMUTE_IMG="$HW_IMG_DIR/sound.png"
 SINK_NAME=$(pacmd dump | grep --max-count=1 --only-matching "alsa.*stereo")
 SINKS=$(pacmd dump | grep 'sink' | cut -d ' ' -f 2 | sort | uniq)
 MUTE_STATE=$(pacmd dump | grep --perl-regexp "^set-sink-mute $SINK_NAME\s+" | perl -p -e 's/.+\s(yes|no)$/$1/')
-SOUND_CHANGE_STEP=10
-BRIGHTNESS_CHANGE_STEP=10
+SOUND_CHANGE_STEP=1
+BRIGHTNESS_CHANGE_STEP=5
 
 BRIGHTNESS_FILE="/sys/class/backlight/intel_backlight/brightness"
 
