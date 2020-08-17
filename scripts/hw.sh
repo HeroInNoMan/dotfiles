@@ -15,7 +15,7 @@ UNMUTE_IMG="$HW_IMG_DIR/sound.png"
 SINK_NAME=$(pacmd dump | grep --max-count=1 --only-matching "alsa.*stereo")
 SINKS=$(pacmd dump | grep 'sink' | cut -d ' ' -f 2 | sort | uniq)
 MUTE_STATE=$(pacmd dump | grep --perl-regexp "^set-sink-mute $SINK_NAME\s+" | perl -p -e 's/.+\s(yes|no)$/$1/')
-SOUND_CHANGE_STEP=1
+SOUND_CHANGE_STEP=10
 BRIGHTNESS_CHANGE_STEP=5
 
 BRIGHTNESS_FILE="/sys/class/backlight/intel_backlight/brightness"
@@ -54,7 +54,8 @@ sound_down () {
 			pactl set-sink-volume $sink -${SOUND_CHANGE_STEP}%
 		done
 	fi
-	notif "Volume down" "$SOUND_DOWN_IMG"
+	VOLUME_STATE=$(pacmd dump-volumes | grep 'Sink' | cut -d '/' -f 2)
+	notif "🔉 ${VOLUME_STATE}" "$SOUND_DOWN_IMG"
 }
 
 sound_up () {
@@ -69,7 +70,8 @@ sound_up () {
 			pactl set-sink-volume $sink +${SOUND_CHANGE_STEP}%
 		done
 	fi
-	notif "Volume up" "$SOUND_UP_IMG"
+	VOLUME_STATE=$(pacmd dump-volumes | grep 'Sink' | cut -d '/' -f 2)
+	notif "🔊 ${VOLUME_STATE}" "$SOUND_UP_IMG"
 }
 
 toggle_mute () {
