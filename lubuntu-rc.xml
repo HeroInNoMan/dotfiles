@@ -158,62 +158,62 @@
     <keybind key="A-space"><action name="ShowMenu"><menu>client-menu</menu></action></keybind>
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
     <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
-    <keybind key="W-s"><action name="Execute"><command>shutter</command></action></keybind>
+    <keybind key="W-s"><action name="Execute"><command>scrot</command></action></keybind>
     <!-- <keybind key="W-s"><action name="Execute"><command>scrot</command></action></keybind> -->
 
     <!-- WINDOW SWITCHING -->
 
     <!-- rofi for windows -->
-    <keybind key="W-z"><action name="Execute"><command>rofi-run.sh window</command></action></keybind>
+      <keybind key="W-z"><action name="Execute"><command>rofi-run.sh window</command></action></keybind>
 
-    <!-- Exposé -->
-    <keybind key="W-w"><action name="Execute"><command>skippy-xd</command></action></keybind>
+      <!-- Exposé -->
+      <keybind key="W-w"><action name="Execute"><command>skippy-xd</command></action></keybind>
 
-    <!-- Angry Search -->
-    <keybind key="W-f"><action name="Execute"><command>angrysearch</command></action></keybind>
+      <!-- Angry Search -->
+      <keybind key="W-f"><action name="Execute"><command>angrysearch</command></action></keybind>
 
-    <keybind key="A-Tab">
-      <action name="NextWindow">
-        <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
-      </action>
-    </keybind>
-    <keybind key="A-S-Tab">
-      <action name="PreviousWindow">
-        <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
-      </action>
-    </keybind>
-    <keybind key="C-A-Tab">
-      <action name="NextWindow">
-        <panels>yes</panels>
-        <desktop>yes</desktop>
-        <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
-      </action>
-    </keybind>
+      <keybind key="A-Tab">
+        <action name="NextWindow">
+          <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
+        </action>
+      </keybind>
+      <keybind key="A-S-Tab">
+        <action name="PreviousWindow">
+          <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
+        </action>
+      </keybind>
+      <keybind key="C-A-Tab">
+        <action name="NextWindow">
+          <panels>yes</panels>
+          <desktop>yes</desktop>
+          <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
+        </action>
+      </keybind>
 
-    <!-- Window switching with the arrow keys -->
-    <!-- <keybind key="W-S-Right"><action name="DirectionalCycleWindows"><direction>right</direction></action></keybind>
-         <keybind key="W-S-Left"><action name="DirectionalCycleWindows"><direction>left</direction></action></keybind>
-         <keybind key="W-S-Up"><action name="DirectionalCycleWindows"><direction>up</direction></action></keybind>
-         <keybind key="W-S-Down"><action name="DirectionalCycleWindows"><direction>down</direction></action></keybind> -->
+      <!-- Window switching with the arrow keys -->
+      <!-- <keybind key="W-S-Right"><action name="DirectionalCycleWindows"><direction>right</direction></action></keybind>
+           <keybind key="W-S-Left"><action name="DirectionalCycleWindows"><direction>left</direction></action></keybind>
+           <keybind key="W-S-Up"><action name="DirectionalCycleWindows"><direction>up</direction></action></keybind>
+           <keybind key="W-S-Down"><action name="DirectionalCycleWindows"><direction>down</direction></action></keybind> -->
 
-    <!-- ################################################################### -->
-    <!-- ################ WINDOW TILING & MOVING MANAGEMENT ################ -->
-    <!-- ################################################################### -->
+      <!-- ################################################################### -->
+      <!-- ################ WINDOW TILING & MOVING MANAGEMENT ################ -->
+      <!-- ################################################################### -->
 
-    <!-- WINDOW MANAGEMENT WITH ARROW KEYS -->
-    <!-- HalfLeftScreen -->
-    <!-- <keybind key="W-Left"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action></keybind> -->
-    <!-- HalfRightScreen -->
-    <!-- <keybind key="W-Right"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action></keybind> -->
-    <!-- Increase window size  -->
-    <keybind key="W-Up">
-      <action name="If"><maximized>yes</maximized>
-        <then><action name="ToggleFullscreen"/></then>
-        <else><action name="ToggleMaximize"/></else>
-      </action>
-    </keybind>
-    <!-- Decrease window size -->
-    <keybind key="W-Down">
+      <!-- WINDOW MANAGEMENT WITH ARROW KEYS -->
+      <!-- HalfLeftScreen -->
+      <!-- <keybind key="W-Left"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action></keybind> -->
+      <!-- HalfRightScreen -->
+      <!-- <keybind key="W-Right"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action></keybind> -->
+      <!-- Increase window size  -->
+      <keybind key="W-Up">
+        <action name="If"><maximized>yes</maximized>
+          <then><action name="ToggleFullscreen"/></then>
+          <else><action name="ToggleMaximize"/></else>
+        </action>
+      </keybind>
+      <!-- Decrease window size -->
+<keybind key="W-Down">
       <action name="If"><maximized>yes</maximized>
         <then><action name="ToggleMaximize"/></then>
         <else>
