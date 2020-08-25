@@ -293,15 +293,16 @@
       </keybind>
 
       <keybind key="m">
-        <keybind key="c"><action name="Execute"><command>hw.sh display-dual-screen-copy</command></action></keybind>
-        <keybind key="b"><action name="Execute"><command>hw.sh display-built-in-only</command></action></keybind>
-        <keybind key="l"><action name="Execute"><command>hw.sh display-extend-left</command></action></keybind>
-        <keybind key="r"><action name="Execute"><command>hw.sh display-extend-right</command></action></keybind>
-        <keybind key="u"><action name="Execute"><command>hw.sh display-extend-up</command></action></keybind>
-        <keybind key="d"><action name="Execute"><command>hw.sh display-extend-down</command></action></keybind>
-        <keybind key="e"><action name="Execute"><command>hw.sh display-external-only</command></action></keybind>
-        <keybind key="p"><action name="Execute"><command>hw.sh display-previous</command></action></keybind>
-        <keybind key="m"><action name="Execute"><command>hw.sh display</command></action></keybind>
+        <keybind key="c"><action name="Execute"><command>manage-displays.sh copy</command></action></keybind>
+        <keybind key="b"><action name="Execute"><command>manage-displays.sh internal</command></action></keybind>
+        <keybind key="l"><action name="Execute"><command>manage-displays.sh left</command></action></keybind>
+        <keybind key="r"><action name="Execute"><command>manage-displays.sh right</command></action></keybind>
+        <keybind key="u"><action name="Execute"><command>manage-displays.sh up</command></action></keybind>
+        <keybind key="d"><action name="Execute"><command>manage-displays.sh down</command></action></keybind>
+        <keybind key="e"><action name="Execute"><command>manage-displays.sh external</command></action></keybind>
+        <keybind key="t"><action name="Execute"><command>manage-displays.sh triple</command></action></keybind>
+        <keybind key="p"><action name="Execute"><command>manage-displays.sh previous</command></action></keybind>
+        <keybind key="m"><action name="Execute"><command>manage-displays.sh </command></action></keybind>
         <keybind key="x"><action name="Execute"><command>move-lxpanel.sh</command></action></keybind>
       </keybind>
 
@@ -518,7 +519,7 @@
       </keybind>
     </keybind>
     <!-- Manage display (Fn+F9) -->
-    <keybind key="0xF8"><action name="Execute"><command>hw.sh display</command></action></keybind>
+    <keybind key="0xF8"><action name="Execute"><command>manage-displays.sh</command></action></keybind>
   </keyboard>
   <mouse>
     <dragThreshold>8</dragThreshold>
