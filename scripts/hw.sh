@@ -20,10 +20,6 @@ BRIGHTNESS_CHANGE_STEP=5
 
 BRIGHTNESS_FILE="/sys/class/backlight/intel_backlight/brightness"
 
-display-current-state () {
-	echo "toto"
-}
-
 notif () {
 	killall notification-daemon
 	/usr/lib/notification-daemon/notification-daemon &
