@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 PANEL_CONFIG_FILE=$HOME/.config/lxpanel/default/panels/panel
 
 # find number of monitors

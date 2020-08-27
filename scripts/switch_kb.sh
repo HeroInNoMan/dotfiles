@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 KBD_IMG="$HOME/.config/img/keyboard.png"
 KBD_FILE="$HOME/.kbd-switch"
 true >> $KBD_FILE

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 MONITOR_IMG="$HOME/.config/img/monitor.png"
 MONITOR_FILE="$HOME/.monitor-state"

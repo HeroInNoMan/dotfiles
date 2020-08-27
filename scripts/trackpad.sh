@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 synclient TapButton1=1 TapButton2=2 TapButton3=3
 

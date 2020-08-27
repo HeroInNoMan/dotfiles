@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Audacious music player control
 # used in ~/.config/openbox/lubuntu-rc.xml
