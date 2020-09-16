@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+OLD_DIR=$(pwd)
+cd ~/outils/emacs
+git checkout master
+git pull
+./autogen.sh
+./configure
+make
+sudo make install
+cd $OLD_DIR
+# EOF

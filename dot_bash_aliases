@@ -45,7 +45,7 @@ alias e='emacsclient -nw'
 alias ec='emacsclient -c'
 alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit"
 alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
-alias ue="cd ~/outils/emacs; git checkout master; git pull; ./autogen.sh; ./configure; make; sudo make install; cd -"
+alias ue="update-emacs"
 
 # GIT #########################################################################
 alias co='git checkout'
