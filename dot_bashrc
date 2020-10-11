@@ -58,6 +58,25 @@ export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a \"\""          # $VISUAL opens in GUI mode
 
+compile-emacs () {
+  export CC="gcc-10" # allows to native-compile emacs
+  cd ~/outils/emacs ||
+    git checkout feature/native-comp &&
+      git pull &&
+      ./autogen.sh &&
+      ./configure --with-nativecomp --with-mailutils &&
+      make -j 2 &&
+      sudo make install &&
+      cd - || exit;
+}
+
+update-system () {
+  sudo apt update &&
+    sudo apt -y upgrade &&
+    sudo apt -y dist-upgrade &&
+    sudo apt-get -y autoremove
+}
+
 # if [ -f ~/Terminalcity/dotfiles/make-completion-wrapper ]; then
 #     . ~/Terminalcity/dotfiles/make-completion-wrapper
 #
