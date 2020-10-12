@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ -d ~/.emacs.d-centaur/ ]; then
+	mv ~/.emacs.d ~/.emacs.d-backup
+	mv ~/.emacs.d-centaur ~/.emacs.d
+	echo "switched to centaur."
+else
+	mv ~/.emacs.d ~/.emacs.d-centaur
+	mv ~/.emacs.d-backup ~/.emacs.d
+	echo "switched to vanilla."
+fi
+
+# EOF
