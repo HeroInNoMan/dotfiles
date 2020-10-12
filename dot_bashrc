@@ -105,11 +105,11 @@ export PATH=$MAVEN_HOME/bin:$PATH
 export PATH=$JAVA_HOME/bin:$PATH
 
 use-java-7 () {
-  export JAVA_HOME=$JAVA_7
+  [[ -n $SDKMAN_DIR && -n $JAVA_7_VERSION ]] && sdk use java $JAVA_7_VERSION || export JAVA_HOME=$JAVA_7
 }
 
 use-java-8 () {
-  export JAVA_HOME=$JAVA_8
+  [[ -n $SDKMAN_DIR && -n $JAVA_8_VERSION ]] && sdk use java $JAVA_8_VERSION || export JAVA_HOME=$JAVA_8
 }
 
 maven-debug () {
