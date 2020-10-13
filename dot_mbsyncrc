@@ -1,36 +1,38 @@
 ###############################################################################
 #                     mbsync configuration for proton mail                    #
 ###############################################################################
-IMAPAccount protonmail
+
+# Primary mail account ########################################################
+IMAPAccount proton
 Host 127.0.0.1
 Port 1143
 User arthur.leothaud@protonmail.com
 PassCmd "gpg -q -d ~/.authinfo.gpg | awk 'FNR == 1 {print $8}'"
 SSLType NONE
-# CertificateFile /etc/ssl/certs/ca-bundle.crt
+AuthMechs LOGIN
+CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-# global settings #############################################################
-BufferLimit 50M
-SyncState *
+# Bind a remote storage to a configured account ###############################
+IMAPStore proton-remote
+Account proton
+
+# Bind a local storage to a folder ############################################
+MaildirStore proton-local
+Subfolders Verbatim
+Path  ~/Maildir/ProtonMail/
+Inbox ~/Maildir/ProtonMail/inbox
+
+# Channels (group local ↔ remote (aka. far ↔ near) configs) ###################
+Channel proton
+Far :proton-remote:
+Near :proton-local:
+Patterns *
 Create Both
 Expunge Both
+SyncState *
+# Remove Near
+# Patterns * !"All Mail" !"Gmail"
 
-# Local storage ###############################################################
-MaildirStore local-proton
-Path  ~/Maildir/ProtonMail/
-Inbox ~/Maildir/ProtonMail/INBOX
-Subfolders Verbatim
-
-# Remote storage ##############################################################
-IMAPStore remote-proton
-Account protonmail
-
-# Channels ####################################################################
-Channel inbox
-Master :remote-proton:
-Slave :local-proton:
-Patterns * !"All Mail" !"Gmail"
-
-# Groups ######################################################################
-Group protonmail
-Channel inbox
+# Groups (group channels) #####################################################
+# Group proton
+# Channel proton-inbox
