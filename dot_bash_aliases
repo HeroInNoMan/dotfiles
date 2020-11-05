@@ -96,3 +96,4 @@ alias pip="pip3.7"
 # JAVA ########################################################################
 alias 7='use-java-7'
 alias 8='use-java-8'
+alias 11='use-java-11'

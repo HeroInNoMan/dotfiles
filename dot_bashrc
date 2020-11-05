@@ -131,6 +131,10 @@ use-java-8 () {
   [[ -n $SDKMAN_DIR && -n $JAVA_8_VERSION ]] && sdk use java $JAVA_8_VERSION || export JAVA_HOME=$JAVA_8
 }
 
+use-java-11 () {
+  [[ -n $SDKMAN_DIR && -n $JAVA_11_VERSION ]] && sdk use java $JAVA_11_VERSION || export JAVA_HOME=$JAVA_11
+}
+
 maven-debug () {
   mvn $@ -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
 }
