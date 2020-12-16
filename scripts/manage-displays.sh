@@ -10,8 +10,15 @@ log() {
 	echo $(date "+%F %T") $@
 }
 
+layouts=("built-in-only" "dual-screen-copy" "extend-left" "extend-right" "extend-up" "extend-down" "external-only" "extend-triple" "extend-triple-vertical")
+
 usage() {
-	log "usage: $0 [ previous | built-in-only | dual-screen-copy | extend-left | extend-right | extend-up | extend-down | external-only | extend-triple ]"
+	str="usage: $0 [ previous "
+	for layout in ${layouts[@]}; do
+		str+="| $layout "
+	done
+	str+="]"
+	log $str
 }
 
 translate() {
@@ -30,6 +37,8 @@ translate() {
 			echo "external-only";;
 		extend-triple|triple|t)
 			echo "extend-triple";;
+		extend-triple-vertical|vert|v|hhv)
+			echo "extend-triple-vertical";;
 		dual-screen-copy|dual|copy|c)
 			echo "dual-screen-copy";;
 		*)
@@ -56,6 +65,8 @@ next_state() {
 			echo "external-only";;
 		external-only)
 			echo "extend-triple";;
+		external-triple)
+			echo "extend-triple-vertical";;
 		*)
 			echo "built-in-only";;
 	esac
@@ -125,7 +136,12 @@ case $NEXT_MODE in
 		$(xrandr --output $M2 --auto --rotate normal --output $M1 --off --output $M3 --off $OFF_ARG);;
 	extend-triple)
 		MONITOR_SUMMARY="$M1, $M2, $M3"
+		# xrandr  --output eDP-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1920x0 --rotate normal --output VGA-1 --mode 1920x1080 --pos 3840x0 --rotate normal
 		$(xrandr --output $M1 --auto --rotate normal --output $M2 --auto --rotate normal --right-of $M1 --output $M3 --auto --rotate normal --right-of $M2 $OFF_ARG);;
+	extend-triple-vertical)
+		MONITOR_SUMMARY="$M1, $M2, $M3"
+		# xrandr --output eDP-1 --primary --mode 1920x1080 --pos 0x168 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 1920x168 --rotate normal --output VGA-1 --mode 1920x1080 --pos 3840x0 --rotate right
+		~/.screenlayout/triple-hhv.sh;;
 	dual-screen-copy)
 		MONITOR_SUMMARY="$M1, $M2"
 		$(xrandr --output $M1 --auto --rotate normal --output $M2 --auto --rotate normal --same-as $M1 --output $M3 --off $OFF_ARG);;
@@ -135,16 +151,11 @@ case $NEXT_MODE in
 esac
 
 append_documentation() {
-	{ echo "# possible values:"
-		echo "# built-in-only"
-		echo "# dual-screen-copy"
-		echo "# extend-left"
-		echo "# extend-right"
-		echo "# extend-up"
-		echo "# extend-down"
-		echo "# external-only"
-		echo "# extend-triple"
-	} >> $MONITOR_FILE
+	echo "# possible values:"
+	for layout in ${layouts[@]}; do
+		echo "# $layout"
+	done
+	>> $MONITOR_FILE
 }
 
 update_monitor_state() {

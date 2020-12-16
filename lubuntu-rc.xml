@@ -301,6 +301,7 @@
         <keybind key="d"><action name="Execute"><command>manage-displays.sh down</command></action></keybind>
         <keybind key="e"><action name="Execute"><command>manage-displays.sh external</command></action></keybind>
         <keybind key="t"><action name="Execute"><command>manage-displays.sh triple</command></action></keybind>
+        <keybind key="v"><action name="Execute"><command>manage-displays.sh vert</command></action></keybind>
         <keybind key="p"><action name="Execute"><command>manage-displays.sh previous</command></action></keybind>
         <keybind key="m"><action name="Execute"><command>manage-displays.sh </command></action></keybind>
         <keybind key="x"><action name="Execute"><command>move-lxpanel.sh</command></action></keybind>
