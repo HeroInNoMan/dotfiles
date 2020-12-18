@@ -26,11 +26,11 @@ REQUIRED_PROGRAMS=(amixer
 									 audacious
 									 compton
 									 galculator
-									 glipper
 									 nautilus
 									 notify-send
 									 pacmd
 									 pactl
+									 parcellite
 									 pavucontrol
 									 rofi
 									 scrot
