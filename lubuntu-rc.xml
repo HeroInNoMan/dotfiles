@@ -303,8 +303,8 @@
         <keybind key="t"><action name="Execute"><command>manage-displays.sh triple  </command></action></keybind>
         <keybind key="v"><action name="Execute"><command>manage-displays.sh vert    </command></action></keybind>
         <keybind key="p"><action name="Execute"><command>manage-displays.sh previous</command></action></keybind>
-        <keybind key="m"><action name="Execute"><command>manage-displays.sh </command></action></keybind>
-        <keybind key="x"><action name="Execute"><command>move-lxpanel.sh</command></action></keybind>
+        <keybind key="m"><action name="Execute"><command>rofi-display-layout.sh     </command></action></keybind>
+        <keybind key="x"><action name="Execute"><command>move-lxpanel.sh            </command></action></keybind>
       </keybind>
 
       <keybind key="f"><action name="ToggleFullscreen"/></keybind> <!-- full screen -->
