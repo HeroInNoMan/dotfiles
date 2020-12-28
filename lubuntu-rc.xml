@@ -164,56 +164,56 @@
     <!-- WINDOW SWITCHING -->
 
     <!-- rofi for windows -->
-      <keybind key="W-z"><action name="Execute"><command>rofi-run.sh window</command></action></keybind>
+    <keybind key="W-z"><action name="Execute"><command>rofi-run.sh window</command></action></keybind>
 
-      <!-- Exposé -->
-      <keybind key="W-w"><action name="Execute"><command>skippy-xd</command></action></keybind>
+    <!-- Exposé -->
+    <keybind key="W-w"><action name="Execute"><command>skippy-xd</command></action></keybind>
 
-      <!-- Angry Search -->
-      <keybind key="W-f"><action name="Execute"><command>angrysearch</command></action></keybind>
+    <!-- Angry Search -->
+    <keybind key="W-f"><action name="Execute"><command>angrysearch</command></action></keybind>
 
-      <keybind key="A-Tab">
-        <action name="NextWindow">
-          <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
-        </action>
-      </keybind>
-      <keybind key="A-S-Tab">
-        <action name="PreviousWindow">
-          <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
-        </action>
-      </keybind>
-      <keybind key="C-A-Tab">
-        <action name="NextWindow">
-          <panels>yes</panels>
-          <desktop>yes</desktop>
-          <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
-        </action>
-      </keybind>
+    <keybind key="A-Tab">
+      <action name="NextWindow">
+        <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
+      </action>
+    </keybind>
+    <keybind key="A-S-Tab">
+      <action name="PreviousWindow">
+        <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
+      </action>
+    </keybind>
+    <keybind key="C-A-Tab">
+      <action name="NextWindow">
+        <panels>yes</panels>
+        <desktop>yes</desktop>
+        <finalactions><action name="Focus"/><action name="Raise"/><action name="Unshade"/></finalactions>
+      </action>
+    </keybind>
 
-      <!-- Window switching with the arrow keys -->
-      <!-- <keybind key="W-S-Right"><action name="DirectionalCycleWindows"><direction>right</direction></action></keybind>
-           <keybind key="W-S-Left"><action name="DirectionalCycleWindows"><direction>left</direction></action></keybind>
-           <keybind key="W-S-Up"><action name="DirectionalCycleWindows"><direction>up</direction></action></keybind>
-           <keybind key="W-S-Down"><action name="DirectionalCycleWindows"><direction>down</direction></action></keybind> -->
+    <!-- Window switching with the arrow keys -->
+    <!-- <keybind key="W-S-Right"><action name="DirectionalCycleWindows"><direction>right</direction></action></keybind>
+         <keybind key="W-S-Left"><action name="DirectionalCycleWindows"><direction>left</direction></action></keybind>
+         <keybind key="W-S-Up"><action name="DirectionalCycleWindows"><direction>up</direction></action></keybind>
+         <keybind key="W-S-Down"><action name="DirectionalCycleWindows"><direction>down</direction></action></keybind> -->
 
-      <!-- ################################################################### -->
-      <!-- ################ WINDOW TILING & MOVING MANAGEMENT ################ -->
-      <!-- ################################################################### -->
+    <!-- ################################################################### -->
+    <!-- ################ WINDOW TILING & MOVING MANAGEMENT ################ -->
+    <!-- ################################################################### -->
 
-      <!-- WINDOW MANAGEMENT WITH ARROW KEYS -->
-      <!-- HalfLeftScreen -->
-      <!-- <keybind key="W-Left"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action></keybind> -->
-      <!-- HalfRightScreen -->
-      <!-- <keybind key="W-Right"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action></keybind> -->
-      <!-- Increase window size  -->
-      <keybind key="W-Up">
-        <action name="If"><maximized>yes</maximized>
-          <then><action name="ToggleFullscreen"/></then>
-          <else><action name="ToggleMaximize"/></else>
-        </action>
-      </keybind>
-      <!-- Decrease window size -->
-<keybind key="W-Down">
+    <!-- WINDOW MANAGEMENT WITH ARROW KEYS -->
+    <!-- HalfLeftScreen -->
+    <!-- <keybind key="W-Left"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>0</x><y>0</y><height>100%</height><width>50%</width></action></keybind> -->
+    <!-- HalfRightScreen -->
+    <!-- <keybind key="W-Right"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>0</y><height>100%</height><width>50%</width></action></keybind> -->
+    <!-- Increase window size  -->
+    <keybind key="W-Up">
+      <action name="If"><maximized>yes</maximized>
+        <then><action name="ToggleFullscreen"/></then>
+        <else><action name="ToggleMaximize"/></else>
+      </action>
+    </keybind>
+    <!-- Decrease window size -->
+    <keybind key="W-Down">
       <action name="If"><maximized>yes</maximized>
         <then><action name="ToggleMaximize"/></then>
         <else>
@@ -293,15 +293,15 @@
       </keybind>
 
       <keybind key="m">
-        <keybind key="c"><action name="Execute"><command>manage-displays.sh copy</command></action></keybind>
+        <keybind key="c"><action name="Execute"><command>manage-displays.sh copy    </command></action></keybind>
         <keybind key="b"><action name="Execute"><command>manage-displays.sh internal</command></action></keybind>
-        <keybind key="l"><action name="Execute"><command>manage-displays.sh left</command></action></keybind>
-        <keybind key="r"><action name="Execute"><command>manage-displays.sh right</command></action></keybind>
-        <keybind key="u"><action name="Execute"><command>manage-displays.sh up</command></action></keybind>
-        <keybind key="d"><action name="Execute"><command>manage-displays.sh down</command></action></keybind>
+        <keybind key="l"><action name="Execute"><command>manage-displays.sh left    </command></action></keybind>
+        <keybind key="r"><action name="Execute"><command>manage-displays.sh right   </command></action></keybind>
+        <keybind key="u"><action name="Execute"><command>manage-displays.sh up      </command></action></keybind>
+        <keybind key="d"><action name="Execute"><command>manage-displays.sh down    </command></action></keybind>
         <keybind key="e"><action name="Execute"><command>manage-displays.sh external</command></action></keybind>
-        <keybind key="t"><action name="Execute"><command>manage-displays.sh triple</command></action></keybind>
-        <keybind key="v"><action name="Execute"><command>manage-displays.sh vert</command></action></keybind>
+        <keybind key="t"><action name="Execute"><command>manage-displays.sh triple  </command></action></keybind>
+        <keybind key="v"><action name="Execute"><command>manage-displays.sh vert    </command></action></keybind>
         <keybind key="p"><action name="Execute"><command>manage-displays.sh previous</command></action></keybind>
         <keybind key="m"><action name="Execute"><command>manage-displays.sh </command></action></keybind>
         <keybind key="x"><action name="Execute"><command>move-lxpanel.sh</command></action></keybind>
