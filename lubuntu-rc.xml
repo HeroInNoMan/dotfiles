@@ -391,6 +391,8 @@
     <keybind key="C-A-Delete"><action name="Execute"><command>lxtask</command></action></keybind>
     <!-- App launcher -->
     <keybind key="W-d"><action name="Execute"><command>rofi-run.sh</command></action></keybind>
+    <!-- Emoji (*U*nicode) -->
+    <keybind key="W-u"><action name="Execute"><command>rofi-emoji.sh</command></action></keybind>
     <!-- ssh connection launcher -->
     <keybind key="W-h"><action name="Execute"><command>rofi-run.sh ssh</command></action></keybind>
     <!-- Music launcher -->
@@ -416,51 +418,7 @@
     <keybind key="W-t"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
     <keybind key="W-v"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
     <!-- Volume / brightness management (W-u, chrooted on W-u W-u) -->
-    <keybind key="W-u">
-      <keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
-      <!-- raise volume -->
-      <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
-      <keybind key="F3"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
-      <keybind key="egrave"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
-      <!-- lower volume -->
-      <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
-      <keybind key="F2"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
-      <keybind key="eacute"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
-      <!-- mute -->
-      <keybind key="XF86AudioMute"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
-      <keybind key="F1"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
-      <keybind key="m"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
-      <keybind key="agrave"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
-      <!-- decrease light -->
-      <keybind key="t"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
-      <keybind key="F5"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
-      <!-- increase light -->
-      <keybind key="v"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
-      <keybind key="F6"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
-      <keybind key="W-u" chroot="true">
-        <keybind key="p"><action name="Execute"><command>pavucontrol</command></action></keybind>
-        <!-- raise volume -->
-        <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
-        <keybind key="F3"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
-        <keybind key="egrave"><action name="Execute"><command>hw.sh sound-up</command></action></keybind>
-        <!-- lower volume -->
-        <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
-        <keybind key="F2"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
-        <keybind key="eacute"><action name="Execute"><command>hw.sh sound-down</command></action></keybind>
-        <!-- mute -->
-        <keybind key="XF86AudioMute"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
-        <keybind key="F1"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
-        <keybind key="m"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
-        <keybind key="agrave"><action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
-        <!-- decrease light -->
-        <keybind key="t"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
-        <keybind key="F5"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
-        <!-- increase light -->
-        <keybind key="v"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
-        <keybind key="F6"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
-        <keybind key="Escape"><action name="BreakChroot"/></keybind>
-      </keybind>
-    </keybind>
+
 
     <!-- launch (Open) applications -->
     <keybind key="W-o">
