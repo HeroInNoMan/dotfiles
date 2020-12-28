@@ -19,7 +19,7 @@ case $LAYOUT in
 		NOTIF="AZERTY"
 		;;
 	*)
-		setxkbmap fr bepo -option ctrl:nocaps compose:paus
+		setxkbmap fr bepo -option ctrl:nocaps compose:prsc
 		echo "fr(bepo)" > $KBD_FILE
 		NOTIF="BÉPO"
 		;;
