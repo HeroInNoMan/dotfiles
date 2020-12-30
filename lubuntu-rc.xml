@@ -158,7 +158,7 @@
     <keybind key="A-space"><action name="ShowMenu"><menu>client-menu</menu></action></keybind>
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
     <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
-    <keybind key="W-s"><action name="Execute"><command>scrot</command></action></keybind>
+    <keybind key="W-s"><action name="Execute"><command>scrotmenu.sh</command></action></keybind>
     <!-- <keybind key="W-s"><action name="Execute"><command>scrot</command></action></keybind> -->
 
     <!-- WINDOW SWITCHING -->
@@ -403,6 +403,14 @@
       <keybind key="k"><action name="Execute"><command>rofi-kaomoji.sh</command></action></keybind>
     </keybind>
 
+    <!-- Custom rofi launcher -->
+    <keybind key="W-x">
+      <keybind key="W-x"><action name="Execute"><command>appsmenu.sh         </command></action></keybind>
+      <keybind key="v">  <action name="Execute"><command>nmvpnmenu.sh        </command></action></keybind>
+      <keybind key="n">  <action name="Execute"><command>networkmenu.py      </command></action></keybind>
+      <keybind key="s">  <action name="Execute"><command>scrotmenu.sh        </command></action></keybind>
+      <keybind key="f">  <action name="Execute"><command>rofi-video-search.sh</command></action></keybind>
+      <keybind key="b">  <action name="Execute"><command>rofi-book-search.sh </command></action></keybind>
     </keybind>
     <!-- ssh connection launcher -->
     <keybind key="W-h"><action name="Execute"><command>rofi-run.sh ssh</command></action></keybind>
@@ -451,7 +459,7 @@
     <keybind key="XF86MonBrightnessDown"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
     <keybind key="XF86MonBrightnessUp"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
     <!-- Launch scrot (print screen) -->
-    <keybind key="Print"><action name="Execute"><command>scrot</command></action></keybind>
+    <keybind key="Print"><action name="Execute"><command>scrotmenu.sh</command></action></keybind>
     <!-- Logout -->
     <keybind key="XF86PowerOff"><action name="Execute"><command>lxsession-logout</command></action></keybind>
     <keybind key="W-Insert"><action name="Execute"><command>lxsession-logout</command></action></keybind>
