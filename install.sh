@@ -24,20 +24,33 @@ BACKUP_DIR=$TARGET_DIR/dotfiles_$TIME_STAMP # old dotfiles backup directory
 REQUIRED_PROGRAMS=(amixer
                    angrysearch
                    audacious
+                   blueman-manager
                    compton
+                   emacsclient
                    galculator
+                   lxlock
+                   lxpanelctl
+                   lxsession-default
+                   lxsession-logout
+                   lxtask
+                   lxterminal
                    nautilus
                    notify-send
+                   openbox
                    pacmd
                    pactl
                    parcellite
                    pavucontrol
+                   pcmanfm
                    rofi
                    scrot
                    skippy-xd
+                   sleep
+                   smplayer
                    synclient
                    x-tile
                    xbacklight
+                   xkill
                    xrandr
                    xscreensaver
                    xscreensaver-command)
