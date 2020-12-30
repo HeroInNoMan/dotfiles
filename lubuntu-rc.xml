@@ -391,12 +391,18 @@
     <keybind key="C-A-Delete"><action name="Execute"><command>lxtask</command></action></keybind>
     <!-- App launcher -->
     <keybind key="W-d"><action name="Execute"><command>rofi-run.sh</command></action></keybind>
-    <!-- Emoji (*U*nicode) -->
+
+    <!-- Special character selection -->
     <keybind key="W-u">
+      <!-- Emoji (*U*nicode) -->
       <keybind key="W-u"><action name="Execute"><command>rofi-emoji.sh</command></action></keybind>
-      <!-- Arrows -->
+      <!-- All possible special characters -->
       <keybind key="W-a"><action name="Execute"><command>rofi-all.sh</command></action></keybind>
       <keybind key="a"><action name="Execute"><command>rofi-all.sh</command></action></keybind>
+      <!-- Kaomoji -->
+      <keybind key="k"><action name="Execute"><command>rofi-kaomoji.sh</command></action></keybind>
+    </keybind>
+
     </keybind>
     <!-- ssh connection launcher -->
     <keybind key="W-h"><action name="Execute"><command>rofi-run.sh ssh</command></action></keybind>
