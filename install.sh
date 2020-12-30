@@ -22,6 +22,11 @@ DOT_FILES_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 ROOT_TARGET_DIR="$HOME" # destination directory
 TARGET_CONF_DIR="${ROOT_TARGET_DIR}/.config" # destination directory
 DEFAULT_BACKUP_DIR="${ROOT_TARGET_DIR}/dotfiles${BACKUP_SUFFIX}" # old dotfiles backup directory
+EXTERNAL_REPOS_ROOT="$HOME/outils"
+
+EXTERNAL_REPOS=("https://github.com/fdw/rofimoji.git"
+                "https://gitlab.com/vahnrr/rofi-menus.git"
+                "https://github.com/eylles/dmenukaomoji.git")
 
 EXTERNAL_PROGRAMS=(amixer
                    angrysearch
@@ -139,12 +144,26 @@ check_missing_programmes () {
   fi
 }
 
+clone_missing_repo () {
+  old_dir=$(pwd)
+  cd $EXTERNAL_REPOS_ROOT
+  git clone $1
+  cd $old_dir
+}
+
+check_missing_repos () {
+  for repo in "${EXTERNAL_REPOS[@]}";do
+    [ ! -d "${EXTERNAL_REPOS_ROOT}/$(basename ${repo%.git})" ] && clone_missing_repo $repo
+  done
+}
+
 main () {
   install_dotfiles
   install_scripts
   install_localrc
   install_config_files
   check_missing_programmes
+  check_missing_repos
 }
 
 main
