@@ -392,7 +392,12 @@
     <!-- App launcher -->
     <keybind key="W-d"><action name="Execute"><command>rofi-run.sh</command></action></keybind>
     <!-- Emoji (*U*nicode) -->
-    <keybind key="W-u"><action name="Execute"><command>rofi-emoji.sh</command></action></keybind>
+    <keybind key="W-u">
+      <keybind key="W-u"><action name="Execute"><command>rofi-emoji.sh</command></action></keybind>
+      <!-- Arrows -->
+      <keybind key="W-a"><action name="Execute"><command>rofi-all.sh</command></action></keybind>
+      <keybind key="a"><action name="Execute"><command>rofi-all.sh</command></action></keybind>
+    </keybind>
     <!-- ssh connection launcher -->
     <keybind key="W-h"><action name="Execute"><command>rofi-run.sh ssh</command></action></keybind>
     <!-- Music launcher -->
