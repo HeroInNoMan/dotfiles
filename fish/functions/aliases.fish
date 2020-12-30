@@ -28,8 +28,8 @@ alias beponocaps 'setxkbmap fr bepo -option ctrl:nocaps; xmodmap ~/.Xmodmap'
 alias emacs 'emacs -nw'
 alias e 'emacsclient -nw'
 alias ec 'emacsclient -c'
-alias E 'SUDO_EDITOR=\\"emacsclient -nw -a emacs\\" sudoedit'
-alias EC 'SUDO_EDITOR=\\"emacsclient -a emacs\\" sudoedit'
+# alias E 'SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit'
+# alias EC 'SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit'
 
 # GIT
 #######################################################
