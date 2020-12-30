@@ -1,27 +1,29 @@
 #!/bin/bash
 ################################################################################
 # 1. Symlinks dotfiles "dot_my_file" to $HOME/.my_file. Backups of existing
-# files are created in $HOME/dotfiles_YYYY-MM-DD/.
+# files are created in $HOME/dotfiles_backup_YYYY-MM-DD/.
 #
-# 2. Symlinks conf files (irssi, lubunturc) to $TARGET_DIR/my_conf_file. Backups
-# of existing files are created as $TARGET_DIR/file_YYYY-MM-DD.
+# 2. Symlinks conf files (irssi, lubunturc) to $ROOT_TARGET_DIR/my_conf_file.
+# Backups of existing files are created as $ROOT_TARGET_DIR/file_YYYY-MM-DD.
 #
 # 3. Creates a copy of localrc file to $HOME/.localrc if not already present.
 #
 # 4. Symlinks scripts (in scripts/) to $HOME/bin/my_script. Backups of existing
 # files are created as $HOME/bin/my_script_YYYY-MM-DD.
 #
-# 5. Symlinks img/ dir to $HOME/.config/img/. Backup of existing img dir
-# is created as $HOME/.config/img_YYYY-MM-DD.
+# 5. Symlinks img/ dir to $HOME/.config/img/. Backup of existing img dir is
+# created as $HOME/.config/img_YYYY-MM-DD.
 ################################################################################
 
 TIME_STAMP=$(date +%F-%T) # date in format YYYY-MM-DD-HH:MM:SS
+BACKUP_SUFFIX="_backup_${TIME_STAMP}"
 DOT_FILES_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 
-TARGET_DIR=$HOME # destination directory
-BACKUP_DIR=$TARGET_DIR/dotfiles_$TIME_STAMP # old dotfiles backup directory
+ROOT_TARGET_DIR="$HOME" # destination directory
+TARGET_CONF_DIR="${ROOT_TARGET_DIR}/.config" # destination directory
+DEFAULT_BACKUP_DIR="${ROOT_TARGET_DIR}/dotfiles${BACKUP_SUFFIX}" # old dotfiles backup directory
 
-REQUIRED_PROGRAMS=(amixer
+EXTERNAL_PROGRAMS=(amixer
                    angrysearch
                    audacious
                    blueman-manager
@@ -55,18 +57,23 @@ REQUIRED_PROGRAMS=(amixer
                    xscreensaver
                    xscreensaver-command)
 
-MISSING_PROGRAMS=()
-
-check_command () {
-  hash "$1" 2>/dev/null || { print_line >&2 "WARNING! $1 is not installed."; MISSING_PROGRAMS+=("$1"); }
-}
-
 deploy () {
+  # 1st param (mandatory) is the source file for which a symbolic link will be
+  # created.
+  #
+  # 2nd param (optional) is the symbolic link to create. If not specified, use
+  # the same directory sub-tree as the source and create the link there. The
+  # root of the source sub-tree is $DOT_FILES_DIR, the root of the link sub-tree
+  # is $TARGET_CONF_DIR.
+  #
+  # 3rd param (optional) is the path of the backup directory to create. If not
+  # specified, create a directory named after the source file and add
+  # $BACKUP_SUFFIX. The backup directory is created in the same location as the
+  # symbolic link.
+  #
   source=$1
-  link=$2
-  backup_place=$3
-
-  mkdir --parents "$(dirname "$link")"
+  link=${2:-$TARGET_CONF_DIR/$(echo "$source" | sed "s,$DOT_FILES_DIR/,,")}
+  backup_dir=${3:-$(dirname "$link")/$(basename "$link")${BACKUP_SUFFIX}}
 
   if [ -L "$link" ]; then
     target=$(readlink "$link")
@@ -76,8 +83,9 @@ deploy () {
     print_line "Deleting $link which is a link to $target ..."
     rm "$link"
   elif [ -e "$link" ]; then
-    print_line "Moving $link to $backup_place ..."
-    mv "$link" "$backup_place"
+    print_line "Moving $link to $backup_dir ..."
+    mkdir --parents "$backup_dir"
+    mv "$link" "$backup_dir"
   fi
 
   print_line "Creating $link@ ..."
@@ -88,59 +96,57 @@ print_line () {
   echo "[DOT FILES] $*"
 }
 
-############
-# DOTFILES #
-############
+install_dotfiles () {
+  for file in $DOT_FILES_DIR/dot_*; do
+    deploy "$file" "$ROOT_TARGET_DIR/.$(echo basename "$file" | cut -d'_' -f 2-)" "$DEFAULT_BACKUP_DIR"
+  done
+}
 
-mkdir --parents "$BACKUP_DIR"
+install_scripts () {
+  for file in $DOT_FILES_DIR/scripts/*; do
+    deploy "$file" "$ROOT_TARGET_DIR/bin/$(basename "$file")"
+  done
+}
 
-for file in $DOT_FILES_DIR/dot_*; do
-  deploy "$file" "$TARGET_DIR/.$(echo basename "$file" | cut -d'_' -f 2-)" "$BACKUP_DIR"
-done
+install_localrc () {
+  cp --no-clobber "$DOT_FILES_DIR/localrc" "$ROOT_TARGET_DIR/.localrc"
+}
 
-# if no backup was made, delete backup dir
-rmdir --ignore-fail-on-non-empty "$BACKUP_DIR"
+install_config_files () {
+  deploy "$DOT_FILES_DIR/irssi_config"           "$ROOT_TARGET_DIR/.irssi/config"
+  deploy "$DOT_FILES_DIR/openbox/lubuntu-rc.xml" "$TARGET_CONF_DIR/openbox/lxde-rc.xml"
+  deploy "$DOT_FILES_DIR/openbox/lubuntu-rc.xml" "$TARGET_CONF_DIR/openbox/lxqt-rc.xml"
+  deploy "$DOT_FILES_DIR/openbox/lubuntu-rc.xml"
+  deploy "$DOT_FILES_DIR/flake8"
+  deploy "$DOT_FILES_DIR/rofi/config"
+  deploy "$DOT_FILES_DIR/lxterminal/lxterminal.conf"
+  deploy "$DOT_FILES_DIR/img"
+  deploy "$DOT_FILES_DIR/fish/config.fish"
+  deploy "$DOT_FILES_DIR/fish/functions"
+  deploy "$DOT_FILES_DIR/fish/conf.d"
+}
 
-# .localrc : copy if not present (no symlink)
-cp --no-clobber "$DOT_FILES_DIR/localrc" "$TARGET_DIR/.localrc"
+check_missing_programmes () {
+  MISSING_PROGRAMS=()
+  for cmd in "${EXTERNAL_PROGRAMS[@]}"; do
+    hash "$cmd" 2>/dev/null || { print_line >&2 "WARNING! $cmd is not installed."; MISSING_PROGRAMS+=("$cmd"); }
+  done
 
-##############
-# CONF FILES #
-##############
+  if [ ${#MISSING_PROGRAMS[@]} -gt 0 ]; then
+    print_line "try running"
+    print_line "sudo apt install" "${MISSING_PROGRAMS[@]}"
+    print_line "to install missing programs."
+  fi
+}
 
-deploy "$DOT_FILES_DIR/irssi_config"    "$TARGET_DIR/.irssi/config"                      "$TARGET_DIR/.irssi/config_$TIME_STAMP"
-deploy "$DOT_FILES_DIR/lubuntu-rc.xml"  "$TARGET_DIR/.config/openbox/lubuntu-rc.xml"     "$TARGET_DIR/.config/openbox/lubuntu-rc.xml_$TIME_STAMP"
-deploy "$DOT_FILES_DIR/lubuntu-rc.xml"  "$TARGET_DIR/.config/openbox/lxde-rc.xml"        "$TARGET_DIR/.config/openbox/lxde-rc.xml_$TIME_STAMP"
-deploy "$DOT_FILES_DIR/flake8"          "$TARGET_DIR/.config/flake8"                     "$TARGET_DIR/.config/flake8_$TIME_STAMP"
-deploy "$DOT_FILES_DIR/rofi_config"     "$TARGET_DIR/.config/rofi/config"                "$TARGET_DIR/.config/rofi/config_$TIME_STAMP"
-deploy "$DOT_FILES_DIR/lxterminal.conf" "$TARGET_DIR/.config/lxterminal/lxterminal.conf" "$TARGET_DIR/.config/lxterminal/lxterminal.conf_$TIME_STAMP"
+main () {
+  install_dotfiles
+  install_scripts
+  install_localrc
+  install_config_files
+  check_missing_programmes
+}
 
-# fish
-deploy "$DOT_FILES_DIR/fish/config.fish" "$TARGET_DIR/.config/fish/config.fish" "$TARGET_DIR/.config/fish/config_$TIME_STAMP"
-deploy "$DOT_FILES_DIR/fish/functions"   "$TARGET_DIR/.config/fish/functions"   "$TARGET_DIR/.config/fish/functions_$TIME_STAMP"
-deploy "$DOT_FILES_DIR/fish/conf.d"      "$TARGET_DIR/.config/fish/conf.d"      "$TARGET_DIR/.config/fish/conf_$TIME_STAMP"
+main
 
-###########
-# SCRIPTS #
-###########
-
-for file in $DOT_FILES_DIR/scripts/*; do
-  deploy "$file" "$TARGET_DIR/bin/$(basename "$file")" "$TARGET_DIR/bin/$(basename "$file")_$TIME_STAMP"
-done
-
-deploy "$DOT_FILES_DIR/img" "$TARGET_DIR/.config/img" "$TARGET_DIR/.config/img_$TIME_STAMP"
-
-###############
-# CHECK TOOLS #
-###############
-
-for cmd in "${REQUIRED_PROGRAMS[@]}"; do
-  check_command "$cmd"
-done
-
-if [ ${#MISSING_PROGRAMS[@]} -gt 0 ]; then
-  print_line "try running"
-  print_line "sudo apt install" "${MISSING_PROGRAMS[@]}"
-  print_line "to install missing programs."
-fi
 # EOF
