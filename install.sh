@@ -22,57 +22,57 @@ TARGET_DIR=$HOME # destination directory
 BACKUP_DIR=$TARGET_DIR/dotfiles_$TIME_STAMP # old dotfiles backup directory
 
 REQUIRED_PROGRAMS=(amixer
-									 angrysearch
-									 audacious
-									 compton
-									 galculator
-									 nautilus
-									 notify-send
-									 pacmd
-									 pactl
-									 parcellite
-									 pavucontrol
-									 rofi
-									 scrot
-									 skippy-xd
-									 synclient
-									 x-tile
-									 xbacklight
-									 xrandr
-									 xscreensaver
-									 xscreensaver-command)
+                   angrysearch
+                   audacious
+                   compton
+                   galculator
+                   nautilus
+                   notify-send
+                   pacmd
+                   pactl
+                   parcellite
+                   pavucontrol
+                   rofi
+                   scrot
+                   skippy-xd
+                   synclient
+                   x-tile
+                   xbacklight
+                   xrandr
+                   xscreensaver
+                   xscreensaver-command)
 
 MISSING_PROGRAMS=()
 
 check_command () {
-	hash "$1" 2>/dev/null || { print_line >&2 "WARNING! $1 is not installed."; MISSING_PROGRAMS+=("$1"); }
+  hash "$1" 2>/dev/null || { print_line >&2 "WARNING! $1 is not installed."; MISSING_PROGRAMS+=("$1"); }
 }
 
 deploy () {
-	source=$1
-	link=$2
-	backup_place=$3
+  source=$1
+  link=$2
+  backup_place=$3
 
-	mkdir --parents "$(dirname "$link")"
+  mkdir --parents "$(dirname "$link")"
 
-	if [ -L "$link" ]; then
-		target=$(readlink "$link")
-		if [ "$target" == "$source" ]; then
-			return
-		fi
-		print_line "Deleting $link which is a link to $target ..."
-		rm "$link"
-	elif [ -e "$link" ]; then
-		print_line "Moving $link to $backup_place ..."
-		mv "$link" "$backup_place"
-	fi
+  if [ -L "$link" ]; then
+    target=$(readlink "$link")
+    if [ "$target" == "$source" ]; then
+      return
+    fi
+    print_line "Deleting $link which is a link to $target ..."
+    rm "$link"
+  elif [ -e "$link" ]; then
+    print_line "Moving $link to $backup_place ..."
+    mv "$link" "$backup_place"
+  fi
 
-	print_line "Creating $link@ ..."
-	ln --symbolic "$source" "$link"
+  print_line "Creating $link@ ..."
+  ln --symbolic "$source" "$link"
 }
 
 print_line () {
-	echo "[DOT FILES] $*"
+  echo "[DOT FILES] $*"
 }
 
 ############
@@ -82,7 +82,7 @@ print_line () {
 mkdir --parents "$BACKUP_DIR"
 
 for file in $DOT_FILES_DIR/dot_*; do
-	deploy "$file" "$TARGET_DIR/.$(echo basename "$file" | cut -d'_' -f 2-)" "$BACKUP_DIR"
+  deploy "$file" "$TARGET_DIR/.$(echo basename "$file" | cut -d'_' -f 2-)" "$BACKUP_DIR"
 done
 
 # if no backup was made, delete backup dir
@@ -112,7 +112,7 @@ deploy "$DOT_FILES_DIR/fish/conf.d"      "$TARGET_DIR/.config/fish/conf.d"      
 ###########
 
 for file in $DOT_FILES_DIR/scripts/*; do
-	deploy "$file" "$TARGET_DIR/bin/$(basename "$file")" "$TARGET_DIR/bin/$(basename "$file")_$TIME_STAMP"
+  deploy "$file" "$TARGET_DIR/bin/$(basename "$file")" "$TARGET_DIR/bin/$(basename "$file")_$TIME_STAMP"
 done
 
 deploy "$DOT_FILES_DIR/img" "$TARGET_DIR/.config/img" "$TARGET_DIR/.config/img_$TIME_STAMP"
@@ -122,12 +122,12 @@ deploy "$DOT_FILES_DIR/img" "$TARGET_DIR/.config/img" "$TARGET_DIR/.config/img_$
 ###############
 
 for cmd in "${REQUIRED_PROGRAMS[@]}"; do
-	check_command "$cmd"
+  check_command "$cmd"
 done
 
 if [ ${#MISSING_PROGRAMS[@]} -gt 0 ]; then
-	print_line "try running"
-	print_line "sudo apt install" "${MISSING_PROGRAMS[@]}"
-	print_line "to install missing programs."
+  print_line "try running"
+  print_line "sudo apt install" "${MISSING_PROGRAMS[@]}"
+  print_line "to install missing programs."
 fi
 # EOF
