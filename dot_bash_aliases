@@ -33,7 +33,7 @@ fi
 alias df='df -hT'
 alias du='du -h'
 alias sr='surfraw -browser=w3m'
-alias install='sudo apt install'
+alias install='sudo aptitude install'
 alias fucking='sudo'
 alias grep='grep --color'
 alias bepo='setxkbmap fr bepo -option'
@@ -45,7 +45,7 @@ alias e='emacsclient -nw'
 alias ec='emacsclient -c'
 alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit"
 alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
-alias ue='compile-emacs'
+alias ue='update-emacs'
 
 # GIT #########################################################################
 alias co='git checkout'
