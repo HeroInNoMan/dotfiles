@@ -29,6 +29,11 @@ if hash bat 2>/dev/null;then
 	alias cat='bat'
 fi
 
+# USE FD IF AVAILABLE #########################################################
+if hash fdfind 2>/dev/null;then
+	alias fd='fdfind'
+fi
+
 # CONVENIENCE ALIASES #########################################################
 alias df='df -hT'
 alias du='du -h'
