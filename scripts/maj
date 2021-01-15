@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-sudo apt update
-sudo apt -y upgrade
-sudo apt -y dist-upgrade
-sudo apt-get -y autoremove
+sudo aptitude update
+sudo aptitude full-upgrade -y
+sudo aptitude autoclean -y
 
 # EOF
