@@ -45,9 +45,10 @@ alias bepo='setxkbmap fr bepo -option'
 alias beponocaps='setxkbmap fr bepo -option ctrl:nocaps'
 
 # EMACS #######################################################################
-alias emacs='emacs -nw'
-alias e='emacsclient -nw'
-alias ec='emacsclient -c'
+alias z='zile'
+alias emacs='emacs'
+alias e="emacsclient -nw -a ''"
+alias ec="emacsclient -c -a ''"
 alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit"
 alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
 alias ue='update-emacs'

@@ -423,7 +423,7 @@
     <!-- <keybind key="F1"><action name="Execute"><command>lxterminal</command></action></keybind> -->
 
     <!-- Launch emacs client in new frame -->
-    <keybind key="W-q"><action name="Execute"><command>emacsclient -a '' -c</command></action></keybind>
+    <keybind key="W-q"><action name="Execute"><command>emacsclient -c -a ''</command></action></keybind>
     <!-- Lock the screen on W + l-->
     <keybind key="W-l"><action name="Execute"><command>lxlock</command></action></keybind>
     <!-- Volume / brightness management -->
