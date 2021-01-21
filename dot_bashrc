@@ -47,7 +47,7 @@ if [ -f ~/.localrc ]; then
 fi
 
 # fuzzy finder in bash if installed
-if [ -d /usr/share/doc/fzf ]; then
+if [ -d /usr/share/doc/fzf ] && [ -z "$INSIDE_EMACS" ]; then
   . /usr/share/doc/fzf/examples/key-bindings.bash
 fi
 
