@@ -105,6 +105,7 @@ export PATH=$HOME/.screenlayout:$PATH
 
 # Rust & Cargo support
 # export PATH=$HOME/.cargo/bin/
+source "$HOME/.cargo/env"
 
 # ruby setup ##################################################################
 if hash rbenv 2>/dev/null; then
