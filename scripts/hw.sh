@@ -127,7 +127,7 @@ toggle_trackpad () {
 	synclient CircScrollDelta=0.1
 	synclient CircScrollTrigger=0
 	synclient CircularPad=0
-  synclient PalmDetect=0
+	synclient PalmDetect=1
 	synclient PalmMinWidth=10
 	synclient PalmMinZ=200
 	synclient CoastingSpeed=20
