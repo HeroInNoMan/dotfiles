@@ -10,6 +10,18 @@
 # -- Pengo (conky@pengo.us)
 #
 
+## no compositor
+#own_window_type conky
+#own_window_argb_visual yes
+
+## xcompmgr
+own_window_type conky
+own_window_argb_visual yes
+
+## cairo-compmgr
+#own_window_type conky
+#own_window_argb_visual no
+
 # Create own window instead of using desktop (required in nautilus)
 own_window yes
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
@@ -20,11 +32,11 @@ background yes
 double_buffer yes
 
 # fiddle with window
-use_spacer yes
+use_spacer left
 use_xft yes
 
 # Update interval in seconds
-update_interval 2.0
+update_interval 0.8
 
 # Minimum size of text area
 minimum_size 200 5
@@ -42,7 +54,7 @@ uppercase no # set to yes if you want all text to be in uppercase
 stippled_borders 8
 
 # border margins
-border_margin 4
+# border_margin 1
 
 # border width
 border_width 1
@@ -57,18 +69,18 @@ own_window_transparent yes
 
 # Text alignment, other possible values are commented
 #alignment top_left
-alignment top_right
+alignment top_left
 #alignment bottom_left
 #alignment bottom_right
 
 # Gap between borders of screen and text
-gap_x 10
-gap_y 10
+gap_x 0
+gap_y -10
 
 # stuff after 'TEXT' will be formatted on screen
 
 override_utf8_locale yes
-xftfont Terminus:size=10
+xftfont Terminus:size=11
 xftalpha 0.8
 
 # def wrap(s, width=48)
@@ -76,51 +88,77 @@ xftalpha 0.8
 # end
 
 TEXT
-${font monospace:size=10}
-# ${execpi 60 ncal -bhwm "`echo $(date +%_m)-1 | bc`" | sed s/'^\(.*\S\)'/'${offset 240}\1'/}
-${execpi 3600 DJS=`date +%_d`; ncal -bhw | sed s/'^\(.*\S\)'/'${offset 240}\1'/ | sed s/"\([^0-9]${DJS}\)"/'${color orange}\1${color}'/}
-${execpi 3600 ncal -bhwm "`echo $(date +%_m)+1 | bc`" | sed s/'^\(.*\S\)'/'${offset 240}\1'/}${font}
-# ${offset 240}${color slate grey}Date: ${color }${time %a}${time %e %B %G}
-${offset 240}${color slate grey}Time: ${color}${time %H:%M:%S}
-${offset 240}${color slate grey}UpTime: ${color}$uptime
-${offset 240}${color slate grey}Kern: ${color}$kernel - $machine
-${offset 240}${color slate grey}CPU:${color} $cpu% ${acpitemp}°C
-${offset 240}${cpugraph 20,130 000000 ffffff}
-${offset 240}${memgraph 20,130 000000 ffffff}
-${offset 240}${color slate grey}Load: ${color}$loadavg
-${offset 240}${color slate grey}Processes: ${color}$processes
-${offset 240}${color slate grey}Running: ${color}$running_processes
+${font monospace:size=11}
+# ${execpi 60 ncal -bhwm "`echo $(date +%_m)-1 | bc`" | sed s/'^\(.*\S\)'/'${offset 10}\1'/} # previous month
+${execpi 3600 DJS=`date +%_d`; ncal -bhw | sed s/'^\(.*\S\)'/'${offset 20}\1'/ | sed s/"\([^0-9]${DJS}\)"/'${color magenta}\1${color}'/}
+# ${execpi 3600 ncal -bhwm "`echo $(date +%_m)+1 | bc`" | sed s/'^\(.*\S\)'/'${offset 10}\1'/}${font} # next month
+${offset 10}${color slate grey}Date: ${color }${time %a}${time %e %B %G}
+${offset 10}${color slate grey}Time: ${color}${time %H:%M:%S}
+${offset 10}${color slate grey}UpTime: ${color}$uptime
+${offset 10}${color slate grey}Kern: ${color}$kernel - $machine
 
-${offset 240}${color slate grey}Top CPU:
-${offset 240}${color orange} ${top name 1}${top_mem cpu 1}
-${offset 240}${color lightgrey} ${top name 2}${top cpu 2}
-${offset 240}${color lightgrey} ${top name 3}${top cpu 3}
-${offset 240}${color lightgrey} ${top name 4}${top cpu 4}
-${offset 240}${color lightgrey} ${top name 4}${top cpu 5}
+${offset 10}${color slate grey}CPU:${color} $cpu%${alignr}${acpitemp}°C
+${offset 10}${cpugraph 20, 200 000000 0000ff}
+${offset 10}${color slate grey}RAM:${color}
+${offset 10}${memgraph 20, 200 000000 Ff0000}
 
-${offset 240}${color slate grey}Top MEM:
-${offset 240}${color orange} ${top_mem name 1}${top_mem mem 1}
-${offset 240}${color lightgrey} ${top_mem name 2}${top_mem mem 2}
-${offset 240}${color lightgrey} ${top_mem name 3}${top_mem mem 3}
-${offset 240}${color lightgrey} ${top_mem name 4}${top_mem mem 4}
-${offset 240}${color lightgrey} ${top_mem name 4}${top_mem mem 5}
+${offset 10}${color slate grey}Load: ${color}$loadavg
+${offset 10}${color slate grey}Processes: ${color}$processes
+${offset 10}${color slate grey}Running: ${color}$running_processes
 
-${offset 240}${color slate grey}MEM: ${color} $memperc% $mem / $memmax
-${offset 240}${membar 3,100}
-${offset 240}${color slate grey}SWAP: ${color}$swapperc% $swap / $swapmax
-${offset 240}${swapbar 3,100}
+${offset 10}${color slate grey}Top CPU:
+${offset 10}${color orange} ${top name 1}${top_mem cpu 1}
+${offset 10}${color lightgrey} ${top name 2}${top cpu 2}
+${offset 10}${color lightgrey} ${top name 3}${top cpu 3}
+${offset 10}${color lightgrey} ${top name 4}${top cpu 4}
+${offset 10}${color lightgrey} ${top name 4}${top cpu 5}
 
-${offset 240}${color slate grey}ROOT: ${color}${fs_free /} / ${fs_size /}
-${offset 240}${fs_bar 3,100 /}
-${offset 240}${color slate grey}HOME: ${color}${fs_free /home} / ${fs_size /home}
-${offset 240}${fs_bar 3,100 /home}
-${offset 240}${color slate grey}Network:
-${offset 240}${color}Up: ${color}${upspeed eth0} k/s
-${offset 240}${upspeedgraph eth0 20,130 000000 ffffff}
-${offset 240}${color}Down: ${color}${downspeed eth0}k/s${color}
-${offset 240}${downspeedgraph eth0 20,130 000000 ffffff}
-${font Terminus:size=7}
-${offset 240}${scroll 40 5 ${audacious_title 1000}}
-${offset 240}${audacious_bar}
-${offset 240}$alignr${audacious_position} / ${audacious_length} - ${audacious_status}
-${font}
+${offset 10}${color slate grey}Top MEM:
+${offset 10}${color orange} ${top_mem name 1}${top_mem mem 1}
+${offset 10}${color lightgrey} ${top_mem name 2}${top_mem mem 2}
+${offset 10}${color lightgrey} ${top_mem name 3}${top_mem mem 3}
+${offset 10}${color lightgrey} ${top_mem name 4}${top_mem mem 4}
+${offset 10}${color lightgrey} ${top_mem name 4}${top_mem mem 5}
+
+${offset 10}${color slate grey}MEM: ${color}$memperc% $mem / $memmax
+${offset 10}${membar 5, 200}
+${offset 10}${color slate grey}SWAP: ${color}$swapperc% $swap / $swapmax
+${offset 10}${swapbar 5, 200}
+
+${offset 10}${color slate grey}ROOT: ${color}${fs_free /} /${fs_size /}
+${offset 10}${fs_bar 5, 200 /}
+${offset 10}${color slate grey}HOME: ${color}${fs_free /home} /${fs_size /home}
+${offset 10}${fs_bar 5, 200 /home}
+
+${offset 10}${color slate grey}Network:${color}
+${if_existing /sys/class/net/eth0/operstate up}
+eth0
+Down ${downspeed eth0} k/s ${alignr}Up ${upspeed eth0} k/s
+${downspeedgraph eth0 25,100 dddddd ffffff 150} ${alignr}${upspeedgraph eth0 25,100 dddddd ffffff 18}
+Total ${totaldown eth0} ${alignr}Total ${totalup eth0}
+${endif}${if_existing /sys/class/net/wlan0/operstate up}
+wlan0
+Down ${downspeed wlan0} k/s ${alignr}Up ${upspeed wlan0} k/s
+${downspeedgraph wlan0 25,100 dddddd ffffff 150} ${alignr}${upspeedgraph wlan0 25,100 dddddd ffffff 18}
+Total ${totaldown wlan0} ${alignr}Total ${totalup wlan0}
+${endif}${if_up usb0}
+usb0
+Down ${downspeed usb0} k/s ${alignr}Up ${upspeed usb0} k/s
+${downspeedgraph usb0 25,100 dddddd ffffff 150} ${alignr}${upspeedgraph usb0 25,100 dddddd ffffff 18}
+Total ${totaldown usb0} ${alignr}Total ${totalup usb0}
+${endif}${if_up tun0}
+tun0
+Down ${downspeed tun0} k/s ${alignr}Up ${upspeed tun0} k/s
+${downspeedgraph tun0 25,100 dddddd ffffff 150} ${alignr}${upspeedgraph tun0 25,100 dddddd ffffff 18}
+Total ${totaldown tun0} ${alignr}Total ${totalup tun0}
+${endif}
+${offset 10}↗ Up (k/s): ${upspeed wlp3s0}
+${offset 10}${upspeedgraph wlp3s0 20,200 000000 Ffd700}
+${offset 10}↘ Down (k/s): ${downspeed wlp3s0}${color}
+${offset 10}${downspeedgraph wlp3s0 20,200 000000 228b22}
+# ${font Terminus:size=7}
+# ${offset 10}${scroll 40 5 ${audacious_title 1000}}
+# ${offset 10}${audacious_bar}
+# ${offset 10}$alignr${audacious_position} / ${audacious_length} - ${audacious_status}
+# ${font}
+
