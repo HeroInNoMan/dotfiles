@@ -94,6 +94,7 @@ deploy () {
   fi
 
   print_line "Creating $link@ ..."
+  mkdir --parents $(dirname "$link")
   ln --symbolic "$source" "$link"
 }
 
