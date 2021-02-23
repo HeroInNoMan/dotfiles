@@ -109,7 +109,7 @@ install_dotfiles () {
 }
 
 install_scripts () {
-  for file in $DOT_FILES_DIR/scripts/*; do
+  for file in $(find $DOT_FILES_DIR | grep -e "/scripts\?/"); do
     deploy "$file" "$ROOT_TARGET_DIR/bin/$(basename "$file")"
   done
 }
