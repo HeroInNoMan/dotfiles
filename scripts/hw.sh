@@ -6,19 +6,17 @@
 # script utilisé dans ~/.config/openbox/lubuntu-rc.xml pour gérer le rétro-éclairage.
 
 HW_IMG_DIR="$HOME/.config/img"
+
+# default brightness values ###################################################
 BRIGHTNESS_IMG="$HW_IMG_DIR/brightness.png"
-MUTE_IMG="$HW_IMG_DIR/sound_remove.png"
-SOUND_UP_IMG="$HW_IMG_DIR/sound_up.png"
-SOUND_DOWN_IMG="$HW_IMG_DIR/sound_down.png"
-UNMUTE_IMG="$HW_IMG_DIR/sound.png"
-
-SINK_NAME=$(pacmd dump | grep --max-count=1 --only-matching "alsa.*stereo")
-SINKS=$(pacmd dump | grep 'sink' | cut -d ' ' -f 2 | sort | uniq)
-MUTE_STATE=$(pacmd dump | grep --perl-regexp "^set-sink-mute $SINK_NAME\s+" | perl -p -e 's/.+\s(yes|no)$/$1/')
-SOUND_CHANGE_STEP=10
 BRIGHTNESS_CHANGE_STEP=5
-
 BRIGHTNESS_FILE="/sys/class/backlight/intel_backlight/brightness"
+
+# default sound values ########################################################
+SINK_NAMES=$(pacmd dump | grep 'set-sink-mute' | cut -d ' ' -f2)
+ACTIVE_SINK_ID=$(pactl list short sinks | grep -e 'RUNNING' | cut -f1)
+ACTIVE_SINK_ID=${ACTIVE_SINK_ID:-1}
+SOUND_CHANGE_STEP=5
 
 notif () {
   killall notification-daemon
@@ -37,47 +35,49 @@ light_up () {
 }
 
 sound_down () {
-  if command -v amixer &> /dev/null; then
-    for ctrl in $(amixer scontrols | grep 'Simple mixer control' | cut -d\' -f 2 | sort | uniq); do
-      amixer -q sset $ctrl ${SOUND_CHANGE_STEP}%- unmute
-    done
-  fi
-
-  if command -v pactl &> /dev/null; then
-    for sink in $SINKS; do
-      pactl set-sink-volume $sink -${SOUND_CHANGE_STEP}%
-    done
-  fi
-  VOLUME_STATE=$(pacmd dump-volumes | grep 'Sink' | cut -d '/' -f 2)
+  for sink in $SINK_NAMES ; do
+    pactl set-sink-volume $sink -${SOUND_CHANGE_STEP}%
+  done
+  VOLUME_STATE=$(pacmd dump-volumes | grep -i "^Sink $ACTIVE_SINK_ID" | cut -d '/' -f2)
   notif "🔉 ${VOLUME_STATE}" "$SOUND_DOWN_IMG"
 }
 
 sound_up () {
-  if command -v amixer &> /dev/null; then
-    for ctrl in $(amixer scontrols | grep 'Simple mixer control' | cut -d\' -f 2 | sort | uniq); do
-      amixer -q sset $ctrl ${SOUND_CHANGE_STEP}%+ unmute
-    done
-  fi
-
-  if command -v pactl &> /dev/null; then
-    for sink in $SINKS; do
-      pactl set-sink-volume $sink +${SOUND_CHANGE_STEP}%
-    done
-  fi
-  VOLUME_STATE=$(pacmd dump-volumes | grep 'Sink' | cut -d '/' -f 2)
+  for sink in $SINK_NAMES ; do
+    pactl set-sink-volume $sink +${SOUND_CHANGE_STEP}%
+  done
+  VOLUME_STATE=$(pacmd dump-volumes | grep -i "^Sink $ACTIVE_SINK_ID" | cut -d '/' -f2)
+  SOUND_UP_IMG="$HW_IMG_DIR/sound_up.png"
   notif "🔊 ${VOLUME_STATE}" "$SOUND_UP_IMG"
 }
 
 toggle_mute () {
-  NOTIF_TEXT=$([[ $MUTE_STATE == 'yes' ]] && echo 'ON' || echo 'OFF')
-  NOTIF_IMG=$([[ $MUTE_STATE == 'yes' ]] && echo "$UNMUTE_IMG" || echo "$MUTE_IMG")
-  SINK_STATE=$([[ $MUTE_STATE == 'yes' ]] && echo '0' || echo '1')
-  if command -v pactl &> /dev/null; then
-    for sink in $SINKS; do
-      pactl set-sink-mute "$sink" "$SINK_STATE"
-      [ $? -eq 0 ] && notif "$NOTIF_TEXT" "$NOTIF_IMG"
-    done
+  for sink in $(pacmd dump | grep 'set-sink-mute' | cut -d ' ' -f2) ; do
+    pactl set-sink-mute "$sink" "toggle"
+  done
+  DEFAULT_SINK_NAME=$(pacmd dump | grep --max-count=1 --only-matching "alsa.*stereo")
+  ACTIVE_SINK_NAME=$(pactl list short sinks | grep -e 'RUNNING' | cut -f2)
+  ACTIVE_SINK_NAME=${ACTIVE_SINK_NAME:-$DEFAULT_SINK_NAME}
+  MUTE_STATE=$(pacmd dump | grep -m 1 "set-sink-mute.*$ACTIVE_SINK_NAME" | cut -d ' ' -f3)
+  NOTIF_TEXT=$([[ $MUTE_STATE == 'no' ]] && echo 'ON' || echo 'OFF')
+  MUTE_IMG="$HW_IMG_DIR/sound_remove.png"
+  UNMUTE_IMG="$HW_IMG_DIR/sound.png"
+  NOTIF_IMG=$([[ $MUTE_STATE == 'no' ]] && echo "$UNMUTE_IMG" || echo "$MUTE_IMG")
+  notif "$NOTIF_TEXT" "$NOTIF_IMG"
+}
+
+cycle_audio_output () {
+  SINK_INPUT_IDS=$(pactl list short sink-inputs | cut -f1)
+  TOTAL_SINK_NUMBER=$(pactl list short sinks | wc -l)
+  if [[ $ACTIVE_SINK_ID -ge $TOTAL_SINK_NUMBER ]]; then
+    NEXT_SINK_ID=1
+  else
+    NEXT_SINK_ID=$(($ACTIVE_SINK_ID + 1))
   fi
+
+  for id in $SINK_INPUT_IDS; do
+    pactl move-sink-input $id $NEXT_SINK_ID
+  done
 }
 
 toggle_trackpad () {
@@ -193,6 +193,7 @@ if [ $# == 1 ]; then
     "sound-down") sound_down ;;
     "sound-up") sound_up ;;
     "sound-toggle") toggle_mute ;;
+    "sound-cycle") cycle_audio_output ;;
     "trackpad") toggle_trackpad ;;
     *) usage ;;
   esac
