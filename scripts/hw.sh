@@ -74,10 +74,12 @@ cycle_audio_output () {
   else
     NEXT_SINK_ID=$(($ACTIVE_SINK_ID + 1))
   fi
-
   for id in $SINK_INPUT_IDS; do
     pactl move-sink-input $id $NEXT_SINK_ID
   done
+  ACTIVE_SINK_ID=$(pactl list short sinks | grep -e 'RUNNING' | cut -f1)
+  SINK_DESC=$(pactl list sinks | grep "Destination #$ACTIVE_SINK_ID" -A 10 | grep "Description" | cut -d: -f2)
+  notif "⇒ $SINK_DESC"
 }
 
 toggle_trackpad () {
