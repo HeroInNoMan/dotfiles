@@ -68,18 +68,22 @@ toggle_mute () {
 
 cycle_audio_output () {
   SINK_INPUT_IDS=$(pactl list short sink-inputs | cut -f1)
-  TOTAL_SINK_NUMBER=$(pactl list short sinks | wc -l)
-  if [[ $ACTIVE_SINK_ID -ge $TOTAL_SINK_NUMBER ]]; then
-    NEXT_SINK_ID=1
-  else
-    NEXT_SINK_ID=$(($ACTIVE_SINK_ID + 1))
-  fi
+  SINK_ID_LIST=($(pactl list short sinks | cut -f1))
+  for i in "${!SINK_ID_LIST[@]}"; do
+    if [[ $ACTIVE_SINK_ID == ${SINK_ID_LIST[$i]} ]]; then
+      NEXT_SINK_ID=${SINK_ID_LIST[$i+1]}
+    fi
+  done
+  # in case active sink was last in array
+  [[ -z $NEXT_SINK_ID ]] && NEXT_SINK_ID=${SINK_ID_LIST[0]}
+
   for id in $SINK_INPUT_IDS; do
     pactl move-sink-input $id $NEXT_SINK_ID
   done
   ACTIVE_SINK_ID=$(pactl list short sinks | grep -e 'RUNNING' | cut -f1)
+  ACTIVE_SINK_ID=${ACTIVE_SINK_ID:-1}
   SINK_DESC=$(pactl list sinks | grep "Destination #$ACTIVE_SINK_ID" -A 10 | grep "Description" | cut -d: -f2)
-  notif "⇒ $SINK_DESC"
+  [[ -n $SINK_DESC ]] && notif "⇒ $SINK_DESC"
 }
 
 toggle_trackpad () {
