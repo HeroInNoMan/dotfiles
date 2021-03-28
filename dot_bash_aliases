@@ -43,6 +43,8 @@ alias fucking='sudo'
 alias grep='grep --color'
 alias bepo='setxkbmap fr bepo -option'
 alias beponocaps='setxkbmap fr bepo -option ctrl:nocaps'
+alias bepo1.1='setxkbmap fr bepo_afnor -option'
+alias beponocaps1.1='setxkbmap fr bepo_afnor -option ctrl:nocaps'
 
 # EMACS #######################################################################
 alias z='zile'
