@@ -422,10 +422,10 @@
     <keybind key="C-A-T">       <action name="Execute"><command>lxterminal</command></action></keybind>
     <!-- <keybind key="F1"><action name="Execute"><command>lxterminal</command></action></keybind> -->
 
-    <!-- Launch emacs client in new frame -->
+    <!-- Launch emacs client in new frame with a new scratch buffer -->
     <keybind key="W-q">
       <action name="Execute">
-        <command>emacsclient -c -a ''</command>
+        <command>emacsclient -c -a '' -e "(crux-create-scratch-buffer)"</command>
       </action>
     </keybind>
     <!-- Edit with emacs from anywhere (or everywhere) -->
