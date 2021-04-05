@@ -22,7 +22,7 @@ DOT_FILES_DIR="$( cd "$(dirname "$0")" ; pwd -P )"
 ROOT_TARGET_DIR="$HOME" # destination directory
 TARGET_CONF_DIR="${ROOT_TARGET_DIR}/.config" # destination directory
 DEFAULT_BACKUP_DIR="${ROOT_TARGET_DIR}/dotfiles${BACKUP_SUFFIX}" # old dotfiles backup directory
-EXTERNAL_REPOS_ROOT="$HOME/outils"
+EXTERNAL_REPOS_ROOT="$HOME/repos"
 
 EXTERNAL_REPOS=("https://github.com/fdw/rofimoji.git"
                 "https://gitlab.com/vahnrr/rofi-menus.git"
@@ -148,15 +148,20 @@ check_missing_programmes () {
 
 clone_missing_repo () {
   old_dir=$(pwd)
-  cd $EXTERNAL_REPOS_ROOT
-  git clone $1
-  cd $old_dir
+  cd "$EXTERNAL_REPOS_ROOT" || return
+  git clone "$1"
+  cd "$old_dir" || return
 }
 
 check_missing_repos () {
   for repo in "${EXTERNAL_REPOS[@]}";do
     [ ! -d "${EXTERNAL_REPOS_ROOT}/$(basename ${repo%.git})" ] && clone_missing_repo $repo
   done
+}
+
+function check_broken_links () {
+  find "$ROOT_TARGET_DIR"          -maxdepth 1 -xtype l >  "broken_links_${TIME_STAMP}"
+  [ -s "broken_links_${TIME_STAMP}" ] && echo "broken links:" && cat "broken_links_${TIME_STAMP}"
 }
 
 main () {
@@ -166,6 +171,7 @@ main () {
   install_config_files
   check_missing_programmes
   check_missing_repos
+  check_broken_links
 }
 
 main
