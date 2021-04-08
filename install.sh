@@ -160,8 +160,9 @@ check_missing_repos () {
 }
 
 function check_broken_links () {
-  find "$ROOT_TARGET_DIR"          -maxdepth 1 -xtype l >  "broken_links_${TIME_STAMP}"
+  find "$ROOT_TARGET_DIR" -maxdepth 1 -xtype l > "broken_links_${TIME_STAMP}"
   [ -s "broken_links_${TIME_STAMP}" ] && echo "broken links:" && cat "broken_links_${TIME_STAMP}"
+  rm "broken_links_${TIME_STAMP}"
 }
 
 main () {
