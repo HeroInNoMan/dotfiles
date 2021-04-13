@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-KAO_FILE="$HOME/outils/dmenukaomoji/kaomoji"
+KAO_FILE="$HOME/repos/dmenukaomoji/kaomoji"
 [ -z $KAO_FILE ] \
   && echo "install dmenukaomoji first: https://github.com/eylles/dmenukaomoji" \
           https://github.com/eylles/dmenukaomoji&& exit 1
