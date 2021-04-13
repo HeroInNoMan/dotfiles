@@ -61,6 +61,9 @@
 [pull]
 	default = current
 	rebase = true
+	autostash = true
+[rebase]
+	autostash = true
 [push]
 	default = current
 [rerere]
