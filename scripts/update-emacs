@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 OLD_DIR=$(pwd)
-cd ~/repos/emacs
-git fetch --all
-# git checkout feature/native-comp
-git checkout master
-git pull
+if [[ -d "$HOME/repos/emacs/" ]]; then
+  git fetch --all
+  git checkout master
+  git pull
+else
+  cd $HOME/repos
+  git clone https://git.savannah.gnu.org/git/emacs.git
+  cd $HOME/repos/emacs
+fi
 echo "****************************************************"
 echo "****************************************************"
 ./autogen.sh
