@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# killall chrome
+[[ -e "$HOME/.localrc" ]] && source "$HOME/.localrc"
+[ $JITSI_PREFIX ] || JITSI_PREFIX="https://jitsi.org/"
+CLIP=$(parcellite -c 2> /dev/null | tr -d '\n')
+if [[ $# != 0 ]]; then
+  URL=$JITSI_PREFIX/$@
+elif [[ $CLIP == $JITSI_PREFIX/* ]]; then
+  URL=$CLIP
+else
+  URL=$JITSI_PREFIX/$@
+fi
+/usr/bin/google-chrome-stable --new-window %U --app="$URL" &
