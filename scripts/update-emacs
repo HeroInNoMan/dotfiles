@@ -1,25 +1,37 @@
 #!/usr/bin/env bash
 OLD_DIR=$(pwd)
 if [[ -d "$HOME/repos/emacs/" ]]; then
-  git fetch --all
+  echo "****************************************************"
+  echo "***************** G I T   P U L L ******************"
+  echo "****************************************************"
+  cd "$HOME/repos/emacs"
+  git fetch --all --tags --prune
   git checkout master
-  git pull
+  git pull --autostash
 else
-  cd $HOME/repos
+  echo "****************************************************"
+  echo "******************** C L O N E *********************"
+  echo "****************************************************"
+  cd "$HOME/repos"
   git clone https://git.savannah.gnu.org/git/emacs.git
-  cd $HOME/repos/emacs
+  cd "$HOME/repos/emacs"
 fi
 echo "****************************************************"
+echo "****************** A U T O G E N *******************"
 echo "****************************************************"
 ./autogen.sh
 echo "****************************************************"
+echo "**************** C O N F I G U R E *****************"
 echo "****************************************************"
 ./configure --with-native-compilation
 echo "****************************************************"
+echo "********************* M A K E **********************"
 echo "****************************************************"
-make NATIVE_FULL_AOT=1 -j$(nproc)
+# make NATIVE_FULL_AOT=1 -j$(nproc)
+make -j$(nproc)
 echo "****************************************************"
+echo "************* M A K E   I N S T A L L **************"
 echo "****************************************************"
 sudo make install
-cd $OLD_DIR
+cd "$OLD_DIR"
 # EOF
