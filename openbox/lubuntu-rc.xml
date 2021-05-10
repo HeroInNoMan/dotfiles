@@ -145,7 +145,10 @@
     <keybind key="W-F5"><action name="GoToDesktop"><to>5</to></action></keybind>
     <keybind key="W-F6"><action name="GoToDesktop"><to>6</to></action></keybind>
     <keybind key="W-1"><action name="GoToDesktop"><to>1</to></action></keybind>
-    <keybind key="W-2"><action name="GoToDesktop"><to>2</to></action></keybind>
+    <keybind key="W-2">
+      <action name="Execute"><command>openbox --reconfigure</command></action>
+      <action name="GoToDesktop"><to>2</to></action>
+    </keybind>
     <keybind key="W-3"><action name="GoToDesktop"><to>3</to></action></keybind>
     <keybind key="W-4"><action name="GoToDesktop"><to>4</to></action></keybind>
     <keybind key="W-5"><action name="GoToDesktop"><to>5</to></action></keybind>
@@ -439,9 +442,15 @@
     <keybind key="W-l"><action name="Execute"><command>lxlock</command></action></keybind>
     <!-- Volume / brightness management -->
     <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>hw.sh sound-up    </command></action></keybind>
-    <keybind key="W-egrave">            <action name="Execute"><command>hw.sh sound-up    </command></action></keybind>
+    <keybind key="W-egrave">
+      <action name="Execute"><command>openbox --reconfigure</command></action>
+      <action name="Execute"><command>hw.sh sound-up       </command></action>
+    </keybind>
     <keybind key="XF86AudioLowerVolume"><action name="Execute"><command>hw.sh sound-down  </command></action></keybind>
-    <keybind key="W-eacute">            <action name="Execute"><command>hw.sh sound-down  </command></action></keybind>
+    <keybind key="W-eacute">
+      <action name="Execute"><command>openbox --reconfigure</command></action>
+      <action name="Execute"><command>hw.sh sound-down     </command></action>
+    </keybind>
     <keybind key="XF86AudioMute">       <action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
     <keybind key="W-m">                 <action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
     <keybind key="W-agrave">            <action name="Execute"><command>hw.sh sound-cycle </command></action></keybind>
