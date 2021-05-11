@@ -4,7 +4,7 @@ if [[ -d "$HOME/repos/emacs/" ]]; then
   echo "****************************************************"
   echo "***************** G I T   P U L L ******************"
   echo "****************************************************"
-  cd "$HOME/repos/emacs"
+  cd "$HOME/repos/emacs" || return
   git fetch --all --tags --prune
   git checkout master
   git pull --autostash
@@ -12,9 +12,10 @@ else
   echo "****************************************************"
   echo "******************** C L O N E *********************"
   echo "****************************************************"
-  cd "$HOME/repos"
+  mkdir -p "$HOME/repos"
+  cd "$HOME/repos" || return
   git clone https://git.savannah.gnu.org/git/emacs.git
-  cd "$HOME/repos/emacs"
+  cd "$HOME/repos/emacs" || return
 fi
 echo "****************************************************"
 echo "****************** A U T O G E N *******************"
@@ -33,5 +34,5 @@ echo "****************************************************"
 echo "************* M A K E   I N S T A L L **************"
 echo "****************************************************"
 sudo make install
-cd "$OLD_DIR"
+cd "$OLD_DIR" || return
 # EOF
