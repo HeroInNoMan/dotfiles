@@ -53,7 +53,7 @@ alias e="emacsclient -nw -a ''"
 alias ec="emacsclient -c -a ''"
 alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit"
 alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
-alias ue='update-emacs'
+alias ue='install-emacs'
 
 # GIT #########################################################################
 alias co='git checkout'
