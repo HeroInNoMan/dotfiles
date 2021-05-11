@@ -39,6 +39,7 @@ sound_down () {
     pactl set-sink-volume $sink -${SOUND_CHANGE_STEP}%
   done
   VOLUME_STATE=$(pacmd dump-volumes | grep -i "^Sink $ACTIVE_SINK_ID" | cut -d '/' -f2)
+  SOUND_DOWN_IMG="$HW_IMG_DIR/sound_down.png"
   notif "🔉 ${VOLUME_STATE}" "$SOUND_DOWN_IMG"
 }
 
