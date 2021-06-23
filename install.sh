@@ -167,12 +167,12 @@ function check_broken_links () {
 }
 
 main () {
+  check_missing_repos
+  check_missing_programmes
   install_dotfiles
   install_scripts
   install_localrc
   install_config_files
-  check_missing_programmes
-  check_missing_repos
   check_broken_links
 }
 
