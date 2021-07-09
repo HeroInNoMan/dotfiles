@@ -398,12 +398,12 @@
     <!-- Special character selection -->
     <keybind key="W-u">
       <!-- Emoji (*U*nicode) -->
-      <keybind key="W-u"><action name="Execute"><command>rofi-emoji.sh</command></action></keybind>
+      <keybind key="W-u"><action name="Execute"><command>rofimoji-wrapper.sh</command></action></keybind>
       <!-- All possible special characters -->
-      <keybind key="W-a"><action name="Execute"><command>rofi-all.sh</command></action></keybind>
-      <keybind key="a"><action name="Execute"><command>rofi-all.sh</command></action></keybind>
+      <keybind key="W-a"><action name="Execute"><command>rofimoji-wrapper.sh all</command></action></keybind>
+      <keybind key="a">  <action name="Execute"><command>rofimoji-wrapper.sh all</command></action></keybind>
       <!-- Kaomoji -->
-      <keybind key="k"><action name="Execute"><command>rofi-kaomoji.sh</command></action></keybind>
+      <keybind key="k">  <action name="Execute"><command>rofi-kaomoji.sh</command></action></keybind>
     </keybind>
 
     <!-- Custom rofi launcher -->

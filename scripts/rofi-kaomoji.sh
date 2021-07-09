@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 KAO_FILE="$HOME/repos/dmenukaomoji/kaomoji"
-[ -z $KAO_FILE ] \
-  && echo "install dmenukaomoji first: https://github.com/eylles/dmenukaomoji" \
+[[ -f "${KAO_FILE}" ]] \
+  || echo "install dmenukaomoji first: https://github.com/eylles/dmenukaomoji" \
           https://github.com/eylles/dmenukaomoji&& exit 1
 
 # List for rofi
@@ -32,4 +32,4 @@ main() {
     xdotool key Shift+Insert
   fi
 }
-    main
+main

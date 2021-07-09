@@ -24,8 +24,7 @@ TARGET_CONF_DIR="${ROOT_TARGET_DIR}/.config" # destination directory
 DEFAULT_BACKUP_DIR="${ROOT_TARGET_DIR}/dotfiles${BACKUP_SUFFIX}" # old dotfiles backup directory
 EXTERNAL_REPOS_ROOT="$HOME/repos"
 
-EXTERNAL_REPOS=("https://github.com/fdw/rofimoji.git"
-                "https://gitlab.com/vahnrr/rofi-menus.git"
+EXTERNAL_REPOS=("https://gitlab.com/vahnrr/rofi-menus.git"
                 "https://github.com/pawndev/rofi-autorandr.git"
                 "https://github.com/eylles/dmenukaomoji.git")
 
