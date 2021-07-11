@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Books directory
-BOOKS_DIR="$HOME/Terminalcity/ebooks/Bibli-kobo/"
+BOOKS_DIR="$HOME/ebooks"
 mkdir -p $BOOKS_DIR
 
 # Save find result to F_ARRAY
