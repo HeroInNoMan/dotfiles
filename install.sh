@@ -28,6 +28,8 @@ EXTERNAL_REPOS=("https://gitlab.com/vahnrr/rofi-menus.git"
                 "https://github.com/pawndev/rofi-autorandr.git"
                 "https://github.com/eylles/dmenukaomoji.git")
 
+PYTHON_PROGRAMS=(rofimoji)
+
 EXTERNAL_PROGRAMS=(amixer
                    angrysearch
                    audacious
@@ -134,14 +136,23 @@ install_config_files () {
 }
 
 check_missing_programmes () {
-  MISSING_PROGRAMS=()
+  MISSING_NATIVE_PROGRAMS=()
+  MISSING_PYTHON_PROGRAMS=()
   for cmd in "${EXTERNAL_PROGRAMS[@]}"; do
-    hash "$cmd" 2>/dev/null || { print_line >&2 "WARNING! $cmd is not installed."; MISSING_PROGRAMS+=("$cmd"); }
+    hash "$cmd" 2>/dev/null || { print_line >&2 "WARNING! $cmd is not installed."; MISSING_NATIVE_PROGRAMS+=("$cmd"); }
+  done
+  for cmd in "${PYTHON_PROGRAMS[@]}"; do
+    hash "$cmd" 2>/dev/null || { print_line >&2 "WARNING! $cmd is not installed."; MISSING_PYTHON_PROGRAMS+=("$cmd"); }
   done
 
-  if [ ${#MISSING_PROGRAMS[@]} -gt 0 ]; then
+  if [[ ${#MISSING_NATIVE_PROGRAMS[@]} -gt 0 || ${#MISSING_PYTHON_PROGRAMS[@]} -gt 0 ]]; then
     print_line "try running"
-    print_line "sudo apt install" "${MISSING_PROGRAMS[@]}"
+    if [[ ${#MISSING_NATIVE_PROGRAMS[@]} -gt 0 ]]; then
+      print_line "sudo apt install" "${MISSING_NATIVE_PROGRAMS[@]}"
+    fi
+    if [[ ${#MISSING_PYTHON_PROGRAMS[@]} -gt 0 ]]; then
+      print_line "pip install" "${MISSING_PYTHON_PROGRAMS[@]}"
+    fi
     print_line "to install missing programs."
   fi
 }
