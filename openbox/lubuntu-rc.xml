@@ -58,11 +58,11 @@
     <!-- font size in points -->
     <!-- 'bold' or 'normal' -->
     <!-- 'italic' or 'normal' -->
-    <font place="ActiveWindow"><name>Ubuntu Medium</name><size>10</size><weight>Normal</weight><slant>Normal</slant></font>
-    <font place="InactiveWindow"><name>Ubuntu Medium</name><size>10</size><weight>Normal</weight><slant>Normal</slant></font>
-    <font place="MenuHeader"><name>Ubuntu</name><size>10</size><weight>Normal</weight><slant>Normal</slant></font>
-    <font place="MenuItem"><name>Ubuntu</name><size>10</size><weight>Normal</weight><slant>Normal</slant></font>
-    <font place="ActiveOnScreenDisplay"><name>Ubuntu Medium</name><size>10</size><weight>Normal</weight><slant>Normal</slant></font>
+    <font place="ActiveWindow">           <name>Ubuntu Medium</name><size>10</size><weight>Normal</weight><slant>Normal</slant></font>
+    <font place="InactiveWindow">         <name>Ubuntu Medium</name><size>10</size><weight>Normal</weight><slant>Normal</slant></font>
+    <font place="MenuHeader">             <name>Ubuntu       </name><size>10</size><weight>Normal</weight><slant>Normal</slant></font>
+    <font place="MenuItem">               <name>Ubuntu       </name><size>10</size><weight>Normal</weight><slant>Normal</slant></font>
+    <font place="ActiveOnScreenDisplay">  <name>Ubuntu Medium</name><size>10</size><weight>Normal</weight><slant>Normal</slant></font>
     <font place="InactiveOnScreenDisplay"><name>Ubuntu Medium</name><size>10</size><weight>Normal</weight><slant>Normal</slant></font>
   </theme>
   <desktops>
