@@ -57,6 +57,7 @@ fi
 export ALTERNATE_EDITOR=""
 export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a \"\""          # $VISUAL opens in GUI mode
+export MU_PLAY_PROGRAM="evince"                 # program to open attachments in mu4e
 
 compile-emacs () {
   export CC="gcc-10" # allows to native-compile emacs
