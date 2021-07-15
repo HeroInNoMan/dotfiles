@@ -1,11 +1,19 @@
 /**
- * This theme is intended for a 8 items list menu with a headerbar.
- */
-configuration {
-  show-icons: false;
-  columns: 1;
+* rofi custom theme
+* Rofi version: 1.5.4
+**/
+
+* {
+  accent:           #83a598;
+  background:       #282828;
+  background-light: #282828;
+  background-alt:   #363636;
+  background-focus: #1d2021;
+  foreground:       #ebdbb2;
+  foreground-list:  #ebdbb2;
+  on:               #83a598;
+  off:              #fb4934;
 }
-@import "shared/settings.rasi"
 * {
   background-color: @background;
   text-color: @foreground-list;
@@ -31,7 +39,7 @@ entry {
 }
 #textbox-prompt-colon {
   expand: false;
-  str: "  ";
+  str: " ";
   text-color: @accent;
   padding: @i3keybindings-textbox-prompt-colon-padding;
   font: @icon-font-small;
@@ -41,15 +49,17 @@ entry {
   padding: @entry-padding;
 }
 #element {
-  padding: @list-element-padding;
-  margin: @list-element-margin;
-  border: @list-element-border;
+  padding: 3;
+  margin:  0;
+  border:  0;
   background-color: @background-light;
   border-color: @background-light;
+}
+#element.alternate {
+  background-color: @background-alt;
 }
 #element.selected {
   background-color: @background-focus;
   text-color: @accent;
   border-color: @accent;
 }
-

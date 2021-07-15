@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-KAO_FILE="$HOME/repos/dmenukaomoji/kaomoji"
-[[ -f "${KAO_FILE}" ]] \
-  || echo "install dmenukaomoji first: https://github.com/eylles/dmenukaomoji" \
-          https://github.com/eylles/dmenukaomoji&& exit 1
+rofi_command="rofi -i -theme repos/dotfiles/rofi/emoji.rasi"
+# TODO: trouver pourquoi le -i est nécessaire malgré le “case-sensitive: false;” dans emoji.rasi
 
+KAO_FILE="$HOME/repos/dmenukaomoji/kaomoji"
+if [[ ! -f "${KAO_FILE}" ]]; then
+  echo "install dmenukaomoji first: https://github.com/eylles/dmenukaomoji"
+  exit 1
+fi
 # List for rofi
 gen_list () {
   while read -r line; do
@@ -13,17 +16,7 @@ gen_list () {
 }
 
 main() {
-  kao=$( (gen_list) | \
-           rofi \
-             -dmenu \
-             -i \
-             -opacity 10 \
-             -no-custom \
-             -location 6 \
-             -lines 40 \
-             -width 95 \
-             -columns 4 \
-             -p "Kaomoji > " )
+  kao=$( (gen_list) | $rofi_command -dmenu -p "Kao" )
 
   if [ -n "$kao" ]; then
     result=$(echo "$kao" | sed "s/ .*//")

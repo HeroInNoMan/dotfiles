@@ -127,12 +127,12 @@ install_config_files () {
   deploy "$DOT_FILES_DIR/openbox/lubuntu-rc.xml" "$TARGET_CONF_DIR/openbox/lxqt-rc.xml"
   deploy "$DOT_FILES_DIR/openbox/lubuntu-rc.xml"
   deploy "$DOT_FILES_DIR/flake8"
-  deploy "$DOT_FILES_DIR/rofi"
   deploy "$DOT_FILES_DIR/lxterminal/lxterminal.conf"
   deploy "$DOT_FILES_DIR/img"
   deploy "$DOT_FILES_DIR/fish/config.fish"
   deploy "$DOT_FILES_DIR/fish/functions"
   deploy "$DOT_FILES_DIR/fish/conf.d"
+  deploy "$EXTERNAL_REPOS_ROOT/rofi-menus"       "$TARGET_CONF_DIR/rofi"
 }
 
 check_missing_programmes () {

@@ -1,16 +1,14 @@
 #!/bin/bash
 
-# rofi_command="rofi -theme themes/scrotmenu.rasi"
-# rofi_command="rofi"
-rofi_command="rofi -bg '#262626' -bgalt '#212121' -fg '#ffffff' -hlbg '#d64937' -hlfg '#ffffff' -opacity "90" -location 6 -lines 30"
+rofi_command="rofi -theme repos/dotfiles/rofi/grab.rasi"
 
 ### Options ###
-screen="🖵 (screen)"
-area=" (area)"
-window="🗔 (window)"
-screen_publish="🖵 (screen) → publish"
-area_publish=" (area) → publish"
-window_publish="🗔 (window) → publish"
+screen="🖵 screen"
+area=" area"
+window="🗔 window"
+screen_publish="🖵 screen → publish"
+area_publish=" area → publish"
+window_publish="🗔 window → publish"
 # Variable passed to rofi
 options="$screen\n$screen_publish\n$area\n$area_publish\n$window\n$window_publish"
 

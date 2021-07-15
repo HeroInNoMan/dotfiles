@@ -161,7 +161,7 @@
     <keybind key="A-space"><action name="ShowMenu"><menu>client-menu</menu></action></keybind>
     <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
     <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
-    <keybind key="W-s"><action name="Execute"><command>scrotmenu.sh</command></action></keybind>
+    <keybind key="W-s">    <action name="Execute"><command>rofi-grab.sh                       </command></action></keybind>
     <!-- <keybind key="W-s"><action name="Execute"><command>scrot</command></action></keybind> -->
 
     <!-- WINDOW SWITCHING -->
@@ -379,9 +379,6 @@
       </keybind>
     </keybind>
 
-    <!-- Take a screenshot of the current window with scrot when Alt+Print are pressed -->
-    <keybind key="A-Print"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
-    <keybind key="W-s"><action name="Execute"><command>lxsession-default screenshot window</command></action></keybind>
     <!-- Launch a filemanager on Home + E -->
     <keybind key="W-e"><action name="Execute"><command>nautilus --new-window</command></action></keybind>
     <keybind key="A-F2"><action name="Execute"><command>lxpanelctl run</command></action></keybind>
@@ -393,7 +390,7 @@
     <!-- Launch task manager on Ctrl + Alt + Del-->
     <keybind key="C-A-Delete"><action name="Execute"><command>lxtask</command></action></keybind>
     <!-- App launcher -->
-    <keybind key="W-d"><action name="Execute"><command>rofi-run.sh</command></action></keybind>
+    <keybind key="W-d"><action name="Execute"><command>rofi-run.sh run</command></action></keybind>
 
     <!-- Special character selection -->
     <keybind key="W-u">
@@ -410,10 +407,12 @@
 
     <!-- Custom rofi launcher -->
     <keybind key="W-x">
-      <keybind key="W-x"><action name="Execute"><command>appsmenu.sh         </command></action></keybind>
-      <keybind key="v">  <action name="Execute"><command>nmvpnmenu.sh        </command></action></keybind>
-      <keybind key="n">  <action name="Execute"><command>networkmenu.py      </command></action></keybind>
-      <keybind key="s">  <action name="Execute"><command>scrotmenu.sh        </command></action></keybind>
+      <keybind key="W-x"><action name="Execute"><command>rofi-run.sh drun    </command></action></keybind>
+      <keybind key="v">  <action name="Execute"><command>rofi-vpn.sh         </command></action></keybind>
+      <keybind key="n">  <action name="Execute"><command>rofi-network.sh     </command></action></keybind>
+      <keybind key="s">  <action name="Execute"><command>rofi-grab.sh        </command></action></keybind>
+      <keybind key="m">  <action name="Execute"><command>rofi-music-search.sh</command></action></keybind>
+      <keybind key="p">  <action name="Execute"><command>rofi-power.sh       </command></action></keybind>
       <keybind key="f">  <action name="Execute"><command>rofi-video-search.sh</command></action></keybind>
       <keybind key="b">  <action name="Execute"><command>rofi-book-search.sh </command></action></keybind>
     </keybind>
@@ -481,7 +480,7 @@
     <keybind key="XF86MonBrightnessDown"><action name="Execute"><command>hw.sh light-down</command></action></keybind>
     <keybind key="XF86MonBrightnessUp"><action name="Execute"><command>hw.sh light-up</command></action></keybind>
     <!-- Launch scrot (print screen) -->
-    <keybind key="Print"><action name="Execute"><command>scrotmenu.sh</command></action></keybind>
+    <keybind key="Print"><action name="Execute"><command>rofi-grab.sh</command></action></keybind>
     <!-- Logout -->
     <keybind key="XF86PowerOff"><action name="Execute"><command>lxsession-logout</command></action></keybind>
     <keybind key="W-Insert"><action name="Execute"><command>lxsession-logout</command></action></keybind>

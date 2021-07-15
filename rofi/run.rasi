@@ -1,0 +1,27 @@
+/**
+ * Rofi version: 1.5.4
+ **/
+
+configuration {
+    case-sensitive:    false;
+    click-to-exit:     true;
+    columns:           3;
+    cycle:             true;
+    disable-history:   false;
+    display-drun:      "apps";
+    fake-background:   "screenshot";
+    fake-transparency: true;
+    fixed-num-lines:   true;
+    font:              "mono 16";
+    hide-scrollbar:    true;
+    icon-theme:        "Papirus";
+    lines:             20;
+    location:          6;
+    separator-style:   "dash";
+    show-icons:        true;
+    show-match:        true;
+    terminal:          "lxterminal";
+    width:             65;
+}
+
+@import "theme.rasi"
