@@ -9,7 +9,7 @@ lock='🔒	lock screen'
 suspend='💤	sleep'
 log_out='🚪	log out'
 
-chosen=$(printf '%s;%s;%s;%s;%s\n' "$power_off" "$reboot" "$lock" "$suspend" "$log_out" | rofi -theme repos/dotfiles/rofi/power.rasi -dmenu -sep ';' -selected-row 2 -p "Session")
+chosen=$(printf '%s;%s;%s;%s;%s\n' "$power_off" "$reboot" "$lock" "$suspend" "$log_out" | rofi -theme repos/dotfiles/rofi/power.rasi -dmenu -sep ';' -selected-row 2 -p "session")
 
 case "$chosen" in
   "$power_off")
