@@ -13,6 +13,7 @@
   foreground-list:  #ebdbb2;
   on:               #83a598;
   off:              #fb4934;
+  highlight:        #Ff0000;
 }
 * {
   background-color: @background;
@@ -34,8 +35,8 @@ entry {
 }
 #prompt {
   padding: @prompt-padding;
-  background-color: @accent;
-  text-color: @background;
+  background-color: @background-focus;
+  text-color: @highlight;
 }
 #textbox-prompt-colon {
   expand: false;
