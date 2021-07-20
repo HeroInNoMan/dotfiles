@@ -11,6 +11,19 @@ mkdir -p "$BOOKS_DIR"
 # BOOKS['filename']='path'
 # declare -A BOOKS
 
+build_padding(){
+  str_left="$1"
+  str_right="$2"
+  max_width="$3"
+  ((n=$max_width - ${#str_right}))
+  padding=""
+  while [[ $n -gt ${#str_left} ]]; do
+    padding+=" "
+    ((n--))
+  done
+  echo -e "${padding}"
+}
+
 # Add elements to BOOKS array
 load_books() {
 
@@ -21,9 +34,20 @@ load_books() {
       for i in "${!F_ARRAY[@]}"
       do
         path=${F_ARRAY[$i]}
-        file=$(basename "${F_ARRAY[$i]}")
+
+        # path="/home/duncan/ebooks/Collections/Science-fiction:Anticipation:Fantastique/Brussolo, Serge/Vue en coupe d'une ville malade - Serge Brussolo.epub"
+        # path="/home/duncan/ebooks/Calibre/Ruth Ozeki/Mon epouse americaine (1209)/Mon epouse americaine - Ruth Ozeki.epub"
+        # path="/home/duncan/ebooks/Bibli-kobo/Paul Lafargue/Le droit a la paresse - Refutation du __ droit au travail __ de 1848 (494)/Le droit a la paresse - Refutation du __ d - Paul Lafargue.epub"
+        file=$(basename "$path")
+        metadata=$(awk '{ sub(/.*(ebooks\/Collections|ebooks\/Littérature|ebooks)\//, ""); print }' <<< "$path" | cut -d/ -f1)
         file=${file%.epub}
-        echo "$file|$path" >> "$EBOOKS_INDEX"
+        echo "metadata: $metadata"
+        echo "file: $file"
+
+        padding=$(build_padding "$file" "$metadata" 145)
+
+
+        echo "${file}${padding}(${metadata})|${path}" >> "$EBOOKS_INDEX"
       done
     else
       echo "$BOOKS_DIR is empty!"
@@ -48,7 +72,7 @@ main() {
   if [ -n "$book" ]; then
     while read -r line; do
       if [[ $line == *"$book"* ]]; then
-        xdg-open "$(echo "$line" | cut -d\| -f2)"
+        ebook-viewer "$(echo "$line" | cut -d\| -f2)"
         exit 0
       fi
     done <"$EBOOKS_INDEX"
