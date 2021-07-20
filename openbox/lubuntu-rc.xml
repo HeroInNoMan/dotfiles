@@ -398,7 +398,9 @@
     <!-- Special character selection -->
     <keybind key="W-u">
       <!-- Emoji (*U*nicode) -->
-      <keybind key="W-u"><action name="Execute"><command>rofimoji-wrapper.sh</command></action></keybind>
+      <keybind key="W-u"><action name="Execute"><command>rofimoji-wrapper.sh emojis</command></action></keybind>
+      <keybind key="W-e"><action name="Execute"><command>rofi-run.sh emoji</command></action></keybind>
+      <keybind key="e"><action name="Execute"><command>rofi-run.sh emoji</command></action></keybind>
       <!-- All possible special characters -->
       <keybind key="W-a"><action name="Execute"><command>rofimoji-wrapper.sh all</command></action></keybind>
       <keybind key="a">  <action name="Execute"><command>rofimoji-wrapper.sh all</command></action></keybind>
