@@ -21,7 +21,7 @@ configuration {
     show-icons:        true;
     show-match:        true;
     terminal:          "lxterminal";
-    width:             65;
+    width:             75;
 }
 
 @import "theme.rasi"
