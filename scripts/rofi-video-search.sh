@@ -7,6 +7,26 @@ mkdir -p $VIDEOS_DIR
 
 # Save find result to F_ARRAY
 
+build_padding(){
+  str_left="$1"
+  str_right="$2"
+  max_width="$3"
+  ((n=$max_width - ${#str_right}))
+  padding=""
+  while [[ $n -gt ${#str_left} ]]; do
+    padding+=" "
+    ((n--))
+  done
+  echo -e "${padding}"
+}
+
+convertsecs() {
+  ((h=${1}/3600))
+  ((m=(${1}%3600)/60))
+  ((s=${1}%60))
+  printf "%02d:%02d:%02d\n" "$h" "$m" "$s"
+}
+
 # Add elements to VIDEOS array
 load_videos() {
 
@@ -21,9 +41,24 @@ load_videos() {
       for i in "${!F_ARRAY[@]}"
       do
         path=${F_ARRAY[$i]}
-        file=$(awk '{ sub(/.*(Vidéos|Téléchargements|\/media\/duncan)\//, ""); print }' <<< "$path")
-        file=${file%.*}
-        echo "$file|$path" >> "$VIDEOS_INDEX_TMP"
+
+        # path="/home/duncan/Vidéos/au travail/2009.05.27 - Questions pour un Champion.mkv"
+        TAGS_DUMP=$(ffprobe -hide_banner -show_format -of compact -i "$path" 2> /dev/null)
+        if [[ $(echo $TAGS_DUMP | grep title=) ]]; then
+          t_title=$(echo $TAGS_DUMP | sed -e 's/.*title=\([^|]*\).*/\1/')
+        else
+          t_title=$(awk '{ sub(/.*(Vidéos|Téléchargements|\/media\/duncan)\//, ""); print }' <<< "$path")
+          t_title=${t_title%.*}
+        fi
+        if [[ $(echo $TAGS_DUMP | grep duration=) ]]; then
+          t_duration=$(echo $TAGS_DUMP | sed -e 's/.*duration=\([^|\.]*\).*/\1/')
+          t_duration=$(convertsecs "$t_duration")
+          padding=$(build_padding "$t_title" "$t_duration" 145)
+        fi
+
+        infos="${t_title}${padding}(${t_duration})"
+
+        echo "$infos|$path" >> "$VIDEOS_INDEX_TMP"
       done
       sort $VIDEOS_INDEX_TMP > $VIDEOS_INDEX
       rm -f $VIDEOS_INDEX_TMP
