@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "rofi-utils.sh"
+
 # Videos directory
 VIDEOS_DIR="$HOME/Vidéos"
 VIDEOS_INDEX="$VIDEOS_DIR/.index"
@@ -7,31 +9,12 @@ PATHS="/tmp/paths"
 mkdir -p "$VIDEOS_DIR"
 
 write_paths_to_file() {
-  find "$HOME/Vidéos" "$HOME/Téléchargements" "/media/duncan/Maxtor" -type f \
+
+  find "$HOME/Vidéos/Politique" "$HOME/Téléchargements" "/media/duncan/Maxtor" -type f \
        -iname '*.mp4'  \
        -o -iname '*.avi'  \
        -o -iname '*.mkv'  \
        > "$1"
-}
-
-build_padding(){
-  str_left="$1"
-  str_right="$2"
-  max_width="$3"
-  ((n=$max_width - ${#str_right}))
-  padding=""
-  while [[ $n -gt ${#str_left} ]]; do
-    padding+=" "
-    ((n--))
-  done
-  echo -e "${padding}"
-}
-
-convertsecs() {
-  ((h=${1}/3600))
-  ((m=(${1}%3600)/60))
-  ((s=${1}%60))
-  printf "%02d:%02d:%02d\n" "$h" "$m" "$s"
 }
 
 extract_video_infos(){

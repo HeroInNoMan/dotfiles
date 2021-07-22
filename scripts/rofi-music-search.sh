@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "rofi-utils.sh"
+
 # Music directory
 MUSIC_DIR="$HOME/Musique"
 MUSIC_INDEX="$MUSIC_DIR/.index"
@@ -20,19 +22,6 @@ write_paths_to_file() {
        -o -iname '*.wma'  \
        -o -iname '*.wmv'  \
        > "$1"
-}
-
-build_padding(){
-  str_left="$1"
-  str_right="$2"
-  max_width="$3"
-  ((n=$max_width - ${#str_right}))
-  padding=""
-  while [[ $n -gt ${#str_left} ]]; do
-    padding+=" "
-    ((n--))
-  done
-  echo -e "${padding}"
 }
 
 extract_track_info() {

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source "rofi-utils.sh"
+
 # Books directory
 BOOKS_DIR="$HOME/ebooks"
 EBOOK_INDEX="$BOOKS_DIR/.index"
@@ -8,19 +10,6 @@ mkdir -p "$BOOKS_DIR"
 
 write_paths_to_file (){
   find "$BOOKS_DIR" -type f -name '*.epub' > "$1"
-}
-
-build_padding(){
-  str_left="$1"
-  str_right="$2"
-  max_width="$3"
-  ((n=$max_width - ${#str_right}))
-  padding=""
-  while [[ $n -gt ${#str_left} ]]; do
-    padding+=" "
-    ((n--))
-  done
-  echo -e "${padding}"
 }
 
 extract_book_infos(){
