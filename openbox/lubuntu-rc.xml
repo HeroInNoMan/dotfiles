@@ -407,14 +407,14 @@
 
     <!-- Custom rofi launcher -->
     <keybind key="W-x">
-      <keybind key="W-x"><action name="Execute"><command>rofi-run.sh drun    </command></action></keybind>
-      <keybind key="v">  <action name="Execute"><command>rofi-vpn.sh         </command></action></keybind>
-      <keybind key="n">  <action name="Execute"><command>rofi-network.sh     </command></action></keybind>
-      <keybind key="s">  <action name="Execute"><command>rofi-grab.sh        </command></action></keybind>
-      <keybind key="m">  <action name="Execute"><command>rofi-music-search.sh</command></action></keybind>
-      <keybind key="p">  <action name="Execute"><command>rofi-power.sh       </command></action></keybind>
-      <keybind key="f">  <action name="Execute"><command>rofi-video-search.sh</command></action></keybind>
-      <keybind key="b">  <action name="Execute"><command>rofi-book-search.sh </command></action></keybind>
+      <keybind key="W-x"><action name="Execute"><command>rofi-run.sh drun          </command></action></keybind>
+      <keybind key="v">  <action name="Execute"><command>rofi-vpn.sh               </command></action></keybind>
+      <keybind key="n">  <action name="Execute"><command>rofi-network.sh           </command></action></keybind>
+      <keybind key="s">  <action name="Execute"><command>rofi-grab.sh              </command></action></keybind>
+      <keybind key="m">  <action name="Execute"><command>rofi-media-search.sh music</command></action></keybind>
+      <keybind key="p">  <action name="Execute"><command>rofi-power.sh             </command></action></keybind>
+      <keybind key="f">  <action name="Execute"><command>rofi-media-search.sh video</command></action></keybind>
+      <keybind key="b">  <action name="Execute"><command>rofi-media-search.sh book </command></action></keybind>
     </keybind>
     <!-- ssh connection launcher -->
     <keybind key="W-h"><action name="Execute"><command>rofi-run.sh ssh</command></action></keybind>
