@@ -3,21 +3,31 @@
 source "rofi-utils.sh"
 
 # Videos directory
-VIDEOS_DIR="$HOME/Vidéos"
-VIDEOS_INDEX="$VIDEOS_DIR/.index"
+ROOT_DIR="$HOME/Vidéos"
+SOURCE_DIRS=("$HOME/Vidéos/Politique" "$HOME/Téléchargements" "/media/duncan/Maxtor")
+INDEX_FILE="$ROOT_DIR/.index"
 PATHS="/tmp/paths"
-mkdir -p "$VIDEOS_DIR"
+EXTENTIONS=("avi" "mp4" "mkv")
+mkdir -p "$ROOT_DIR"
 
-write_paths_to_file() {
-
-  find "$HOME/Vidéos/Politique" "$HOME/Téléchargements" "/media/duncan/Maxtor" -type f \
-       -iname '*.mp4'  \
-       -o -iname '*.avi'  \
-       -o -iname '*.mkv'  \
-       > "$1"
+write_paths_to_tmp_file() {
+  true > $PATHS
+  REGEX=".*\.\(xxx"
+  for e in "${EXTENTIONS[@]}"; do
+    REGEX+="\|$e"
+  done
+  REGEX+="\)"
+  for d in "${SOURCE_DIRS[@]}"
+  do
+    if [[ -d "$d" ]]; then
+      find "$d" -type f \
+           -regex $REGEX \
+           >> "$PATHS"
+    fi
+  done
 }
 
-extract_video_infos(){
+extract_display_string(){
   path="$1"
 
   # path="/home/duncan/Vidéos/au travail/2009.05.27 - Questions pour un Champion.mkv"
@@ -34,33 +44,33 @@ extract_video_infos(){
     t_duration=$(convertsecs "$t_duration")
     padding=$(build_padding "$t_title" "$t_duration" 145)
   fi
-  infos="${t_title}${padding}(${t_duration})"
-  echo "$infos"
+  display_string="${t_title}${padding}(${t_duration})"
+  echo "$display_string"
 }
 
-load_videos() {
+load_files() {
 
-  if [[ ! -f $VIDEOS_INDEX ]]; then
+  if [[ ! -f $INDEX_FILE ]]; then
 
-    write_paths_to_file $PATHS
+    write_paths_to_tmp_file
 
     if [[ -s $PATHS ]]; then
 
       # create temp file ######################################################
-      VIDEOS_INDEX_TMP="/tmp/.index_videos"
-      true > $VIDEOS_INDEX_TMP
+      INDEX_FILE_TMP="/tmp/.index_videos"
+      true > $INDEX_FILE_TMP
 
       while read -r path; do
-        infos=$(extract_video_infos "$path")
+        display_string=$(extract_display_string "$path")
         # write display string and path in temp file ##########################
-        echo "$infos|$path" >> "$VIDEOS_INDEX_TMP"
+        echo "$display_string|$path" >> "$INDEX_FILE_TMP"
       done <"$PATHS"
 
       # sort temp file and write to final index file ##########################
-      sort $VIDEOS_INDEX_TMP > $VIDEOS_INDEX
-      rm -f $VIDEOS_INDEX_TMP
+      sort $INDEX_FILE_TMP > $INDEX_FILE
+      rm -f $INDEX_FILE_TMP
     else
-      echo "No videos found."
+      echo "No files found."
       exit 1
     fi
   fi
@@ -68,22 +78,22 @@ load_videos() {
 
 # create a list for rofi to consume ###########################################
 gen_list(){
-  load_videos
+  load_files
   while read -r line; do
     echo -e "$line"
-  done <"$VIDEOS_INDEX"
+  done <"$INDEX_FILE"
 }
 
 main() {
-  videos=$(gen_list)
-  video=$( echo -e "$videos" | cut -d\| -f1 | rofi -i -theme repos/dotfiles/rofi/media.rasi -dmenu -no-custom -p "🎬" )
-  if [ -n "$video" ]; then
+  lines=$(gen_list)
+  display_line=$( echo -e "$lines" | cut -d\| -f1 | rofi -i -theme repos/dotfiles/rofi/media.rasi -dmenu -no-custom -p "🎬" )
+  if [ -n "$display_line" ]; then
     while read -r line; do
-      if [[ $line == *"$video"* ]]; then
+      if [[ $line == *"$display_line"* ]]; then
         smplayer -fullscreen -close-at-end -minigui "$(echo "$line" | cut -d\| -f2)"
         exit 0
       fi
-    done <"$VIDEOS_INDEX"
+    done <"$INDEX_FILE"
   fi
 }
 
