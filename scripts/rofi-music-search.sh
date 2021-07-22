@@ -88,6 +88,7 @@ load_music() {
 
       # sort temp file and write to final index file ##########################
       sort --version-sort "$MUSIC_INDEX_TMP" > "$MUSIC_INDEX_DISPLAY"
+      rm -f $MUSIC_INDEX_TMP
 
     else
       echo "No music found."
