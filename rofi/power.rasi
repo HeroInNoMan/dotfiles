@@ -27,7 +27,11 @@ configuration {
 @import "theme.rasi"
 
 element {
-  padding: 5;
-  margin:  0;
+  padding: 30;
+  border:  5;
+}
+
+element.alternate {
+  padding: 30;
   border:  5;
 }

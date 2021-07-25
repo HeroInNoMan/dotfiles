@@ -27,6 +27,10 @@ configuration {
 
 element {
   padding: 5;
-  margin:  0;
+  border:  5;
+}
+
+element.alternate {
+  padding: 5;
   border:  5;
 }

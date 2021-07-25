@@ -440,7 +440,7 @@
     </keybind>
 
     <!-- Lock the screen on W + l-->
-    <keybind key="W-l"><action name="Execute"><command>lxlock</command></action></keybind>
+    <keybind key="W-l"><action name="Execute"><command>rofi-power.sh</command></action></keybind>
     <!-- Volume / brightness management -->
     <keybind key="XF86AudioRaiseVolume"><action name="Execute"><command>hw.sh sound-up    </command></action></keybind>
     <keybind key="W-egrave">

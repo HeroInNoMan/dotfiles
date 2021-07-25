@@ -15,8 +15,8 @@ configuration {
     font:              "mono 16";
     hide-scrollbar:    false;
     icon-theme:        "Papirus";
-    lines:             40;
-    location:          6;
+    lines:             20;
+    location:          2;
     separator-style:   "dash";
     show-icons:        true;
     show-match:        true;
@@ -28,6 +28,10 @@ configuration {
 
 element {
   padding: 5;
-  margin:  0;
+  border:  5;
+}
+
+element.alternate {
+  padding: 5;
   border:  5;
 }
