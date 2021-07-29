@@ -14,7 +14,6 @@ configuration {
     fixed-num-lines:   true;
     font:              "mono 30";
     hide-scrollbar:    true;
-    icon-theme:        "Papirus";
     lines:             5;
     location:          0;
     separator-style:   "dash";
