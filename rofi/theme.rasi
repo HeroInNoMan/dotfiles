@@ -8,7 +8,7 @@
   background:       #282828;
   background-light: #282828;
   background-alt:   #363636;
-  background-focus: #1d2021;
+  background-focus: #230200;
   foreground:       #ebdbb2;
   foreground-list:  #ebdbb2;
   on:               #83a598;
