@@ -16,12 +16,12 @@ alias lla='ls -lA'
 
 # USE EXA IF AVAILABLE ########################################################
 if hash exa 2>/dev/null;then
-	alias la='exa -a'
-	alias ls='exa'
-	alias ll='exa -l --git'
-	alias lla='exa -al --git'
-	alias lt='exa -lTL3 --git'
-	alias lta='exa -alTL3 --git'
+	alias ls='exa -h --git'
+	alias la='ls -a'
+	alias ll='ls -l'
+	alias lla='ls -al'
+	alias lt='ls -lTL3'
+	alias lta='ls -alTL3'
 fi
 
 # USE BAT INSTEAD OF CAT IF AVAILABLE #########################################
@@ -62,7 +62,7 @@ alias gb='git branch'
 alias gba='git branch -avv'
 alias gc='git commit'
 alias gd='git diff'
-alias gf='git fetch'
+alias gf='git fetch --all --prune --tags'
 alias gi='git rebase --interactive'
 alias gk='gitk --all&'
 alias gl='git lg'
