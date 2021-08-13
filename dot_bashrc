@@ -70,46 +70,6 @@ export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a \"\""          # $VISUAL opens in GUI mode
 export MU_PLAY_PROGRAM="evince"                 # program to open attachments in mu4e
 
-compile-emacs () {
-  export CC="gcc-10" # allows to native-compile emacs
-  cd ~/outils/emacs ||
-    git checkout feature/native-comp &&
-      git pull &&
-      ./autogen.sh &&
-      ./configure --with-nativecomp --with-mailutils &&
-      make -j 2 &&
-      sudo make install &&
-      cd - || exit;
-}
-
-update-system () {
-  sudo apt update &&
-    sudo apt -y upgrade &&
-    sudo apt -y dist-upgrade &&
-    sudo apt-get -y autoremove
-}
-
-# if [ -f ~/Terminalcity/dotfiles/make-completion-wrapper ]; then
-#     . ~/Terminalcity/dotfiles/make-completion-wrapper
-#
-#     # qhe
-#     make-completion-wrapper _quilt_completion _qhe qhe quilt header -e
-#     complete -o filenames -F _qhe qhe
-#     # apt-policy
-#     __apt_cache_shortcut apt-policy policy
-#     # apt-show
-#     __apt_cache_shortcut apt-show show
-#
-#     # __git_shortcut  gs   status # no completion for git status
-#     __git_shortcut  ga   add
-#     __git_shortcut  gb   branch
-#     __git_shortcut  gc   commit
-#     __git_shortcut  gd   diff
-#     __git_shortcut  go   checkout
-#     __git_shortcut  gcp  cherry-pick
-#     __git_shortcut  gpp  push
-# fi
-#
 export PATH=$HOME/usr/bin:$PATH
 export PATH=$HOME/bin:$PATH
 export PATH=$HOME/.local/bin/:$PATH
