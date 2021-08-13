@@ -3,5 +3,5 @@
 sudo aptitude update
 sudo aptitude full-upgrade -y
 sudo aptitude autoclean -y
-
+notify-send "Upgrade complete!"
 # EOF
