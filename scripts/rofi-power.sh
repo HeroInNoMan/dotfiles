@@ -3,21 +3,34 @@
 # A rofi powered menu to execute power related action.
 # Uses: amixer mpc poweroff reboot rofi rofi-prompt
 
-power_off='⏻	power off'
-reboot='⭮	reboot'
-lock='🔒	lock screen'
-suspend='💤	sleep'
-log_out='🚪	log out'
+power_off=$(echo -e "⏻\tpower off")
+reboot=$(echo -e "⭮\treboot")
+lock=$(echo -e "🔒\tlock screen")
+suspend=$(echo -e "💤\tsleep")
+hibernate=$(echo -e "🌙\thibernate")
+log_out=$(echo -e "🚪\tlog out")
 
-chosen=$(printf '%s;%s;%s;%s;%s\n' "$power_off" "$reboot" "$lock" "$suspend" "$log_out" | rofi -theme repos/dotfiles/rofi/power.rasi -dmenu -sep ';' -selected-row 2 -p "session")
+chosen=$(printf '%s;%s;%s;%s;%s;%s\n' \
+                "$power_off" \
+                "$reboot" \
+                "$lock" \
+                "$suspend" \
+                "$hibernate" \
+                "$log_out" \
+           | rofi -theme repos/dotfiles/rofi/power.rasi \
+                  -p "session" \
+                  -dmenu \
+                  -sep ';' \
+                  -no-custom \
+                  -selected-row 2)
 
 case "$chosen" in
   "$power_off")
-    rofi-prompt.sh --query 'Shutdown?' # && poweroff
+    rofi-prompt.sh --query 'Shutdown ?' && systemctl poweroff
     ;;
 
   "$reboot")
-    rofi-prompt.sh --query 'Reboot?' # && reboot
+    rofi-prompt.sh --query 'Reboot ?' && systemctl reboot
     ;;
 
   "$lock")
@@ -25,11 +38,15 @@ case "$chosen" in
     ;;
 
   "$suspend")
-    # TODO Add your suspend command.
+    rofi-prompt.sh --query 'Suspend ?' && systemctl suspend
+    ;;
+
+  "$hibernate")
+    rofi-prompt.sh --query 'Hibernate ?' && systemctl hybrid-sleep
     ;;
 
   "$log_out")
-    # TODO Add your log out command.
+    lxsession-logout
     ;;
 
   *) exit 1 ;;

@@ -14,7 +14,7 @@ configuration {
     fixed-num-lines:   true;
     font:              "mono 30";
     hide-scrollbar:    true;
-    lines:             5;
+    lines:             6;
     location:          0;
     separator-style:   "dash";
     show-icons:        true;
@@ -26,11 +26,11 @@ configuration {
 @import "theme.rasi"
 
 element {
-  padding: 30;
-  border:  5;
+    padding: 30;
+    border:  5;
 }
 
 element.alternate {
-  padding: 30;
-  border:  5;
+    padding: 30;
+    border:  5;
 }
