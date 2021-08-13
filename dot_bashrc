@@ -13,11 +13,22 @@
 
 # erase all previous lines that match current command, keep current command. See
 # bash(1) for more options
+shopt -s histappend
+shopt -s histverify
 export HISTCONTROL=erasedups
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
+
+# Better cd, allows cool stuff like autocorrection and autocd by just typing the path
+shopt -s autocd
+shopt -s cdspell
+
+if hash nvim 2>/dev/null;then
+  # Use neovim for manpages
+  export MANPAGER='nvim +Man!'
+fi
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
