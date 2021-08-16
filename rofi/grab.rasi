@@ -3,24 +3,24 @@
  **/
 
 configuration {
-    case-sensitive:    false;
-    click-to-exit:     true;
-    columns:           1;
-    cycle:             true;
-    disable-history:   false;
-    display-drun:      "apps";
-    fake-background:   "screenshot";
-    fake-transparency: true;
-    fixed-num-lines:   true;
-    font:              "mono 30";
-    hide-scrollbar:    true;
-    lines:             6;
-    location:          0;
-    separator-style:   "dash";
-    show-icons:        true;
-    show-match:        true;
-    terminal:          "lxterminal";
-    width:             40;
+  case-sensitive:    false;
+  click-to-exit:     true;
+  columns:           1;
+  cycle:             true;
+  disable-history:   false;
+  display-drun:      "apps";
+  fake-background:   "screenshot";
+  fake-transparency: true;
+  fixed-num-lines:   true;
+  font:              "mono 30";
+  hide-scrollbar:    true;
+  lines:             6;
+  location:          0;
+  separator-style:   "dash";
+  show-icons:        true;
+  show-match:        true;
+  terminal:          "lxterminal";
+  width:             40;
 }
 
 @import "theme.rasi"
