@@ -429,7 +429,7 @@
     <!-- Launch emacs client in new frame with a new scratch buffer -->
     <keybind key="W-q">
       <action name="Execute">
-        <command>emacsclient -c -a '' -e "(crux-create-scratch-buffer)"</command>
+        <command>emacsclient -c -a '' -e "(dash-or-scratch)"</command>
       </action>
     </keybind>
     <!-- Edit with emacs from anywhere (or everywhere) -->
