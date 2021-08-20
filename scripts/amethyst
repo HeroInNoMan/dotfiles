@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+if [[ -f "$HOME/.emacs.d/straight/repos/amethyst/amethyst.el" ]]; then
+  emacs -q -l "$HOME/.emacs.d/straight/repos/amethyst/amethyst.el"
+else
+  message="amethyst.el not installed!"
+  echo "$message"
+  notify-send "$message"
+fi
