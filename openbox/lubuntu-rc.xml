@@ -468,7 +468,7 @@
       <keybind key="y"><action name="Execute"><command>youtube        </command></action></keybind>
       <keybind key="k"><action name="Execute"><command>xkill          </command></action></keybind>
       <keybind key="p"><action name="Execute"><command>pavucontrol    </command></action></keybind>
-      <keybind key="q"><action name="Execute"><command>compton -b     </command></action></keybind>
+      <keybind key="c"><action name="Execute"><command>compton -b     </command></action></keybind>
     </keybind>
 
     <!-- Calculator -->
