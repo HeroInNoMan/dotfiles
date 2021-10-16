@@ -16,6 +16,7 @@ configuration {
   hide-scrollbar:    true;
   lines:             20;
   location:          6;
+  modi:              "drun,run,ssh,window";
   separator-style:   "dash";
   show-icons:        true;
   show-match:        true;
