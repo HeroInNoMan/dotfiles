@@ -1,78 +1,86 @@
 
-prefix = ""
-suffix = ""
+format = """\
+    $time\
+    $memory_usage\
+    $username\
+    $hostname\
+    $kubernetes\
+    $directory\
+    $git_branch\
+    $git_commit\
+    $git_state\
+    $git_status\
+    $hg_branch\
+    $docker_context\
+    $package\
+    $dotnet\
+    $elixir\
+    $elm\
+    $erlang\
+    $golang\
+    $haskell\
+    $java\
+    $julia\
+    $nodejs\
+    $php\
+    $python\
+    $ruby\
+    $rust\
+    $terraform\
+    $nix_shell\
+    $conda\
+    $aws\
+    $env_var\
+    $crystal\
+    $custom\
+    $battery\
+    $cmd_duration\
+    $line_break\
+    $jobs\
+    $character\
+"""
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
 
-prompt_order = [
-    "memory_usage",
-    "username",
-    "hostname",
-    "kubernetes",
-    "directory",
-    "git_branch",
-    "git_commit",
-    "git_state",
-    "git_status",
-    "hg_branch",
-    "docker_context",
-    "package",
-    "dotnet",
-    "elixir",
-    "elm",
-    "erlang",
-    "golang",
-    "haskell",
-    "java",
-    "julia",
-    "nodejs",
-    "php",
-    "python",
-    "ruby",
-    "rust",
-    "terraform",
-    "nix_shell",
-    "conda",
-    "aws",
-    "env_var",
-    "crystal",
-    "time",
-    "custom",
-    "battery",
-    "cmd_duration",
-    "line_break",
-    "jobs",
-    "character",
-]
+[[battery.display]]
+threshold = 90
+style = "bold red"
 
 [memory_usage]
 disabled = false # Disables the memory_usage module.
-show_percentage = true # Display memory usage as a percentage of the available memory.
 threshold = 80 # Hide the memory usage unless it exceeds this percentage.
-symbol = "" # The symbol used before displaying the memory usage.
-separator = "|" # The symbol or text that will seperate the ram and swap usage.
+symbol = "Mem" # The symbol used before displaying the memory usage.
+# separator = "|" # The symbol or text that will seperate the ram and swap usage.
 style = "bold dimmed blue" # The style for the module.
+format = '[$symbol: ${ram} \($ram_pct\)(, ${swap} \(${swap_pct}\))]($style) '
 
 [directory]
 truncation_length = 10
-prefix = ""
-suffix = ""
+truncate_to_repo = false
+truncation_symbol = "…/"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
 
 [package]
-prefix = ""
-suffix = ""
 
 [java]
 style = "dimmed green"
-symbol = "☕"
-suffix = ""
+symbol = "☕ "
+format = "[${symbol}(${version} )]($style)"
 
 [time]
 disabled = false
-format = "%R"
-style = "red"
+time_format = "%H:%M"
+format = "[$time](red) "
 
 [cmd_duration]
-prefix = ":"
+style = "yellow"
+format = '[[\(]($style)$duration[\)]($style)](bold $style) '
 
 # Replace the "❯" symbol in the prompt with "➜"
 [character]      # The name of the module we are configuring is "character"
-symbol = "➜"     # The "symbol" segment is being set to "➜"
+success_symbol = "[❯](bold green)"     # The "symbol" segment is being set to "➜"
+error_symbol   = "[❯](bold red)"
