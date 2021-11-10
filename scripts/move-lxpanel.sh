@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 PANEL_CONFIG_FILE=$HOME/.config/lxpanel/default/panels/panel
+if [[ -z $PANEL_CONFIG_FILE ]]; then
+  PANEL_CONFIG_FILE=$HOME/.config/lxpanel/LXDE/panels/panel
+fi
 
 # find number of monitors
 NB_DISPLAYS=$(xrandr --query | grep --count ' connected')
