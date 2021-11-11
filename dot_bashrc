@@ -113,6 +113,10 @@ use-java-16 () {
   [[ -n $SDKMAN_DIR && -n $JAVA_16_VERSION ]] && sdk use java $JAVA_16_VERSION || export JAVA_HOME=$JAVA_16
 }
 
+use-java-17 () {
+  [[ -n $SDKMAN_DIR && -n $JAVA_17_VERSION ]] && sdk use java $JAVA_17_VERSION || export JAVA_HOME=$JAVA_17
+}
+
 maven-debug () {
   mvn $@ -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
 }
