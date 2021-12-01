@@ -1,14 +1,19 @@
 #!/usr/bin/env bash
 
-PANEL_CONFIG_FILE=$HOME/.config/lxpanel/default/panels/panel
-if [[ -z $PANEL_CONFIG_FILE ]]; then
-  PANEL_CONFIG_FILE=$HOME/.config/lxpanel/LXDE/panels/panel
-fi
-
 # find number of monitors
 NB_DISPLAYS=$(xrandr --query | grep --count ' connected')
 
 # get current lxpanel monitor number
+PANEL_CONFIG_FILE=$HOME/.config/lxpanel/default/panels/panel
+
+if [[ ! -f $PANEL_CONFIG_FILE ]]; then
+  PANEL_CONFIG_FILE=$HOME/repos/dotfiles/lxpanel/LXDE/panels/panel
+fi
+
+if [[ ! -f $PANEL_CONFIG_FILE ]]; then
+  PANEL_CONFIG_FILE=$HOME/.config/lxpanel/LXDE/panels/panel
+fi
+
 CURRENT_MONITOR_NUMBER=$(grep "monitor=[0-9]" $PANEL_CONFIG_FILE | cut -d '=' -f2)
 
 # change
