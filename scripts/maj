@@ -1,16 +1,10 @@
 #!/usr/bin/env bash
-
-echo "****************************************************"
-echo "********** A P T I T U D E   U P D A T E ***********"
-echo "****************************************************"
+. functions.bash
+make_title "aptitude update"
 sudo aptitude update
-echo "****************************************************"
-echo "********* A P T I T U D E   U P G R A D E **********"
-echo "****************************************************"
+make_title "aptitude upgrade"
 sudo aptitude full-upgrade -y
-echo "****************************************************"
-echo "****** A P T I T U D E   A U T O - C L E A N *******"
-echo "****************************************************"
+make_title "aptitude auto-clean"
 sudo aptitude autoclean -y
 notify-send "Upgrade complete!"
 # EOF

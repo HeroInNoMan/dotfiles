@@ -1,39 +1,29 @@
 #!/usr/bin/env bash
+. functions.bash
+
 OLD_DIR=$(pwd)
 if [[ -d "$HOME/repos/emacs/" ]]; then
-  echo "****************************************************"
-  echo "***************** G I T   P U L L ******************"
-  echo "****************************************************"
+  make_title "git pull"
   cd "$HOME/repos/emacs" || return
   git fetch --all --tags --prune
   git checkout master
   git pull --autostash
 else
-  echo "****************************************************"
-  echo "******************** C L O N E *********************"
-  echo "****************************************************"
+  make_title "clone"
   mkdir -p "$HOME/repos"
   cd "$HOME/repos" || return
   git clone https://git.savannah.gnu.org/git/emacs.git
   cd "$HOME/repos/emacs" || return
 fi
-echo "****************************************************"
-echo "****************** A U T O G E N *******************"
-echo "****************************************************"
+make_title "autogen"
 ./autogen.sh
-echo "****************************************************"
-echo "**************** C O N F I G U R E *****************"
-echo "****************************************************"
-./configure --with-native-compilation
-echo "****************************************************"
-echo "********************* M A K E **********************"
-echo "****************************************************"
+make_title "configure"
+./configure --with-native-compilation --with-xinput2
+make_title "make"
 # make NATIVE_FULL_AOT=1 -j$(nproc)
-make -j$(nproc)
+make -j"$(nproc)"
 notify-send "emacs compiled!"
-echo "****************************************************"
-echo "************* M A K E   I N S T A L L **************"
-echo "****************************************************"
+make_title "make install"
 sudo make install
 cd "$OLD_DIR" || return
 # EOF
