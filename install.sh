@@ -141,6 +141,7 @@ install_config_files () {
   deploy "$DOT_FILES_DIR/openbox/lubuntu-rc.xml" "$TARGET_CONF_DIR/openbox/lxqt-rc.xml"
   deploy "$DOT_FILES_DIR/openbox/lubuntu-rc.xml" "$TARGET_CONF_DIR/openbox/rc.xml"
   deploy "$DOT_FILES_DIR/openbox/lubuntu-rc.xml"
+  deploy "$DOT_FILES_DIR/lxpanel/LXDE/panels/panel" "$TARGET_CONF_DIR/lxpanel/LXDE/panels/panel"
   deploy "$DOT_FILES_DIR/flake8"
   deploy "$DOT_FILES_DIR/lxterminal/lxterminal.conf"
   deploy "$DOT_FILES_DIR/img"
