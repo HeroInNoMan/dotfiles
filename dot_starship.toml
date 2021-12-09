@@ -1,7 +1,6 @@
 
 format = """\
     $time\
-    $memory_usage\
     $username\
     $hostname\
     $kubernetes\
@@ -35,6 +34,7 @@ format = """\
     $custom\
     $battery\
     $cmd_duration\
+    $memory_usage\
     $line_break\
     $jobs\
     $character\
