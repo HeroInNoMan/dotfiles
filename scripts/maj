@@ -6,5 +6,7 @@ make_title "aptitude upgrade"
 sudo aptitude full-upgrade -y
 make_title "aptitude auto-clean"
 sudo aptitude autoclean -y
+make_title "apt autoremove"
+sudo apt autoremove
 notify-send "Upgrade complete!"
 # EOF
