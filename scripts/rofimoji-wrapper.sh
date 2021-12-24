@@ -11,5 +11,6 @@ $(rofimoji --files "${1:-emojis}" \
            --action clipboard \
            --skin-tone neutral \
            --selector rofi \
+           --clipboarder xclip \
            --selector-args="-theme repos/dotfiles/rofi/emoji.rasi")
 # EOF
