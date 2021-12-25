@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 . functions.bash
+sudo true
 make_title "aptitude update"
 sudo aptitude update
 make_title "aptitude upgrade"
