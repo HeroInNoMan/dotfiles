@@ -31,10 +31,6 @@ set -gx PATH /usr/local/bin/ $HOME/bin $HOME/.local/bin/ $HOME/.screenlayout $PA
 # java stuff
 set -gx PATH $JAVA_HOME/bin $PATH
 
-function use-java-7
-  set -gx JAVA_HOME $JAVA_7
-end
-
 function use-java-8
   set -gx JAVA_HOME $JAVA_8
 end
@@ -59,6 +55,9 @@ function update-etags
   [ -f TAGS ] and rm TAGS
   find . -name '*.java' -exec etags -a {} \;
 end
+
+# ~/.config/fish/config.fish
+starship init fish | source
 
 # icons in terminal
 if test -f ~/.local/share/icons-in-terminal/icons.fish
