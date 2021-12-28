@@ -1,29 +1,33 @@
 #!/usr/bin/env bash
 . functions.bash
 
+EMACS_REPO_URL="https://git.savannah.gnu.org/git/emacs.git"
+DEFAULT_BRANCH="master"
+
 OLD_DIR=$(pwd)
 if [[ -d "$HOME/repos/emacs/" ]]; then
   make_title "git pull"
   cd "$HOME/repos/emacs" || return
   git fetch --all --tags --prune
-  git checkout master
+  git checkout "$DEFAULT_BRANCH"
   git pull --autostash
 else
   make_title "clone"
   mkdir -p "$HOME/repos"
   cd "$HOME/repos" || return
-  git clone https://git.savannah.gnu.org/git/emacs.git
+  git clone "$EMACS_REPO_URL"
   cd "$HOME/repos/emacs" || return
 fi
 make_title "autogen"
 ./autogen.sh
 make_title "configure"
-./configure --with-native-compilation --with-xinput2
+./configure --with-native-compilation
 make_title "make"
 # make NATIVE_FULL_AOT=1 -j$(nproc)
 make -j"$(nproc)"
 notify-send "emacs compiled!"
 make_title "make install"
 sudo make install
+notify-send "emacs installed!"
 cd "$OLD_DIR" || return
 # EOF
