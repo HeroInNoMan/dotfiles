@@ -4,30 +4,65 @@
 EMACS_REPO_URL="https://git.savannah.gnu.org/git/emacs.git"
 DEFAULT_BRANCH="master"
 
-OLD_DIR=$(pwd)
-if [[ -d "$HOME/repos/emacs/" ]]; then
+update-emacs () {
   make_title "git pull"
-  cd "$HOME/repos/emacs" || return
+  cd "$HOME/repos/emacs" || exit 1
   git fetch --all --tags --prune
   git checkout "$DEFAULT_BRANCH"
   git pull --autostash
-else
+}
+
+clone-emacs () {
   make_title "clone"
   mkdir -p "$HOME/repos"
-  cd "$HOME/repos" || return
+  cd "$HOME/repos" || exit 1
   git clone "$EMACS_REPO_URL"
-  cd "$HOME/repos/emacs" || return
-fi
-make_title "autogen"
-./autogen.sh
-make_title "configure"
-./configure --with-native-compilation
-make_title "make"
-# make NATIVE_FULL_AOT=1 -j$(nproc)
-make -j"$(nproc)"
-notify-send "emacs compiled!"
-make_title "make install"
-sudo make install
-notify-send "emacs installed!"
+  cd "$HOME/repos/emacs" || exit 1
+}
+
+autogen-emacs () {
+  make_title "autogen"
+  ./autogen.sh
+  status=$?
+  [ $status -eq 0 ] && notify-send "emacs autogen done!" \
+      || notify-send "emacs autogen failed!"
+  return $status
+}
+
+configure-emacs () {
+  make_title "configure"
+  ./configure --with-native-compilation
+  status=$?
+  [ $status -eq 0 ] && notify-send "emacs configured!" \
+      || notify-send "emacs configuration failed!"
+  return $status
+}
+
+make-emacs () {
+  make_title "make"
+  # make NATIVE_FULL_AOT=1 -j$(nproc)
+  make -j"$(nproc)"
+  status=$?
+  [ $status -eq 0 ] && notify-send "emacs compiled!" \
+      || notify-send "emacs compilation failed!"
+  return $status
+}
+
+make-install-emacs () {
+  make_title "make install"
+  sudo make install
+  status=$?
+  [ $status -eq 0 ] && notify-send "emacs installed!" \
+      || notify-send "emacs installation failed!"
+  return $status
+}
+
+OLD_DIR=$(pwd)
+[[ -d "$HOME/repos/emacs/" ]] && update-emacs || clone-emacs
+[ $? -eq 0 ] && autogen-emacs
+[ $? -eq 0 ] && configure-emacs
+[ $? -eq 0 ] && make-emacs
+[ $? -eq 0 ] && make-install-emacs
+
 cd "$OLD_DIR" || return
 # EOF
