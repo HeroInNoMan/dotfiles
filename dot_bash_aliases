@@ -4,7 +4,7 @@
 if [ "$TERM" != "dumb" ]; then
   eval "$(dircolors -b)"
   alias ls='ls --color=auto'
-  alias dir='ls --color=auto --format=vertical'
+  alias dir='ls --format=vertical'
 fi
 
 # SOME MORE LS ALIASES ########################################################
