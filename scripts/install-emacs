@@ -2,13 +2,18 @@
 . functions.bash
 
 EMACS_REPO_URL="https://git.savannah.gnu.org/git/emacs.git"
-DEFAULT_BRANCH="master"
+
+BRANCH="master"
+
+if [[ $# != 0 ]]; then
+  BRANCH=$1
+fi
 
 update-emacs () {
   make_title "git pull"
   cd "$HOME/repos/emacs" || exit 1
   git fetch --all --tags --prune
-  git checkout "$DEFAULT_BRANCH"
+  git checkout "$BRANCH"
   git pull --autostash
 }
 
@@ -18,14 +23,15 @@ clone-emacs () {
   cd "$HOME/repos" || exit 1
   git clone "$EMACS_REPO_URL"
   cd "$HOME/repos/emacs" || exit 1
+  git checkout "$BRANCH"
 }
 
 autogen-emacs () {
   make_title "autogen"
   ./autogen.sh
   status=$?
-  [ $status -eq 0 ] && notify-send "emacs autogen done!" \
-      || notify-send "emacs autogen failed!"
+  [ $status -eq 0 ] && notify-send "emacs autogen: DONE" \
+      || notify-send "emacs autogen: FAILED"
   return $status
 }
 
@@ -33,8 +39,8 @@ configure-emacs () {
   make_title "configure"
   ./configure --with-native-compilation
   status=$?
-  [ $status -eq 0 ] && notify-send "emacs configured!" \
-      || notify-send "emacs configuration failed!"
+  [ $status -eq 0 ] && notify-send "emacs configure: DONE" \
+      || notify-send "emacs configure: FAILED"
   return $status
 }
 
@@ -43,8 +49,8 @@ make-emacs () {
   # make NATIVE_FULL_AOT=1 -j$(nproc)
   make -j"$(nproc)"
   status=$?
-  [ $status -eq 0 ] && notify-send "emacs compiled!" \
-      || notify-send "emacs compilation failed!"
+  [ $status -eq 0 ] && notify-send "emacs make: DONE" \
+      || notify-send "emacs make: FAILED"
   return $status
 }
 
@@ -52,8 +58,8 @@ make-install-emacs () {
   make_title "make install"
   sudo make install
   status=$?
-  [ $status -eq 0 ] && notify-send "emacs installed!" \
-      || notify-send "emacs installation failed!"
+  [ $status -eq 0 ] && notify-send "emacs make install: DONE" \
+      || notify-send "emacs make install: FAILED"
   return $status
 }
 
