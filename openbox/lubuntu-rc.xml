@@ -448,7 +448,7 @@
     <!-- Launch emacs client in new frame with a new scratch buffer -->
     <keybind key="W-q">
       <action name="Execute">
-        <command>emacsclient -c -a '' -e "(dash-or-scratch)"</command>
+        <command>emacsclient.sh</command>
       </action>
     </keybind>
     <!-- Edit with emacs from anywhere (or everywhere) -->
