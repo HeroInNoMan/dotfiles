@@ -37,7 +37,7 @@ autogen-emacs () {
 
 configure-emacs () {
   make_title "configure"
-  ./configure --with-native-compilation
+  ./configure # --with-native-compilation
   status=$?
   [ $status -eq 0 ] && notify "emacs configure: DONE" \
       || notify "emacs configure: FAILED"
