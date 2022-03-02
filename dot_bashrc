@@ -163,7 +163,7 @@ build-all () {
 # icons in terminal
 [[ -f ~/.local/share/icons-in-terminal/icons_bash.sh ]] && source ~/.local/share/icons-in-terminal/icons_bash.sh
 
-if hash starship 2>/dev/null; then
+if [[ "$TERM" != 'dumb' ]] && hash starship 2>/dev/null; then
 
   # trying out starship
   eval "$(starship init bash)"
