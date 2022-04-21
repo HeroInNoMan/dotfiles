@@ -65,6 +65,8 @@ if test -f ~/.local/share/icons-in-terminal/icons.fish
   source ~/.local/share/icons-in-terminal/icons.fish
 end
 
+starship init fish | source
+
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # $SDKMAN_DIR must be defined in .localrc file
 if  test -s $SDKMAN_DIR/bin/sdkman-init.sh
