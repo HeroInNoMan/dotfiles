@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 . functions.bash
 sudo true
+make_title "snap refresh"
+sudo snap refresh
 make_title "aptitude update"
 sudo aptitude update
 make_title "aptitude upgrade"
