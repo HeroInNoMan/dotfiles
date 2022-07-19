@@ -74,3 +74,22 @@
 	username = arthurleothaud
 [github]
 	user = arthur.leothaud@enercoop.org
+[tig]
+	main-view-date = relative
+	refs-view-date = relative
+	tab-size = 4
+[tig "bind"]
+	main = q none # Q quits, q goes back
+
+	generic = n next
+	generic = p previous
+
+	generic = « move-first-line
+	generic = » move-last-line
+
+	generic = <Ctrl-s> search
+	generic = <Ctrl-r> search-back
+
+	generic = <Ctrl-V> move-page-down
+	generic = v move-page-up # <Alt-v> does not seam to work
+	generic = V show-version
