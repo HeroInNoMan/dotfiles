@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
- # "bepo 1.0" == "bepo"
- # "bepo 1.1" == "bepo_afnor"
+# "bepo 1.0" == "bepo"
+# "bepo 1.1" == "bepo_afnor"
 BEPO_VERSION="bepo_afnor"
 
 KBD_IMG="$HOME/.config/img/keyboard.png"
