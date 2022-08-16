@@ -26,7 +26,9 @@ fi
 
 # USE BAT INSTEAD OF CAT IF AVAILABLE #########################################
 if hash bat 2>/dev/null;then
-	alias cat='bat'
+  alias cat='bat --paging=never'
+elif hash batcat 2>/dev/null;then
+  alias cat='batcat --paging=never'
 fi
 
 # USE FD IF AVAILABLE #########################################################
