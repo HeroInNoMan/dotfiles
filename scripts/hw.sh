@@ -52,6 +52,10 @@ sound_up () {
   notif "🔊 ${VOLUME_STATE}" "$SOUND_UP_IMG"
 }
 
+toggle_mike () {
+  echo "Not implemented yet!"
+}
+
 toggle_mute () {
   for sink in $(pacmd dump | grep 'set-sink-mute' | cut -d ' ' -f2) ; do
     pactl set-sink-mute "$sink" "toggle"
