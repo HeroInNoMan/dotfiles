@@ -16,6 +16,7 @@
 shopt -s histappend
 shopt -s histverify
 export HISTCONTROL=erasedups
+export HISTTIMEFORMAT="%d%m%y %T " # adds timestamp in history display
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
