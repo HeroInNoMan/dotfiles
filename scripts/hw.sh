@@ -19,9 +19,7 @@ ACTIVE_SINK_ID=${ACTIVE_SINK_ID:-1}
 SOUND_CHANGE_STEP=5
 
 notif () {
-  killall notification-daemon
-  /usr/lib/notification-daemon/notification-daemon &
-  notify-send "$1" --expire-time=500 --icon="$2" --urgency=NORMAL
+  notify-send "$1" --expire-time=1000 --icon="$2" --urgency=NORMAL
 }
 
 light_down () {
@@ -107,16 +105,16 @@ toggle_trackpad () {
   synclient EmulateMidButtonTime=0
   synclient EmulateTwoFingerMinZ=282
   synclient EmulateTwoFingerMinW=7
-  synclient VertScrollDelta=99
-  synclient HorizScrollDelta=99
+  synclient VertScrollDelta=50
+  synclient HorizScrollDelta=30
   synclient VertEdgeScroll=0
   synclient HorizEdgeScroll=0
   synclient CornerCoasting=0
   synclient VertTwoFingerScroll=1
   synclient HorizTwoFingerScroll=1
-  synclient MinSpeed=1
+  synclient MinSpeed=0.1
   synclient MaxSpeed=1.75
-  synclient AccelFactor=0.0403307
+  synclient AccelFactor=0.05
   synclient TouchpadOff=0
   synclient LockedDrags=0
   synclient LockedDragTimeout=5000
@@ -130,28 +128,27 @@ toggle_trackpad () {
   synclient ClickFinger1=1
   synclient ClickFinger2=3
   synclient ClickFinger3=0
-  synclient CircularScrolling=0
+  synclient CircularScrolling=on
   synclient CircScrollDelta=0.1
   synclient CircScrollTrigger=0
   synclient CircularPad=0
   synclient PalmDetect=1
-  synclient PalmMinWidth=10
-  synclient PalmMinZ=200
+  synclient PalmMinWidth=8
+  synclient PalmMinZ=100
   synclient CoastingSpeed=20
   synclient CoastingFriction=50
   synclient PressureMotionMinZ=30
   synclient PressureMotionMaxZ=160
   synclient PressureMotionMinFactor=1
   synclient PressureMotionMaxFactor=1
-  synclient ResolutionDetect=1
   synclient GrabEventDevice=0
   synclient TapAndDragGesture=1
   synclient AreaLeftEdge=0
   synclient AreaRightEdge=0
   synclient AreaTopEdge=0
   synclient AreaBottomEdge=0
-  synclient HorizHysteresis=24
-  synclient VertHysteresis=24
+  synclient HorizHysteresis=10
+  synclient VertHysteresis=10
   synclient ClickPad=1
   synclient RightButtonAreaLeft=3068
   synclient RightButtonAreaRight=0
@@ -161,17 +158,29 @@ toggle_trackpad () {
   synclient MiddleButtonAreaRight=0
   synclient MiddleButtonAreaTop=0
   synclient MiddleButtonAreaBottom=0
+  # synclient ResolutionDetect=1
 
-  [ -z "$MAX_TAP_TIME" ] && exit 1
+  if hash syndaemon 2>/dev/null;then
 
-  if [ "$MAX_TAP_TIME" -gt 0 ]; then
-    synclient MaxTapTime=0
-    notif "OFF" "$TRACKPAD_IMG"
+    if pgrep -x syndaemon > /dev/null; then
+      echo "syndaemon already running"
+    else
+      echo "starting syndaemon..."
+      syndaemon -i 0.5 -t -K -R &
+    fi
+
   else
-    synclient MaxTapTime=100
-    notif "ON" "$TRACKPAD_IMG"
-  fi
 
+    [ -z "$MAX_TAP_TIME" ] && exit 1
+
+    if [ "$MAX_TAP_TIME" -gt 0 ]; then
+      synclient MaxTapTime=0
+      notif "OFF" "$TRACKPAD_IMG"
+    else
+      synclient MaxTapTime=100
+      notif "ON" "$TRACKPAD_IMG"
+    fi
+  fi
 
 }
 
