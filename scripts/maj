@@ -1,15 +1,26 @@
 #!/usr/bin/env bash
 . functions.bash
 sudo true
-make_title "snap refresh"
-sudo snap refresh
-make_title "aptitude update"
-sudo aptitude update
-make_title "aptitude upgrade"
-sudo aptitude full-upgrade -y
-make_title "aptitude auto-clean"
-sudo aptitude autoclean -y
-make_title "apt autoremove"
-sudo apt autoremove -y
+if hash snap 2>/dev/null; then
+    make_title "snap refresh"
+    sudo snap refresh
+fi
+if hash flatpak 2>/dev/null; then
+    make_title "flatpak update"
+    sudo flatpak update
+fi
+
+if hash aptitude 2>/dev/null; then
+    make_title "aptitude update"
+    sudo aptitude update
+    make_title "aptitude upgrade"
+    sudo aptitude full-upgrade -y
+    make_title "aptitude auto-clean"
+    sudo aptitude autoclean -y
+    make_title "apt autoremove"
+fi
+if hash apt 2>/dev/null; then
+    sudo apt autoremove -y
+fi
 notify-send "Upgrade complete!"
 # EOF
