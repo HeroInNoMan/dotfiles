@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+notify () {
+  if hash notify-send 2>/dev/null;then
+    PIDS=$(pgrep -c -f notification-daemon)
+    if [ $PIDS -eq 0 ]; then
+      /usr/lib/notification-daemon/notification-daemon &
+    fi
+    notify-send $@
+  fi
+  echo "No notification service available!"
+}
+
 make_title () {
   max_length=52
   char="*"

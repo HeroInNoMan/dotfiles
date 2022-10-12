@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+. functions.bash
+
 # "bepo 1.0" == "bepo"
 # "bepo 1.1" == "bepo_afnor"
 BEPO_VERSION="bepo_afnor"
@@ -13,7 +15,7 @@ notif-change-layout () {
   LAYOUT_NAME=$1
   NEW_LAYOUT=$(setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}')
   echo "$CURRENT_LAYOUT → $NEW_LAYOUT ($LAYOUT_NAME)"
-  notify-send "$LAYOUT_NAME" --expire-time=1000 --icon="$KBD_IMG" --category="Layout"
+  notify "$LAYOUT_NAME" --expire-time=1000 --icon="$KBD_IMG" --category="Layout"
 }
 
 setup_typematrix () {

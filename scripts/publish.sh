@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+. functions.bash
+
 # load variables and output an error if they are not defined ##################
 [[ -e "$HOME/.localrc" ]] && source "$HOME/.localrc"
 [[ -z $GRAB_URL ]] && notify-send "⚠ Grab URL not defined!"
@@ -26,7 +28,7 @@ echo "$URL" | xclip -r -selection clipboard
 firefox -new-tab "$URL"
 
 # notify ######################################################################
-notify-send "Copied: $URL" --expire-time=2000
+notify "Copied: $URL" --expire-time=2000
 
 # clean-up ####################################################################
 echo $SOURCE_FILE_NAME

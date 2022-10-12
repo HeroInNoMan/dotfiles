@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+. functions.bash
+
 MONITOR_IMG="$HOME/.config/img/monitor.png"
 MONITOR_FILE="$HOME/.monitor-state"
 
@@ -163,7 +165,7 @@ update_monitor_state() {
   log "$1" > $MONITOR_FILE
   log "$CURRENT_MODE" >> $MONITOR_FILE
   append_documentation
-  notify-send "→ $1" --expire-time=1000 --icon="$MONITOR_IMG"
+  notify "→ $1" --expire-time=1000 --icon="$MONITOR_IMG"
 }
 
 update_monitor_state $NEXT_MODE

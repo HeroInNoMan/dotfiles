@@ -5,6 +5,8 @@
 # used in ~/.config/openbox/lubuntu-rc.xml
 # script utilisé dans ~/.config/openbox/lubuntu-rc.xml pour gérer le rétro-éclairage.
 
+. functions.bash
+
 HW_IMG_DIR="$HOME/.config/img"
 
 # default brightness values ###################################################
@@ -19,7 +21,7 @@ ACTIVE_SINK_ID=${ACTIVE_SINK_ID:-1}
 SOUND_CHANGE_STEP=5
 
 notif () {
-  notify-send "$1" --expire-time=1000 --icon="$2" --urgency=NORMAL
+  notify "$1" --expire-time=1000 --icon="$2" --urgency=NORMAL
 }
 
 light_down () {
