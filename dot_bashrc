@@ -89,6 +89,13 @@ if hash rbenv 2>/dev/null; then
   [ -f "/home/duncan/.rbenv/completions/rbenv.bash" ] && source "/home/duncan/.rbenv/completions/rbenv.bash"
 fi
 
+# Go setup
+if [ -d /usr/local/go/bin ]; then
+  export PATH=$PATH:/usr/local/go/bin
+  # if hash go 2>/dev/null; then
+  # fi
+fi
+
 # switch to 256 color term (especially for using emacs inside term)
 # export TERM=screen-256color
 

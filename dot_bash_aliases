@@ -74,7 +74,7 @@ alias glfa='git lfa'
 alias glm='git lg --max-count=10'
 alias glma='git lga --max-count=10'
 alias gm='git merge'
-alias go='git checkout'
+# alias go='git checkout' # conflicts with golang 
 alias gp='git pull'
 alias gpp='git push'
 alias gr='git rebase'
