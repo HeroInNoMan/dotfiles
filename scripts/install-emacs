@@ -2,10 +2,10 @@
 . functions.bash
 
 EMACS_REPO_URL="https://git.savannah.gnu.org/git/emacs.git"
-
 BRANCH="master"
+NATIVE_COMP="--with-native-compilation" # comment to prevent native compilation
 
-if [[ $# != 0 ]]; then
+if [[ $# -gt 0 ]]; then
   BRANCH=$1
 fi
 
@@ -14,7 +14,14 @@ update-emacs () {
   cd "$HOME/repos/emacs" || exit 1
   git fetch --all --tags --prune
   git checkout "$BRANCH"
-  git pull --autostash
+
+  DETACH_STATE=$(git rev-parse --abbrev-ref --symbolic-full-name HEAD)
+  if [[ $DETACH_STATE == "HEAD" ]]; then
+    echo "$BRANCH is a tag, no git pull."
+  else
+    echo "git pull!"
+    git pull --autostash
+  fi
 }
 
 clone-emacs () {
@@ -37,7 +44,7 @@ autogen-emacs () {
 
 configure-emacs () {
   make_title "configure"
-  ./configure # --with-native-compilation
+  ./configure "$NATIVE_COMP"
   status=$?
   [ $status -eq 0 ] && notify "emacs configure: DONE" \
       || notify "emacs configure: FAILED"

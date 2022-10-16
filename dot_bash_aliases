@@ -56,6 +56,10 @@ alias ec="emacsclient -c -a ''"
 alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit"
 alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
 alias ue='install-emacs'
+alias doom='~/repos/doom-emacs/bin/doom'
+alias doom-emacs='emacs --with-profile doom'
+alias centaur-emacs='emacs --with-profile centaur'
+alias nano-emacs='emacs --with-profile nano'
 
 # GIT #########################################################################
 alias co='git checkout'

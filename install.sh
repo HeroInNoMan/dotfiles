@@ -26,7 +26,8 @@ EXTERNAL_REPOS_ROOT="$HOME/repos"
 
 EXTERNAL_REPOS=("https://gitlab.com/vahnrr/rofi-menus.git"
                 "https://github.com/pawndev/rofi-autorandr.git"
-                "https://github.com/eylles/dmenukaomoji.git")
+                "https://github.com/eylles/dmenukaomoji.git"
+                "https://github.com/plexus/chemacs2.git")
 
 PYTHON_PROGRAMS=(rofimoji)
 
@@ -134,6 +135,7 @@ install_config_files () {
   deploy "$DOT_FILES_DIR/fish/functions"
   deploy "$DOT_FILES_DIR/fish/conf.d"
   deploy "$EXTERNAL_REPOS_ROOT/rofi-menus"       "$TARGET_CONF_DIR/rofi"
+  deploy "$EXTERNAL_REPOS_ROOT/chemacs2"         "$ROOT_TARGET_DIR/.emacs.d"
 }
 
 check_missing_programmes () {
@@ -166,7 +168,7 @@ clone_missing_repo () {
 }
 
 check_missing_repos () {
-  for repo in "${EXTERNAL_REPOS[@]}";do
+  for repo in "${EXTERNAL_REPOS[@]}"; do
     [ ! -d "${EXTERNAL_REPOS_ROOT}/$(basename ${repo%.git})" ] && clone_missing_repo $repo
   done
 }
