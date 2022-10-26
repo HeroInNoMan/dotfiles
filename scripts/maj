@@ -2,25 +2,30 @@
 . functions.bash
 sudo true
 if hash snap 2>/dev/null; then
-    make_title "snap refresh"
-    sudo snap refresh
+  make_title "snap refresh"
+  sudo snap refresh
 fi
 if hash flatpak 2>/dev/null; then
-    make_title "flatpak update"
-    sudo flatpak update
+  make_title "flatpak update"
+  sudo flatpak update
+fi
+
+if hash pip 2>/dev/null; then
+  make_title "python packages update"
+  pip freeze --user | cut -d'=' -f1 | xargs -n1 pip install -U
 fi
 
 if hash aptitude 2>/dev/null; then
-    make_title "aptitude update"
-    sudo aptitude update
-    make_title "aptitude upgrade"
-    sudo aptitude full-upgrade -y
-    make_title "aptitude auto-clean"
-    sudo aptitude autoclean -y
-    make_title "apt autoremove"
+  make_title "aptitude update"
+  sudo aptitude update
+  make_title "aptitude upgrade"
+  sudo aptitude full-upgrade -y
+  make_title "aptitude auto-clean"
+  sudo aptitude autoclean -y
+  make_title "apt autoremove"
 fi
 if hash apt 2>/dev/null; then
-    sudo apt autoremove -y
+  sudo apt autoremove -y
 fi
 notify "Upgrade complete!"
 # EOF
