@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 
 notify () {
-  if hash notify-send 2>/dev/null;then
+  args=$@
+  if hash notify-send 2>/dev/null; then
     PIDS=$(pgrep -c -f notification-daemon)
     if [ $PIDS -eq 0 ]; then
+      echo "Restarting notification-daemon…"
       /usr/lib/notification-daemon/notification-daemon &
     fi
-    notify-send $@
+    notify-send "$args"
+  else
+    echo "No notification service available!"
   fi
-  echo "No notification service available!"
 }
 
 make_title () {
