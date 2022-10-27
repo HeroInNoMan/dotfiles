@@ -83,6 +83,7 @@ add-to-path "$HOME/bin"
 add-to-path "$HOME/.local/bin"
 add-to-path "$HOME/.screenlayout"
 add-to-path "$HOME/repos/rofi-menus/scripts"
+add-to-path "/snap"
 
 # Rust & Cargo support
 [ -d $HOME/.cargo/bin/ ] && add-to-path "$HOME/.cargo/bin"
