@@ -19,7 +19,7 @@ HEADLESS_IMG="$HW_IMG_DIR/.png"
 SHOW_JUMP_BOX_IMG="$HW_IMG_DIR/search.png"
 
 notify () {
-  notify "$2 " --expire-time=1000 --urgency=CRITICAL --icon="$1"
+  notify-send "$2 " --expire-time=1000 --urgency=CRITICAL --icon="$1"
 }
 
 usage() {

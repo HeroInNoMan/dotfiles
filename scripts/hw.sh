@@ -20,18 +20,18 @@ ACTIVE_SINK_ID=$(pactl list short sinks | grep -e 'RUNNING' | cut -f1)
 ACTIVE_SINK_ID=${ACTIVE_SINK_ID:-1}
 SOUND_CHANGE_STEP=5
 
-notif () {
-  notify "$1" --expire-time=1000 --icon="$2" --urgency=NORMAL
+notify () {
+  notify-send "$1" --expire-time=1000 --icon="$2" --urgency=NORMAL
 }
 
 light_down () {
   xbacklight -dec $BRIGHTNESS_CHANGE_STEP
-  [ $? != 0 ] && echo $(($(cat $BRIGHTNESS_FILE) - 100)) > $BRIGHTNESS_FILE || notif "↓" "$BRIGHTNESS_IMG"
+  [ $? != 0 ] && echo $(($(cat $BRIGHTNESS_FILE) - 100)) > $BRIGHTNESS_FILE || notify "↓" "$BRIGHTNESS_IMG"
 }
 
 light_up () {
   xbacklight -inc $BRIGHTNESS_CHANGE_STEP
-  [ $? != 0 ] && echo $(($(cat $BRIGHTNESS_FILE) + 100)) > $BRIGHTNESS_FILE || notif "↑" "$BRIGHTNESS_IMG"
+  [ $? != 0 ] && echo $(($(cat $BRIGHTNESS_FILE) + 100)) > $BRIGHTNESS_FILE || notify "↑" "$BRIGHTNESS_IMG"
 }
 
 sound_down () {
@@ -40,7 +40,7 @@ sound_down () {
   done
   VOLUME_STATE=$(pacmd dump-volumes | grep -i "^Sink $ACTIVE_SINK_ID" | cut -d '/' -f2)
   SOUND_DOWN_IMG="$HW_IMG_DIR/sound_down.png"
-  notif "🔉 ${VOLUME_STATE}" "$SOUND_DOWN_IMG"
+  notify "🔉 ${VOLUME_STATE}" "$SOUND_DOWN_IMG"
 }
 
 sound_up () {
@@ -49,7 +49,7 @@ sound_up () {
   done
   VOLUME_STATE=$(pacmd dump-volumes | grep -i "^Sink $ACTIVE_SINK_ID" | cut -d '/' -f2)
   SOUND_UP_IMG="$HW_IMG_DIR/sound_up.png"
-  notif "🔊 ${VOLUME_STATE}" "$SOUND_UP_IMG"
+  notify "🔊 ${VOLUME_STATE}" "$SOUND_UP_IMG"
 }
 
 toggle_mike () {
@@ -68,7 +68,7 @@ toggle_mute () {
   MUTE_IMG="$HW_IMG_DIR/sound_remove.png"
   UNMUTE_IMG="$HW_IMG_DIR/sound.png"
   NOTIF_IMG=$([[ $MUTE_STATE == 'no' ]] && echo "$UNMUTE_IMG" || echo "$MUTE_IMG")
-  notif "$NOTIF_TEXT" "$NOTIF_IMG"
+  notify "$NOTIF_TEXT" "$NOTIF_IMG"
 }
 
 cycle_audio_output () {
@@ -88,7 +88,7 @@ cycle_audio_output () {
   ACTIVE_SINK_ID=$(pactl list short sinks | grep -e 'RUNNING' | cut -f1)
   ACTIVE_SINK_ID=${ACTIVE_SINK_ID:-1}
   SINK_DESC=$(pactl list sinks | grep "Destination #$ACTIVE_SINK_ID" -A 10 | grep "Description" | cut -d: -f2)
-  [[ -n $SINK_DESC ]] && notif "⇒ $SINK_DESC"
+  [[ -n $SINK_DESC ]] && notify "⇒ $SINK_DESC"
 }
 
 toggle_trackpad () {
@@ -166,8 +166,7 @@ toggle_trackpad () {
   synclient MiddleButtonAreaBottom=0
   # synclient ResolutionDetect=1
 
-  if hash syndaemon 2>/dev/null;then
-
+  if hash syndaemon 2>/dev/null; then
     if pgrep -x syndaemon > /dev/null; then
       echo "syndaemon already running"
     else
@@ -181,10 +180,10 @@ toggle_trackpad () {
 
     if [ "$MAX_TAP_TIME" -gt 0 ]; then
       synclient MaxTapTime=0
-      notif "OFF" "$TRACKPAD_IMG"
+      notify "OFF" "$TRACKPAD_IMG"
     else
       synclient MaxTapTime=100
-      notif "ON" "$TRACKPAD_IMG"
+      notify "ON" "$TRACKPAD_IMG"
     fi
   fi
 

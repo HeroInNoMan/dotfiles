@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
-notify () {
-  args=$@
+check_notification_service () {
   if hash notify-send 2>/dev/null; then
     PIDS=$(pgrep -c -f notification-daemon)
     if [ $PIDS -eq 0 ]; then
       echo "Restarting notification-daemon…"
-      /usr/lib/notification-daemon/notification-daemon &
+      /usr/lib/notification-daemon/notification-daemon&
     fi
-    notify-send "$args"
   else
     echo "No notification service available!"
   fi
@@ -36,3 +34,5 @@ make_title () {
 
   echo -e "$line\n${padding}${title^^}${padding}${char}\n$line"
 }
+
+check_notification_service

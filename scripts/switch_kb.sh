@@ -15,7 +15,7 @@ notif-change-layout () {
   LAYOUT_NAME=$1
   NEW_LAYOUT=$(setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}')
   echo "$CURRENT_LAYOUT → $NEW_LAYOUT ($LAYOUT_NAME)"
-  notify "$LAYOUT_NAME" --expire-time=1000 --icon="$KBD_IMG" --category="Layout"
+  notify-send "$LAYOUT_NAME" --expire-time=1000 --icon="$KBD_IMG" --category="Layout"
 }
 
 setup_typematrix () {

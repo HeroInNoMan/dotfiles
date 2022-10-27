@@ -27,5 +27,5 @@ fi
 if hash apt 2>/dev/null; then
   sudo apt autoremove -y
 fi
-notify "Upgrade complete!"
+notify-send "Upgrade complete!"
 # EOF
