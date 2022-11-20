@@ -1,0 +1,716 @@
+* Dockerfile
+
+#+BEGIN_SRC dockerfile
+  FROM debian:bullseye
+  ENV USER duncan
+  ENV UID 1000
+  ENV GID 1000
+  ENV DEBIAN_FRONTEND noninteractive
+
+  RUN apt update
+  RUN apt install -y sudo x11-apps 
+  RUN echo '%sudo ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+  RUN groupadd --gid $GID $USER
+  RUN useradd -rm -d /home/$USER -s /bin/bash -g $USER -G sudo -u $UID $USER
+
+  # RUN apt update
+  # RUN apt install -y procps
+  # RUN apt install -y tmux
+  # COPY script-de-build.sh /
+  # CMD /script-de-build.sh
+
+  RUN apt install -y firefox-esr
+
+  USER $USER
+
+#+END_SRC
+
+* Links
+  - https://github.com/fdu/docker-battlenet/blob/master/Dockerfile
+  - 
+
+#+BEGIN_SRC bash
+    1  191122 22:58:23 tmux
+    2  191122 22:58:23 sudo apt install -y gnome-core
+    3  191122 22:58:23 sudo apt --fix-broken install
+    4  191122 22:58:23 sudo nano /etc/apt/sources.list
+    5  191122 22:58:23 sudo apt update
+    6  191122 22:58:23 sudo apt install -y linux-firmware
+    7  191122 22:58:23 sudo apt install -y firmware-linux
+    8  191122 22:58:23 sudo apt install -y iwlwifi-firmware
+    9  191122 22:58:23 sudo apt install -y iwlwifi
+   10  191122 22:58:23 sudo apt search iwlwifi
+   11  191122 22:58:23 sudo apt install -y firmware-iwlwifi
+   12  191122 22:58:23 sudo apt install -y gnome-core
+   13  191122 22:58:23 sudo nano /etc/apt/sources.list
+   14  191122 22:58:23 git clone https://github.com/fdu/docker-battlenet
+   15  191122 22:58:23 cd docker-battlenet/
+   16  191122 22:58:23 cat Dockerfile 
+   17  191122 22:58:23 cat README.md 
+   18  191122 22:58:23 docker build . -t docker-battlenet
+   19  191122 22:58:23 sudo reboot
+   20  191122 22:58:23 nano pass
+   21  191122 22:58:23 cd docker-battlenet/
+   22  191122 22:58:23 cat README.md 
+   23  191122 22:58:23 [200~ docker create     --name battlenet     -v /tmp/.X11-unix/:/tmp/.X11-unix/     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native     -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native     -e DISPLAY=$DISPLAY     --device /dev/dri     -v /share:/share     docker-battlenet~
+   24  191122 22:58:23 docker create     --name battlenet     -v /tmp/.X11-unix/:/tmp/.X11-unix/     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native     -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native     -e DISPLAY=$DISPLAY     --device /dev/dri     -v /share:/share     docker-battlenet
+   25  191122 22:58:23 cat ~/p
+   26  191122 22:58:23 rm ~/p
+   27  191122 22:58:23 cat ~/pass 
+   28  191122 22:58:23 cat docker-battlenet/README.md 
+   29  191122 22:58:23 docker start battlenet
+   30  191122 22:58:23 docker stop battlenet
+   31  191122 22:58:23 docker start battlenet
+   32  191122 22:58:23 nano p
+   33  191122 22:58:23 sudo hostnamectl --help
+   34  191122 22:58:23 sudo hostnamectl  set-hostname nuc-duncan
+   35  191122 22:58:23 ls
+   36  191122 22:58:23 ip a
+   37  191122 22:58:23 docker start battlenet
+   38  191122 22:58:23 docker rm battlenet
+   39  191122 22:58:23 ip a
+   40  191122 22:58:23 docker rm battlenet
+   41  191122 22:58:23 cd docker-battlenet/
+   42  191122 22:58:23 cat README.md 
+   43  191122 22:58:23 docker create     --name battlenet     -v /tmp/.X11-unix/:/tmp/.X11-unix/     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native     -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native     -e DISPLAY=$DISPLAY     --device /dev/dri     -v /share:/share     docker-battlenet
+   44  191122 22:58:23 docker start battlenet
+   45  191122 22:58:23 cat../p
+   46  191122 22:58:23 cd ..
+   47  191122 22:58:23 ls
+   48  191122 22:58:23 cat pass 
+   49  191122 22:58:23 docker start battlenet
+   50  191122 22:58:23 setxkbmap fr bepo 
+   51  191122 22:58:23 firefox pð
+   52  191122 22:58:23 auie
+   53  191122 22:58:23 aaaAEAauieauieauieaááááá
+   54  191122 22:58:23 git clone https://github.com/fdu/docker-qmk-builder
+   55  191122 22:58:23 cd docker-qmk-builder/
+   56  191122 22:58:23 docker build . -t è
+   57  191122 22:58:23 docker build . -t l
+   58  191122 22:58:23 setxkbmap fr
+   59  191122 22:58:23 setxkbmap us
+   60  191122 22:58:23 cat README.md 
+   61  191122 22:58:23 nano docker/Dockerfile 
+   62  191122 22:58:23 cat README.md 
+   63  191122 22:58:23 ls ..
+   64  191122 22:58:23 cd ..
+   65  191122 22:58:23 git clone https://github.com/fdu/moonlander-keymap
+   66  191122 22:58:23 ls 
+   67  191122 22:58:23 ls moonlander-keymap/
+   68  191122 22:58:23 KEYMAP=moonlander-keymap
+   69  191122 22:58:23 export KEYMAP=moonlander-keymap
+   70  191122 22:58:23 export KEYBOARD=moonlander
+   71  191122 22:58:23 realpath moonlander-keymap/
+   72  191122 22:58:23 sudo journalctl -f
+   73  191122 22:58:23 sudo journalctl -f -n 100
+   74  191122 22:58:23 sudo usermod -aG docker deb
+   75  191122 22:58:23 sudo usermod -aG dialout deb
+   76  191122 22:58:23 nano a
+   77  191122 22:58:23 sh a
+   78  191122 22:58:23 docker run -it --rm debian:bullseye
+   79  191122 22:58:23 nan a
+   80  191122 22:58:23 nano a 
+   81  191122 22:58:23 sh a
+   82  191122 22:58:23 nano a 
+   83  191122 22:58:23 cat moonlander-keymap/README.md 
+   84  191122 22:58:23 cat docker-qmk-builder/README.md 
+   85  191122 22:58:23 grep udev docker-qmk-builder/ -r
+   86  191122 22:58:23 find docker-qmk-builder/ -iname *udev*
+   87  191122 22:58:23 sudo sh -c 'cat > /etc/udev/rules.d/49-stm32.rules' <<EOF
+   88  191122 22:58:23 # 0483:5740 - STM32F4 Dsicovery in USB Serial Mode (CN5)
+   89  191122 22:58:23 ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ENV{ID_MM_DEVICE_IGNORE}="1"
+   90  191122 22:58:23 ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ENV{MTP_NO_PROBE}="1"
+   91  191122 22:58:23 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE:="0666"
+   92  191122 22:58:23 KERNEL=="ttyACM*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE:="0666"
+   93  191122 22:58:23 # 0483:df11 - STM32F4 Discovery in DFU mode (CN5)
+   94  191122 22:58:23 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666"
+   95  191122 22:58:23 EOF
+   96  191122 22:58:23 sudo udevadm control --reload-rules
+   97  191122 22:58:23 sudo journalctl -f -n 100
+   98  191122 22:58:23 setxkbmap fr bepo 
+   99  191122 22:58:23 oui, je sais clic ouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuh
+  100  191122 22:58:23 oui, je sais clic ouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuh 
+  101  191122 22:58:23 ls
+  102  191122 22:58:23 cat a 
+  103  191122 22:58:23 cat docker-qmk-builder/
+  104  191122 22:58:23 cat docker-qmk-builder/README.md 
+  105  191122 22:58:23 ls
+  106  191122 22:58:23 nano a 
+  107  191122 22:58:23 sh a
+  108  191122 22:58:23 ls
+  109  191122 22:58:23 sudo journalctl -f
+  110  191122 22:58:23 ls
+  111  191122 22:58:23 cat docker-qmk-builder/README.md 
+  112  191122 22:58:23 cd docker-
+  113  191122 22:58:23 cd docker-qmk-builder/
+  114  191122 22:58:23 ls
+  115  191122 22:58:23 export KEYMAP=moonlander-helloworld
+  116  191122 22:58:23 export KEYBOARD=moonlander
+  117  191122 22:58:23 docker run -it --rm         --device /dev/bus/usb/         --device /dev/stm32_dfu         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  118  191122 22:58:23 sudo journalctl -f
+  119  191122 22:58:23 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  120  191122 22:58:23 ls
+  121  191122 22:58:23 nano moonlander-helloworld/keymap.c 
+  122  191122 22:58:23 ls
+  123  191122 22:58:23 s cd 
+  124  191122 22:58:23 cd ..
+  125  191122 22:58:23 ls
+  126  191122 22:58:23 ls moonlander-keymap/
+  127  191122 22:58:23 export KEYMAP=moonlander-keymap
+  128  191122 22:58:23 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  129  191122 22:58:23 cd docker-qmk-builder/
+  130  191122 22:58:23 ls
+  131  191122 22:58:23 nano docker/Dockerfile 
+  132  191122 22:58:23 cat README.md 
+  133  191122 22:58:23 nano docker/Dockerfile 
+  134  191122 22:58:23 cat README.md 
+  135  191122 22:58:23 docker build docker/ -t qmk-builder
+  136  191122 22:58:23 nano docker/Dockerfile 
+  137  191122 22:58:23 docker build docker/ -t qmk-builder
+  138  191122 22:58:23 nano docker/Dockerfile 
+  139  191122 22:58:23 docker build docker/ -t qmk-builder
+  140  191122 22:58:23 nano docker/Dockerfile 
+  141  191122 22:58:23 docker build docker/ -t qmk-builder
+  142  191122 22:58:23 nano ../moonlander-keymap/keymaps.h 
+  143  191122 22:58:23 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  144  191122 22:58:23 nano ../moonlander-keymap/keymaps.h 
+  145  191122 22:58:23 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  146  191122 22:58:23 nano ../moonlander-keymap/keymaps.h 
+  147  191122 22:58:23 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  148  191122 22:58:23 cd ..
+  149  191122 22:58:23 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  150  191122 22:58:23 nano moonlander-keymap/keymap.c 
+  151  191122 22:58:23 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  152  191122 22:58:23 nano moonlander-keymap/keymap.c 
+  153  191122 22:58:23 nano moonlander-keymap/keymaps.h 
+  154  191122 22:58:23 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  155  191122 22:58:23 nano moonlander-keymap/keymaps.h 
+  156  191122 22:58:23 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  157  191122 22:58:23 nano moonlander-keymap/keymaps.h 
+  158  191122 22:58:23 nano flash.sh
+  159  191122 22:58:23 nano flash.sh 
+  160  191122 22:58:23 chmod +x flash.sh 
+  161  191122 22:58:23 nano moonlander-keymap/keymaps.h 
+  162  191122 22:58:23 nano moonlander-keymap/keymap.c 
+  163  191122 22:58:23 sudo apt install -y terminatr
+  164  191122 22:58:23 sudo apt install -y terminator
+  165  191122 22:58:23 nano moonlander-keymap/keymap.c 
+  166  191122 22:58:23 nano moonlander-keymap/keymaps.h 
+  167  191122 22:58:23 ./flash.sh 
+  168  191122 22:58:23 sleep 4; ./flash.sh 
+  169  191122 22:58:23 auieauie
+  170  191122 22:58:23 sleep 4; ./flash.sh 
+  171  191122 22:58:23 qferqfert
+  172  191122 22:58:23 setxkbmap fr bepo
+  173  191122 22:58:23 asdfasdfasdfqferqferqfer[[[----    asdf; asdf
+  174  191122 22:58:23 i
+  175  191122 22:58:23 setc
+  176  191122 22:58:23 setxkbmap fr bepo
+  177  191122 22:58:23 asdfqefrqferqfeqfeauieauieauiebepobepobpeo
+  178  191122 22:58:23 auieauie
+  179  191122 22:58:23 im 
+  180  191122 22:58:23 vim ~/q
+  181  191122 22:58:23 vim ~/
+  182  191122 22:58:23 vim ~/moonlander-keymap/keymaps.h 
+  183  191122 22:58:23 sudo apt install eacs
+  184  191122 22:58:23 sudo apt install emacs
+  185  191122 22:58:23 emacs ~/moonlander-keymap/keymaps.h 
+  186  191122 22:58:23 nano flash.sh 
+  187  191122 22:58:23 cp flash.sh build.sh
+  188  191122 22:58:23 nano build.sh 
+  189  191122 22:58:23 ./build.sh 
+  190  191122 22:58:23 nano build.sh 
+  191  191122 22:58:23 ./build.sh 
+  192  191122 22:58:23 sudo apt install dconf-cli
+  193  191122 22:58:23 dconf reset -f /org/gnome/terminal
+  194  191122 22:58:23 sudo apt-get remove gnome-terminal
+  195  191122 22:58:23 sudo apt-get install gnome-terminal
+  196  191122 22:58:23 sudo locale-gen --purge
+  197  191122 22:58:23 sudo dpkg-reconfigure locales
+  198  191122 22:58:23 gnome-terminal
+  199  191122 22:58:23 sudo dpkg-reconfigure locales
+  200  191122 22:58:23 docker start battlenet
+  201  191122 22:58:23 cd Downloads/
+  202  191122 22:58:23 ls
+  203  191122 22:58:23 cd
+  204  191122 22:58:23 cat flash.sh 
+  205  191122 22:58:23 ls Downloads/
+  206  191122 22:58:23 ls Downloads/moonlander_ale-moon_3oxM7_DQQXN
+  207  191122 22:58:23 ls Downloads/
+  208  191122 22:58:23 ls Downloads/moonlander_ale-moon_3oxM7_DQQXN
+  209  191122 22:58:23 ls Downloads/moonlander_ale-moon_3oxM7_DQQXN/moonlander_ale-moon_
+  210  191122 22:58:23 ls Downloads/moonlander_ale-moon_3oxM7_DQQXN/moonlander_ale-moon_source/
+  211  191122 22:58:23 cat flash.sh 
+  212  191122 22:58:23 export KEYBOARD=moonlander
+  213  191122 22:58:23 export KEYMAP=moonlander_ale-moon_source
+  214  191122 22:58:23 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  215  191122 22:58:23 realpath Downloads/moonlander_ale-moon_3oxM7_DQQXN/moonlander_ale-moon_source/
+  216  191122 22:58:23 cd /home/deb/Downloads/moonlander_ale-moon_3oxM7_DQQXN/
+  217  191122 22:58:23 ls
+  218  191122 22:58:23 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  219  191122 22:58:23 git clone https://github.com/HeroInNoMan/.emacs.d
+  220  191122 22:58:23 rm -rf .emacs.d/
+  221  191122 22:58:23 git clone https://github.com/HeroInNoMan/.emacs.d
+  222  191122 22:58:23 .
+  223  191122 22:58:23 ./build.sh 
+  224  191122 22:58:23 ./build.sh
+  225  191122 22:58:23 ./flash.sh
+  226  191122 22:58:23 sleep 4; ./flash.sh 
+  227  191122 22:58:23 chmod a+x ~/Downloads/wally 
+  228  191122 22:58:23 sudo -E
+  229  191122 22:58:23 sudo ~/Downloads/wally 
+  230  191122 22:58:23 docker start battlenet
+  231  191122 22:58:23 docker exec -it battlenet bash
+  232  191122 22:58:23 sudo ~/Downloads/wally 
+  233  191122 22:58:23 auieauiea,b
+  234  191122 22:58:23 docker stop battlenet
+  235  191122 22:58:23 docker start battlenet
+  236  191122 22:58:23 terminator 
+  237  191122 22:58:23 docker create     --name battlenet     -v /tmp/.X11-unix/:/tmp/.X11-unix/     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native     -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native     -e DISPLAY=$DISPLAY     --device /dev/dri     -v /share:/share     docker-battlenet
+  238  191122 22:58:23 docker start battlenet
+  239  191122 22:58:23 xterm
+  240  191122 22:58:23 docker start battlenet
+  241  191122 22:58:23 docker stop battlenet
+  242  191122 22:58:23 docker start battlenet
+  243  191122 22:58:23 docker stop battlenet
+  244  191122 22:58:23 docker start battlenet
+  245  191122 22:58:23 ls
+  246  191122 22:58:23 cat pass
+  247  191122 22:58:23 docker stop battlenet
+  248  191122 22:58:23 docker rm battlenet
+  249  191122 22:58:23 docker create     --name battlenet     -v /tmp/.X11-unix/:/tmp/.X11-unix/     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native     -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native     -e DISPLAY=$DISPLAY     --device /dev/dri     -v /share:/share     docker-battlenet
+  250  191122 22:58:23 docker start battlenet
+  251  191122 22:58:23 docker stop battlenet
+  252  191122 22:58:23 docker rm battlenet
+  253  191122 22:58:23 sudo apt update
+  254  191122 22:58:23 sudo apt upgrade
+  255  191122 22:58:23 sudo reboot
+  256  191122 22:58:23 docker start battlenet
+  257  191122 22:58:23 docker stoe battlenet
+  258  191122 22:58:23 docker stop battlenet
+  259  191122 22:58:23 docker start battlenet
+  260  191122 22:58:23 apt search iwl
+  261  191122 22:58:23 cat pass 
+  262  191122 22:58:23 docker stop battlenet
+  263  191122 22:58:23 docker start battlenet
+  264  191122 22:58:23 docker stop battlenet
+  265  191122 22:58:23 docker start battlenet
+  266  191122 22:58:23 firefox&
+  267  191122 22:58:23 sudo apt install emacs
+  268  191122 22:58:23 sudo apt autoremove 
+  269  191122 22:58:23 cd Arthur/
+  270  191122 22:58:23 ll
+  271  191122 22:58:23 ls -lA
+  272  191122 22:58:23 cd ~/
+  273  191122 22:58:23 mkdir repos
+  274  191122 22:58:23 cd repos/
+  275  191122 22:58:23 git 
+  276  191122 22:58:23 [200~type -p curl >/dev/null || sudo apt install curl -y
+  277  191122 22:58:23 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null && sudo apt update && sudo apt install gh -y~
+  278  191122 22:58:23 gh
+  279  191122 22:58:23 type -p curl >/dev/null || sudo apt install curl -y
+  280  191122 22:58:23 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null && sudo apt update && sudo apt install gh -y
+  281  191122 22:58:23 gh
+  282  191122 22:58:23 gh repo clone HeroInNoMan/dotfiles
+  283  191122 22:58:23 gh auth login
+  284  191122 22:58:23 cat ~/.emacs.d/.git/config 
+  285  191122 22:58:23 emacs
+  286  191122 22:58:23 ipa
+  287  191122 22:58:23 ip
+  288  191122 22:58:23 ip a
+  289  191122 22:58:23 file pass 
+  290  191122 22:58:23 ll
+  291  191122 22:58:23 ls -lA
+  292  191122 22:58:23 cat ~/ergodox/.git/config 
+  293  191122 22:58:23 ip a
+  294  191122 22:58:23 man ip
+  295  191122 22:58:23 ip a
+  296  191122 22:58:23 sudo dhclient eno1
+  297  191122 22:58:23 vim /etc/resolv.conf 
+  298  191122 22:58:23 vi /etc/resolv.conf 
+  299  191122 22:58:23 sudo apt install vim
+  300  191122 22:58:23 git clone git@github.com:HeroInNoMan/dotfiles.git
+  301  191122 22:58:23 cd
+  302  191122 22:58:23 ssh-keygen -t ed25519
+  303  191122 22:58:23 cat ~/.ssh/id_github
+  304  191122 22:58:23 cat ~/.ssh/id_github.pub 
+  305  191122 22:58:23 git clone git@github.com:HeroInNoMan/dotfiles.git
+  306  191122 22:58:23 ll
+  307  191122 22:58:23 ls -la
+  308  191122 22:58:23 mv dotfiles/ repos/
+  309  191122 22:58:23 ll
+  310  191122 22:58:23 ls -la
+  311  191122 22:58:23 ls -la repos/
+  312  191122 22:58:23 cd ~/repos/dotfiles/
+  313  191122 22:58:23 ./install.sh 
+  314  191122 22:58:23 reset
+  315  191122 18:55:44 curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
+  316  191122 18:56:14 curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir ~/bin
+  317  191122 22:58:53 uptime 
+  318  191122 23:04:35 docker
+  319  191122 23:04:51 cat /etc/os-release 
+  320  191122 23:06:24 docker run
+  321  191122 23:07:09 docker run -it --rm debian:buster 
+  322  191122 23:07:24 docker run -it --rm ubuntu:22.04
+  323  191122 23:09:45 docker run -it --rm httpd
+  324* 191122 23:10:07 
+  325  191122 23:10:42 ps aux
+  326* 191122 23:10:47 
+  327  191122 23:48:48 docker ps
+  328  191122 23:50:44 cd ~/repos/
+  329  191122 23:51:00 vim Dockerfile
+  330  191122 23:53:42 mkdir ~/repos/doc
+  331  191122 23:53:51 mv Dockerfile doc/
+  332  191122 23:54:08 cd doc/
+  333  201122 00:18:53 docker run -it --rm --name my-apache-app -p 8080:80 -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+  334  201122 00:22:15 docker run -it --rm --name my-apache-app -p 8080:80 httpd:2.4
+  335  201122 00:27:48 docker run -it --rm --name my-apache-app -p 8080:80 --net=host -v "$PWD":/usr/local/apache2/htdocs/ httpd:2.4
+  336  201122 00:34:20 docker run -it --rm duncan
+  337  201122 00:34:29 docker run -it --rm duncan bash
+  338  201122 00:36:58 docker run -it --rm -e DISPLAY=$DISPLAY duncan bash
+  339  201122 00:39:03 docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix duncan bash
+  340* 201122 00:40:15 
+  341  201122 00:40:48 docker build . -t duncan
+  342  201122 00:57:51 docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix duncan
+  343  201122 01:42:38 history >> ~/repos/dotfiles/doc-ker.org 
+    1  191122 23:47:20 tmux
+    2  191122 23:47:20 sudo apt install -y gnome-core
+    3  191122 23:47:20 sudo apt --fix-broken install
+    4  191122 23:47:20 sudo nano /etc/apt/sources.list
+    5  191122 23:47:20 sudo apt update
+    6  191122 23:47:20 sudo apt install -y linux-firmware
+    7  191122 23:47:20 sudo apt install -y firmware-linux
+    8  191122 23:47:20 sudo apt install -y iwlwifi-firmware
+    9  191122 23:47:20 sudo apt install -y iwlwifi
+   10  191122 23:47:20 sudo apt search iwlwifi
+   11  191122 23:47:20 sudo apt install -y firmware-iwlwifi
+   12  191122 23:47:20 sudo apt install -y gnome-core
+   13  191122 23:47:20 sudo nano /etc/apt/sources.list
+   14  191122 23:47:20 git clone https://github.com/fdu/docker-battlenet
+   15  191122 23:47:20 cd docker-battlenet/
+   16  191122 23:47:20 cat Dockerfile 
+   17  191122 23:47:20 cat README.md 
+   18  191122 23:47:20 docker build . -t docker-battlenet
+   19  191122 23:47:20 sudo reboot
+   20  191122 23:47:20 nano pass
+   21  191122 23:47:20 cd docker-battlenet/
+   22  191122 23:47:20 cat README.md 
+   23  191122 23:47:20 [200~ docker create     --name battlenet     -v /tmp/.X11-unix/:/tmp/.X11-unix/     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native     -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native     -e DISPLAY=$DISPLAY     --device /dev/dri     -v /share:/share     docker-battlenet~
+   24  191122 23:47:20 docker create     --name battlenet     -v /tmp/.X11-unix/:/tmp/.X11-unix/     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native     -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native     -e DISPLAY=$DISPLAY     --device /dev/dri     -v /share:/share     docker-battlenet
+   25  191122 23:47:20 cat ~/p
+   26  191122 23:47:20 rm ~/p
+   27  191122 23:47:20 cat ~/pass 
+   28  191122 23:47:20 cat docker-battlenet/README.md 
+   29  191122 23:47:20 docker start battlenet
+   30  191122 23:47:20 docker stop battlenet
+   31  191122 23:47:20 docker start battlenet
+   32  191122 23:47:20 nano p
+   33  191122 23:47:20 sudo hostnamectl --help
+   34  191122 23:47:20 sudo hostnamectl  set-hostname nuc-duncan
+   35  191122 23:47:20 ls
+   36  191122 23:47:20 ip a
+   37  191122 23:47:20 docker start battlenet
+   38  191122 23:47:20 docker rm battlenet
+   39  191122 23:47:20 ip a
+   40  191122 23:47:20 docker rm battlenet
+   41  191122 23:47:20 cd docker-battlenet/
+   42  191122 23:47:20 cat README.md 
+   43  191122 23:47:20 docker create     --name battlenet     -v /tmp/.X11-unix/:/tmp/.X11-unix/     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native     -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native     -e DISPLAY=$DISPLAY     --device /dev/dri     -v /share:/share     docker-battlenet
+   44  191122 23:47:20 docker start battlenet
+   45  191122 23:47:20 cat../p
+   46  191122 23:47:20 cd ..
+   47  191122 23:47:20 ls
+   48  191122 23:47:20 cat pass 
+   49  191122 23:47:20 docker start battlenet
+   50  191122 23:47:20 setxkbmap fr bepo 
+   51  191122 23:47:20 firefox pð
+   52  191122 23:47:20 auie
+   53  191122 23:47:20 aaaAEAauieauieauieaááááá
+   54  191122 23:47:20 git clone https://github.com/fdu/docker-qmk-builder
+   55  191122 23:47:20 cd docker-qmk-builder/
+   56  191122 23:47:20 docker build . -t è
+   57  191122 23:47:20 docker build . -t l
+   58  191122 23:47:20 setxkbmap fr
+   59  191122 23:47:20 setxkbmap us
+   60  191122 23:47:20 cat README.md 
+   61  191122 23:47:20 nano docker/Dockerfile 
+   62  191122 23:47:20 cat README.md 
+   63  191122 23:47:20 ls ..
+   64  191122 23:47:20 cd ..
+   65  191122 23:47:20 git clone https://github.com/fdu/moonlander-keymap
+   66  191122 23:47:20 ls 
+   67  191122 23:47:20 ls moonlander-keymap/
+   68  191122 23:47:20 KEYMAP=moonlander-keymap
+   69  191122 23:47:20 export KEYMAP=moonlander-keymap
+   70  191122 23:47:20 export KEYBOARD=moonlander
+   71  191122 23:47:20 realpath moonlander-keymap/
+   72  191122 23:47:20 sudo journalctl -f
+   73  191122 23:47:20 sudo journalctl -f -n 100
+   74  191122 23:47:20 sudo usermod -aG docker deb
+   75  191122 23:47:20 sudo usermod -aG dialout deb
+   76  191122 23:47:20 nano a
+   77  191122 23:47:20 sh a
+   78  191122 23:47:20 docker run -it --rm debian:bullseye
+   79  191122 23:47:20 nan a
+   80  191122 23:47:20 nano a 
+   81  191122 23:47:20 sh a
+   82  191122 23:47:20 nano a 
+   83  191122 23:47:20 cat moonlander-keymap/README.md 
+   84  191122 23:47:20 cat docker-qmk-builder/README.md 
+   85  191122 23:47:20 grep udev docker-qmk-builder/ -r
+   86  191122 23:47:20 find docker-qmk-builder/ -iname *udev*
+   87  191122 23:47:20 sudo sh -c 'cat > /etc/udev/rules.d/49-stm32.rules' <<EOF
+   88  191122 23:47:20 # 0483:5740 - STM32F4 Dsicovery in USB Serial Mode (CN5)
+   89  191122 23:47:20 ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ENV{ID_MM_DEVICE_IGNORE}="1"
+   90  191122 23:47:20 ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", ENV{MTP_NO_PROBE}="1"
+   91  191122 23:47:20 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE:="0666"
+   92  191122 23:47:20 KERNEL=="ttyACM*", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE:="0666"
+   93  191122 23:47:20 # 0483:df11 - STM32F4 Discovery in DFU mode (CN5)
+   94  191122 23:47:20 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666"
+   95  191122 23:47:20 EOF
+   96  191122 23:47:20 sudo udevadm control --reload-rules
+   97  191122 23:47:20 sudo journalctl -f -n 100
+   98  191122 23:47:20 setxkbmap fr bepo 
+   99  191122 23:47:20 oui, je sais clic ouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuh
+  100  191122 23:47:20 oui, je sais clic ouuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuh 
+  101  191122 23:47:20 ls
+  102  191122 23:47:20 cat a 
+  103  191122 23:47:20 cat docker-qmk-builder/
+  104  191122 23:47:20 cat docker-qmk-builder/README.md 
+  105  191122 23:47:20 ls
+  106  191122 23:47:20 nano a 
+  107  191122 23:47:20 sh a
+  108  191122 23:47:20 ls
+  109  191122 23:47:20 sudo journalctl -f
+  110  191122 23:47:20 ls
+  111  191122 23:47:20 cat docker-qmk-builder/README.md 
+  112  191122 23:47:20 cd docker-
+  113  191122 23:47:20 cd docker-qmk-builder/
+  114  191122 23:47:20 ls
+  115  191122 23:47:20 export KEYMAP=moonlander-helloworld
+  116  191122 23:47:20 export KEYBOARD=moonlander
+  117  191122 23:47:20 docker run -it --rm         --device /dev/bus/usb/         --device /dev/stm32_dfu         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  118  191122 23:47:20 sudo journalctl -f
+  119  191122 23:47:20 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  120  191122 23:47:20 ls
+  121  191122 23:47:20 nano moonlander-helloworld/keymap.c 
+  122  191122 23:47:20 ls
+  123  191122 23:47:20 s cd 
+  124  191122 23:47:20 cd ..
+  125  191122 23:47:20 ls
+  126  191122 23:47:20 ls moonlander-keymap/
+  127  191122 23:47:20 export KEYMAP=moonlander-keymap
+  128  191122 23:47:20 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  129  191122 23:47:20 cd docker-qmk-builder/
+  130  191122 23:47:20 ls
+  131  191122 23:47:20 nano docker/Dockerfile 
+  132  191122 23:47:20 cat README.md 
+  133  191122 23:47:20 nano docker/Dockerfile 
+  134  191122 23:47:20 cat README.md 
+  135  191122 23:47:20 docker build docker/ -t qmk-builder
+  136  191122 23:47:20 nano docker/Dockerfile 
+  137  191122 23:47:20 docker build docker/ -t qmk-builder
+  138  191122 23:47:20 nano docker/Dockerfile 
+  139  191122 23:47:20 docker build docker/ -t qmk-builder
+  140  191122 23:47:20 nano docker/Dockerfile 
+  141  191122 23:47:20 docker build docker/ -t qmk-builder
+  142  191122 23:47:20 nano ../moonlander-keymap/keymaps.h 
+  143  191122 23:47:20 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  144  191122 23:47:20 nano ../moonlander-keymap/keymaps.h 
+  145  191122 23:47:20 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  146  191122 23:47:20 nano ../moonlander-keymap/keymaps.h 
+  147  191122 23:47:20 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  148  191122 23:47:20 cd ..
+  149  191122 23:47:20 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  150  191122 23:47:20 nano moonlander-keymap/keymap.c 
+  151  191122 23:47:20 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  152  191122 23:47:20 nano moonlander-keymap/keymap.c 
+  153  191122 23:47:20 nano moonlander-keymap/keymaps.h 
+  154  191122 23:47:20 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  155  191122 23:47:20 nano moonlander-keymap/keymaps.h 
+  156  191122 23:47:20 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  157  191122 23:47:20 nano moonlander-keymap/keymaps.h 
+  158  191122 23:47:20 nano flash.sh
+  159  191122 23:47:20 nano flash.sh 
+  160  191122 23:47:20 chmod +x flash.sh 
+  161  191122 23:47:20 nano moonlander-keymap/keymaps.h 
+  162  191122 23:47:20 nano moonlander-keymap/keymap.c 
+  163  191122 23:47:20 sudo apt install -y terminatr
+  164  191122 23:47:20 sudo apt install -y terminator
+  165  191122 23:47:20 nano moonlander-keymap/keymap.c 
+  166  191122 23:47:20 nano moonlander-keymap/keymaps.h 
+  167  191122 23:47:20 ./flash.sh 
+  168  191122 23:47:20 sleep 4; ./flash.sh 
+  169  191122 23:47:20 auieauie
+  170  191122 23:47:20 sleep 4; ./flash.sh 
+  171  191122 23:47:20 qferqfert
+  172  191122 23:47:20 setxkbmap fr bepo
+  173  191122 23:47:20 asdfasdfasdfqferqferqfer[[[----    asdf; asdf
+  174  191122 23:47:20 i
+  175  191122 23:47:20 setc
+  176  191122 23:47:20 setxkbmap fr bepo
+  177  191122 23:47:20 asdfqefrqferqfeqfeauieauieauiebepobepobpeo
+  178  191122 23:47:20 auieauie
+  179  191122 23:47:20 im 
+  180  191122 23:47:20 vim ~/q
+  181  191122 23:47:20 vim ~/
+  182  191122 23:47:20 vim ~/moonlander-keymap/keymaps.h 
+  183  191122 23:47:20 sudo apt install eacs
+  184  191122 23:47:20 sudo apt install emacs
+  185  191122 23:47:20 emacs ~/moonlander-keymap/keymaps.h 
+  186  191122 23:47:20 nano flash.sh 
+  187  191122 23:47:20 cp flash.sh build.sh
+  188  191122 23:47:20 nano build.sh 
+  189  191122 23:47:20 ./build.sh 
+  190  191122 23:47:20 nano build.sh 
+  191  191122 23:47:20 ./build.sh 
+  192  191122 23:47:20 sudo apt install dconf-cli
+  193  191122 23:47:20 dconf reset -f /org/gnome/terminal
+  194  191122 23:47:20 sudo apt-get remove gnome-terminal
+  195  191122 23:47:20 sudo apt-get install gnome-terminal
+  196  191122 23:47:20 sudo locale-gen --purge
+  197  191122 23:47:20 sudo dpkg-reconfigure locales
+  198  191122 23:47:20 gnome-terminal
+  199  191122 23:47:20 sudo dpkg-reconfigure locales
+  200  191122 23:47:20 docker start battlenet
+  201  191122 23:47:20 cd Downloads/
+  202  191122 23:47:20 ls
+  203  191122 23:47:20 cd
+  204  191122 23:47:20 cat flash.sh 
+  205  191122 23:47:20 ls Downloads/
+  206  191122 23:47:20 ls Downloads/moonlander_ale-moon_3oxM7_DQQXN
+  207  191122 23:47:20 ls Downloads/
+  208  191122 23:47:20 ls Downloads/moonlander_ale-moon_3oxM7_DQQXN
+  209  191122 23:47:20 ls Downloads/moonlander_ale-moon_3oxM7_DQQXN/moonlander_ale-moon_
+  210  191122 23:47:20 ls Downloads/moonlander_ale-moon_3oxM7_DQQXN/moonlander_ale-moon_source/
+  211  191122 23:47:20 cat flash.sh 
+  212  191122 23:47:20 export KEYBOARD=moonlander
+  213  191122 23:47:20 export KEYMAP=moonlander_ale-moon_source
+  214  191122 23:47:20 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  215  191122 23:47:20 realpath Downloads/moonlander_ale-moon_3oxM7_DQQXN/moonlander_ale-moon_source/
+  216  191122 23:47:20 cd /home/deb/Downloads/moonlander_ale-moon_3oxM7_DQQXN/
+  217  191122 23:47:20 ls
+  218  191122 23:47:20 docker run -it --rm         --privileged         -v `pwd`/${KEYMAP}:/home/deb/qmk_firmware/keyboards/moonlander/keymaps/${KEYMAP}         qmk-builder         qmk flash -kb ${KEYBOARD} -km ${KEYMAP}
+  219  191122 23:47:20 git clone https://github.com/HeroInNoMan/.emacs.d
+  220  191122 23:47:20 rm -rf .emacs.d/
+  221  191122 23:47:20 git clone https://github.com/HeroInNoMan/.emacs.d
+  222  191122 23:47:20 .
+  223  191122 23:47:20 ./build.sh 
+  224  191122 23:47:20 ./build.sh
+  225  191122 23:47:20 ./flash.sh
+  226  191122 23:47:20 sleep 4; ./flash.sh 
+  227  191122 23:47:20 chmod a+x ~/Downloads/wally 
+  228  191122 23:47:20 sudo -E
+  229  191122 23:47:20 sudo ~/Downloads/wally 
+  230  191122 23:47:20 docker start battlenet
+  231  191122 23:47:20 docker exec -it battlenet bash
+  232  191122 23:47:20 sudo ~/Downloads/wally 
+  233  191122 23:47:20 auieauiea,b
+  234  191122 23:47:20 docker stop battlenet
+  235  191122 23:47:20 docker start battlenet
+  236  191122 23:47:20 terminator 
+  237  191122 23:47:20 docker create     --name battlenet     -v /tmp/.X11-unix/:/tmp/.X11-unix/     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native     -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native     -e DISPLAY=$DISPLAY     --device /dev/dri     -v /share:/share     docker-battlenet
+  238  191122 23:47:20 docker start battlenet
+  239  191122 23:47:20 xterm
+  240  191122 23:47:20 docker start battlenet
+  241  191122 23:47:20 docker stop battlenet
+  242  191122 23:47:20 docker start battlenet
+  243  191122 23:47:20 docker stop battlenet
+  244  191122 23:47:20 docker start battlenet
+  245  191122 23:47:20 ls
+  246  191122 23:47:20 cat pass
+  247  191122 23:47:20 docker stop battlenet
+  248  191122 23:47:20 docker rm battlenet
+  249  191122 23:47:20 docker create     --name battlenet     -v /tmp/.X11-unix/:/tmp/.X11-unix/     -v ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native     -e PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native     -e DISPLAY=$DISPLAY     --device /dev/dri     -v /share:/share     docker-battlenet
+  250  191122 23:47:20 docker start battlenet
+  251  191122 23:47:20 docker stop battlenet
+  252  191122 23:47:20 docker rm battlenet
+  253  191122 23:47:20 sudo apt update
+  254  191122 23:47:20 sudo apt upgrade
+  255  191122 23:47:20 sudo reboot
+  256  191122 23:47:20 docker start battlenet
+  257  191122 23:47:20 docker stoe battlenet
+  258  191122 23:47:20 docker stop battlenet
+  259  191122 23:47:20 docker start battlenet
+  260  191122 23:47:20 apt search iwl
+  261  191122 23:47:20 cat pass 
+  262  191122 23:47:20 docker stop battlenet
+  263  191122 23:47:20 docker start battlenet
+  264  191122 23:47:20 docker stop battlenet
+  265  191122 23:47:20 docker start battlenet
+  266  191122 23:47:20 firefox&
+  267  191122 23:47:20 sudo apt install emacs
+  268  191122 23:47:20 sudo apt autoremove 
+  269  191122 23:47:20 cd Arthur/
+  270  191122 23:47:20 ll
+  271  191122 23:47:20 ls -lA
+  272  191122 23:47:20 cd ~/
+  273  191122 23:47:20 mkdir repos
+  274  191122 23:47:20 cd repos/
+  275  191122 23:47:20 git 
+  276  191122 23:47:20 [200~type -p curl >/dev/null || sudo apt install curl -y
+  277  191122 23:47:20 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null && sudo apt update && sudo apt install gh -y~
+  278  191122 23:47:20 gh
+  279  191122 23:47:20 type -p curl >/dev/null || sudo apt install curl -y
+  280  191122 23:47:20 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null && sudo apt update && sudo apt install gh -y
+  281  191122 23:47:20 gh
+  282  191122 23:47:20 gh repo clone HeroInNoMan/dotfiles
+  283  191122 23:47:20 gh auth login
+  284  191122 23:47:20 cat ~/.emacs.d/.git/config 
+  285  191122 23:47:20 emacs
+  286  191122 23:47:20 ipa
+  287  191122 23:47:20 ip
+  288  191122 23:47:20 ip a
+  289  191122 23:47:20 file pass 
+  290  191122 23:47:20 ll
+  291  191122 23:47:20 ls -lA
+  292  191122 23:47:20 cat ~/ergodox/.git/config 
+  293  191122 23:47:20 ip a
+  294  191122 23:47:20 man ip
+  295  191122 23:47:20 ip a
+  296  191122 23:47:20 sudo dhclient eno1
+  297  191122 23:47:20 vim /etc/resolv.conf 
+  298  191122 23:47:20 vi /etc/resolv.conf 
+  299  191122 23:47:20 sudo apt install vim
+  300  191122 23:47:20 git clone git@github.com:HeroInNoMan/dotfiles.git
+  301  191122 23:47:20 cd
+  302  191122 23:47:20 ssh-keygen -t ed25519
+  303  191122 23:47:20 cat ~/.ssh/id_github
+  304  191122 23:47:20 cat ~/.ssh/id_github.pub 
+  305  191122 23:47:20 git clone git@github.com:HeroInNoMan/dotfiles.git
+  306  191122 23:47:20 ll
+  307  191122 23:47:20 ls -la
+  308  191122 23:47:20 mv dotfiles/ repos/
+  309  191122 23:47:20 ll
+  310  191122 23:47:20 ls -la
+  311  191122 23:47:20 ls -la repos/
+  312  191122 23:47:20 cd ~/repos/dotfiles/
+  313  191122 23:47:20 ./install.sh 
+  314  191122 23:47:20 reset
+  315  191122 18:55:44 curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
+  316  191122 18:56:14 curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir ~/bin
+  317  191122 23:11:31 ./install.sh 
+  318  191122 23:11:31 reset
+  319  191122 18:55:44 curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir /data/data/com.termux/files/usr/bin
+  320  191122 18:56:14 curl -sS https://starship.rs/install.sh | sh -s -- --bin-dir ~/bin
+  321  191122 23:18:23 docker run -it --rm debian
+  322  191122 23:18:57 docker run -it --rm debian:bullseye 
+  323  191122 23:19:59 docker run -it --rm --pid=host debian:bullseye 
+  324  191122 23:23:35 docker run -it --rm --net=host debian:bullseye 
+  325  191122 23:26:05 mount
+  326  191122 23:26:21 sudo -i
+  327  191122 23:39:04 docker images
+  328  191122 23:40:57 docker run -it --rm -v /home/deb/repos:/repos debian:bullseye 
+  329  191122 23:43:12 docker run -it --rm -v /home/deb/repos:/repos:ro debian:bullseye 
+  330* 191122 23:45:53 
+  331  191122 23:47:04 docker run -it --rm -v /home/deb/repos:/repos:ro -e toto=tata debian:bullseye date
+  332  191122 23:47:46 docker run -it --rm -v /home/deb/repos:/repos:ro -e toto=tata debian:bullseye 
+  333  191122 23:48:27 docker run -it --rm --name lÃ©o -v /home/deb/repos:/repos:ro -e toto=tata debian:bullseye
+  334  191122 23:48:38 docker run -it --rm --name leo -v /home/deb/repos:/repos:ro -e toto=tata debian:bullseye
+  335  191122 23:50:39 cd ~/repos/
+  336  201122 00:35:43 env | grep -i display
+  337  201122 00:57:54 docker ps
+  338  201122 00:58:48 docker cp f1f67ef90864:/tmp/toto /tmp/titi
+  339  201122 00:59:02 cat /tmp/titi 
+  340  201122 01:52:31 history >> ~/repos/dotfiles/doc-ker.org 
+#+END_SRC
