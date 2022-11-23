@@ -58,6 +58,7 @@ alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
 alias ue='install-emacs'
 alias doom='~/repos/doom-emacs/bin/doom'
 alias doom-emacs='emacs --with-profile doom'
+alias spacemacs='emacs --with-profile spacemacs'
 alias centaur-emacs='emacs --with-profile centaur'
 alias nano-emacs='emacs --with-profile nano'
 

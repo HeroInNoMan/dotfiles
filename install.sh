@@ -27,6 +27,7 @@ EXTERNAL_REPOS_ROOT="$HOME/repos"
 EXTERNAL_REPOS=("https://gitlab.com/vahnrr/rofi-menus.git"
                 "https://github.com/pawndev/rofi-autorandr.git"
                 "https://github.com/eylles/dmenukaomoji.git"
+                "https://github.com/syl20bnr/spacemacs"
                 "https://github.com/plexus/chemacs2.git")
 
 PYTHON_PROGRAMS=(rofimoji)
