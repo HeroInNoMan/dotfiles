@@ -18,7 +18,7 @@ TRACKPAD_IMG="$HOME/.config/img/mouse_warning.png"
 
 # default brightness values ###################################################
 BRIGHTNESS_IMG="$HW_IMG_DIR/brightness.png"
-BRIGHTNESS_CHANGE_STEP=5
+BRIGHTNESS_CHANGE_STEP=10
 BRIGHTNESS_FILE="/sys/class/backlight/intel_backlight/brightness"
 
 # default sound values ########################################################
@@ -46,6 +46,8 @@ light_up () {
   if [ $(xbacklight -inc $BRIGHTNESS_CHANGE_STEP) ]; then
     notify "↑" "$BRIGHTNESS_IMG"
   else
+    echo $(($(cat $BRIGHTNESS_FILE) + $(($BRIGHTNESS_CHANGE_STEP * 20))))
+    echo $BRIGHTNESS_FILE
     echo $(($(cat $BRIGHTNESS_FILE) + $(($BRIGHTNESS_CHANGE_STEP * 20)))) > $BRIGHTNESS_FILE
     if [ $? != 0 ]; then
       notify "↑" "$BRIGHTNESS_IMG"
