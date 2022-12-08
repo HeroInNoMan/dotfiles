@@ -26,12 +26,18 @@ notify () {
 
 light_down () {
   xbacklight -dec $BRIGHTNESS_CHANGE_STEP
-  [ $? != 0 ] && echo $(($(cat $BRIGHTNESS_FILE) - 100)) > $BRIGHTNESS_FILE || notify "↓" "$BRIGHTNESS_IMG"
+  if [ $? != 0 ]; then 
+    echo $(($(cat $BRIGHTNESS_FILE) - $BRIGHTNESS_CHANGE_STEP)) > $BRIGHTNESS_FILE
+  fi
+  notify "↓" "$BRIGHTNESS_IMG"
 }
 
 light_up () {
   xbacklight -inc $BRIGHTNESS_CHANGE_STEP
-  [ $? != 0 ] && echo $(($(cat $BRIGHTNESS_FILE) + 100)) > $BRIGHTNESS_FILE || notify "↑" "$BRIGHTNESS_IMG"
+  if [ $? != 0 ]; then 
+    echo $(($(cat $BRIGHTNESS_FILE) + $BRIGHTNESS_CHANGE_STEP)) > $BRIGHTNESS_FILE
+  fi
+  notify "↑" "$BRIGHTNESS_IMG"
 }
 
 sound_down () {
