@@ -454,7 +454,8 @@
     <!-- Edit with emacs from anywhere (or everywhere) -->
     <keybind key="W-g">
       <action name="Execute">
-        <command>emacsclient --eval "(emacs-everywhere)"</command>
+        <!-- <command>emacsclient \-\-eval "(emacs-everywhere)"</command> -->
+        <command>emacsclient-todo.sh</command>
       </action>
     </keybind>
 
