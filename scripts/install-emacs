@@ -2,8 +2,8 @@
 . functions.bash
 
 EMACS_REPO_URL="https://git.savannah.gnu.org/git/emacs.git"
-BRANCH="master"
-NATIVE_COMP="--with-native-compilation" # comment to prevent native compilation
+BRANCH="emacs-29"
+# NATIVE_COMP="--with-native-compilation" # comment to prevent native compilation
 
 if [[ $# -gt 0 ]]; then
   BRANCH=$1
