@@ -37,6 +37,7 @@ if hash fdfind 2>/dev/null;then
 fi
 
 # CONVENIENCE ALIASES #########################################################
+alias os='cat /etc/os-release | grep PRETTY_NAME | cut -d= -f2 | tr -d \'\"''
 alias cronlist='crontab -l | \grep -E "^[^#]+.*$"'
 alias df='df -hT'
 alias du='du -h'
