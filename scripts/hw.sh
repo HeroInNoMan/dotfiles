@@ -21,23 +21,29 @@ ACTIVE_SINK_ID=${ACTIVE_SINK_ID:-1}
 SOUND_CHANGE_STEP=5
 
 notify () {
-  notify-send "$1" --expire-time=1000 --icon="$2" --urgency=NORMAL
+  notify-send "$1" --expire-time=200 --icon="$2" --urgency=NORMAL
 }
 
 light_down () {
-  xbacklight -dec $BRIGHTNESS_CHANGE_STEP
-  if [ $? != 0 ]; then 
-    echo $(($(cat $BRIGHTNESS_FILE) - $BRIGHTNESS_CHANGE_STEP)) > $BRIGHTNESS_FILE
+  if [ $(xbacklight -dec $BRIGHTNESS_CHANGE_STEP) ]; then
+    notify "↓" "$BRIGHTNESS_IMG"
+  else
+    echo $(($(cat $BRIGHTNESS_FILE) - $(($BRIGHTNESS_CHANGE_STEP * 20)))) > $BRIGHTNESS_FILE
+    if [ $? != 0 ]; then
+      notify "↓" "$BRIGHTNESS_IMG"
+    fi
   fi
-  notify "↓" "$BRIGHTNESS_IMG"
 }
 
 light_up () {
-  xbacklight -inc $BRIGHTNESS_CHANGE_STEP
-  if [ $? != 0 ]; then 
-    echo $(($(cat $BRIGHTNESS_FILE) + $BRIGHTNESS_CHANGE_STEP)) > $BRIGHTNESS_FILE
+  if [ $(xbacklight -inc $BRIGHTNESS_CHANGE_STEP) ]; then
+    notify "↑" "$BRIGHTNESS_IMG"
+  else
+    echo $(($(cat $BRIGHTNESS_FILE) + $(($BRIGHTNESS_CHANGE_STEP * 20)))) > $BRIGHTNESS_FILE
+    if [ $? != 0 ]; then
+      notify "↑" "$BRIGHTNESS_IMG"
+    fi
   fi
-  notify "↑" "$BRIGHTNESS_IMG"
 }
 
 sound_down () {

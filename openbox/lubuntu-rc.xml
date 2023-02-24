@@ -509,7 +509,7 @@
     <!-- Switch keyboard layout (azerty ↔ bépo) -->
     <keybind key="Insert"><action name="Execute"><command>switch_kb.sh</command></action></keybind>
     <!-- Enable/disable touchpad -->
-    <keybind key="W-k"><action name="Execute"><command>hw.sh trackpad</command></action></keybind>
+    <keybind key="W-k"><action name="Execute"><command>trackpad.sh</command></action></keybind>
     <!-- Reload openbox configuration -->
     <keybind key="W-r"><action name="Execute"><command>openbox --reconfigure</command></action></keybind>
     <!-- key chain for audacious -->
