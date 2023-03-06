@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-. functions.bash
-
 # "bepo 1.0" == "bepo"
 # "bepo 1.1" == "bepo_afnor"
 BEPO_VERSION="bepo_afnor"

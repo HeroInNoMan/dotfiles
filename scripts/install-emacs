@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
-. functions.bash
 
-EMACS_REPO_URL="https://git.savannah.gnu.org/git/emacs.git"
+PROGRAM_NAME="emacs"
+REPOS_DIR="$HOME/repos"
+PROGRAM_REPO_DIR="$REPOS_DIR/$PROGRAM_NAME"
+PROGRAM_REPO_URL="https://git.savannah.gnu.org/git/emacs.git"
+
 BRANCH="emacs-29"
 # NATIVE_COMP="--with-native-compilation" # comment to prevent native compilation
 
@@ -9,73 +12,45 @@ if [[ $# -gt 0 ]]; then
   BRANCH=$1
 fi
 
-update-emacs () {
-  make_title "git pull"
-  cd "$HOME/repos/emacs" || exit 1
-  git fetch --all --tags --prune
-  git checkout "$BRANCH"
+# configure () {
+#   make-title "configure"
+#   ./configure "$NATIVE_COMP"
+#   status=$?
+#   [ $status -eq 0 ] && notify-send "$PROGRAM_NAME configure: DONE" \
+#       || notify-send "$PROGRAM_NAME configure: FAILED"
+#   return $status
+# }
 
-  DETACH_STATE=$(git rev-parse --abbrev-ref --symbolic-full-name HEAD)
-  if [[ $DETACH_STATE == "HEAD" ]]; then
-    echo "$BRANCH is a tag, no git pull."
-  else
-    echo "git pull!"
-    git pull --autostash
-  fi
-}
-
-clone-emacs () {
-  make_title "clone"
-  mkdir -p "$HOME/repos"
-  cd "$HOME/repos" || exit 1
-  git clone "$EMACS_REPO_URL"
-  cd "$HOME/repos/emacs" || exit 1
-  git checkout "$BRANCH"
-}
-
-autogen-emacs () {
-  make_title "autogen"
-  ./autogen.sh
-  status=$?
-  [ $status -eq 0 ] && notify-send "emacs autogen: DONE" \
-      || notify-send "emacs autogen: FAILED"
-  return $status
-}
-
-configure-emacs () {
-  make_title "configure"
-  ./configure "$NATIVE_COMP"
-  status=$?
-  [ $status -eq 0 ] && notify-send "emacs configure: DONE" \
-      || notify-send "emacs configure: FAILED"
-  return $status
-}
-
-make-emacs () {
-  make_title "make"
+make () {
+  make-title "make"
   # make NATIVE_FULL_AOT=1 -j$(nproc)
   make -j"$(nproc)"
   status=$?
-  [ $status -eq 0 ] && notify-send "emacs make: DONE" \
-      || notify-send "emacs make: FAILED"
+  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME make: DONE" \
+      || notify-send "$PROGRAM_NAME make: FAILED"
   return $status
 }
 
-make-install-emacs () {
-  make_title "make install"
+make-install () {
+  make-title "make install"
   sudo make install
   status=$?
-  [ $status -eq 0 ] && notify-send "emacs make install: DONE" \
-      || notify-send "emacs make install: FAILED"
+  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME make install: DONE" \
+      || notify-send "$PROGRAM_NAME make install: FAILED"
   return $status
 }
 
 OLD_DIR=$(pwd)
-[[ -d "$HOME/repos/emacs/" ]] && update-emacs || clone-emacs
-[ $? -eq 0 ] && autogen-emacs
-[ $? -eq 0 ] && configure-emacs
-[ $? -eq 0 ] && make-emacs
-[ $? -eq 0 ] && make-install-emacs
+if [[ -d "$HOME/repos/emacs/" ]]; then
+  update-repo "$PROGRAM_REPO_DIR" "$BRANCH"
+else
+  clone-repo "$PROGRAM_REPO_URL" "$REPOS_DIR" "$PROGRAM_REPO_DIR" "$BRANCH"
+fi
+
+[ $? -eq 0 ] && autogen "$PROGRAM_NAME"
+[ $? -eq 0 ] && configure
+[ $? -eq 0 ] && make
+[ $? -eq 0 ] && make-install
 
 cd "$OLD_DIR" || return
 # EOF

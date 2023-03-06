@@ -3,8 +3,6 @@
 # Audacious music player control
 # used in ~/.config/openbox/lubuntu-rc.xml
 
-. functions.bash
-
 HW_IMG_DIR="$HOME/.config/img"
 PLAY_PAUSE_IMG="$HW_IMG_DIR/play.png"
 FWD_IMG="$HW_IMG_DIR/skip_forward.png"

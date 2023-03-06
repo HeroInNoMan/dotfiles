@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-. functions.bash
-
 # load variables and output an error if they are not defined ##################
 [[ -e "$HOME/.localrc" ]] && source "$HOME/.localrc"
 [[ -z $GRAB_URL ]] && notify-send "⚠ Grab URL not defined!"

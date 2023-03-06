@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-. functions.bash
-
 MONITOR_IMG="$HOME/.config/img/monitor.png"
 MONITOR_FILE="$HOME/.monitor-state"
 

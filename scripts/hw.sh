@@ -5,8 +5,6 @@
 # used in ~/.config/openbox/lubuntu-rc.xml
 # script utilisé dans ~/.config/openbox/lubuntu-rc.xml pour gérer le rétro-éclairage.
 
-. functions.bash
-
 HW_IMG_DIR="$HOME/.config/img"
 
 # default brightness values ###################################################

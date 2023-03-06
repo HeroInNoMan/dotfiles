@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+PROGRAM_NAME="mu"
+REPOS_DIR="$HOME/repos"
+PROGRAM_REPO_DIR="$REPOS_DIR/$PROGRAM_NAME"
+PROGRAM_REPO_URL="https://github.com/djcb/mu.git"
+BRANCH="release/1.8"
+
+if [[ $# -gt 0 ]]; then
+  BRANCH=$1
+fi
+
+update-repo () {
+  make-title "git pull"
+  cd "$PROGRAM_REPO_DIR" || exit 1
+  git fetch --all --tags --prune
+  git checkout "$BRANCH"
+
+  DETACH_STATE=$(git rev-parse --abbrev-ref --symbolic-full-name HEAD)
+  if [[ $DETACH_STATE == "HEAD" ]]; then
+    echo "$BRANCH is a tag, no git pull."
+  else
+    echo "git pull!"
+    git pull --autostash
+  fi
+}
+
+clone-repo () {
+  make-title "clone"
+  mkdir -p "$REPOS_DIR"
+  cd "$REPOS_DIR" || exit 1
+  git clone "$PROGRAM_REPO_URL"
+  cd "$PROGRAM_REPO_DIR" || exit 1
+  git checkout "$BRANCH"
+}
+
+autogen () {
+  make-title "autogen"
+  ./autogen.sh
+  status=$?
+  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME autogen: DONE" \
+      || notify-send "$PROGRAM_NAME autogen: FAILED"
+  return $status
+}
+
+configure () {
+  make-title "configure"
+  ./configure
+  status=$?
+  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME configure: DONE" \
+      || notify-send "$PROGRAM_NAME configure: FAILED"
+  return $status
+}
+
+make () {
+  make-title "make"
+  # make  -j"$(nproc)"
+  meson build && ninja -C build
+  status=$?
+  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME make: DONE" \
+      || notify-send "$PROGRAM_NAME make: FAILED"
+  return $status
+}
+
+make-install () {
+  make-title "make install"
+  # sudo make install
+  ninja -C build install
+  status=$?
+  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME make install: DONE" \
+      || notify-send "$PROGRAM_NAME make install: FAILED"
+  return $status
+}
+
+OLD_DIR=$(pwd)
+[[ -d "$PROGRAM_REPO_DIR" ]] && update-repo || clone-repo
+[ $? -eq 0 ] && autogen
+# [ $? -eq 0 ] && configure
+[ $? -eq 0 ] && make
+[ $? -eq 0 ] && make-install
+
+cd "$OLD_DIR" || return
+# EOF

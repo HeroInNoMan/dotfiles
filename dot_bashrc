@@ -38,8 +38,8 @@ fi
 [ -z "$SSH-AUTH-SOCK" ] && eval "$(ssh-agent)" > /dev/null
 
 # load additional files
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
+if [ -f $HOME/.bash_aliases ]; then
+  . $HOME/.bash_aliases
 fi
 
 if [ -f /etc/bash_completion ]; then
@@ -54,8 +54,8 @@ if [ -f /etc/bash_completion.d/git-prompt ]; then
   . /etc/bash_completion.d/git-prompt
 fi
 
-if [ -f ~/.localrc ]; then
-  . ~/.localrc
+if [ -f $HOME/.localrc ]; then
+  . $HOME/.localrc
 fi
 
 # fuzzy finder in bash if installed
@@ -78,27 +78,27 @@ add-to-path() {
   fi
 }
 
-export PATH=$HOME/usr/bin:$PATH
-export PATH=$HOME/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
-export PATH=$HOME/.screenlayout:$PATH
-export PATH=$HOME/repos/rofi-menus/scripts:$PATH
+add-to-path "$HOME/usr/bin"
+add-to-path "$HOME/bin"
+add-to-path "$HOME/.local/bin"
+add-to-path "$HOME/.screenlayout"
+add-to-path "$HOME/repos/rofi-menus/scripts"
 
 # Rust & Cargo support
-[ -d $HOME/.cargo/bin/ ] && export PATH=$HOME/.cargo/bin:$PATH
+[ -d $HOME/.cargo/bin/ ] && add-to-path "$HOME/.cargo/bin"
 [ -f $HOME/.cargo/env ] && source "$HOME/.cargo/env"
 
 # ruby setup ##################################################################
 if hash rbenv 2>/dev/null; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
+  add-to-path "$HOME/.rbenv/bin"
   eval "$(rbenv init -)"
-  export PATH="$HOME/.rbenv/shims:$PATH"
-  [ -f "/home/duncan/.rbenv/completions/rbenv.bash" ] && source "/home/duncan/.rbenv/completions/rbenv.bash"
+  add-to-path "$HOME/.rbenv/shims"
+  [ -f "$HOME/.rbenv/completions/rbenv.bash" ] && source "$HOME/.rbenv/completions/rbenv.bash"
 fi
 
 # Go setup
 if [ -d /usr/local/go/bin ]; then
-  export PATH=$PATH:/usr/local/go/bin
+  add-to-path "/usr/local/go/bin"
   # if hash go 2>/dev/null; then
   # fi
 fi
@@ -109,8 +109,8 @@ fi
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
 
-export PATH=$MAVEN_HOME/bin:$PATH
-export PATH=$JAVA_HOME/bin:$PATH
+add-to-path "$MAVEN_HOME/bin"
+add-to-path "$JAVA_HOME/bin"
 
 use-java-8 () {
   [[ -n $SDKMAN_DIR && -n $JAVA_8_VERSION ]] && sdk use java $JAVA_8_VERSION || export JAVA_HOME=$JAVA_8
@@ -171,18 +171,108 @@ build-all () {
   cd "$FORMER_DIR" || exit
 }
 
+check_notification_service () {
+  if hash notify-send 2>/dev/null; then
+    PIDS=$(pgrep -c -f notification-daemon)
+    if [ $PIDS -eq 0 ]; then
+      echo "Restarting notification-daemon…"
+      /usr/lib/notification-daemon/notification-daemon&
+    fi
+  else
+    echo "No notification service available!"
+  fi
+}
+export -f check_notification_service
+
+make-title () {
+  max_length=52
+  char="*"
+
+  string=$1
+  padding=""
+  line=""
+  title=" "
+  for ((i=0; i < ${#string}; i++)); do
+    title="${title}${string:$i:1} "
+  done
+
+  for ((i=0 ; i < (((max_length - ${#title}) / 2 )) ; i++)); do
+    padding="${padding}${char}"
+  done
+
+  for ((i=0 ; i < max_length ; i++)); do
+    line="${line}${char}"
+  done
+
+  echo -e "$line\n${padding}${title^^}${padding}${char}\n$line"
+}
+export -f make-title
+
+update-repo () {
+  PROGRAM_REPO_DIR=$1
+  BRANCH=$2
+  make-title "git pull"
+  cd "$PROGRAM_REPO_DIR" || exit 1
+  git fetch --all --tags --prune
+  git checkout "$BRANCH"
+
+  DETACH_STATE=$(git rev-parse --abbrev-ref --symbolic-full-name HEAD)
+  if [[ $DETACH_STATE == "HEAD" ]]; then
+    echo "$BRANCH is a tag, no git pull."
+  else
+    echo "git pull!"
+    git pull --autostash
+  fi
+}
+export -f update-repo
+
+clone-repo () {
+  PROGRAM_REPO_URL=$1
+  REPOS_DIR=$2
+  PROGRAM_REPO_DIR=$3
+  BRANCH=$4
+  make-title "clone"
+  mkdir -p "$REPOS_DIR"
+  cd "$REPOS_DIR" || exit 1
+  git clone "$PROGRAM_REPO_URL"
+  cd "$PROGRAM_REPO_DIR" || exit 1
+  git checkout "$BRANCH"
+}
+export -f clone-repo
+
+autogen () {
+  PROGRAM_NAME="$1"
+  make-title "autogen"
+  ./autogen.sh
+  status=$?
+  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME autogen: DONE" \
+      || notify-send "$PROGRAM_NAME autogen: FAILED"
+  return $status
+}
+export -f autogen
+
+configure () {
+  PROGRAM_NAME="$1"
+  make-title "configure"
+  ./configure
+  status=$?
+  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME configure: DONE" \
+      || notify-send "$PROGRAM_NAME configure: FAILED"
+  return $status
+}
+export -f configure
 
 # added by travis gem
-[ -f /home/arthur.leothaud/.travis/travis.sh ] && source /home/arthur.leothaud/.travis/travis.sh
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
 
 # icons in terminal
-[[ -f ~/.local/share/icons-in-terminal/icons_bash.sh ]] && source ~/.local/share/icons-in-terminal/icons_bash.sh
+[[ -f $HOME/.local/share/icons-in-terminal/icons_bash.sh ]] && source $HOME/.local/share/icons-in-terminal/icons_bash.sh
 
 if [[ "$TERM" != 'dumb' ]] && hash starship 2>/dev/null; then
 
   # trying out starship
   eval "$(starship init bash)"
-  export STARSHIP_CONFIG=~/.starship.toml
+  export STARSHIP_CONFIG=$HOME/.starship.toml
 
 else
   # define a few colours
