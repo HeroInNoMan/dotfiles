@@ -227,6 +227,9 @@ else
   PS1="${PS1}$WHITE→$NC " # '→' prompt character
 fi
 
+#docker socket enable for current user
+sudo /usr/bin/chown arthur.leothaud /var/run/docker.sock
+
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 # $SDKMAN_DIR must be defined in .localrc file
 [[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
