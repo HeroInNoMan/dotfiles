@@ -12,3 +12,4 @@ else
   URL=$JITSI_PREFIX/$@
 fi
 /usr/bin/google-chrome-stable --new-window %U --app="$URL" &
+# flatpak run org.jitsi.jitsi-meet
