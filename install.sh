@@ -25,6 +25,7 @@ DEFAULT_BACKUP_DIR="${ROOT_TARGET_DIR}/dotfiles${BACKUP_SUFFIX}" # old dotfiles 
 EXTERNAL_REPOS_ROOT="$HOME/repos"
 
 EXTERNAL_REPOS=("https://gitlab.com/vahnrr/rofi-menus.git"
+                "https://github.com/mattydebie/bitwarden-rofi"
                 "https://github.com/pawndev/rofi-autorandr.git"
                 "https://github.com/eylles/dmenukaomoji.git"
                 "https://github.com/syl20bnr/spacemacs"
@@ -131,6 +132,10 @@ install_rofi_files () {
   sed -i 's|直|📶|' $EXTERNAL_REPOS_ROOT/rofi-menus/themes/network.rasi
 }
 
+install_bw_rofi () {
+  deploy "$EXTERNAL_REPOS_ROOT/bitwarden-rofi/bwmenu" "$ROOT_TARGET_DIR/bin/bitwarden-rofi"
+}
+
 install_localrc () {
   cp --no-clobber "$DOT_FILES_DIR/localrc" "$ROOT_TARGET_DIR/.localrc"
 }
@@ -198,6 +203,7 @@ main () {
   install_dotfiles
   install_scripts
   install_rofi_files
+  install_bw_rofi
   install_localrc
   install_config_files
   check_broken_links
