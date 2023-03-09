@@ -487,6 +487,9 @@
 
     <!-- launch (Open) applications -->
     <keybind key="W-o">
+      <keybind key="W-o"><action name="Execute"><command>web-search.sh</command></action></keybind>
+      <keybind key="o"><action name="Execute"><command>web-search.sh</command></action></keybind>
+      <keybind key="g"><action name="Execute"><command>github-repos.sh</command></action></keybind>
       <keybind key="b"><action name="Execute"><command>blueman-manager</command></action></keybind>
       <keybind key="e"><action name="Execute"><command>emacsclient -c </command></action></keybind>
       <keybind key="v"><action name="Execute"><command>smplayer       </command></action></keybind>

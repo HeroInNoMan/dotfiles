@@ -28,7 +28,8 @@ EXTERNAL_REPOS=("https://gitlab.com/vahnrr/rofi-menus.git"
                 "https://github.com/mattydebie/bitwarden-rofi"
                 "https://github.com/pawndev/rofi-autorandr.git"
                 "https://github.com/eylles/dmenukaomoji.git"
-                "http://github.com/ClydeDroid/rofi-bluetooth.git"
+                "https://github.com/ClydeDroid/rofi-bluetooth.git"
+                "https://github.com/miroslavvidovic/rofi-scripts.git"
                 "https://github.com/syl20bnr/spacemacs"
                 "https://github.com/plexus/chemacs2.git")
 
@@ -118,6 +119,18 @@ install_scripts () {
   for file in $(find $DOT_FILES_DIR | grep -e "/scripts\?/"); do
     deploy "$file" "$ROOT_TARGET_DIR/bin/$(basename "$file")"
   done
+}
+
+install_rofi_scripts () {
+  chmod a+x "$ROOT_TARGET_DIR/bin/web-search.sh"
+  deploy "$EXTERNAL_REPOS_ROOT/rofi-scripts/web-search.sh" "$ROOT_TARGET_DIR/bin/web-search.sh"
+  sed -i 's|0 -p "|0 -selected-row 9 -theme "ale-run.rasi" -p "|' $EXTERNAL_REPOS_ROOT/rofi-scripts/web-search.sh
+  chmod a+x "$ROOT_TARGET_DIR/bin/github-repos.sh"
+  deploy "$EXTERNAL_REPOS_ROOT/rofi-scripts/github-repos.sh" "$ROOT_TARGET_DIR/bin/github-repos.sh"
+  sed -i 's|custom -p "|custom -theme "ale-run.rasi" -p "|' $EXTERNAL_REPOS_ROOT/rofi-scripts/github-repos.sh
+  sed -i 's|miroslavvidovic|heroinnoman|' $EXTERNAL_REPOS_ROOT/rofi-scripts/github-repos.sh
+  chmod a+x "$ROOT_TARGET_DIR/bin/books-search.sh"
+  deploy "$EXTERNAL_REPOS_ROOT/rofi-scripts/books-search/books-search.sh" "$ROOT_TARGET_DIR/bin/books-search.sh"
 }
 
 install_rofi_files () {
@@ -212,6 +225,7 @@ main () {
   install_scripts
   install_rofi_files
   install_rofi_bluetooth
+  install_rofi_scripts
   install_bw_rofi
   install_localrc
   install_config_files
