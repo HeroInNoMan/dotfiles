@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rofi_command="rofi -theme ~/repos/dotfiles/rofi/grab.rasi"
+rofi_command="rofi -theme ale-grab.rasi"
 
 ### Options ###
 screen="🖵 screen"

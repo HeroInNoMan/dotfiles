@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-rofi_command="rofi -i -theme repos/dotfiles/rofi/emoji.rasi"
+rofi_command="rofi -i -theme ale-emoji.rasi"
 # TODO: trouver pourquoi le -i est nécessaire malgré le “case-sensitive: false;” dans emoji.rasi
 
 KAO_FILE="$HOME/repos/dmenukaomoji/kaomoji"
@@ -16,7 +16,7 @@ gen_list () {
 }
 
 main() {
-  kao=$( (gen_list) | $rofi_command -dmenu -p "Kao" )
+  kao=$( (gen_list) | $rofi_command -dmenu -p "Kao: " )
 
   if [ -n "$kao" ]; then
     result=$(echo "$kao" | sed "s/ .*//")

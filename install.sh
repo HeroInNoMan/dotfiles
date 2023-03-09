@@ -118,6 +118,19 @@ install_scripts () {
   done
 }
 
+install_rofi_files () {
+  for file in $(find $EXTERNAL_REPOS_ROOT/rofi-menus | grep -e "/scripts\?/"); do
+    deploy "$file" "$ROOT_TARGET_DIR/bin/$(basename "$file")"
+  done
+  deploy "$DOT_FILES_DIR/rofi/themes/"     "$ROOT_TARGET_DIR/.local/share/rofi/themes"
+  deploy "$EXTERNAL_REPOS_ROOT/rofi-menus" "$TARGET_CONF_DIR/rofi"
+  rofi-utils set-colorscheme dark-steel-blue
+
+  # fix minor stuff inside the external repo
+  sed -i 's|#!/usr/bin/env python$|#!/usr/bin/env python3.9|' $EXTERNAL_REPOS_ROOT/rofi-menus/scripts/rofi-network
+  sed -i 's|直|📶|' $EXTERNAL_REPOS_ROOT/rofi-menus/themes/network.rasi
+}
+
 install_localrc () {
   cp --no-clobber "$DOT_FILES_DIR/localrc" "$ROOT_TARGET_DIR/.localrc"
 }
@@ -135,8 +148,7 @@ install_config_files () {
   deploy "$DOT_FILES_DIR/fish/config.fish"
   deploy "$DOT_FILES_DIR/fish/functions"
   deploy "$DOT_FILES_DIR/fish/conf.d"
-  deploy "$EXTERNAL_REPOS_ROOT/rofi-menus"       "$TARGET_CONF_DIR/rofi"
-  deploy "$EXTERNAL_REPOS_ROOT/chemacs2"         "$ROOT_TARGET_DIR/.emacs.d"
+  deploy "$EXTERNAL_REPOS_ROOT/chemacs2"            "$ROOT_TARGET_DIR/.emacs.d"
 }
 
 check_missing_programmes () {
@@ -185,6 +197,7 @@ main () {
   check_missing_programmes
   install_dotfiles
   install_scripts
+  install_rofi_files
   install_localrc
   install_config_files
   check_broken_links

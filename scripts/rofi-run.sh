@@ -5,6 +5,16 @@ if [ $# -ne 0 ]; then
 else
   modi="run";
 fi
-rofi -show "$modi" -theme "repos/dotfiles/rofi/run.rasi"
 
-# EOF
+ROFI_THEME="ale-run.rasi"
+
+if [ $modi == "emoji" ]; then
+  ROFI_THEME="ale-emoji.rasi"
+fi
+
+
+rofi \
+  -show "$modi" \
+  -theme "$ROFI_THEME" \
+
+  # EOF

@@ -60,7 +60,7 @@ gen_list(){
 
 main() {
   get_layouts
-  layout=$( (gen_list) | rofi -i -theme repos/dotfiles/rofi/monitor.rasi -dmenu -no-custom -p "💻📺" )
+  layout=$( (gen_list) | rofi -i -theme ale-monitor.rasi -dmenu -no-custom -p "💻📺" )
 
   if [ -n "$layout" ]; then
     echo "$layout"

@@ -1,0 +1,14 @@
+@import "ale-base.rasi"
+
+  * {
+    height:   95%;
+    width:    95%;
+    columns:  4;
+    cycle:    true;
+    font:     "mono 14";
+    location: center;
+  }
+
+listview {
+  scrollbar: false;
+}

@@ -414,7 +414,8 @@
     <!-- Special character selection -->
     <keybind key="W-u">
       <!-- Emoji (*U*nicode) -->
-      <keybind key="W-u"><action name="Execute"><command>rofimoji-wrapper.sh emojis</command></action></keybind>
+      <keybind key="u"><action name="Execute"><command>rofimoji-wrapper.sh</command></action></keybind>
+      <keybind key="W-u"><action name="Execute"><command>rofimoji-wrapper.sh</command></action></keybind>
       <keybind key="W-e"><action name="Execute"><command>rofi-run.sh emoji</command></action></keybind>
       <keybind key="e"><action name="Execute"><command>rofi-run.sh emoji</command></action></keybind>
       <!-- All possible special characters -->
@@ -427,11 +428,12 @@
     <!-- Custom rofi launcher -->
     <keybind key="W-x">
       <keybind key="W-x"><action name="Execute"><command>rofi-run.sh drun          </command></action></keybind>
-      <keybind key="v">  <action name="Execute"><command>rofi-vpn.sh               </command></action></keybind>
-      <keybind key="n">  <action name="Execute"><command>rofi-network.sh           </command></action></keybind>
-      <keybind key="s">  <action name="Execute"><command>rofi-grab.sh              </command></action></keybind>
+      <keybind key="x">  <action name="Execute"><command>rofi-apps          </command></action></keybind>
+      <keybind key="v">  <action name="Execute"><command>rofi-vpn               </command></action></keybind>
+      <keybind key="n">  <action name="Execute"><command>rofi-network              </command></action></keybind>
+      <keybind key="s">  <action name="Execute"><command>rofi-screenshot              </command></action></keybind>
       <keybind key="m">  <action name="Execute"><command>rofi-media-search.sh music</command></action></keybind>
-      <keybind key="p">  <action name="Execute"><command>rofi-power.sh             </command></action></keybind>
+      <keybind key="p">  <action name="Execute"><command>rofi-power             </command></action></keybind>
       <keybind key="f">  <action name="Execute"><command>rofi-media-search.sh video</command></action></keybind>
       <keybind key="b">  <action name="Execute"><command>rofi-media-search.sh book </command></action></keybind>
       <keybind key="c">  <action name="Execute"><command>rofi-greenclip.sh         </command></action></keybind>

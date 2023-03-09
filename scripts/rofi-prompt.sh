@@ -28,7 +28,7 @@ while [ $# -ne 0 ]; do
 done
 
 chosen=$(printf '%s;%s\n' "$yes" "$no" \
-           | rofi -theme 'repos/dotfiles/rofi/prompt.rasi' \
+           | rofi -theme 'ale-prompt.rasi' \
                   -p "$query" \
                   -dmenu \
                   -sep ';' \
@@ -36,7 +36,7 @@ chosen=$(printf '%s;%s\n' "$yes" "$no" \
                   -a 0 \
                   -u 1 \
                   -no-custom \
-                  -selected-row 1)
+                  -selected-row 0)
 
 case "$chosen" in
   "$yes") exit 0 ;;

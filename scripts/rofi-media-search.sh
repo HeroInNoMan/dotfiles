@@ -187,7 +187,7 @@ gen_list(){
 
 main() {
   load_files
-  display_line=$( (gen_list) | rofi -i -theme repos/dotfiles/rofi/media.rasi -dmenu -no-custom -p "$PROMPT_EMOJI" )
+  display_line=$( (gen_list) | rofi -i -theme ale-media.rasi -dmenu -no-custom -p "$PROMPT_EMOJI" )
 
   if [ -n "$display_line" ]; then
     while read -r line; do

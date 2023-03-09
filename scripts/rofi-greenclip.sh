@@ -13,6 +13,6 @@ if [ $(pgrep -f "greenclip daemon" | wc -l) -lt 1 ]; then
   greenclip daemon &
 fi
 
-rofi -modi "clipboard:greenclip print" -show clipboard -theme "repos/dotfiles/rofi/run.rasi" -run-command '{cmd}'
+rofi -modi "clipboard:greenclip print" -show clipboard -theme "ale-run.rasi" -run-command '{cmd}'
 
 # EOF

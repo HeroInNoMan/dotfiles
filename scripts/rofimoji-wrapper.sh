@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+
+echo $1
+
 if [[ ! $(hash rofimoji) ]]; then
   if [[ -f $HOME/.local/bin/rofimoji ]]; then
     export PATH=$PATH:$HOME/.local/bin/
@@ -7,10 +10,12 @@ if [[ ! $(hash rofimoji) ]]; then
   fi
 fi
 
-$(rofimoji --files "${1:-emojis}" \
-           --action clipboard \
-           --skin-tone neutral \
-           --selector rofi \
-           --clipboarder xclip \
-           --selector-args="-theme repos/dotfiles/rofi/emoji.rasi")
+$($HOME/.local/bin/rofimoji \
+    --files "${1:-emojis}" \
+    --selector-args=" -theme ale-emoji.rasi " \
+    --action clipboard \
+    --skin-tone neutral \
+    --selector rofi \
+    --clipboarder xclip \
+  )
 # EOF

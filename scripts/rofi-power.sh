@@ -17,7 +17,7 @@ chosen=$(printf '%s;%s;%s;%s;%s;%s\n' \
                 "$suspend" \
                 "$hibernate" \
                 "$log_out" \
-           | rofi -theme repos/dotfiles/rofi/power.rasi \
+           | rofi -theme ale-power.rasi \
                   -p "session" \
                   -dmenu \
                   -sep ';' \
