@@ -428,15 +428,16 @@
     <!-- Custom rofi launcher -->
     <keybind key="W-x">
       <keybind key="W-x"><action name="Execute"><command>rofi-run.sh drun          </command></action></keybind>
-      <keybind key="x">  <action name="Execute"><command>rofi-apps          </command></action></keybind>
-      <keybind key="v">  <action name="Execute"><command>rofi-vpn               </command></action></keybind>
+      <keybind key="x">  <action name="Execute"><command>rofi-apps                 </command></action></keybind>
+      <keybind key="v">  <action name="Execute"><command>rofi-vpn                  </command></action></keybind>
       <keybind key="n">  <action name="Execute"><command>rofi-network              </command></action></keybind>
-      <keybind key="s">  <action name="Execute"><command>rofi-screenshot              </command></action></keybind>
+      <keybind key="s">  <action name="Execute"><command>rofi-screenshot           </command></action></keybind>
       <keybind key="m">  <action name="Execute"><command>rofi-media-search.sh music</command></action></keybind>
-      <keybind key="p">  <action name="Execute"><command>rofi-power             </command></action></keybind>
+      <keybind key="p">  <action name="Execute"><command>rofi-power                </command></action></keybind>
       <keybind key="f">  <action name="Execute"><command>rofi-media-search.sh video</command></action></keybind>
       <!-- <keybind key="b">  <action name="Execute"><command>rofi-media-search.sh book </command></action></keybind> -->
       <keybind key="c">  <action name="Execute"><command>rofi-greenclip.sh         </command></action></keybind>
+      <keybind key="t">  <action name="Execute"><command>rofi-theme-selector       </command></action></keybind>
       <keybind key="w">  <action name="Execute"><command>bitwarden-rofi            </command></action></keybind>
       <keybind key="b">  <action name="Execute"><command>rofi-bluetooth            </command></action></keybind>
     </keybind>
