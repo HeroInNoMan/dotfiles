@@ -176,6 +176,8 @@ install_config_files () {
   deploy "$DOT_FILES_DIR/fish/config.fish"
   deploy "$DOT_FILES_DIR/fish/functions"
   deploy "$DOT_FILES_DIR/fish/conf.d"
+  deploy "$EXTERNAL_REPOS_ROOT/rofi-menus"       "$TARGET_CONF_DIR/rofi"
+  deploy "$DOT_FILES_DIR/rofi/themes/"           "$ROOT_TARGET_DIR/.local/share/rofi/themes"
   deploy "$EXTERNAL_REPOS_ROOT/chemacs2"            "$ROOT_TARGET_DIR/.emacs.d"
 }
 
