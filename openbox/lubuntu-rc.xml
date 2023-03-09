@@ -435,9 +435,10 @@
       <keybind key="m">  <action name="Execute"><command>rofi-media-search.sh music</command></action></keybind>
       <keybind key="p">  <action name="Execute"><command>rofi-power             </command></action></keybind>
       <keybind key="f">  <action name="Execute"><command>rofi-media-search.sh video</command></action></keybind>
-      <keybind key="b">  <action name="Execute"><command>rofi-media-search.sh book </command></action></keybind>
+      <!-- <keybind key="b">  <action name="Execute"><command>rofi-media-search.sh book </command></action></keybind> -->
       <keybind key="c">  <action name="Execute"><command>rofi-greenclip.sh         </command></action></keybind>
       <keybind key="w">  <action name="Execute"><command>bitwarden-rofi            </command></action></keybind>
+      <keybind key="b">  <action name="Execute"><command>rofi-bluetooth            </command></action></keybind>
     </keybind>
     <!-- ssh connection launcher -->
     <keybind key="W-h"><action name="Execute"><command>rofi-run.sh ssh</command></action></keybind>

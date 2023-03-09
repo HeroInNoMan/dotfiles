@@ -28,6 +28,7 @@ EXTERNAL_REPOS=("https://gitlab.com/vahnrr/rofi-menus.git"
                 "https://github.com/mattydebie/bitwarden-rofi"
                 "https://github.com/pawndev/rofi-autorandr.git"
                 "https://github.com/eylles/dmenukaomoji.git"
+                "http://github.com/ClydeDroid/rofi-bluetooth.git"
                 "https://github.com/syl20bnr/spacemacs"
                 "https://github.com/plexus/chemacs2.git")
 
@@ -132,6 +133,13 @@ install_rofi_files () {
   sed -i 's|直|📶|' $EXTERNAL_REPOS_ROOT/rofi-menus/themes/network.rasi
 }
 
+install_rofi_bluetooth () {
+  deploy "$EXTERNAL_REPOS_ROOT/rofi-bluetooth/rofi-bluetooth" "$ROOT_TARGET_DIR/bin/rofi-bluetooth"
+
+  # add our own theme to the external command
+  sed -i 's|\$\* -p"|$* -theme "ale-run.rasi" -p"|' $EXTERNAL_REPOS_ROOT/rofi-bluetooth/rofi-bluetooth
+}
+
 install_bw_rofi () {
   deploy "$EXTERNAL_REPOS_ROOT/bitwarden-rofi/bwmenu" "$ROOT_TARGET_DIR/bin/bitwarden-rofi"
 }
@@ -203,6 +211,7 @@ main () {
   install_dotfiles
   install_scripts
   install_rofi_files
+  install_rofi_bluetooth
   install_bw_rofi
   install_localrc
   install_config_files
