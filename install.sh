@@ -144,7 +144,7 @@ install_rofi_files () {
   rofi-utils set-colorscheme dark-steel-blue
 
   # fix minor stuff inside the external repo
-  sed -i 's|#!/usr/bin/env python$|#!/usr/bin/env python3.9|' $EXTERNAL_REPOS_ROOT/rofi-menus/scripts/rofi-network
+  # sed -i 's|#!/usr/bin/env python$|#!/usr/bin/env python3.9|' $EXTERNAL_REPOS_ROOT/rofi-menus/scripts/rofi-network
   sed -i 's|直|📶|' $EXTERNAL_REPOS_ROOT/rofi-menus/themes/network.rasi
 }
 
