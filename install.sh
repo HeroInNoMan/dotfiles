@@ -122,15 +122,17 @@ install_scripts () {
 }
 
 install_rofi_scripts () {
-  chmod a+x "$ROOT_TARGET_DIR/bin/web-search.sh"
+  deploy "$EXTERNAL_REPOS_ROOT/rofi-scripts/books-search/books-search.sh" "$ROOT_TARGET_DIR/bin/books-search.sh"
+  chmod a+x "$ROOT_TARGET_DIR/bin/books-search.sh"
+
   deploy "$EXTERNAL_REPOS_ROOT/rofi-scripts/web-search.sh" "$ROOT_TARGET_DIR/bin/web-search.sh"
+  chmod a+x "$ROOT_TARGET_DIR/bin/web-search.sh"
   sed -i 's|0 -p "|0 -selected-row 9 -theme "ale-run.rasi" -p "|' $EXTERNAL_REPOS_ROOT/rofi-scripts/web-search.sh
-  chmod a+x "$ROOT_TARGET_DIR/bin/github-repos.sh"
+
   deploy "$EXTERNAL_REPOS_ROOT/rofi-scripts/github-repos.sh" "$ROOT_TARGET_DIR/bin/github-repos.sh"
+  chmod a+x "$ROOT_TARGET_DIR/bin/github-repos.sh"
   sed -i 's|custom -p "|custom -theme "ale-run.rasi" -p "|' $EXTERNAL_REPOS_ROOT/rofi-scripts/github-repos.sh
   sed -i 's|miroslavvidovic|heroinnoman|' $EXTERNAL_REPOS_ROOT/rofi-scripts/github-repos.sh
-  chmod a+x "$ROOT_TARGET_DIR/bin/books-search.sh"
-  deploy "$EXTERNAL_REPOS_ROOT/rofi-scripts/books-search/books-search.sh" "$ROOT_TARGET_DIR/bin/books-search.sh"
 }
 
 install_rofi_files () {
