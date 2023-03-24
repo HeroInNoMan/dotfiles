@@ -152,7 +152,7 @@ install_rofi_bluetooth () {
   deploy "$EXTERNAL_REPOS_ROOT/rofi-bluetooth/rofi-bluetooth" "$ROOT_TARGET_DIR/bin/rofi-bluetooth"
 
   # add our own theme to the external command
-  sed -i 's|\$\* -p"|$* -theme "ale-run.rasi" -p"|' $EXTERNAL_REPOS_ROOT/rofi-bluetooth/rofi-bluetooth
+  sed -i 's|\$\* -p"|-i $* -theme "ale-run.rasi" -p"|' $EXTERNAL_REPOS_ROOT/rofi-bluetooth/rofi-bluetooth
 }
 
 install_bw_rofi () {
