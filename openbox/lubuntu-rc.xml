@@ -519,7 +519,10 @@
     <!-- Enable/disable touchpad -->
     <keybind key="W-k"><action name="Execute"><command>trackpad.sh</command></action></keybind>
     <!-- Reload openbox configuration -->
-    <keybind key="W-r"><action name="Execute"><command>openbox --reconfigure</command></action></keybind>
+    <keybind key="W-r">
+      <action name="Execute"><command>openbox --reconfigure</command></action>
+      <action name="Execute"><command>check_notification_service</command></action>
+    </keybind>
     <!-- key chain for audacious -->
     <keybind key="W-a">
       <keybind key="a"><action name="Execute"><command>music-player.sh show-main-window</command></action></keybind>
