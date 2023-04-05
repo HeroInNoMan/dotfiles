@@ -346,6 +346,26 @@
       <keybind key="g"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x> 0</x><y>-0</y><height> 50%</height><width>100%</width></action></keybind> <!-- ⎵  -->
       <keybind key="s"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x> 0</x><y> 0</y><height>100%</height><width>100%</width></action></keybind> <!-- □ -->
 
+      <!-- Move windows around using xdotool -->
+      <keybind key="e">
+        <keybind key="v"><action name="Execute"><command>wtf.sh nw</command></action></keybind>
+        <keybind key="l"><action name="Execute"><command>wtf.sh ne</command></action></keybind>
+        <keybind key="q"><action name="Execute"><command>wtf.sh sw</command></action></keybind>
+        <keybind key="h"><action name="Execute"><command>wtf.sh se</command></action></keybind>
+        <keybind key="t"><action name="Execute"><command>wtf.sh w</command></action></keybind>
+        <keybind key="r"><action name="Execute"><command>wtf.sh e</command></action></keybind>
+        <keybind key="d"><action name="Execute"><command>wtf.sh n</command></action></keybind>
+        <keybind key="g"><action name="Execute"><command>wtf.sh s</command></action></keybind>
+        <keybind key="s"><action name="Execute"><command>wtf.sh c</command></action></keybind>
+
+        <keybind key="b"><action name="Execute"><command>wtf.sh v</command></action></keybind>
+        <keybind key="eacute"><action name="Execute"><command>wtf.sh v34</command></action></keybind>
+        <keybind key="o"><action name="Execute"><command>wtf.sh h</command></action></keybind>
+        <keybind key="egrave"><action name="Execute"><command>wtf.sh v14</command></action></keybind>
+        <keybind key="Tab"><action name="Execute"><command>wtf.sh t</command></action></keybind>
+
+      </keybind>
+
       <!-- Send window to another desktop -->
       <keybind key="1"><action name="SendToDesktop"><to>1</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 1 -->
       <keybind key="2"><action name="SendToDesktop"><to>2</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 2 -->
