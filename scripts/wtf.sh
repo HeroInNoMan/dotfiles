@@ -1,23 +1,35 @@
 #!/usr/bin/env bash
 
 # Window Tiling Features
-hash xdotool 2>/dev/null || { echo "Error: xdotool is not installed."; }
+# hash xdotool 2>/dev/null || { echo "Error: xdotool is not installed."; }
 
 desktop=$(xdotool get_desktop)
-desktop_windows=$(xdotool search --desktop $desktop --name ".*")
 echo "D$((1 + ${desktop}))"
 
-for win in $desktop_windows; do
-  # echo "[desktop window] " $(xdotool getwindowname $win)
-  desktop_windows_array[i]=$win
+for win in $(xdotool search --desktop $desktop --name ".*"); do
+  desktop_windows[i]=$win
   i=$(( i+1 ))
 done
 
-[ $i -gt 0 ] && w1=${desktop_windows_array[${#desktop_windows_array[@]}-1]}
-[ $i -gt 1 ] && w2=${desktop_windows_array[${#desktop_windows_array[@]}-2]}
-[ $i -gt 2 ] && w3=${desktop_windows_array[${#desktop_windows_array[@]}-3]}
-[ $i -gt 2 ] && w4=${desktop_windows_array[${#desktop_windows_array[@]}-4]}
-echo "w1: ${w1} w2: ${w2} w3: ${w3} w4: ${w4}"
+[ $i -gt 0 ] && w1=${desktop_windows[${#desktop_windows[@]}-1]}
+[ $i -gt 1 ] && w2=${desktop_windows[${#desktop_windows[@]}-2]}
+[ $i -gt 2 ] && w3=${desktop_windows[${#desktop_windows[@]}-3]}
+[ $i -gt 2 ] && w4=${desktop_windows[${#desktop_windows[@]}-4]}
+
+# screen positions
+
+# # 7 8 9
+# # 4 5 6
+# # 1 2 3
+# #
+# sp_7=0
+# sp_8=50
+# half_screen=50
+# end_screen=100
+# full_screen_width=100
+# half_screen_width=100
+# half_screen_height=100
+# full_screen_height=100
 
 move_resize () {
   sx=$1; sy=$2; mx=$3; my=$4
