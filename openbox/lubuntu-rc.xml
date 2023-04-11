@@ -315,6 +315,7 @@
       </keybind>
 
       <keybind key="m">
+        <keybind key="a"><action name="Execute"><command>arandr                     </command></action></keybind>
         <keybind key="c"><action name="Execute"><command>manage-displays.sh copy    </command></action></keybind>
         <keybind key="b"><action name="Execute"><command>manage-displays.sh internal</command></action></keybind>
         <keybind key="l"><action name="Execute"><command>manage-displays.sh left    </command></action></keybind>
