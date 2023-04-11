@@ -28,6 +28,18 @@ setup_typematrix () {
   fi
 }
 
+setup_moonlander () {
+  # Moonlander → toujours en bépo sans options
+  for id in $(xinput list | grep -i "moonlander" | cut -d= -f2 | cut -f1); do
+    setxkbmap fr $BEPO_VERSION -device "$id" -option 2> /dev/null
+    MOONLANDER="true"
+  done
+  if [ -n "$MOONLANDER" ] && [ ! "BÉPO" == "$NOTIF" ];
+  then
+    NOTIF="EZ:BÉPO, $NOTIF"
+  fi
+}
+
 setup_ergodox () {
   # Ergodox → toujours en bépo sans options
   for id in $(xinput list | grep -i "ergodox" | cut -d= -f2 | cut -f1); do
@@ -59,6 +71,7 @@ main () {
   setup_default
   setup_typematrix
   setup_ergodox
+  setup_moonlander
   notif-change-layout "$NOTIF"
   [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 }
