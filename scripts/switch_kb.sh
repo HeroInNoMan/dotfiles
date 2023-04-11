@@ -7,7 +7,9 @@ BEPO_VERSION="bepo_afnor"
 KBD_IMG="$HOME/.config/img/keyboard.png"
 KBD_FILE="$HOME/.kbd-switch"
 true >> "$KBD_FILE"
-LAYOUT=$(head -1 "$KBD_FILE")
+
+# comment next line to force bepo, always
+# LAYOUT=$(head -1 "$KBD_FILE")
 
 disable_caps_lock () {
   caps_lock_status=$(xset -q | sed -n 's/^.*Caps Lock:\s*\(\S*\).*$/\1/p')
