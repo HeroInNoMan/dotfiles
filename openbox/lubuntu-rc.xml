@@ -546,7 +546,7 @@
     <!-- Reload openbox configuration -->
     <keybind key="W-r">
       <action name="Execute"><command>openbox --reconfigure</command></action>
-      <action name="Execute"><command>check_notification_service</command></action>
+      <!-- <action name="Execute"><command>check_notification_service</command></action> -->
     </keybind>
     <!-- key chain for audacious -->
     <keybind key="W-a">
