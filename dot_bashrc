@@ -241,7 +241,7 @@ clone-repo () {
 }
 export -f clone-repo
 
-autogen () {
+run-autogen () {
   PROGRAM_NAME="$1"
   make-title "autogen"
   ./autogen.sh
@@ -250,9 +250,9 @@ autogen () {
       || notify-send "$PROGRAM_NAME autogen: FAILED"
   return $status
 }
-export -f autogen
+export -f run-autogen
 
-configure () {
+run-configure () {
   PROGRAM_NAME="$1"
   make-title "configure"
   ./configure
@@ -261,7 +261,29 @@ configure () {
       || notify-send "$PROGRAM_NAME configure: FAILED"
   return $status
 }
-export -f configure
+export -f run-configure
+
+run-make () {
+  PROGRAM_NAME="$1"
+  make-title "make"
+  make -j"$(nproc)"
+  status=$?
+  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME make: DONE" \
+      || notify-send "$PROGRAM_NAME make: FAILED"
+  return $status
+}
+export -f run-make
+
+run-make-install () {
+  PROGRAM_NAME="$1"
+  make-title "make install"
+  sudo make install
+  status=$?
+  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME make install: DONE" \
+      || notify-send "$PROGRAM_NAME make install: FAILED"
+  return $status
+}
+export -f run-make-install
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh

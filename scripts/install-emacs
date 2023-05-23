@@ -2,55 +2,24 @@
 
 PROGRAM_NAME="emacs"
 REPOS_DIR="$HOME/repos"
-PROGRAM_REPO_DIR="$REPOS_DIR/$PROGRAM_NAME"
-PROGRAM_REPO_URL="https://git.savannah.gnu.org/git/emacs.git"
-
 BRANCH="emacs-29"
-# NATIVE_COMP="--with-native-compilation" # comment to prevent native compilation
+PROGRAM_REPO_URL="https://git.savannah.gnu.org/git/emacs.git"
 
 if [[ $# -gt 0 ]]; then
   BRANCH=$1
 fi
 
-# configure () {
-#   make-title "configure"
-#   ./configure "$NATIVE_COMP"
-#   status=$?
-#   [ $status -eq 0 ] && notify-send "$PROGRAM_NAME configure: DONE" \
-#       || notify-send "$PROGRAM_NAME configure: FAILED"
-#   return $status
-# }
-
-make () {
-  make-title "make"
-  # make NATIVE_FULL_AOT=1 -j$(nproc)
-  make -j"$(nproc)"
-  status=$?
-  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME make: DONE" \
-      || notify-send "$PROGRAM_NAME make: FAILED"
-  return $status
-}
-
-make-install () {
-  make-title "make install"
-  sudo make install
-  status=$?
-  [ $status -eq 0 ] && notify-send "$PROGRAM_NAME make install: DONE" \
-      || notify-send "$PROGRAM_NAME make install: FAILED"
-  return $status
-}
-
 OLD_DIR=$(pwd)
-if [[ -d "$HOME/repos/emacs/" ]]; then
-  update-repo "$PROGRAM_REPO_DIR" "$BRANCH"
+if [[ -d "$REPOS_DIR/$PROGRAM_NAME" ]]; then
+  update-repo "$REPOS_DIR/$PROGRAM_NAME" "$BRANCH"
 else
-  clone-repo "$PROGRAM_REPO_URL" "$REPOS_DIR" "$PROGRAM_REPO_DIR" "$BRANCH"
+  clone-repo "$PROGRAM_REPO_URL" "$REPOS_DIR" "$REPOS_DIR/$PROGRAM_NAME" "$BRANCH"
 fi
 
-[ $? -eq 0 ] && autogen "$PROGRAM_NAME"
-[ $? -eq 0 ] && configure
-[ $? -eq 0 ] && make
-[ $? -eq 0 ] && make-install
+[ $? -eq 0 ] && run-autogen "$PROGRAM_NAME"
+[ $? -eq 0 ] && run-configure "$PROGRAM_NAME"
+[ $? -eq 0 ] && run-make "$PROGRAM_NAME"
+[ $? -eq 0 ] && run-make-install "$PROGRAM_NAME"
 
 cd "$OLD_DIR" || return
 # EOF
