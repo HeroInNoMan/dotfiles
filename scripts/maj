@@ -10,9 +10,15 @@ if hash flatpak 2>/dev/null; then
   sudo flatpak update
 fi
 
+make-title "python packages update"
 if hash pip 2>/dev/null; then
-  make-title "python packages update"
-  pip freeze --user | cut -d'=' -f1 | xargs -n1 pip install -U
+  if pip 2>/dev/null && $? == 0; then
+    pip freeze --user | cut -d'=' -f1 | xargs -n1 pip install -U
+  else
+    echo "[Python] error while updating pip packages."
+  fi
+else
+  echo "[Python] pip is not properly installed."
 fi
 
 if hash aptitude 2>/dev/null; then
