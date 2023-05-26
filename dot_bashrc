@@ -254,8 +254,9 @@ export -f run-autogen
 
 run-configure () {
   PROGRAM_NAME="$1"
+  shift
   make-title "configure"
-  ./configure
+  ./configure $@
   status=$?
   [ $status -eq 0 ] && notify-send "$PROGRAM_NAME configure: DONE" \
       || notify-send "$PROGRAM_NAME configure: FAILED"
@@ -265,8 +266,9 @@ export -f run-configure
 
 run-make () {
   PROGRAM_NAME="$1"
+  shift
   make-title "make"
-  make -j"$(nproc)"
+  make -j"$(nproc)" $@
   status=$?
   [ $status -eq 0 ] && notify-send "$PROGRAM_NAME make: DONE" \
       || notify-send "$PROGRAM_NAME make: FAILED"

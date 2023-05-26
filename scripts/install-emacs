@@ -17,7 +17,7 @@ else
 fi
 
 [ $? -eq 0 ] && run-autogen "$PROGRAM_NAME"
-[ $? -eq 0 ] && run-configure "$PROGRAM_NAME"
+[ $? -eq 0 ] && run-configure "$PROGRAM_NAME" "--with-rsvg"
 [ $? -eq 0 ] && run-make "$PROGRAM_NAME"
 [ $? -eq 0 ] && run-make-install "$PROGRAM_NAME"
 
