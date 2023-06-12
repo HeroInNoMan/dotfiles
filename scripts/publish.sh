@@ -6,10 +6,11 @@
 [[ -z $GRAB_REMOTE_DIR ]] && notify-send "⚠ Grab remote dir not defined!"
 
 # pick latest screenshot (grab) in $HOME directory ############################
+DEFAULT_SCREENSHOT_DIR=$HOME
 GRABS_DIR=".old-screenshots"
 mkdir -p $HOME/$GRABS_DIR
 GRAB_PATTERN="*_scrot.png"
-SOURCE_FILE_NAME=$(ls -t1 $HOME/$GRAB_PATTERN | head -1)
+SOURCE_FILE_NAME=$(ls -t1 $DEFAULT_SCREENSHOT_DIR/$GRAB_PATTERN | head -1)
 GRAB_NAME=${1:-$(basename "${SOURCE_FILE_NAME%.png}")}.png
 
 URL="$GRAB_URL/$GRAB_NAME"
