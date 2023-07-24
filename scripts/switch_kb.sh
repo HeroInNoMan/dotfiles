@@ -9,7 +9,17 @@ KBD_FILE="$HOME/.kbd-switch"
 true >> "$KBD_FILE"
 LAYOUT=$(head -1 "$KBD_FILE")
 
-notif-change-layout () {
+disable_caps_lock () {
+  caps_lock_status=$(xset -q | sed -n 's/^.*Caps Lock:\s*\(\S*\).*$/\1/p')
+  if [ $caps_lock_status == "on" ]; then
+    echo "Caps lock on, turning off"
+    xdotool key Caps_Lock
+  else
+    echo "Caps lock already off"
+  fi
+}
+
+notif_change_layout () {
   LAYOUT_NAME=$1
   NEW_LAYOUT=$(setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}')
   echo "$CURRENT_LAYOUT → $NEW_LAYOUT ($LAYOUT_NAME)"
@@ -72,7 +82,8 @@ main () {
   setup_typematrix
   setup_ergodox
   setup_moonlander
-  notif-change-layout "$NOTIF"
+  disable_caps_lock
+  notif_change_layout "$NOTIF"
   [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 }
 

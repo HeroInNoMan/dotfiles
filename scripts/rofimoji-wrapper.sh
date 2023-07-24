@@ -18,4 +18,21 @@ $($HOME/.local/bin/rofimoji \
     --selector rofi \
     --clipboarder xclip \
   )
+
+caps_lock_status=$(xset -q | sed -n 's/^.*Caps Lock:\s*\(\S*\).*$/\1/p')
+if [ $caps_lock_status == "on" ]; then
+  echo "Caps lock on, turning off"
+  xdotool key Caps_Lock
+else
+  echo "Caps lock already off"
+fi
+
+shift_lock_status=$(xset -q | sed -n 's/^.*Shift Lock:\s*\(\S*\).*$/\1/p')
+if [ $caps_lock_status == "on" ]; then
+  echo "Shift lock on, turning off"
+  xdotool key Shift_Lock
+else
+  echo "Shift lock already off"
+fi
+
 # EOF
