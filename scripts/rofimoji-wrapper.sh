@@ -6,7 +6,7 @@ if [[ ! $(hash rofimoji) ]]; then
   if [[ -f $HOME/.local/bin/rofimoji ]]; then
     export PATH=$PATH:$HOME/.local/bin/
   else
-    echo "Please install rofimoji: 'pip install rofimoji'"
+    echo "Please install rofimoji: 'pipx install rofimoji'"
   fi
 fi
 
