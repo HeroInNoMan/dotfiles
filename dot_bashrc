@@ -107,6 +107,8 @@ fi
 # switch to 256 color term (especially for using emacs inside term)
 # export TERM=screen-256color
 
+LS_COLORS="di=1;36" # change default directory color
+
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
 
