@@ -77,6 +77,8 @@
 	username = arthurleothaud
 [github]
 	user = arthur.leothaud@enercoop.org
+[gitlab]
+	user = arthur.leothaud
 [tig]
 	main-view-date = relative
 	refs-view-date = relative
