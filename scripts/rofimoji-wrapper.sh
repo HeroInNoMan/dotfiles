@@ -10,9 +10,9 @@ if [[ ! $(hash rofimoji) ]]; then
   fi
 fi
 
-$($HOME/.local/bin/rofimoji \
-    --files "${1:-emojis}" \
+$(rofimoji \
     --selector-args=" -theme ale-emoji.rasi " \
+    --files "${1:-emojis}" \
     --action clipboard \
     --skin-tone neutral \
     --selector rofi \
