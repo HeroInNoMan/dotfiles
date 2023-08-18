@@ -11,15 +11,15 @@ fi
 
 OLD_DIR=$(pwd)
 if [[ -d "$REPOS_DIR/$PROGRAM_NAME" ]]; then
-  update-repo "$REPOS_DIR/$PROGRAM_NAME" "$BRANCH"
+  update_repo "$REPOS_DIR/$PROGRAM_NAME" "$BRANCH"
 else
-  clone-repo "$PROGRAM_REPO_URL" "$REPOS_DIR" "$REPOS_DIR/$PROGRAM_NAME" "$BRANCH"
+  clone_repo "$PROGRAM_REPO_URL" "$REPOS_DIR" "$REPOS_DIR/$PROGRAM_NAME" "$BRANCH"
 fi
 
-[ $? -eq 0 ] && run-autogen "$PROGRAM_NAME"
-[ $? -eq 0 ] && run-configure "$PROGRAM_NAME" "--with-rsvg " "--with-x-toolkit=no "
-[ $? -eq 0 ] && run-make "$PROGRAM_NAME"
-[ $? -eq 0 ] && run-make-install "$PROGRAM_NAME"
+[ $? -eq 0 ] && run_autogen "$PROGRAM_NAME"
+[ $? -eq 0 ] && run_configure "$PROGRAM_NAME" "--with-rsvg " "--with-x-toolkit=no "
+[ $? -eq 0 ] && run_make "$PROGRAM_NAME"
+[ $? -eq 0 ] && run_make_install "$PROGRAM_NAME"
 
 cd "$OLD_DIR" || return
 # EOF

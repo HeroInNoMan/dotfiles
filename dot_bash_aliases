@@ -110,5 +110,5 @@ alias python="python3"
 alias pip="pip3"
 
 # JAVA ########################################################################
-alias 8='use-java-8'
-alias 17='use-java-17'
+alias 8='use_java_8'
+alias 17='use_java_17'

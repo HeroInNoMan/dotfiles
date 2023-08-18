@@ -2,15 +2,15 @@
 
 sudo true
 if hash snap 2>/dev/null; then
-  make-title "snap refresh"
+  make_title "snap refresh"
   sudo snap refresh
 fi
 if hash flatpak 2>/dev/null; then
-  make-title "flatpak update"
+  make_title "flatpak update"
   sudo flatpak update
 fi
 
-make-title "python packages update"
+make_title "python packages update"
 if hash pipx 2>/dev/null; then
   pipx upgrade-all
 elif hash pip 2>/dev/null; then
@@ -25,13 +25,13 @@ else
 fi
 
 if hash aptitude 2>/dev/null; then
-  make-title "aptitude update"
+  make_title "aptitude update"
   sudo aptitude update
-  make-title "aptitude upgrade"
+  make_title "aptitude upgrade"
   sudo aptitude full-upgrade -y
-  make-title "aptitude auto-clean"
+  make_title "aptitude auto-clean"
   sudo aptitude autoclean -y
-  make-title "apt autoremove"
+  make_title "apt autoremove"
 fi
 if hash apt 2>/dev/null; then
   sudo apt autoremove -y

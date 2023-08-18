@@ -31,7 +31,7 @@ set -gx PATH /usr/local/bin/ $HOME/bin $HOME/.local/bin/ $HOME/.screenlayout $PA
 # java stuff
 set -gx PATH $JAVA_HOME/bin $PATH
 
-function use-java-8
+function use_java_8
   set -gx JAVA_HOME $JAVA_8
 end
 

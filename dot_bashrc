@@ -72,34 +72,34 @@ export VISUAL="emacsclient -c -a \"\""          # $VISUAL opens in GUI mode
 export MU_PLAY_PROGRAM="evince"                 # program to open attachments in mu4e
 
 # add argument to PATH only if not already present
-add-to-path() {
+add_to_path() {
   if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
     PATH="${PATH:+"$PATH:"}$1"
   fi
 }
 
-add-to-path "$HOME/usr/bin"
-add-to-path "$HOME/bin"
-add-to-path "$HOME/.local/bin"
-add-to-path "$HOME/.screenlayout"
-add-to-path "$HOME/repos/rofi-menus/scripts"
-add-to-path "/snap"
+add_to_path "$HOME/usr/bin"
+add_to_path "$HOME/bin"
+add_to_path "$HOME/.local/bin"
+add_to_path "$HOME/.screenlayout"
+add_to_path "$HOME/repos/rofi-menus/scripts"
+add_to_path "/snap"
 
 # Rust & Cargo support
-[ -d $HOME/.cargo/bin/ ] && add-to-path "$HOME/.cargo/bin"
+[ -d $HOME/.cargo/bin/ ] && add_to_path "$HOME/.cargo/bin"
 [ -f $HOME/.cargo/env ] && source "$HOME/.cargo/env"
 
 # ruby setup ##################################################################
 if hash rbenv 2>/dev/null; then
-  add-to-path "$HOME/.rbenv/bin"
+  add_to_path "$HOME/.rbenv/bin"
   eval "$(rbenv init -)"
-  add-to-path "$HOME/.rbenv/shims"
+  add_to_path "$HOME/.rbenv/shims"
   [ -f "$HOME/.rbenv/completions/rbenv.bash" ] && source "$HOME/.rbenv/completions/rbenv.bash"
 fi
 
 # Go setup
 if [ -d /usr/local/go/bin ]; then
-  add-to-path "/usr/local/go/bin"
+  add_to_path "/usr/local/go/bin"
   # if hash go 2>/dev/null; then
   # fi
 fi
@@ -113,35 +113,35 @@ LS_COLORS="$LS_COLORS:ln=1;33" # change default link color
 export GTK_IM_MODULE=xim
 export QT_IM_MODULE=xim
 
-add-to-path "$MAVEN_HOME/bin"
-add-to-path "$JAVA_HOME/bin"
+add_to_path "$MAVEN_HOME/bin"
+add_to_path "$JAVA_HOME/bin"
 
-use-java-8 () {
+use_java_8 () {
   [[ -n $SDKMAN_DIR && -n $JAVA_8_VERSION ]] && sdk use java $JAVA_8_VERSION || export JAVA_HOME=$JAVA_8
 }
 
-use-java-17 () {
+use_java_17 () {
   [[ -n $SDKMAN_DIR && -n $JAVA_17_VERSION ]] && sdk use java $JAVA_17_VERSION || export JAVA_HOME=$JAVA_17
 }
 
-maven-debug () {
+maven_debug () {
   mvn $@ -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
 }
 
-maven-eclipse () {
+maven_eclipse () {
   mvn eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5 $@
 }
 
-maven-install-eclipse () {
+maven_install_eclipse () {
   mvn clean install $@ && mvn eclipse:configure-workspace -Declipse.workspace="$WORKSPACE" eclipse:clean eclipse:eclipse -Dwtpversion=1.5
 }
 
-update-etags () {
+update_etags () {
   [ -f TAGS ] && rm TAGS
   find . -name '*.java' -exec etags -a {} \;
 }
 
-update-project () {
+update_project () {
   PROJECT_DIR=$1
   FORMER_DIR=$(pwd)
   cd "$PROJECT_DIR" || exit
@@ -154,13 +154,13 @@ update-project () {
   cd "$FORMER_DIR" || exit
 }
 
-update-all () {
+update_all () {
   for dir in $(find "$HOME" -type d -iname '.git' -o -maxdepth 3 -iname '.svn' 2> /dev/null | xargs dirname | sort); do
-    update-project "$dir"
+    update_project "$dir"
   done
 }
 
-build-all () {
+build_all () {
   FORMER_DIR=$(pwd)
   for dir in $(find "$HOME/projets/" -type f -maxdepth 2 -name 'pom.xml' 2> /dev/null | xargs dirname | sort); do
     cd "$dir" || exit
@@ -188,7 +188,7 @@ check_notification_service () {
 }
 export -f check_notification_service
 
-make-title () {
+make_title () {
   max_length=52
   char="*"
 
@@ -210,12 +210,12 @@ make-title () {
 
   echo -e "$line\n${padding}${title^^}${padding}${char}\n$line"
 }
-export -f make-title
+export -f make_title
 
-update-repo () {
+update_repo () {
   PROGRAM_REPO_DIR=$1
   BRANCH=$2
-  make-title "git pull"
+  make_title "git pull"
   cd "$PROGRAM_REPO_DIR" || exit 1
   git fetch --all --tags --prune
   git checkout "$BRANCH"
@@ -228,67 +228,67 @@ update-repo () {
     git pull --autostash
   fi
 }
-export -f update-repo
+export -f update_repo
 
-clone-repo () {
+clone_repo () {
   PROGRAM_REPO_URL=$1
   REPOS_DIR=$2
   PROGRAM_REPO_DIR=$3
   BRANCH=$4
-  make-title "clone"
+  make_title "clone"
   mkdir -p "$REPOS_DIR"
   cd "$REPOS_DIR" || exit 1
   git clone "$PROGRAM_REPO_URL"
   cd "$PROGRAM_REPO_DIR" || exit 1
   git checkout "$BRANCH"
 }
-export -f clone-repo
+export -f clone_repo
 
-run-autogen () {
+run_autogen () {
   PROGRAM_NAME="$1"
-  make-title "autogen"
+  make_title "autogen"
   ./autogen.sh
   status=$?
   [ $status -eq 0 ] && notify-send "$PROGRAM_NAME autogen: DONE" \
       || notify-send "$PROGRAM_NAME autogen: FAILED"
   return $status
 }
-export -f run-autogen
+export -f run_autogen
 
-run-configure () {
+run_configure () {
   PROGRAM_NAME="$1"
   shift
-  make-title "configure"
+  make_title "configure"
   ./configure $@
   status=$?
   [ $status -eq 0 ] && notify-send "$PROGRAM_NAME configure: DONE" \
       || notify-send "$PROGRAM_NAME configure: FAILED"
   return $status
 }
-export -f run-configure
+export -f run_configure
 
-run-make () {
+run_make () {
   PROGRAM_NAME="$1"
   shift
-  make-title "make"
+  make_title "make"
   make -j"$(nproc)" $@
   status=$?
   [ $status -eq 0 ] && notify-send "$PROGRAM_NAME make: DONE" \
       || notify-send "$PROGRAM_NAME make: FAILED"
   return $status
 }
-export -f run-make
+export -f run_make
 
-run-make-install () {
+run_make_install () {
   PROGRAM_NAME="$1"
-  make-title "make install"
+  make_title "make install"
   sudo make install
   status=$?
   [ $status -eq 0 ] && notify-send "$PROGRAM_NAME make install: DONE" \
       || notify-send "$PROGRAM_NAME make install: FAILED"
   return $status
 }
-export -f run-make-install
+export -f run_make_install
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh

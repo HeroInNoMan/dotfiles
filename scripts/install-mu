@@ -10,8 +10,8 @@ if [[ $# -gt 0 ]]; then
   BRANCH=$1
 fi
 
-update-repo () {
-  make-title "git pull"
+update_repo () {
+  make_title "git pull"
   cd "$PROGRAM_REPO_DIR" || exit 1
   git fetch --all --tags --prune
   git checkout "$BRANCH"
@@ -25,8 +25,8 @@ update-repo () {
   fi
 }
 
-clone-repo () {
-  make-title "clone"
+clone_repo () {
+  make_title "clone"
   mkdir -p "$REPOS_DIR"
   cd "$REPOS_DIR" || exit 1
   git clone "$PROGRAM_REPO_URL"
@@ -35,7 +35,7 @@ clone-repo () {
 }
 
 autogen () {
-  make-title "autogen"
+  make_title "autogen"
   ./autogen.sh
   status=$?
   [ $status -eq 0 ] && notify-send "$PROGRAM_NAME autogen: DONE" \
@@ -44,7 +44,7 @@ autogen () {
 }
 
 configure () {
-  make-title "configure"
+  make_title "configure"
   ./configure
   status=$?
   [ $status -eq 0 ] && notify-send "$PROGRAM_NAME configure: DONE" \
@@ -53,7 +53,7 @@ configure () {
 }
 
 make () {
-  make-title "make"
+  make_title "make"
   # make  -j"$(nproc)"
   meson build && ninja -C build
   status=$?
@@ -62,8 +62,8 @@ make () {
   return $status
 }
 
-make-install () {
-  make-title "make install"
+make_install () {
+  make_title "make install"
   # sudo make install
   ninja -C build install
   status=$?
@@ -73,11 +73,11 @@ make-install () {
 }
 
 OLD_DIR=$(pwd)
-[[ -d "$PROGRAM_REPO_DIR" ]] && update-repo || clone-repo
+[[ -d "$PROGRAM_REPO_DIR" ]] && update_repo || clone_repo
 [ $? -eq 0 ] && autogen
 # [ $? -eq 0 ] && configure
 [ $? -eq 0 ] && make
-[ $? -eq 0 ] && make-install
+[ $? -eq 0 ] && make_install
 
 cd "$OLD_DIR" || return
 # EOF
