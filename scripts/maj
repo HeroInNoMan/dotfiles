@@ -11,7 +11,10 @@ if hash flatpak 2>/dev/null; then
 fi
 
 make-title "python packages update"
-if hash pip 2>/dev/null; then
+if hash pipx 2>/dev/null; then
+  pipx upgrade-all
+elif hash pip 2>/dev/null; then
+  echo "[Python] pipx is not installed, trying pip."
   if pip 2>/dev/null && $? == 0; then
     pip freeze --user | cut -d'=' -f1 | xargs -n1 pip install -U
   else
