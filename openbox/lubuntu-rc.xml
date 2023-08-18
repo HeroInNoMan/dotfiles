@@ -542,7 +542,7 @@
     <keybind key="W-a"><keybind key="b"><action name="Execute"><command>switch_kb.sh</command></action></keybind></keybind>
 
     <!-- Enable/disable touchpad -->
-    <keybind key="W-k"><action name="Execute"><command>trackpad.sh</command></action></keybind>
+    <keybind key="W-k"><action name="Execute"><command>hw.sh trackpad</command></action></keybind>
     <!-- Reload openbox configuration -->
     <keybind key="W-r">
       <action name="Execute"><command>openbox --reconfigure</command></action>
