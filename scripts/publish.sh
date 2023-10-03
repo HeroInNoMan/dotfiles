@@ -17,7 +17,11 @@ URL="$GRAB_URL/$GRAB_NAME"
 DEST_NAME="$GRAB_REMOTE_DIR/$GRAB_NAME"
 
 # copy file to server #########################################################
-scp "$SOURCE_FILE_NAME" "$DEST_NAME" || exit 1;
+# scp "$SOURCE_FILE_NAME" "$DEST_NAME" || exit 1;
+sftp $GRAB_REMOTE_FTP << EOF
+  put $SOURCE_FILE_NAME $GRAB_REMOTE_DIR
+  quit
+EOF
 
 # copy URL to clipboard #######################################################
 echo "$URL" | xclip -r
@@ -27,7 +31,7 @@ echo "$URL" | xclip -r -selection clipboard
 firefox -new-tab "$URL"
 
 # notify ######################################################################
-notify "Copied: $URL" --expire-time=2000
+notify-send "Copied: $URL" --expire-time=2000
 
 # clean-up ####################################################################
 echo $SOURCE_FILE_NAME
