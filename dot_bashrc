@@ -178,19 +178,6 @@ build_all () {
   cd "$FORMER_DIR" || exit
 }
 
-check_notification_service () {
-  if hash notify-send 2>/dev/null; then
-    PIDS=$(pgrep -c -f notification-daemon)
-    if [ ! $PIDS -eq 1 ]; then
-      echo "Restarting notification-daemon…"
-      /usr/lib/notification-daemon/notification-daemon&
-    fi
-  else
-    echo "No notification service available!"
-  fi
-}
-export -f check_notification_service
-
 make_title () {
   max_length=52
   char="*"
