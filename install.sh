@@ -31,6 +31,7 @@ EXTERNAL_REPOS=("https://gitlab.com/vahnrr/rofi-menus.git"
                 "https://github.com/ClydeDroid/rofi-bluetooth.git"
                 "https://github.com/miroslavvidovic/rofi-scripts.git"
                 "https://github.com/syl20bnr/spacemacs"
+                # "https://github.com/be5invis/Iosevka.git" # TODO clone with --depth 1
                 "https://github.com/plexus/chemacs2.git")
 
 PYTHON_PROGRAMS=$(cat "$DOT_FILES_DIR/python_programs")
