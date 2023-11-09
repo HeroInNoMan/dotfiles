@@ -10,13 +10,14 @@ if [[ ! $(hash rofimoji) ]]; then
   fi
 fi
 
-$(rofimoji \
-    --selector-args=" -theme ale-emoji.rasi " \
-    --files "${1:-emojis}" \
-    --action clipboard \
-    --skin-tone neutral \
-    --selector rofi \
-    --clipboarder xclip \
+$(rofimoji --files "${1:-emojis}" \
+# remplacé par un fichier de conf ~/.config/rofimoji.rc
+    # --selector-args=" -theme ale-emoji.rasi " \
+    # --action clipboard \
+    # --skin-tone neutral \
+    # --clipboarder xclip \
+    # --typer xdotool \
+    # --selector rofi \
   )
 
 caps_lock_status=$(xset -q | sed -n 's/^.*Caps Lock:\s*\(\S*\).*$/\1/p')
@@ -34,5 +35,7 @@ if [ $caps_lock_status == "on" ]; then
 else
   echo "Shift lock already off"
 fi
+
+xdotool type "$(xclip -o -selection clipboard)"
 
 # EOF
