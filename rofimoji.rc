@@ -1,0 +1,7 @@
+action = copy
+files = [emojis]
+skin-tone = neutral
+typer = xdotool
+clipboard = xclip
+selector-args = -theme ale-emoji.rasi
+

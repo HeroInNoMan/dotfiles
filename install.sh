@@ -167,6 +167,7 @@ install_config_files () {
   deploy "$DOT_FILES_DIR/screenlayout/"          "$ROOT_TARGET_DIR/.screenlayout"
   deploy "$DOT_FILES_DIR/irssi_config"           "$ROOT_TARGET_DIR/.irssi/config"
   deploy "$DOT_FILES_DIR/greenclip.toml"            "$ROOT_TARGET_DIR/.config/greenclip.toml"
+  deploy "$DOT_FILES_DIR/rofimoji.rc"               "$ROOT_TARGET_DIR/.config/rofimoji.rc"
   deploy "$DOT_FILES_DIR/openbox/lubuntu-rc.xml" "$TARGET_CONF_DIR/openbox/lxde-rc.xml"
   deploy "$DOT_FILES_DIR/openbox/lubuntu-rc.xml" "$TARGET_CONF_DIR/openbox/lxqt-rc.xml"
   deploy "$DOT_FILES_DIR/openbox/lubuntu-rc.xml" "$TARGET_CONF_DIR/openbox/rc.xml"
