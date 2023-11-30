@@ -525,6 +525,7 @@
       <keybind key="k"><action name="Execute"><command>xkill          </command></action></keybind>
       <keybind key="p"><action name="Execute"><command>pavucontrol    </command></action></keybind>
       <keybind key="c"><action name="Execute"><command>compton -b     </command></action></keybind>
+      <keybind key="W-j"><action name="Execute"><command>rofi-jitsi.sh</command></action></keybind>
       <keybind key="j">
         <keybind key="j"><action name="Execute"><command>jitsi            </command></action></keybind>
         <keybind key="k"><action name="Execute"><command>jitsi kill       </command></action></keybind>
