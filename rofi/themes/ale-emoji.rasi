@@ -6,9 +6,5 @@
     columns:  4;
     cycle:    true;
     font:     "mono 14";
-    location: center;
+    location: south;
   }
-
-listview {
-  scrollbar: false;
-}

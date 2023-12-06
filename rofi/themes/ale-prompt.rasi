@@ -11,7 +11,3 @@
 entry {
   blink: false;
 }
-
-listview {
-  scrollbar: false;
-}

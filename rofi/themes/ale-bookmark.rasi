@@ -1,0 +1,10 @@
+@import "ale-base.rasi"
+
+  * {
+    height:                 95%;
+    width:                  95%;
+    columns:                3;
+    cycle:                  true;
+    font:                   "mono 9";
+    location:               south;
+  }
