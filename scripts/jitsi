@@ -1,15 +1,30 @@
 #!/usr/bin/env bash
 
-# killall chrome
+# common init params ##########################################################
 [[ -e "$HOME/.localrc" ]] && source "$HOME/.localrc"
-[ $JITSI_PREFIX ] || JITSI_PREFIX="https://jitsi.org/"
-CLIP=$(parcellite -c 2> /dev/null | tr -d '\n')
-if [[ $# != 0 ]]; then
-  URL=$JITSI_PREFIX/$@
-elif [[ $CLIP == $JITSI_PREFIX/* ]]; then
-  URL=$CLIP
-else
-  URL=$JITSI_PREFIX/$@
+[ $JITSI_PREFIX ] || JITSI_PREFIX="https://jitsi.org"
+[ $JITSI_VISIO_LIST] || JITSI_VISIO_LIST="$HOME/.jitsi_visio_list"
+
+call_jitsi(){
+  room_name=$1
+  echo room: $room_name
+  echo room list: $JITSI_VISIO_LIST
+
+  echo "$room_name" >> "$JITSI_VISIO_LIST"
+  sort -u $JITSI_VISIO_LIST -o $JITSI_VISIO_LIST
+  /usr/bin/google-chrome-stable --new-window %U --app="$JITSI_PREFIX/$room_name"
+}
+
+# jitsi kill
+if [[ $# == 1  && $1 -eq "kill" ]]; then
+  $(pkill -f $JITSI_PREFIX)
+  exit 0
 fi
-/usr/bin/google-chrome-stable --new-window %U --app="$URL" &
-# flatpak run org.jitsi.jitsi-meet
+
+# jitsi with rofi
+if [[ $# == 1  && $1 -eq "rofi" ]]; then
+  rofi-jitsi.sh
+fi
+CLIP=$(greenclip print | head -1)
+call_jitsi ${CLIP#$JITSI_PREFIX/}
+exit 0
