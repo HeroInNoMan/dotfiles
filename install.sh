@@ -33,41 +33,9 @@ EXTERNAL_REPOS=("https://gitlab.com/vahnrr/rofi-menus.git"
                 "https://github.com/syl20bnr/spacemacs"
                 "https://github.com/plexus/chemacs2.git")
 
-PYTHON_PROGRAMS=(rofimoji)
+PYTHON_PROGRAMS=$(cat "$DOT_FILES_DIR/python_programs")
 
-EXTERNAL_PROGRAMS=(amixer
-                   angrysearch
-                   audacious
-                   blueman-manager
-                   compton
-                   emacsclient
-                   galculator
-                   lxlock
-                   lxpanelctl
-                   lxsession-default
-                   lxsession-logout
-                   lxtask
-                   lxterminal
-                   nautilus
-                   notify-send
-                   openbox
-                   pacmd
-                   pactl
-                   parcellite
-                   pavucontrol
-                   pcmanfm
-                   rofi
-                   scrot
-                   skippy-xd
-                   sleep
-                   smplayer
-                   synclient
-                   x-tile
-                   xbacklight
-                   xkill
-                   xrandr
-                   xscreensaver
-                   xscreensaver-command)
+EXTERNAL_PROGRAMS=$(cat "$DOT_FILES_DIR/external_programs")
 
 deploy () {
   # 1st param (mandatory) is the source file for which a symbolic link will be
@@ -186,10 +154,10 @@ install_config_files () {
 check_missing_programmes () {
   MISSING_NATIVE_PROGRAMS=()
   MISSING_PYTHON_PROGRAMS=()
-  for cmd in "${EXTERNAL_PROGRAMS[@]}"; do
+  for cmd in $EXTERNAL_PROGRAMS; do
     hash "$cmd" 2>/dev/null || { print_line >&2 "WARNING! $cmd is not installed."; MISSING_NATIVE_PROGRAMS+=("$cmd"); }
   done
-  for cmd in "${PYTHON_PROGRAMS[@]}"; do
+  for cmd in $PYTHON_PROGRAMS; do
     hash "$cmd" 2>/dev/null || { print_line >&2 "WARNING! $cmd is not installed."; MISSING_PYTHON_PROGRAMS+=("$cmd"); }
   done
 
