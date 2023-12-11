@@ -199,7 +199,7 @@ check_missing_programmes () {
       print_line "sudo apt install" "${MISSING_NATIVE_PROGRAMS[@]}"
     fi
     if [[ ${#MISSING_PYTHON_PROGRAMS[@]} -gt 0 ]]; then
-      print_line "pip install" "${MISSING_PYTHON_PROGRAMS[@]}"
+      print_line "pipx install" "${MISSING_PYTHON_PROGRAMS[@]}"
     fi
     print_line "to install missing programs."
   fi
