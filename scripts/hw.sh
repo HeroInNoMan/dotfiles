@@ -10,6 +10,8 @@ SOUND_UP_IMG="$HW_IMG_DIR/sound_up.png"
 SOUND_DOWN_IMG="$HW_IMG_DIR/sound_down.png"
 MUTE_IMG="$HW_IMG_DIR/sound_remove.png"
 UNMUTE_IMG="$HW_IMG_DIR/sound.png"
+MIC_MUTE_IMG="$HW_IMG_DIR/mic_mute.jpg"
+MIC_UNMUTE_IMG="$HW_IMG_DIR/mic_unmute.png"
 
 TRACKPAD_IMG="$HOME/.config/img/mouse_warning.png"
 
@@ -26,7 +28,7 @@ ACTIVE_SINK_ID=${ACTIVE_SINK_ID:-1}
 SOUND_CHANGE_STEP=5
 
 notify () {
-  notify-send "$1" --expire-time=200 --icon="$2" --urgency=NORMAL
+  notify-send "$1" --expire-time=500 --icon="$2" --urgency=LOW
 }
 
 light_down () {
@@ -68,22 +70,28 @@ sound_up () {
 }
 
 toggle_mike () {
-  echo "Not yet implemented!"
+  FORMER_MUTE_STATE=$(pacmd dump | grep -m 1 "set-source-mute.*" | cut -d ' ' -f3)
+
+  for source in $(pacmd dump | grep 'set-source-mute' | cut -d ' ' -f2) ; do
+    TARGET_MUTE_STATE=$([[ "$FORMER_MUTE_STATE" == 'no' ]] && echo 'yes' || echo 'no')
+    pactl set-source-mute "$source" "$TARGET_MUTE_STATE"
+  done
+
+  NOTIF_TEXT=$([[ $TARGET_MUTE_STATE == 'no' ]] && echo 'ON' || echo 'OFF')
+  NOTIF_IMG=$([[ $TARGET_MUTE_STATE == 'no' ]] && echo "$MIC_UNMUTE_IMG" || echo "$MIC_MUTE_IMG")
+  notify "$NOTIF_TEXT" "$NOTIF_IMG"
 }
 
 toggle_mute () {
+  FORMER_MUTE_STATE=$(pacmd dump | grep -m 1 "set-sink-mute.*" | cut -d ' ' -f3)
+
   for sink in $(pacmd dump | grep 'set-sink-mute' | cut -d ' ' -f2) ; do
-    SINK_MUTE_STATE=$(pacmd dump | grep 'set-sink-mute' | grep "$sink" | cut -d ' ' -f3)
-    echo $SINK_MUTE_STATE
-    # pactl set-sink-mute "$sink" "toggle"
+    TARGET_MUTE_STATE=$([[ "$FORMER_MUTE_STATE" == 'no' ]] && echo 'yes' || echo 'no')
+    pactl set-sink-mute "$sink" "$TARGET_MUTE_STATE"
   done
-  DEFAULT_SINK_NAME=$(pacmd dump | grep --max-count=1 --only-matching "alsa.*stereo")
-  ACTIVE_SINK_NAME=$(pactl list short sinks | grep -e 'RUNNING' | cut -f2)
-  ACTIVE_SINK_NAME=${ACTIVE_SINK_NAME:-$DEFAULT_SINK_NAME}
-  MUTE_STATE=$(pacmd dump | grep -m 1 "set-sink-mute.*$ACTIVE_SINK_NAME" | cut -d ' ' -f3)
-  echo "mute? $MUTE_STATE"
-  NOTIF_TEXT=$([[ $MUTE_STATE == 'no' ]] && echo 'ON' || echo 'OFF')
-  NOTIF_IMG=$([[ $MUTE_STATE == 'no' ]] && echo "$UNMUTE_IMG" || echo "$MUTE_IMG")
+
+  NOTIF_TEXT=$([[ $TARGET_MUTE_STATE == 'no' ]] && echo 'ON' || echo 'OFF')
+  NOTIF_IMG=$([[ $TARGET_MUTE_STATE == 'no' ]] && echo "$UNMUTE_IMG" || echo "$MUTE_IMG")
   notify "$NOTIF_TEXT" "$NOTIF_IMG"
 }
 
@@ -229,6 +237,7 @@ if [ $# == 1 ]; then
     "sound-down") sound_down ;;
     "sound-up") sound_up ;;
     "sound-toggle") toggle_mute ;;
+    "mic-toggle") toggle_mike ;;
     "sound-cycle") cycle_audio_output ;;
     "trackpad") toggle_trackpad ;;
     *) usage ;;

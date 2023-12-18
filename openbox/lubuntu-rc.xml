@@ -505,6 +505,7 @@
     </keybind>
     <keybind key="XF86AudioMute">       <action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
     <keybind key="W-m">                 <action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
+    <!-- <keybind key="W-????">                 <action name="Execute"><command>hw.sh mic-toggle</command></action></keybind> -->
     <keybind key="W-agrave">            <action name="Execute"><command>hw.sh sound-cycle </command></action></keybind>
     <keybind key="W-t">                 <action name="Execute"><command>hw.sh light-down  </command></action></keybind>
     <keybind key="W-v">                 <action name="Execute"><command>hw.sh light-up    </command></action></keybind>
