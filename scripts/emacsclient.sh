@@ -5,7 +5,6 @@ export QT_IM_MODULE=xim
 
 DEFAULT_PROFILE="gnu" # doom | spacemacs | centaur | nano
 PROFILE_FILE="$HOME/.emacs-profile"
-EXECUTE='-e "(dash-or-scratch)"'
 
 if [[ $# -gt 0 ]]; then
   PROFILE=$1
@@ -18,5 +17,5 @@ else
   echo "using $PROFILE by default"
 fi
 
-emacsclient -c -a '' $EXECUTE -s $PROFILE
+emacsclient -c -a '' -e "(dash-or-scratch)" -s $PROFILE
 # EOF
