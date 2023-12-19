@@ -514,18 +514,19 @@
 
     <!-- launch (Open) applications -->
     <keybind key="W-o">
-      <keybind key="W-o"><action name="Execute"><command>web-search.sh</command></action></keybind>
-      <keybind key="o"><action name="Execute"><command>web-search.sh</command></action></keybind>
-      <keybind key="g"><action name="Execute"><command>github-repos.sh</command></action></keybind>
-      <keybind key="b"><action name="Execute"><command>blueman-manager</command></action></keybind>
-      <keybind key="e"><action name="Execute"><command>emacsclient -c </command></action></keybind>
-      <keybind key="v"><action name="Execute"><command>smplayer       </command></action></keybind>
-      <keybind key="t"><action name="Execute"><command>smtube         </command></action></keybind>
-      <keybind key="y"><action name="Execute"><command>youtube        </command></action></keybind>
-      <keybind key="k"><action name="Execute"><command>xkill          </command></action></keybind>
-      <keybind key="p"><action name="Execute"><command>pavucontrol    </command></action></keybind>
-      <keybind key="c"><action name="Execute"><command>compton -b     </command></action></keybind>
-      <keybind key="W-j"><action name="Execute"><command>rofi-jitsi.sh</command></action></keybind>
+      <keybind key="W-o"><action name="Execute"><command>web-search.sh    </command></action></keybind>
+      <keybind key="o"><action name="Execute"><command>web-search.sh      </command></action></keybind>
+      <keybind key="g"><action name="Execute"><command>github-repos.sh    </command></action></keybind>
+      <keybind key="b"><action name="Execute"><command>blueman-manager    </command></action></keybind>
+      <keybind key="e"><action name="Execute"><command>emacsclient -c     </command></action></keybind>
+      <keybind key="v"><action name="Execute"><command>smplayer           </command></action></keybind>
+      <keybind key="t"><action name="Execute"><command>smtube             </command></action></keybind>
+      <keybind key="y"><action name="Execute"><command>youtube            </command></action></keybind>
+      <keybind key="k"><action name="Execute"><command>xkill              </command></action></keybind>
+      <keybind key="p"><action name="Execute"><command>pavucontrol        </command></action></keybind>
+      <keybind key="c"><action name="Execute"><command>compton -b         </command></action></keybind>
+      <keybind key="W-b"><action name="Execute"><command>rofi-bookmarks.sh</command></action></keybind>
+      <keybind key="W-j"><action name="Execute"><command>rofi-jitsi.sh    </command></action></keybind>
       <keybind key="j">
         <keybind key="j"><action name="Execute"><command>jitsi            </command></action></keybind>
         <keybind key="k"><action name="Execute"><command>jitsi kill       </command></action></keybind>
