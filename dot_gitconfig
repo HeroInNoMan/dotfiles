@@ -66,6 +66,7 @@
 	autostash = true
 [push]
 	default = current
+	autoSetupRemote = true
 [rerere]
 	enabled = false
 [user]
