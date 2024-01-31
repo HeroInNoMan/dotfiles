@@ -71,6 +71,11 @@ export EDITOR="emacsclient -t"                  # $EDITOR opens in terminal
 export VISUAL="emacsclient -c -a \"\""          # $VISUAL opens in GUI mode
 export MU_PLAY_PROGRAM="evince"                 # program to open attachments in mu4e
 
+# alternative emacs configurations
+# export DOOMDIR="$HOME/.doom.d"
+# export EMACSDIR="$HOME/repos/doom-emacs/"
+
+
 # add argument to PATH only if not already present
 add_to_path() {
   if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
