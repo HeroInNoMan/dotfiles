@@ -6,6 +6,13 @@
 # script utilisé dans ~/.config/openbox/lubuntu-rc.xml pour gérer le rétro-éclairage.
 
 HW_IMG_DIR="$HOME/.config/img"
+SOUND_UP_IMG="$HW_IMG_DIR/sound_up.png"
+SOUND_DOWN_IMG="$HW_IMG_DIR/sound_down.png"
+MUTE_IMG="$HW_IMG_DIR/sound_remove.png"
+UNMUTE_IMG="$HW_IMG_DIR/sound.png"
+
+TRACKPAD_IMG="$HOME/.config/img/mouse_warning.png"
+
 
 # default brightness values ###################################################
 BRIGHTNESS_IMG="$HW_IMG_DIR/brightness.png"
@@ -49,7 +56,6 @@ sound_down () {
     pactl set-sink-volume $sink -${SOUND_CHANGE_STEP}%
   done
   VOLUME_STATE=$(pacmd dump-volumes | grep -i "^Sink $ACTIVE_SINK_ID" | cut -d '/' -f2)
-  SOUND_DOWN_IMG="$HW_IMG_DIR/sound_down.png"
   notify "🔉 ${VOLUME_STATE}" "$SOUND_DOWN_IMG"
 }
 
@@ -58,25 +64,25 @@ sound_up () {
     pactl set-sink-volume $sink +${SOUND_CHANGE_STEP}%
   done
   VOLUME_STATE=$(pacmd dump-volumes | grep -i "^Sink $ACTIVE_SINK_ID" | cut -d '/' -f2)
-  SOUND_UP_IMG="$HW_IMG_DIR/sound_up.png"
   notify "🔊 ${VOLUME_STATE}" "$SOUND_UP_IMG"
 }
 
 toggle_mike () {
-  echo "Not implemented yet!"
+  echo "Not yet implemented!"
 }
 
 toggle_mute () {
   for sink in $(pacmd dump | grep 'set-sink-mute' | cut -d ' ' -f2) ; do
-    pactl set-sink-mute "$sink" "toggle"
+    SINK_MUTE_STATE=$(pacmd dump | grep 'set-sink-mute' | grep "$sink" | cut -d ' ' -f3)
+    echo $SINK_MUTE_STATE
+    # pactl set-sink-mute "$sink" "toggle"
   done
   DEFAULT_SINK_NAME=$(pacmd dump | grep --max-count=1 --only-matching "alsa.*stereo")
   ACTIVE_SINK_NAME=$(pactl list short sinks | grep -e 'RUNNING' | cut -f2)
   ACTIVE_SINK_NAME=${ACTIVE_SINK_NAME:-$DEFAULT_SINK_NAME}
   MUTE_STATE=$(pacmd dump | grep -m 1 "set-sink-mute.*$ACTIVE_SINK_NAME" | cut -d ' ' -f3)
+  echo "mute? $MUTE_STATE"
   NOTIF_TEXT=$([[ $MUTE_STATE == 'no' ]] && echo 'ON' || echo 'OFF')
-  MUTE_IMG="$HW_IMG_DIR/sound_remove.png"
-  UNMUTE_IMG="$HW_IMG_DIR/sound.png"
   NOTIF_IMG=$([[ $MUTE_STATE == 'no' ]] && echo "$UNMUTE_IMG" || echo "$MUTE_IMG")
   notify "$NOTIF_TEXT" "$NOTIF_IMG"
 }
@@ -102,7 +108,6 @@ cycle_audio_output () {
 }
 
 toggle_trackpad () {
-  TRACKPAD_IMG="$HOME/.config/img/mouse_warning.png"
 
   MAX_TAP_TIME=$(synclient -l | grep --regexp='MaxTapTime' | cut --delimiter='=' --fields=2 | tr --delete '[:blank:]')
 
