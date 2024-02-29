@@ -4,7 +4,16 @@ sudo true
 if hash snap 2>/dev/null; then
   make_title "snap refresh"
   sudo snap refresh
+
+  #Removes old revisions of snaps
+  snap list --all \
+    | grep "disabled" \
+    | awk '{print $1, $3}' \
+    | while read snapname revision; do
+    sudo snap remove "$snapname" --revision="$revision"
+  done
 fi
+
 if hash flatpak 2>/dev/null; then
   make_title "flatpak update"
   sudo flatpak update
