@@ -16,12 +16,12 @@ alias lla='ls -lA'
 
 # USE EXA IF AVAILABLE ########################################################
 if hash exa 2>/dev/null;then
-	alias ls='exa -h --git'
-	alias la='ls -a'
-	alias ll='ls -l'
-	alias lla='ls -al'
-	alias lt='ls -lTL3'
-	alias lta='ls -alTL3'
+  alias ls='exa -h --git'
+  alias la='ls -a'
+  alias ll='ls -l'
+  alias lla='ls -al'
+  alias lt='ls -lTL3'
+  alias lta='ls -alTL3'
 fi
 
 # USE BAT INSTEAD OF CAT IF AVAILABLE #########################################
@@ -33,7 +33,7 @@ fi
 
 # USE FD IF AVAILABLE #########################################################
 if hash fdfind 2>/dev/null;then
-	alias fd='fdfind'
+  alias fd='fdfind'
 fi
 
 # CONVENIENCE ALIASES #########################################################
@@ -51,11 +51,23 @@ alias bepo1.1='setxkbmap fr bepo_afnor -option'
 alias beponocaps1.1='setxkbmap fr bepo_afnor -option ctrl:nocaps'
 
 # EMACS #######################################################################
-alias z='zile'
-alias e="emacsclient -nw -a ''"
-alias ec="emacsclient -c -a ''"
-alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit"
-alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
+if hash zile 2>/dev/null;then
+  alias z='zile'
+fi
+
+if [ -f ~/.emacs-profile ]; then
+  SERVER_NAME=$(/usr/bin/cat ~/.emacs-profile)
+  alias e="emacsclient -nw -a '' -s $SERVER_NAME"
+  alias ec="emacsclient -c -a '' -s $SERVER_NAME"
+  alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs -s $SERVER_NAME\" sudoedit"
+  alias EC="SUDO_EDITOR=\"emacsclient -a emacs -s $SERVER_NAME\" sudoedit"
+else
+  alias e="emacsclient -nw -a ''"
+  alias ec="emacsclient -c -a ''"
+  alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit"
+  alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
+fi
+
 alias ue='install-emacs'
 alias doom='~/repos/doom-emacs/bin/doom'
 alias gnu-emacs='emacs --with-profile gnu'
@@ -81,7 +93,7 @@ alias glfa='git lfa'
 alias glm='git lg --max-count=10'
 alias glma='git lga --max-count=10'
 alias gm='git merge'
-# alias go='git checkout' # conflicts with golang 
+# alias go='git checkout' # conflicts with golang
 alias gp='git pull'
 alias gpp='git push'
 alias gr='git rebase'
