@@ -68,7 +68,7 @@
 	default = current
 	autoSetupRemote = true
 [rerere]
-	enabled = false
+	enabled = true
 [user]
 	name = Arthur Léothaud
 	email = arthur@leothaud.eu
