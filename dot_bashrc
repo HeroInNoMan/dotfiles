@@ -353,8 +353,8 @@ else
   PS1="${PS1}$WHITE→$NC " # '→' prompt character
 fi
 
-#docker socket enable for current user
-# sudo /usr/bin/chown $(whoami) /var/run/docker.sock
+# docker socket enable for current user
+[ -s "/var/run/docker.sock" ] && sudo /usr/bin/chown $(whoami) /var/run/docker.sock
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
