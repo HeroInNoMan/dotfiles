@@ -13,7 +13,7 @@ UNMUTE_IMG="$HW_IMG_DIR/sound.png"
 MIC_MUTE_IMG="$HW_IMG_DIR/mic_mute.jpg"
 MIC_UNMUTE_IMG="$HW_IMG_DIR/mic_unmute.png"
 
-TRACKPAD_IMG="$HOME/.config/img/mouse_warning.png"
+TRACKPAD_IMG="$HOME/.config/img/trackpad.png"
 
 
 # default brightness values ###################################################
@@ -128,7 +128,7 @@ toggle_trackpad () {
   synclient BottomEdge=4636
   synclient FingerLow=25
   synclient FingerHigh=30
-  synclient MaxTapTime=100
+  # synclient MaxTapTime=100
   synclient MaxTapMove=218
   synclient MaxDoubleTapTime=180
   synclient SingleTapTimeout=180
@@ -143,9 +143,9 @@ toggle_trackpad () {
   synclient CornerCoasting=0
   synclient VertTwoFingerScroll=1
   synclient HorizTwoFingerScroll=1
-  synclient MinSpeed=0.1
-  synclient MaxSpeed=1.75
-  synclient AccelFactor=0.05
+  synclient MinSpeed=2
+  synclient MaxSpeed=5
+  synclient AccelFactor=0.2
   synclient TouchpadOff=0
   synclient LockedDrags=0
   synclient LockedDragTimeout=5000
@@ -159,11 +159,11 @@ toggle_trackpad () {
   synclient ClickFinger1=1
   synclient ClickFinger2=3
   synclient ClickFinger3=0
-  synclient CircularScrolling=on
+  synclient CircularScrolling=0
   synclient CircScrollDelta=0.1
   synclient CircScrollTrigger=0
   synclient CircularPad=0
-  synclient PalmDetect=1
+  synclient PalmDetect=0
   synclient PalmMinWidth=8
   synclient PalmMinZ=100
   synclient CoastingSpeed=20
@@ -198,16 +198,17 @@ toggle_trackpad () {
       echo "starting syndaemon..."
       syndaemon -i 0.5 -t -K -R &
     fi
-
-  else
-
     [ -z "$MAX_TAP_TIME" ] && exit 1
 
     if [ "$MAX_TAP_TIME" -gt 0 ]; then
+      echo ">0"
       synclient MaxTapTime=0
       notify "OFF" "$TRACKPAD_IMG"
     else
+      echo "=0"
       synclient MaxTapTime=100
+      TOUCHPAD_ID=$(xinput list | grep -i "Synaptics" | cut -d= -f2 | cut -f1)
+      xinput set-prop $TOUCHPAD_ID "Synaptics Tap Action" 1, 3, 2, 4, 5
       notify "ON" "$TRACKPAD_IMG"
     fi
   fi
