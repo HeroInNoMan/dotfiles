@@ -10,6 +10,9 @@ include "/usr/share/X11/locale/en_US.UTF-8/Compose"
 <Multi_key> <colon> <parenright> : "☺" U263A   # Compose : )
 <Multi_key> <b> <t> <w> : "by the way" # Compose b t w
 <Multi_key> <less> <p> : "<p></p>" # Compose < p
+<Multi_key> <minus> <plus> <greater> 	: "⟶" U27f6 # LONG RIGHTWARDS ARROW
+<Multi_key> <less> <plus> <minus> 	: "⟵" U27f5 # LONG LEFTWARDS ARROW
+<Multi_key> <less> <plus> <greater> 	: "⟷" U27f7 # LONG LEFT RIGHT ARROW
 
 ###############################################################################
 #                                  bépo_afnor                                 #
