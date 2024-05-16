@@ -41,7 +41,7 @@
 [core]
 	filemode = false
 	pager = less -r
-	editor = emacsclient -nw -t
+	editor = emacsclient -nw -t -s $(cat "$HOME/.emacs-profile" | xargs)
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol[credential]
 [credential]
 	helper = store
@@ -52,7 +52,7 @@
 	cmd = ediff.sh $LOCAL $REMOTE $MERGED
 	prompt = false
 [gui]
-	editor = emacsclient -t
+	editor = emacsclient -t -s $(cat "$HOME/.emacs-profile" | xargs)
 [merge]
 	tool = ediff
 [mergetool "ediff"]
