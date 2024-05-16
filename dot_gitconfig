@@ -43,6 +43,7 @@
 	pager = less -r
 	editor = emacsclient -nw -t -s $(cat "$HOME/.emacs-profile" | xargs)
 	whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol[credential]
+	attributesfile = ~/.gitattributes
 [credential]
 	helper = store
 [diff]
