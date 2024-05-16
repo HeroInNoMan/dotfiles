@@ -3,7 +3,7 @@
 WORKSPACE="$1"
 [[ $WORKSPACE ]] || WORKSPACE="$HOME/outils/eclipse/workspaces/enercoop-coopener-v5"
 # $HOME/outils/eclipse/workspaces/xxx
-export ECLIPSE_BINARY="$HOME/outils/eclipse/jee-2023-03/eclipse/eclipse"
+export ECLIPSE_BINARY="$HOME/outils/eclipse/jee-latest-released/eclipse/eclipse"
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus
 
