@@ -23,13 +23,31 @@ alias maj 'sudo apt update; sudo apt -y upgrade; sudo apt -y dist-upgrade; sudo 
 alias bepo 'setxkbmap fr bepo -option; xmodmap ~/.Xmodmap'
 alias beponocaps 'setxkbmap fr bepo -option ctrl:nocaps; xmodmap ~/.Xmodmap'
 
-# EMACS
-#######################################################
-alias emacs 'emacs -nw'
-alias e 'emacsclient -nw'
-alias ec 'emacsclient -c'
-# alias E 'SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit'
-# alias EC 'SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit'
+# EMACS #######################################################################
+if [ hash zile 2>/dev/null ]
+  alias z 'zile'
+end
+
+if [ -f ~/.emacs-profile ]
+  set SERVER_NAME '(/usr/bin/cat ~/.emacs-profile)'
+  alias e "emacsclient -nw -a '' -s $SERVER_NAME"
+  alias ec "emacsclient -c -a '' -s $SERVER_NAME"
+  alias E "SUDO_EDITOR=\"emacsclient -nw -a emacs -s $SERVER_NAME\" sudoedit"
+  alias EC "SUDO_EDITOR=\"emacsclient -a emacs -s $SERVER_NAME\" sudoedit"
+else
+  alias e "emacsclient -nw -a ''"
+  alias ec "emacsclient -c -a ''"
+  alias E "SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit"
+  alias EC "SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
+end
+
+alias ue 'install-emacs'
+alias doom '~/repos/doom-emacs/bin/doom'
+alias gnu-emacs 'emacs --with-profile gnu'
+alias doom-emacs 'emacs --with-profile doom'
+alias spacemacs 'emacs --with-profile spacemacs'
+alias centaur-emacs 'emacs --with-profile centaur'
+alias nano-emacs 'emacs --with-profile nano'
 
 # GIT
 #######################################################
