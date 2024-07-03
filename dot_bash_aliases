@@ -55,18 +55,9 @@ if hash zile 2>/dev/null;then
   alias z='zile'
 fi
 
-if [ -f ~/.emacs-profile ]; then
-  SERVER_NAME=$(/usr/bin/cat ~/.emacs-profile)
-  alias e="emacsclient -nw -a '' -s $SERVER_NAME"
-  alias ec="emacsclient -c -a '' -s $SERVER_NAME"
-  alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs -s $SERVER_NAME\" sudoedit"
-  alias EC="SUDO_EDITOR=\"emacsclient -a emacs -s $SERVER_NAME\" sudoedit"
-else
-  alias e="emacsclient -nw -a ''"
-  alias ec="emacsclient -c -a ''"
-  alias E="SUDO_EDITOR=\"emacsclient -nw -a emacs\" sudoedit"
-  alias EC="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
-fi
+alias e=$EDITOR
+alias v=$VISUAL
+alias se='sudoedit'
 
 alias ue='install-emacs'
 alias doom='~/repos/doom-emacs/bin/doom'
