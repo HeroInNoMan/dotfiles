@@ -50,14 +50,15 @@ alias beponocaps='setxkbmap fr bepo_afnor -option ctrl:nocaps'
 alias bepo1.0='setxkbmap fr bepo -option'
 alias beponocaps1.0='setxkbmap fr bepo -option ctrl:nocaps'
 
+# EDITOR ######################################################################
+alias e=$EDITOR
+alias v=$VISUAL
+alias se='sudoedit'
+
 # EMACS #######################################################################
 if hash zile 2>/dev/null;then
   alias z='zile'
 fi
-
-alias e=$EDITOR
-alias v=$VISUAL
-alias se='sudoedit'
 
 alias ue='install-emacs'
 alias doom='~/repos/doom-emacs/bin/doom'
