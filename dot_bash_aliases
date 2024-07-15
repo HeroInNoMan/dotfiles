@@ -45,10 +45,10 @@ alias sr='surfraw -browser=w3m'
 alias install='sudo aptitude install'
 alias fucking='sudo'
 alias grep='grep --color'
-alias bepo='setxkbmap fr bepo -option'
-alias beponocaps='setxkbmap fr bepo -option ctrl:nocaps'
-alias bepo1.1='setxkbmap fr bepo_afnor -option'
-alias beponocaps1.1='setxkbmap fr bepo_afnor -option ctrl:nocaps'
+alias bepo='setxkbmap fr bepo_afnor -option'
+alias beponocaps='setxkbmap fr bepo_afnor -option ctrl:nocaps'
+alias bepo1.0='setxkbmap fr bepo -option'
+alias beponocaps1.0='setxkbmap fr bepo -option ctrl:nocaps'
 
 # EMACS #######################################################################
 if hash zile 2>/dev/null;then
