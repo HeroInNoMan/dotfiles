@@ -301,7 +301,6 @@ export -f run_make_install
 
 if [[ "$TERM" != 'dumb' ]] && hash starship 2>/dev/null; then
 
-  # trying out starship
   eval "$(starship init bash)"
   export STARSHIP_CONFIG=$HOME/.starship.toml
 
