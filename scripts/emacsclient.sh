@@ -20,9 +20,9 @@ else
   echo "using $PROFILE profile (by default)"
 fi
 if [[ $# -gt 0 ]]; then
-  EMACS_COMMAND=$@
+  ELISP_COMMAND=$@
 else
-  EMACS_COMMAND="(dash-or-scratch)"
+  ELISP_COMMAND="(dash-or-scratch)"
 fi
-emacsclient -c -a '' -s "$PROFILE" -e "$EMACS_COMMAND"
+emacsclient -c -a '' -s "$PROFILE" -e "$ELISP_COMMAND"
 # EOF

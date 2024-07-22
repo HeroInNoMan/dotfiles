@@ -18,6 +18,19 @@ fi
 
 [ $? -eq 0 ] && run_autogen "$PROGRAM_NAME"
 [ $? -eq 0 ] && run_configure "$PROGRAM_NAME" "--with-rsvg " "--with-x-toolkit=no " "--with-native-compilation " "--with-json "
+
+    # configure --with-native-compilation=aot\
+    #              --with-tree-sitter\
+    #              --with-gif\
+    #              --with-png\
+    #              --with-jpeg\
+    #              --with-rsvg\
+    #              --with-tiff\
+    #              --with-imagemagick\
+    #              --with-x-toolkit=lucid\
+    #              --with-json\
+    #              --with-mailutils
+
 [ $? -eq 0 ] && run_make "$PROGRAM_NAME"
 [ $? -eq 0 ] && run_make_install "$PROGRAM_NAME"
 
