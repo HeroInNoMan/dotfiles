@@ -58,15 +58,17 @@ alias se='sudoedit'
 # EMACS #######################################################################
 if hash zile 2>/dev/null;then
   alias z='zile'
+elif hash mg 2>/dev/null;then
+  alias z='mg'
 fi
 
 alias ue='install-emacs'
 alias doom='~/repos/doom-emacs/bin/doom'
-alias gnu-emacs='emacs --with-profile gnu'
-alias doom-emacs='emacs --with-profile doom'
-alias spacemacs='emacs --with-profile spacemacs'
+alias     gnu-emacs='emacs --with-profile gnu'
+alias     spacemacs='emacs --with-profile spacemacs'
+alias    doom-emacs='emacs --with-profile doom'
+alias    nano-emacs='emacs --with-profile nano'
 alias centaur-emacs='emacs --with-profile centaur'
-alias nano-emacs='emacs --with-profile nano'
 
 # GIT #########################################################################
 alias co='git checkout'
@@ -117,3 +119,4 @@ alias pip="pip3"
 alias 8='use_java_8'
 alias 17='use_java_17'
 alias 21='use_java_21'
+alias 22='use_java_22'
