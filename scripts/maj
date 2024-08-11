@@ -6,9 +6,8 @@ if hash snap 2>/dev/null; then
   sudo snap refresh
 
   #Removes old revisions of snaps
-  snap list --all \
-    | grep "disabled" \
-    | awk '{print $1, $3}' \
+  LANG=en_US.UTF-8 snap list --all \
+    | awk '/disabled/{print $1, $3}' \
     | while read snapname revision; do
     sudo snap remove "$snapname" --revision="$revision"
   done
@@ -16,6 +15,8 @@ fi
 
 if hash flatpak 2>/dev/null; then
   make_title "flatpak update"
+  flatpak uninstall --unused
+  # sudo rm -rfv /var/tmp/flatpak-cache-*
   sudo flatpak update
 fi
 
@@ -45,5 +46,9 @@ fi
 if hash apt 2>/dev/null; then
   sudo apt autoremove -y
 fi
+
+make_title "disk usage"
+df -ht ext4
+
 notify-send "Upgrade complete!"
 # EOF
