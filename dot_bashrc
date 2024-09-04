@@ -44,6 +44,11 @@ export EDITOR="emacsclient -t -a '' $SERVER_OPTION" # $EDITOR opens in terminal
 export SUDO_EDITOR=$VISUAL                          # $SUDO_EDITOR opens in terminal
 export MU_PLAY_PROGRAM="evince"                     # program to open attachments in mu4e
 
+macsman ()
+{
+  $EDITOR -e "(let ((Man-notify-method 'bully)) (man \"$1\"))";
+}
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 

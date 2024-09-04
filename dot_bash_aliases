@@ -62,6 +62,7 @@ elif hash mg 2>/dev/null;then
   alias z='mg'
 fi
 
+alias man=macsman
 alias ue='install-emacs'
 alias doom='~/repos/doom-emacs/bin/doom'
 alias     gnu-emacs='emacs --with-profile gnu'
