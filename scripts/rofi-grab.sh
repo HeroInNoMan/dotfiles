@@ -13,7 +13,7 @@ window_publish="🗔 window → publish"
 options="$screen\n$screen_publish\n$area\n$area_publish\n$window\n$window_publish"
 
 
-chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 3 -p "capture")"
+chosen="$(echo -e "$options" | $rofi_command -dmenu -selected-row 2 -p "capture")"
 case $chosen in
   $screen)
     sleep 1; scrot
