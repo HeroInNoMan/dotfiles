@@ -142,6 +142,10 @@ use_java_22 () {
   [[ -n $SDKMAN_DIR && -n $JAVA_22_VERSION ]] && sdk use java $JAVA_22_VERSION || export JAVA_HOME=$JAVA_22
 }
 
+use_java_23 () {
+  [[ -n $SDKMAN_DIR && -n $JAVA_23_VERSION ]] && sdk use java $JAVA_23_VERSION || export JAVA_HOME=$JAVA_23
+}
+
 maven_debug () {
   mvn $@ -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
 }
