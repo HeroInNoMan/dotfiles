@@ -250,6 +250,14 @@
     <!-- MORE TILING AND WINDOW MANAGEMENT, WITH PREFIX KEY -->
     <keybind key="W-b">
 
+      <!-- Toggle decoration -->
+      <keybind key="a">
+        <action name="If"><undecorated>yes</undecorated>
+          <then><action name="Decorate"/></then>
+          <else><action name="Undecorate"/></else>
+        </action>
+      </keybind>
+
       <!-- Vertical tiling -->
       <keybind key="b">
         <action name="UnmaximizeFull"/>
