@@ -847,5 +847,16 @@
          <maximized>true</maximized>
          </application>
     -->
+
+    <!-- Option to  undecorate emacs windows when launched-->
+    <application type="normal" name="*emacs*">
+      <decor>no</decor>
+    </application>
+
+    <!-- Option to  undecorate emacs windows when launched-->
+    <application type="normal" name="*terminal*">
+      <decor>no</decor>
+    </application>
+
   </applications>
 </openbox_config>
