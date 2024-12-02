@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[ $# == 1 ]]; then
+  INIT_PROMPT=$1
+fi
+
 # common init params ##########################################################
 [[ -e "$HOME/.localrc" ]] && source "$HOME/.localrc"
 [ $JITSI_PREFIX ] || JITSI_PREFIX="https://jitsi.org"
@@ -10,14 +14,22 @@ if [ ! -e $JITSI_VISIO_LIST ]; then
 fi
 
 # create a list for rofi to consume ###########################################
-gen_list(){
+gen_list() {
   while read -r line; do
     echo -e "$line"
   done <"$JITSI_VISIO_LIST"
 }
 
+open() {
+  xdg-open $1 &
+}
+
+open_private() {
+  firefox -private-window $1 &
+}
+
 main() {
-  visio=$( (gen_list) | rofi -i -theme ale-run.rasi -dmenu -p "Visio > " | xargs)
+  visio=$( (gen_list) | rofi -i -theme ale-run.rasi -dmenu -p "Visio > $INIT_PROMPT" | xargs)
   while read -r line; do
     if [[ $line == $visio || -z $(grep "$visio" "$JITSI_VISIO_LIST") ]]; then
       echo "$visio" >> $JITSI_VISIO_LIST
