@@ -247,6 +247,34 @@
       </action>
     </keybind>
 
+    <!-- MORE TILING AND WINDOW MANAGEMENT, WITHOUT PREFIX KEY -->
+    <keybind key="W-S-n"><action name="SendToDesktop"><to>right</to></action></keybind> <!-- Send window to next workspace -->
+    <keybind key="W-S-p"><action name="SendToDesktop"><to>left</to></action></keybind> <!-- Send window to previous workspace -->
+
+    <keybind key="W-C-n"><action name="MoveResizeTo"><monitor>next</monitor></action></keybind> <!-- Send window to next monitor -->
+    <keybind key="W-C-p"><action name="MoveResizeTo"><monitor>prev</monitor></action></keybind> <!-- Send window to previous monitor -->
+
+    <!-- Send window to another desktop -->
+    <keybind key="W-S-1"><action name="SendToDesktop"><to>1</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 1 -->
+    <keybind key="W-S-2"><action name="SendToDesktop"><to>2</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 2 -->
+    <keybind key="W-S-3"><action name="SendToDesktop"><to>3</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 3 -->
+    <keybind key="W-S-4"><action name="SendToDesktop"><to>4</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 4 -->
+    <keybind key="W-S-5"><action name="SendToDesktop"><to>5</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 5 -->
+    <keybind key="W-S-6"><action name="SendToDesktop"><to>6</to><wrap>no</wrap></action></keybind> <!-- send window to desktop 6 -->
+
+    <!-- Move window to edge/corner and resize to a fraction of the screen display -->
+    <keybind key="W-C-v"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x> 0</x><y> 0</y><height> 50%</height><width> 50%</width></action></keybind> <!-- ⌜ -->
+    <keybind key="W-C-l"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y> 0</y><height> 50%</height><width> 50%</width></action></keybind> <!-- ⌝ -->
+    <keybind key="W-C-q"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x> 0</x><y>-0</y><height> 50%</height><width> 50%</width></action></keybind> <!-- ⌞ -->
+    <keybind key="W-C-h"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y>-0</y><height> 50%</height><width> 50%</width></action></keybind> <!-- ⌟ -->
+    <keybind key="W-C-t"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x> 0</x><y> 0</y><height>100%</height><width> 50%</width></action></keybind> <!-- [ -->
+    <keybind key="W-C-r"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x>-0</x><y> 0</y><height>100%</height><width> 50%</width></action></keybind> <!-- ] -->
+    <keybind key="W-C-d"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x> 0</x><y> 0</y><height> 50%</height><width>100%</width></action></keybind> <!-- ⎴  -->
+    <keybind key="W-C-g"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x> 0</x><y>-0</y><height> 50%</height><width>100%</width></action></keybind> <!-- ⎵  -->
+    <keybind key="W-C-s"><action name="UnmaximizeFull"/><action name="MoveResizeTo"><x> 0</x><y> 0</y><height>100%</height><width>100%</width></action></keybind> <!-- □ -->
+    <keybind key="W-C-f"><action name="ToggleFullscreen"/></keybind> <!-- full screen -->
+    <keybind key="W-C-i"><action name="Iconify"/></keybind> <!-- Iconify -->
+
     <!-- MORE TILING AND WINDOW MANAGEMENT, WITH PREFIX KEY -->
     <keybind key="W-b">
 
@@ -480,6 +508,7 @@
     <keybind key="XF86WWW">     <action name="Execute"><command>lxterminal</command></action></keybind>
     <keybind key="XF86Terminal"><action name="Execute"><command>lxterminal</command></action></keybind>
     <keybind key="C-A-T">       <action name="Execute"><command>lxterminal</command></action></keybind>
+    <keybind key="W-Return">       <action name="Execute"><command>lxterminal</command></action></keybind>
     <!-- <keybind key="F1"><action name="Execute"><command>lxterminal</command></action></keybind> -->
 
     <!-- Launch emacs client in new frame with a new scratch buffer -->
@@ -513,12 +542,13 @@
     <keybind key="W-m">                 <action name="Execute"><command>hw.sh sound-toggle</command></action></keybind>
     <!-- <keybind key="W-????">                 <action name="Execute"><command>hw.sh mic-toggle</command></action></keybind> -->
     <keybind key="W-agrave">            <action name="Execute"><command>hw.sh sound-cycle </command></action></keybind>
-    <keybind key="W-t">                 <action name="Execute"><command>hw.sh light-down  </command></action></keybind>
-    <keybind key="W-v">                 <action name="Execute"><command>hw.sh light-up    </command></action></keybind>
+    <!-- <keybind key="W-t">                 <action name="Execute"><command>hw.sh light-down  </command></action></keybind>
+         <keybind key="W-v">                 <action name="Execute"><command>hw.sh light-up    </command></action></keybind> -->
     <!-- Volume / brightness management (W-u, chrooted on W-u W-u) -->
 
 
     <!-- launch (Open) applications -->
+    <keybind key="W-v"><action name="Execute"><command>rofi-jitsi.sh      </command></action></keybind>
     <keybind key="W-o">
       <keybind key="W-o"><action name="Execute"><command>web-search.sh    </command></action></keybind>
       <keybind key="o"><action name="Execute"><command>web-search.sh      </command></action></keybind>
