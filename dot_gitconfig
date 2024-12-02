@@ -39,6 +39,7 @@
 [difftool]
 	prompt = false
 [core]
+	commentChar = §
 	filemode = false
 	pager = less -r
 	editor = emacsclient -nw -t -s $(cat "$HOME/.emacs-profile" | xargs)
