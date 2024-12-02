@@ -124,7 +124,6 @@ LS_COLORS="$LS_COLORS:ln=1;33" # change default link color
 # export GTK_IM_MODULE=fcitx
 # export QT_IM_MODULE=fcitx
 export GTK_IM_MODULE=xim
-export QT_IM_MODULE=xim
 
 use_java_8 () {
   [[ -n $SDKMAN_DIR && -n $JAVA_8_VERSION ]] && sdk use java $JAVA_8_VERSION || export JAVA_HOME=$JAVA_8
